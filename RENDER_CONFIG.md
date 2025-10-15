@@ -39,12 +39,14 @@ The following configuration files should be present in the `config/` directory:
 ## Health Check
 
 The application includes a health check endpoint:
+
 - `GET /` - Returns the main web interface
 - `GET /api/students` - API health check
 
 ## Scaling
 
 Render will automatically scale your application based on traffic. The free tier includes:
+
 - 750 hours per month
 - Automatic sleep after 15 minutes of inactivity
 - Automatic wake-up when accessed
@@ -52,6 +54,7 @@ Render will automatically scale your application based on traffic. The free tier
 ## Monitoring
 
 Monitor your deployment through:
+
 1. Render dashboard logs
 2. Application logs in the web interface
 3. GitHub repository for code changes
@@ -59,6 +62,7 @@ Monitor your deployment through:
 ## Updates
 
 To update your deployment:
+
 1. Push changes to your GitHub repository
 2. Render will automatically redeploy
 3. Monitor logs for any issues

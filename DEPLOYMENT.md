@@ -73,6 +73,7 @@ If you need to set environment variables in Render:
 ### Configuration Files:
 
 Make sure your configuration files are properly set up:
+
 - `config/students.json` - Student data
 - `config/lectures.json` - Lecture definitions
 - `config/cohorts.json` - Cohort management
@@ -86,6 +87,7 @@ Make sure your configuration files are properly set up:
 ## Post-Deployment
 
 After successful deployment:
+
 1. Test all API endpoints
 2. Verify the web interface loads correctly
 3. Test grading functionality with sample data
@@ -94,6 +96,7 @@ After successful deployment:
 ## Support
 
 If you encounter issues:
+
 1. Check Render logs for error messages
 2. Verify all configuration files are present
 3. Ensure all dependencies are properly installed

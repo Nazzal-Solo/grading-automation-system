@@ -46,6 +46,7 @@ npm install
 3. Configure your environment:
 
 Create configuration files in the `config/` directory:
+
 - `students.json` - Student information and GitHub repositories
 - `lectures.json` - Lecture definitions and grading criteria
 - `cohorts.json` - Cohort management data
