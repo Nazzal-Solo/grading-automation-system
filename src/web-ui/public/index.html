@@ -1,0 +1,5850 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Grading Platform - Ultra Dynamic</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        /* Modern Color Palette */
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --secondary: #8b5cf6;
+        --accent: #06b6d4;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --error: #ef4444;
+        --dark: #0f172a;
+        --dark-light: #1e293b;
+        --dark-lighter: #334155;
+        --gray: #64748b;
+        --gray-light: #94a3b8;
+        --white: #f8fafc;
+        --border: rgba(255, 255, 255, 0.1);
+
+        /* Spacing */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-2xl: 3rem;
+
+        /* Border Radius */
+        --radius-sm: 0.375rem;
+        --radius-md: 0.5rem;
+        --radius-lg: 0.75rem;
+        --radius-xl: 1rem;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+        /* Transitions */
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        background: linear-gradient(
+          135deg,
+          var(--dark) 0%,
+          var(--dark-light) 100%
+        );
+        color: var(--white);
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: var(--spacing-lg);
+      }
+
+      /* Header */
+      .header {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-2xl);
+        text-align: center;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: var(--spacing-sm);
+      }
+
+      .header p {
+        color: var(--gray-light);
+        font-size: 1.1rem;
+      }
+
+      /* Navigation */
+      .nav {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-2xl);
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: var(--spacing-sm);
+      }
+
+      .nav-btn {
+        flex: 1;
+        padding: var(--spacing-md) var(--spacing-lg);
+        background: transparent;
+        border: none;
+        border-radius: var(--radius-lg);
+        color: var(--gray-light);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-sm);
+      }
+
+      .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+      }
+
+      .nav-btn.active {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+        box-shadow: var(--shadow-lg);
+      }
+
+      /* Sections */
+      .section {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Cards */
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: var(--spacing-xl);
+        margin-bottom: var(--spacing-xl);
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        border-color: var(--primary);
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+      }
+
+      .card-header {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+      }
+
+      /* Forms */
+      .form-group {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: var(--spacing-sm);
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .form-input,
+      .form-select,
+      .form-textarea {
+        width: 100%;
+        padding: var(--spacing-md);
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        color: var(--white);
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      /* Force dark theme for all select options */
+      select option {
+        background-color: #1a1a2e !important;
+        color: #ffffff !important;
+        border: none !important;
+        padding: 8px 12px !important;
+      }
+
+      select option:hover,
+      select option:focus,
+      select option:checked,
+      select option:active {
+        background-color: #6366f1 !important;
+        color: #ffffff !important;
+      }
+
+      /* Style the select element itself */
+      .form-select {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
+        background-position: right 0.5rem center !important;
+        background-repeat: no-repeat !important;
+        background-size: 1.5em 1.5em !important;
+        color: #ffffff !important;
+      }
+
+      /* Additional browser-specific fixes */
+      select::-ms-expand {
+        display: none;
+      }
+
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      .form-input:focus,
+      .form-select:focus,
+      .form-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      }
+
+      .form-textarea {
+        resize: vertical;
+        min-height: 120px;
+      }
+
+      /* Buttons */
+      .btn {
+        padding: var(--spacing-md) var(--spacing-lg);
+        border: none;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        text-decoration: none;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: var(--white);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-secondary {
+        background: linear-gradient(135deg, var(--secondary), #7c3aed);
+        color: var(--white);
+      }
+
+      .btn-success {
+        background: linear-gradient(135deg, var(--success), #059669);
+        color: var(--white);
+      }
+
+      .btn-warning {
+        background: linear-gradient(135deg, var(--warning), #d97706);
+        color: var(--white);
+      }
+
+      .btn-error {
+        background: linear-gradient(135deg, var(--error), #dc2626);
+        color: var(--white);
+      }
+
+      .btn-outline {
+        background: transparent;
+        border: 1px solid var(--border);
+        color: var(--white);
+      }
+
+      .btn-outline:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none !important;
+      }
+
+      /* Grid */
+      .grid {
+        display: grid;
+        gap: var(--spacing-lg);
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+
+      /* Filter Tabs */
+      .filter-tabs {
+        display: flex;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-sm);
+      }
+
+      .filter-tab {
+        flex: 1;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: transparent;
+        border: none;
+        border-radius: var(--radius-md);
+        color: var(--gray-light);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      .filter-tab:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+      }
+
+      .filter-tab.active {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+      }
+
+      /* Tables */
+      .table-container {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table th,
+      .table td {
+        padding: var(--spacing-md);
+        text-align: left;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .table th {
+        background: rgba(255, 255, 255, 0.05);
+        font-weight: 600;
+        color: var(--white);
+      }
+
+      .table td {
+        color: var(--gray-light);
+      }
+
+      .table tr:hover {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      /* Status Badges */
+      .status-badge {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: var(--radius-sm);
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Floating Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 3rem;
+        height: 3rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+      }
+
+      .scroll-to-top:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .scroll-to-top i {
+        font-size: 1.1rem;
+      }
+
+      .status-active {
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--success);
+      }
+
+      .status-completed {
+        background: rgba(107, 114, 128, 0.2);
+        color: var(--gray);
+      }
+
+      .status-upcoming {
+        background: rgba(245, 158, 11, 0.2);
+        color: var(--warning);
+      }
+
+      /* Loading */
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--spacing-md);
+        padding: var(--spacing-xl);
+        color: var(--gray-light);
+      }
+
+      .spinner {
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--border);
+        border-top: 2px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Alerts */
+      .alert {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-md);
+        margin-bottom: var(--spacing-lg);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+      }
+
+      .alert-success {
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        color: var(--success);
+      }
+
+      .alert-error {
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: var(--error);
+      }
+
+      .alert-warning {
+        background: rgba(245, 158, 11, 0.1);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        color: var(--warning);
+      }
+
+      /* Hidden */
+      .hidden {
+        display: none !important;
+      }
+
+      /* Students Status Section Styles */
+      .status-legend {
+        margin-top: 30px;
+        padding: 25px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .status-legend h3 {
+        color: var(--white);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .legend-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .legend-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+      }
+
+      .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .legend-item.critical .legend-color {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+      }
+
+      .legend-item.bad .legend-color {
+        background: linear-gradient(135deg, #f97316, #ea580c);
+        box-shadow: 0 0 15px rgba(249, 115, 22, 0.4);
+      }
+
+      .legend-item.ok .legend-color {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+      }
+
+      .legend-item.good .legend-color {
+        background: linear-gradient(135deg, #10b981, #059669);
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+      }
+
+      .legend-item.advanced .legend-color {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+      }
+
+      .legend-content strong {
+        color: var(--white);
+        font-size: 1.1rem;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .legend-content p {
+        color: var(--gray-light);
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .status-notes {
+        margin-top: 30px;
+        padding: 25px;
+        background: linear-gradient(
+          135deg,
+          rgba(245, 158, 11, 0.1) 0%,
+          rgba(217, 119, 6, 0.1) 100%
+        );
+        border-radius: 16px;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+
+      .status-notes h3 {
+        color: var(--white);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .note-content p {
+        color: var(--gray-light);
+        margin: 10px 0;
+        line-height: 1.6;
+      }
+
+      .note-content p strong {
+        color: #f59e0b;
+        font-weight: 600;
+      }
+
+      /* Student Status Cards */
+      .student-status-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 20px;
+        margin-bottom: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .student-status-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .student-info-status {
+        flex: 1;
+      }
+
+      .student-info-status h4 {
+        color: var(--white);
+        margin: 0 0 5px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .student-info-status p {
+        color: var(--gray-light);
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .status-badge {
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .status-badge.critical {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+      }
+
+      .status-badge.bad {
+        background: linear-gradient(135deg, #f97316, #ea580c);
+        color: white;
+      }
+
+      .status-badge.ok {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: white;
+      }
+
+      .status-badge.good {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+      }
+
+      .status-badge.advanced {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+      }
+
+      .status-badge:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .container {
+          padding: var(--spacing-md);
+        }
+
+        .nav {
+          flex-direction: column;
+        }
+
+        .grid-2,
+        .grid-3,
+        .grid-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .header h1 {
+          font-size: 2rem;
+        }
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--dark-light);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gray);
+        border-radius: var(--radius-sm);
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--gray-light);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <h1><i class="fas fa-rocket"></i> Auto Grading Platform</h1>
+        <p>Ultra Dynamic AI-Powered Grading System</p>
+      </div>
+
+      <!-- Navigation -->
+      <div class="nav">
+        <button class="nav-btn active" data-section="grading">
+          <i class="fas fa-graduation-cap"></i>
+          Grading
+        </button>
+        <button class="nav-btn" data-section="cohorts">
+          <i class="fas fa-users"></i>
+          Cohorts
+        </button>
+        <button class="nav-btn" data-section="students">
+          <i class="fas fa-user-graduate"></i>
+          Students
+        </button>
+        <button class="nav-btn" data-section="results">
+          <i class="fas fa-chart-bar"></i>
+          Results
+        </button>
+        <button class="nav-btn" data-section="status">
+          <i class="fas fa-exclamation-triangle"></i>
+          Students Status
+        </button>
+        <button class="nav-btn" id="refreshDataBtn" title="Refresh server data">
+          <i class="fas fa-sync-alt"></i>
+          Refresh Data
+        </button>
+      </div>
+
+      <!-- Grading Section -->
+      <div id="grading" class="section active">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h2 class="card-title">Ultra Dynamic Grading</h2>
+          </div>
+
+          <!-- Grading Options Filter -->
+          <div class="filter-tabs">
+            <button class="filter-tab active" data-option="cohort-lecture">
+              <i class="fas fa-users"></i> One Lecture for One Cohort
+            </button>
+            <button class="filter-tab" data-option="all-students-lecture">
+              <i class="fas fa-user-friends"></i> One Lecture for All Students
+            </button>
+            <button class="filter-tab" data-option="cohort-all-lectures">
+              <i class="fas fa-book-open"></i> All Lectures for One Cohort
+            </button>
+            <button class="filter-tab" data-option="student-all-lectures">
+              <i class="fas fa-user-check"></i> All Lectures for One Student
+            </button>
+            <button class="filter-tab" data-option="all-all">
+              <i class="fas fa-globe"></i> All Lectures for All Cohorts
+            </button>
+          </div>
+
+          <!-- Grading Forms -->
+          <div id="grading-forms">
+            <!-- One Lecture for One Cohort -->
+            <div id="cohort-lecture-form" class="grading-form">
+              <div class="grid grid-3">
+                <div class="form-group">
+                  <label class="form-label">Select Cohort</label>
+                  <select id="cohortSelect" class="form-select">
+                    <option value="">Choose a cohort...</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Select Stage</label>
+                  <select id="stageSelect" class="form-select" disabled>
+                    <option value="">Choose a stage...</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Select Lecture</label>
+                  <select id="lectureSelect" class="form-select" disabled>
+                    <option value="">Choose a lecture...</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <button
+                  id="gradeCohortLectureBtn"
+                  class="btn btn-primary"
+                  disabled
+                >
+                  <i class="fas fa-rocket"></i> Start Ultra Dynamic Grading
+                </button>
+              </div>
+            </div>
+
+            <!-- One Lecture for All Students -->
+            <div id="all-students-lecture-form" class="grading-form hidden">
+              <div class="grid grid-2">
+                <div class="form-group">
+                  <label class="form-label">Select Stage</label>
+                  <select id="allStudentsStageSelect" class="form-select">
+                    <option value="">Choose a stage...</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Select Lecture</label>
+                  <select
+                    id="allStudentsLectureSelect"
+                    class="form-select"
+                    disabled
+                  >
+                    <option value="">Choose a lecture...</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <button
+                  id="gradeAllStudentsLectureBtn"
+                  class="btn btn-primary"
+                  disabled
+                >
+                  <i class="fas fa-rocket"></i> Start Ultra Dynamic Grading
+                </button>
+              </div>
+            </div>
+
+            <!-- All Lectures for One Cohort -->
+            <div id="cohort-all-lectures-form" class="grading-form hidden">
+              <div class="form-group">
+                <label class="form-label">Select Cohort</label>
+                <select id="cohortAllLecturesSelect" class="form-select">
+                  <option value="">Choose a cohort...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Select Stage (Optional)</label>
+                <select id="cohortAllLecturesStageSelect" class="form-select">
+                  <option value="">All Stages</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button
+                  id="gradeCohortAllLecturesBtn"
+                  class="btn btn-primary"
+                  disabled
+                >
+                  <i class="fas fa-rocket"></i> Start Ultra Dynamic Grading
+                </button>
+              </div>
+            </div>
+
+            <!-- All Lectures for One Student -->
+            <div id="student-all-lectures-form" class="grading-form hidden">
+              <div class="form-group">
+                <label class="form-label">Select Student</label>
+                <select id="studentAllLecturesSelect" class="form-select">
+                  <option value="">Choose a student...</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <button
+                  id="gradeStudentAllLecturesBtn"
+                  class="btn btn-primary"
+                  disabled
+                >
+                  <i class="fas fa-rocket"></i> Start Ultra Dynamic Grading
+                </button>
+              </div>
+            </div>
+
+            <!-- All Lectures for All Cohorts -->
+            <div id="all-all-form" class="grading-form hidden">
+              <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                  <strong>Warning:</strong> This will grade all lectures for all
+                  students in all cohorts. This process may take a significant
+                  amount of time.
+                </div>
+              </div>
+              <div class="form-group">
+                <button id="gradeAllAllBtn" class="btn btn-warning">
+                  <i class="fas fa-rocket"></i> Start Ultra Dynamic Grading
+                  (All)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grading Status -->
+          <div id="gradingStatus" class="hidden">
+            <div class="grading-modal">
+              <div class="grading-content">
+                <div class="grading-header">
+                  <h2><i class="fas fa-rocket"></i> Ultra Dynamic Grading</h2>
+                  <div class="grading-progress">
+                    <div class="progress-bar">
+                      <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                      <span id="progressText">0%</span>
+                      <span id="timeRemaining">Calculating...</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grading-details">
+                  <div class="grading-info">
+                    <div class="info-item">
+                      <i class="fas fa-users"></i>
+                      <span
+                        >Students: <strong id="studentsCount">0</strong></span
+                      >
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-book"></i>
+                      <span
+                        >Lectures: <strong id="lecturesCount">0</strong></span
+                      >
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-clock"></i>
+                      <span
+                        >Started: <strong id="startTime">--:--</strong></span
+                      >
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-tasks"></i>
+                      <span
+                        >Completed: <strong id="completedCount">0</strong> /
+                        <strong id="totalCount">0</strong></span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="current-student">
+                    <div class="student-card">
+                      <i class="fas fa-user-graduate"></i>
+                      <div class="student-info">
+                        <div class="student-name" id="currentStudent">
+                          Preparing...
+                        </div>
+                        <div class="student-lecture" id="currentLecture">
+                          Initializing grading engine
+                        </div>
+                      </div>
+                      <div class="student-status">
+                        <div class="status-dot" id="statusDot"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grading-actions">
+                  <button
+                    class="btn btn-error"
+                    id="cancelGrading"
+                    onclick="cancelGrading()"
+                  >
+                    <i class="fas fa-stop"></i> Cancel Grading
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cohorts Section -->
+      <div id="cohorts" class="section">
+        <!-- Add New Cohort -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-plus"></i>
+            </div>
+            <h2 class="card-title">Create New Cohort</h2>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label class="form-label">Cohort Number</label>
+              <input
+                type="number"
+                id="newCohortNumber"
+                class="form-input"
+                placeholder="Enter cohort number"
+                min="1"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select id="newCohortStatus" class="form-select">
+                <option value="active">🟢 Active</option>
+                <option value="completed">🔴 Completed</option>
+                <option value="upcoming">🟡 Upcoming</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button id="addCohortBtn" class="btn btn-success">
+              <i class="fas fa-plus"></i> Create Cohort
+            </button>
+          </div>
+        </div>
+
+        <!-- Existing Cohorts -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-list"></i>
+            </div>
+            <h2 class="card-title">Existing Cohorts</h2>
+          </div>
+
+          <div id="cohortsList">
+            <div class="loading">
+              <div class="spinner"></div>
+              <span>Loading cohorts...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Students Section -->
+      <div id="students" class="section">
+        <!-- Add Multiple Students -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h2 class="card-title">Add Multiple Students</h2>
+          </div>
+
+          <div class="grid grid-3">
+            <div class="form-group">
+              <label class="form-label">Cohort Number</label>
+              <select id="bulkStudentCohort" class="form-select">
+                <option value="">Choose a cohort...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Students Display Names</label>
+              <textarea
+                id="bulkStudentNames"
+                class="form-textarea"
+                placeholder="Enter student names (one per line):&#10;John Doe&#10;Jane Smith&#10;Bob Johnson"
+                rows="4"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">GitHub Usernames</label>
+              <textarea
+                id="bulkStudentGithubs"
+                class="form-textarea"
+                placeholder="Enter GitHub usernames (one per line):&#10;johndoe&#10;janesmith&#10;bobjohnson"
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button id="addBulkStudentsBtn" class="btn btn-success">
+              <i class="fas fa-users"></i> Add Multiple Students
+            </button>
+          </div>
+        </div>
+
+        <!-- Add Individual Student -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-user-plus"></i>
+            </div>
+            <h2 class="card-title">Add Individual Student</h2>
+          </div>
+
+          <div class="grid grid-3">
+            <div class="form-group">
+              <label class="form-label">Cohort Number</label>
+              <select id="newStudentCohort" class="form-select">
+                <option value="">Choose a cohort...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Student Display Name</label>
+              <input
+                type="text"
+                id="newStudentName"
+                class="form-input"
+                placeholder="Enter student display name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">GitHub Username</label>
+              <input
+                type="text"
+                id="newStudentGithub"
+                class="form-input"
+                placeholder="Enter GitHub username"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button id="addStudentBtn" class="btn btn-primary">
+              <i class="fas fa-user-plus"></i> Add Student
+            </button>
+          </div>
+        </div>
+
+        <!-- View All Students -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h2 class="card-title">View All Students</h2>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Filter by Cohort</label>
+            <select id="studentCohortFilter" class="form-select">
+              <option value="">All Cohorts</option>
+            </select>
+          </div>
+
+          <div id="studentsList">
+            <div class="loading">
+              <div class="spinner"></div>
+              <span>Loading students...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Remove Students -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-user-minus"></i>
+            </div>
+            <h2 class="card-title">Remove Students</h2>
+          </div>
+
+          <div class="grid grid-2">
+            <div class="form-group">
+              <label class="form-label">Select Cohort</label>
+              <select id="removeStudentCohort" class="form-select">
+                <option value="">Choose a cohort...</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Select Student</label>
+              <select id="removeStudentSelect" class="form-select" disabled>
+                <option value="">Choose a student...</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <button id="removeStudentBtn" class="btn btn-error" disabled>
+              <i class="fas fa-user-minus"></i> Remove Student
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div id="results" class="section">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h2 class="card-title">Grading Results</h2>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Filter by Cohort</label>
+            <select id="resultsCohortFilter" class="form-select">
+              <option value="">All Cohorts</option>
+            </select>
+          </div>
+
+          <div id="resultsList">
+            <div class="loading">
+              <div class="spinner"></div>
+              <span>Loading results...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Students Status Section -->
+      <div id="status" class="section">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 class="card-title">Students Status</h2>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Cohort</label>
+            <select id="statusCohortFilter" class="form-select">
+              <option value="">Select a Cohort</option>
+            </select>
+          </div>
+
+          <div id="statusList">
+            <!-- Status list will be populated here when cohort is selected -->
+          </div>
+
+          <!-- Status Legend -->
+          <div class="status-legend">
+            <h3>Status Legend & Advice</h3>
+            <div class="legend-items">
+              <div class="legend-item critical">
+                <div class="legend-color"></div>
+                <div class="legend-content">
+                  <strong>CRITICAL</strong>
+                  <p>
+                    We must talk with this student seriously for his weak level
+                  </p>
+                </div>
+              </div>
+              <div class="legend-item bad">
+                <div class="legend-color"></div>
+                <div class="legend-content">
+                  <strong>BAD</strong>
+                  <p>We must inform the student to up his level</p>
+                </div>
+              </div>
+              <div class="legend-item ok">
+                <div class="legend-color"></div>
+                <div class="legend-content">
+                  <strong>OK</strong>
+                  <p>We must keep our eyes on this student</p>
+                </div>
+              </div>
+              <div class="legend-item good">
+                <div class="legend-color"></div>
+                <div class="legend-content">
+                  <strong>GOOD</strong>
+                  <p>Safe side</p>
+                </div>
+              </div>
+              <div class="legend-item advanced">
+                <div class="legend-color"></div>
+                <div class="legend-content">
+                  <strong>ADVANCED</strong>
+                  <p>Safe side</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Important Notes -->
+          <div class="status-notes">
+            <h3>Important Notes</h3>
+            <div class="note-content">
+              <p><strong>⚠️ Manual Repository Check Required:</strong></p>
+              <p>
+                For students with 0% scores or very low scores, we must manually
+                check their repositories to ensure that their grade is accurate
+                before talking with them. Don't forget to inform the student
+                experience team about them after verification.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Global variables
+      let currentSection = "grading";
+      let currentGradingOption = "cohort-lecture";
+      let students = [];
+      let cohorts = [];
+      let lectures = [];
+      let results = [];
+      let curriculumStages = [];
+
+      // Initialize the application
+      document.addEventListener("DOMContentLoaded", function () {
+        initializeApp();
+        forceSelectStyling();
+        initializeScrollToTop();
+      });
+
+      // Force styling for select options (browser compatibility)
+      function forceSelectStyling() {
+        const selects = document.querySelectorAll("select");
+        selects.forEach((select) => {
+          // Force dark styling
+          select.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+          select.style.color = "#ffffff";
+
+          // Add event listeners to force option styling
+          select.addEventListener("focus", function () {
+            this.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+          });
+
+          select.addEventListener("blur", function () {
+            this.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+          });
+        });
+      }
+
+      // Initialize scroll to top functionality
+      function initializeScrollToTop() {
+        const scrollToTopBtn = document.getElementById("scrollToTop");
+
+        if (!scrollToTopBtn) return;
+
+        // Show/hide button based on scroll position
+        function toggleScrollButton() {
+          if (window.scrollY > 300) {
+            scrollToTopBtn.classList.add("visible");
+          } else {
+            scrollToTopBtn.classList.remove("visible");
+          }
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        }
+
+        // Add event listeners
+        window.addEventListener("scroll", toggleScrollButton);
+        scrollToTopBtn.addEventListener("click", scrollToTop);
+
+        // Initial check
+        toggleScrollButton();
+      }
+
+      async function initializeApp() {
+        setupNavigation();
+        setupGradingFilters();
+        setupEventListeners();
+        await loadInitialData();
+      }
+
+      function setupNavigation() {
+        const navBtns = document.querySelectorAll(".nav-btn");
+        navBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const section = btn.dataset.section;
+            if (section) {
+              showSection(section);
+            } else if (btn.id === "refreshDataBtn") {
+              refreshServerData();
+            }
+          });
+        });
+      }
+
+      function showSection(sectionName) {
+        // Hide all sections
+        document.querySelectorAll(".section").forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        // Remove active class from all nav buttons
+        document.querySelectorAll(".nav-btn").forEach((btn) => {
+          btn.classList.remove("active");
+        });
+
+        // Show selected section
+        document.getElementById(sectionName).classList.add("active");
+        document
+          .querySelector(`[data-section="${sectionName}"]`)
+          .classList.add("active");
+
+        currentSection = sectionName;
+
+        // Load section-specific data
+        if (sectionName === "cohorts") {
+          loadCohorts();
+        } else if (sectionName === "students") {
+          loadStudents();
+        } else if (sectionName === "results") {
+          loadResults();
+        } else if (sectionName === "status") {
+          loadStudentsStatus();
+        }
+      }
+
+      function setupGradingFilters() {
+        const filterTabs = document.querySelectorAll(".filter-tab");
+        filterTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            const option = tab.dataset.option;
+            showGradingOption(option);
+          });
+        });
+      }
+
+      function showGradingOption(option) {
+        // Remove active class from all filter tabs
+        document.querySelectorAll(".filter-tab").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        // Hide all grading forms
+        document.querySelectorAll(".grading-form").forEach((form) => {
+          form.classList.add("hidden");
+        });
+
+        // Show selected option
+        document
+          .querySelector(`[data-option="${option}"]`)
+          .classList.add("active");
+        document.getElementById(`${option}-form`).classList.remove("hidden");
+
+        currentGradingOption = option;
+      }
+
+      function setupEventListeners() {
+        // Cohort management
+        document
+          .getElementById("addCohortBtn")
+          .addEventListener("click", addCohort);
+
+        // Student management
+        document
+          .getElementById("addStudentBtn")
+          .addEventListener("click", addStudent);
+        document
+          .getElementById("addBulkStudentsBtn")
+          .addEventListener("click", addBulkStudents);
+        document
+          .getElementById("removeStudentBtn")
+          .addEventListener("click", removeStudent);
+
+        // Grading
+        document
+          .getElementById("gradeCohortLectureBtn")
+          .addEventListener("click", () => gradeCohortLecture());
+        document
+          .getElementById("gradeAllStudentsLectureBtn")
+          .addEventListener("click", () => gradeAllStudentsLecture());
+        document
+          .getElementById("gradeCohortAllLecturesBtn")
+          .addEventListener("click", () => gradeCohortAllLectures());
+        document
+          .getElementById("gradeStudentAllLecturesBtn")
+          .addEventListener("click", () => gradeStudentAllLectures());
+        document
+          .getElementById("gradeAllAllBtn")
+          .addEventListener("click", () => gradeAllAll());
+
+        // Filters
+        document
+          .getElementById("studentCohortFilter")
+          .addEventListener("change", filterStudents);
+        document
+          .getElementById("resultsCohortFilter")
+          .addEventListener("change", filterResults);
+        document
+          .getElementById("removeStudentCohort")
+          .addEventListener("change", updateRemoveStudentList);
+
+        // Grading form changes
+        document
+          .getElementById("cohortSelect")
+          .addEventListener("change", updateStageSelect);
+        document
+          .getElementById("stageSelect")
+          .addEventListener("change", updateLectureSelect);
+        document
+          .getElementById("lectureSelect")
+          .addEventListener("change", updateGradingButtons);
+        document
+          .getElementById("allStudentsStageSelect")
+          .addEventListener("change", updateAllStudentsLectureSelect);
+        document
+          .getElementById("allStudentsLectureSelect")
+          .addEventListener("change", updateGradingButtons);
+        document
+          .getElementById("cohortAllLecturesSelect")
+          .addEventListener("change", updateGradingButtons);
+        document
+          .getElementById("studentAllLecturesSelect")
+          .addEventListener("change", updateGradingButtons);
+      }
+
+      async function loadInitialData() {
+        try {
+          await Promise.all([
+            loadCohorts(),
+            loadStudents(),
+            loadLectures(),
+            loadResults(),
+            loadStudentsStatus(),
+          ]);
+        } catch (error) {
+          showAlert("Error loading initial data: " + error.message, "error");
+        }
+      }
+
+      async function loadCohorts() {
+        try {
+          console.log("Loading cohorts...");
+          const response = await fetch("/api/cohorts");
+          if (response.ok) {
+            const data = await response.json();
+            console.log("Cohorts API response:", data);
+            cohorts = data.cohorts || [];
+            console.log("Loaded cohorts:", cohorts);
+            populateCohortSelects();
+            displayCohortsList();
+          } else {
+            console.error(
+              "Failed to load cohorts:",
+              response.status,
+              response.statusText
+            );
+          }
+        } catch (error) {
+          console.error("Error loading cohorts:", error);
+          showAlert("Error loading cohorts: " + error.message, "error");
+        }
+      }
+
+      async function loadStudents() {
+        try {
+          const response = await fetch("/api/students");
+          if (response.ok) {
+            students = await response.json();
+            populateStudentSelects();
+            displayStudentsList();
+          }
+        } catch (error) {
+          showAlert("Error loading students: " + error.message, "error");
+        }
+      }
+
+      async function loadLectures() {
+        try {
+          const response = await fetch("/api/lectures");
+          if (response.ok) {
+            lectures = await response.json();
+            loadCurriculumStages();
+          }
+        } catch (error) {
+          showAlert("Error loading lectures: " + error.message, "error");
+        }
+      }
+
+      async function loadResults() {
+        try {
+          const response = await fetch("/api/results/detailed");
+          if (response.ok) {
+            const data = await response.json();
+            results = Array.isArray(data) ? data : [];
+            displayResultsList();
+          }
+        } catch (error) {
+          showAlert("Error loading results: " + error.message, "error");
+        }
+      }
+
+      async function loadStudentsStatus() {
+        try {
+          console.log("Loading students status data...");
+
+          // Load students and results data
+          const [studentsResponse, resultsResponse] = await Promise.all([
+            fetch("/api/students"),
+            fetch("/api/results/detailed"),
+          ]);
+
+          if (studentsResponse.ok && resultsResponse.ok) {
+            const studentsData = await studentsResponse.json();
+            const resultsData = await resultsResponse.json();
+
+            // Handle both array and object formats
+            students = Array.isArray(studentsData)
+              ? studentsData
+              : studentsData.students || [];
+            results = Array.isArray(resultsData) ? resultsData : [];
+
+            console.log("Loaded students:", students.length);
+            console.log("Loaded results:", results.length);
+
+            // Populate cohort filter for status section
+            populateStatusCohortFilter();
+
+            // Set up cohort filter event listener (only once)
+            const statusCohortFilter =
+              document.getElementById("statusCohortFilter");
+            if (
+              statusCohortFilter &&
+              !statusCohortFilter.hasAttribute("data-listener-added")
+            ) {
+              statusCohortFilter.addEventListener(
+                "change",
+                displayStudentsStatus
+              );
+              statusCohortFilter.setAttribute("data-listener-added", "true");
+              console.log("Event listener added to status cohort filter");
+            }
+          } else {
+            console.error(
+              "Failed to load data:",
+              studentsResponse.status,
+              resultsResponse.status
+            );
+          }
+        } catch (error) {
+          console.error("Error loading students status data:", error);
+          showAlert(
+            "Error loading students status data: " + error.message,
+            "error"
+          );
+        }
+      }
+
+      function populateStatusCohortFilter() {
+        const statusCohortFilter =
+          document.getElementById("statusCohortFilter");
+        if (!statusCohortFilter) {
+          console.error("Status cohort filter element not found");
+          return;
+        }
+
+        console.log(
+          "Populating status cohort filter with",
+          cohorts.length,
+          "cohorts"
+        );
+
+        // Clear existing options
+        statusCohortFilter.innerHTML =
+          '<option value="">Select a Cohort</option>';
+
+        // Sort cohorts by status priority (same as other dropdowns)
+        const statusPriority = {
+          upcoming: 0,
+          active: 1,
+          complete: 2,
+        };
+
+        const sortedCohorts = [...cohorts].sort((a, b) => {
+          const priorityA = statusPriority[a.status] ?? 999; // Unknown status goes last
+          const priorityB = statusPriority[b.status] ?? 999;
+
+          if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+          }
+
+          // If same status, sort by cohort number (ascending)
+          return a.number - b.number;
+        });
+
+        sortedCohorts.forEach((cohort) => {
+          const option = document.createElement("option");
+          option.value = cohort.number;
+          option.textContent = `Cohort ${cohort.number} (${cohort.status})`;
+          statusCohortFilter.appendChild(option);
+        });
+
+        console.log(
+          "Cohort filter populated with",
+          sortedCohorts.length,
+          "options"
+        );
+      }
+
+      function displayStudentsStatus() {
+        const statusCohortFilter =
+          document.getElementById("statusCohortFilter");
+        const statusList = document.getElementById("statusList");
+
+        if (!statusCohortFilter || !statusList) return;
+
+        const selectedCohort = statusCohortFilter.value;
+
+        if (!selectedCohort) {
+          statusList.innerHTML = `
+            <div style="text-align: center; color: var(--gray-light); padding: var(--spacing-xl);">
+              <p>Please select a cohort to view student status</p>
+            </div>
+          `;
+          return;
+        }
+
+        // Filter students by cohort
+        const cohortStudents = students.filter(
+          (student) => student.cohortNumber == selectedCohort
+        );
+
+        if (cohortStudents.length === 0) {
+          statusList.innerHTML =
+            '<p style="text-align: center; color: var(--gray-light); padding: var(--spacing-xl);">No students found in this cohort.</p>';
+          return;
+        }
+
+        // Calculate status for each student
+        const studentsWithStatus = cohortStudents.map((student) => {
+          const studentResults = results.filter(
+            (result) => result.studentId === student.id
+          );
+          const averageScore =
+            studentResults.length > 0
+              ? studentResults.reduce(
+                  (sum, result) => sum + (result.percentage || 0),
+                  0
+                ) / studentResults.length
+              : 0;
+
+          let status, statusClass;
+          if (averageScore < 60) {
+            status = "CRITICAL";
+            statusClass = "critical";
+          } else if (averageScore >= 60 && averageScore < 75) {
+            status = "BAD";
+            statusClass = "bad";
+          } else if (averageScore >= 75 && averageScore <= 85) {
+            status = "OK";
+            statusClass = "ok";
+          } else if (averageScore >= 86 && averageScore <= 92) {
+            status = "GOOD";
+            statusClass = "good";
+          } else {
+            status = "ADVANCED";
+            statusClass = "advanced";
+          }
+
+          return {
+            ...student,
+            averageScore: Math.round(averageScore),
+            status,
+            statusClass,
+            totalLectures: studentResults.length,
+          };
+        });
+
+        // Sort by status priority (Critical first, then by average score)
+        const statusPriority = {
+          critical: 0,
+          bad: 1,
+          ok: 2,
+          good: 3,
+          advanced: 4,
+        };
+        studentsWithStatus.sort((a, b) => {
+          if (statusPriority[a.statusClass] !== statusPriority[b.statusClass]) {
+            return (
+              statusPriority[a.statusClass] - statusPriority[b.statusClass]
+            );
+          }
+          return a.averageScore - b.averageScore;
+        });
+
+        // Generate HTML
+        const html = studentsWithStatus
+          .map(
+            (student) => `
+          <div class="student-status-card">
+            <div class="student-info-status">
+              <h4>${student.name}</h4>
+              <p>ID: ${student.id} | GitHub: ${
+              student.github?.username || "N/A"
+            } | Lectures: ${student.totalLectures}</p>
+            </div>
+            <div class="status-badge ${student.statusClass}">
+              ${student.status} (${student.averageScore}%)
+            </div>
+          </div>
+        `
+          )
+          .join("");
+
+        statusList.innerHTML = html;
+      }
+
+      function loadCurriculumStages() {
+        // Load curriculum stages from config
+        fetch("/api/curriculum")
+          .then((response) => response.json())
+          .then((data) => {
+            curriculumStages = data.stages || [];
+            populateStageSelects();
+          })
+          .catch((error) => {
+            console.error("Error loading curriculum:", error);
+          });
+      }
+
+      function populateCohortSelects() {
+        const selectIds = [
+          "cohortSelect",
+          "cohortAllLecturesSelect",
+          "newStudentCohort",
+          "bulkStudentCohort",
+          "studentCohortFilter",
+          "resultsCohortFilter",
+          "removeStudentCohort",
+        ];
+
+        console.log("Populating cohort selects with cohorts:", cohorts);
+
+        // Sort cohorts by status priority (same as displayCohortsList)
+        const statusPriority = {
+          upcoming: 0,
+          active: 1,
+          complete: 2,
+        };
+
+        const sortedCohorts = [...cohorts].sort((a, b) => {
+          const priorityA = statusPriority[a.status] ?? 999; // Unknown status goes last
+          const priorityB = statusPriority[b.status] ?? 999;
+
+          if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+          }
+
+          // If same status, sort by cohort number (ascending)
+          return a.number - b.number;
+        });
+
+        selectIds.forEach((selectId) => {
+          const select = document.getElementById(selectId);
+          if (select) {
+            const currentValue = select.value;
+            select.innerHTML =
+              selectId.includes("Filter") || selectId === "newStudentCohort"
+                ? '<option value="">All Cohorts</option>'
+                : '<option value="">Choose a cohort...</option>';
+
+            sortedCohorts.forEach((cohort) => {
+              const option = document.createElement("option");
+              option.value = cohort.number;
+              option.textContent = `Cohort ${cohort.number} (${cohort.status})`;
+              select.appendChild(option);
+            });
+
+            select.value = currentValue;
+            console.log(
+              `Populated ${selectId} with ${sortedCohorts.length} cohorts`
+            );
+          } else {
+            console.warn(`Select element with ID ${selectId} not found`);
+          }
+        });
+
+        // Force styling after populating
+        setTimeout(forceSelectStyling, 100);
+      }
+
+      function populateStudentSelects() {
+        const selectIds = ["studentAllLecturesSelect", "removeStudentSelect"];
+
+        selectIds.forEach((selectId) => {
+          const select = document.getElementById(selectId);
+          if (select) {
+            const currentValue = select.value;
+            select.innerHTML = '<option value="">Choose a student...</option>';
+
+            students.forEach((student) => {
+              const option = document.createElement("option");
+              option.value = student.id;
+              option.textContent = `${student.name} (${student.id})`;
+              select.appendChild(option);
+            });
+
+            select.value = currentValue;
+          }
+        });
+      }
+
+      function populateStageSelects() {
+        const stageSelects = [
+          "stageSelect",
+          "allStudentsStageSelect",
+          "cohortAllLecturesStageSelect",
+        ];
+
+        stageSelects.forEach((selectId) => {
+          const select = document.getElementById(selectId);
+          if (select) {
+            const currentValue = select.value;
+
+            // Set different default text for cohort all lectures stage select
+            if (selectId === "cohortAllLecturesStageSelect") {
+              select.innerHTML = '<option value="">All Stages</option>';
+            } else {
+              select.innerHTML = '<option value="">Choose a stage...</option>';
+            }
+
+            curriculumStages.forEach((stage) => {
+              const option = document.createElement("option");
+              option.value = stage.id;
+              option.textContent = stage.name;
+              select.appendChild(option);
+            });
+
+            select.value = currentValue;
+          }
+        });
+      }
+
+      function updateStageSelect() {
+        const cohortSelect = document.getElementById("cohortSelect");
+        const stageSelect = document.getElementById("stageSelect");
+        const lectureSelect = document.getElementById("lectureSelect");
+
+        if (cohortSelect.value) {
+          stageSelect.disabled = false;
+          populateStageSelects();
+        } else {
+          stageSelect.disabled = true;
+          lectureSelect.disabled = true;
+          stageSelect.innerHTML = '<option value="">Choose a stage...</option>';
+          lectureSelect.innerHTML =
+            '<option value="">Choose a lecture...</option>';
+        }
+
+        updateGradingButtons();
+      }
+
+      function updateLectureSelect() {
+        const stageSelect = document.getElementById("stageSelect");
+        const lectureSelect = document.getElementById("lectureSelect");
+
+        if (stageSelect.value) {
+          const selectedStage = curriculumStages.find(
+            (s) => s.id === stageSelect.value
+          );
+          lectureSelect.disabled = false;
+          lectureSelect.innerHTML =
+            '<option value="">Choose a lecture...</option>';
+
+          if (selectedStage && selectedStage.lectures) {
+            selectedStage.lectures.forEach((lecture) => {
+              const option = document.createElement("option");
+              option.value = lecture;
+              option.textContent = lecture;
+              lectureSelect.appendChild(option);
+            });
+          }
+        } else {
+          lectureSelect.disabled = true;
+          lectureSelect.innerHTML =
+            '<option value="">Choose a lecture...</option>';
+        }
+
+        updateGradingButtons();
+      }
+
+      function updateAllStudentsLectureSelect() {
+        const stageSelect = document.getElementById("allStudentsStageSelect");
+        const lectureSelect = document.getElementById(
+          "allStudentsLectureSelect"
+        );
+
+        if (stageSelect.value) {
+          const selectedStage = curriculumStages.find(
+            (s) => s.id === stageSelect.value
+          );
+          lectureSelect.disabled = false;
+          lectureSelect.innerHTML =
+            '<option value="">Choose a lecture...</option>';
+
+          if (selectedStage && selectedStage.lectures) {
+            selectedStage.lectures.forEach((lecture) => {
+              const option = document.createElement("option");
+              option.value = lecture;
+              option.textContent = lecture;
+              lectureSelect.appendChild(option);
+            });
+          }
+        } else {
+          lectureSelect.disabled = true;
+          lectureSelect.innerHTML =
+            '<option value="">Choose a lecture...</option>';
+        }
+
+        updateGradingButtons();
+      }
+
+      function updateGradingButtons() {
+        const buttons = [
+          "gradeCohortLectureBtn",
+          "gradeAllStudentsLectureBtn",
+          "gradeCohortAllLecturesBtn",
+          "gradeStudentAllLecturesBtn",
+        ];
+
+        buttons.forEach((buttonId) => {
+          const button = document.getElementById(buttonId);
+          if (button) {
+            button.disabled = !isGradingFormValid(buttonId);
+          }
+        });
+      }
+
+      function isGradingFormValid(buttonId) {
+        switch (buttonId) {
+          case "gradeCohortLectureBtn":
+            return (
+              document.getElementById("cohortSelect").value &&
+              document.getElementById("stageSelect").value &&
+              document.getElementById("lectureSelect").value
+            );
+          case "gradeAllStudentsLectureBtn":
+            return (
+              document.getElementById("allStudentsStageSelect").value &&
+              document.getElementById("allStudentsLectureSelect").value
+            );
+          case "gradeCohortAllLecturesBtn":
+            return document.getElementById("cohortAllLecturesSelect").value;
+          case "gradeStudentAllLecturesBtn":
+            return document.getElementById("studentAllLecturesSelect").value;
+          default:
+            return false;
+        }
+      }
+
+      function updateRemoveStudentList() {
+        const cohortSelect = document.getElementById("removeStudentCohort");
+        const studentSelect = document.getElementById("removeStudentSelect");
+        const removeBtn = document.getElementById("removeStudentBtn");
+
+        if (cohortSelect.value) {
+          const cohortStudents = students.filter(
+            (s) => s.cohortNumber == cohortSelect.value
+          );
+          studentSelect.disabled = false;
+          studentSelect.innerHTML =
+            '<option value="">Choose a student...</option>';
+
+          cohortStudents.forEach((student) => {
+            const option = document.createElement("option");
+            option.value = student.id;
+            option.textContent = `${student.name} (${student.id})`;
+            studentSelect.appendChild(option);
+          });
+        } else {
+          studentSelect.disabled = true;
+          studentSelect.innerHTML =
+            '<option value="">Choose a student...</option>';
+        }
+
+        removeBtn.disabled = !studentSelect.value;
+      }
+
+      // CRUD Operations
+      async function addCohort() {
+        const number = parseInt(
+          document.getElementById("newCohortNumber").value
+        );
+        const status = document.getElementById("newCohortStatus").value;
+
+        if (!number) {
+          showAlert("Please enter a cohort number", "error");
+          return;
+        }
+
+        try {
+          const response = await fetch("/api/cohorts", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ number, status }),
+          });
+
+          if (response.ok) {
+            showAlert("Cohort added successfully!", "success");
+            document.getElementById("newCohortNumber").value = "";
+
+            // Auto-refresh all data to include the new cohort
+            console.log("Auto-refreshing data after cohort creation...");
+            await loadInitialData();
+          } else {
+            const error = await response.json();
+            showAlert("Failed to add cohort: " + error.error, "error");
+          }
+        } catch (error) {
+          showAlert("Error adding cohort: " + error.message, "error");
+        }
+      }
+
+      async function addStudent() {
+        const name = document.getElementById("newStudentName").value.trim();
+        const github = document.getElementById("newStudentGithub").value.trim();
+        const cohortNumber = document.getElementById("newStudentCohort").value;
+
+        if (!name || !github || !cohortNumber) {
+          showAlert("Please fill in all fields", "error");
+          return;
+        }
+
+        try {
+          const response = await fetch("/api/students", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name,
+              id: name.toLowerCase().replace(/\s+/g, ""),
+              github: { username: github, token: "" },
+              cohortNumber: parseInt(cohortNumber),
+            }),
+          });
+
+          if (response.ok) {
+            showAlert("Student added successfully!", "success");
+            document.getElementById("newStudentName").value = "";
+            document.getElementById("newStudentGithub").value = "";
+            document.getElementById("newStudentCohort").value = "";
+
+            // Auto-refresh all data to include the new student
+            console.log("Auto-refreshing data after student creation...");
+            await loadInitialData();
+          } else {
+            const error = await response.json();
+            showAlert("Failed to add student: " + error.error, "error");
+          }
+        } catch (error) {
+          showAlert("Error adding student: " + error.message, "error");
+        }
+      }
+
+      async function addBulkStudents() {
+        const cohortNumber = document.getElementById("bulkStudentCohort").value;
+        const namesData = document
+          .getElementById("bulkStudentNames")
+          .value.trim();
+        const githubsData = document
+          .getElementById("bulkStudentGithubs")
+          .value.trim();
+
+        if (!cohortNumber || !namesData || !githubsData) {
+          showAlert("Please fill in all fields", "error");
+          return;
+        }
+
+        try {
+          const names = namesData.split("\n").filter((line) => line.trim());
+          const githubs = githubsData.split("\n").filter((line) => line.trim());
+
+          if (names.length !== githubs.length) {
+            showAlert(
+              "Number of names and GitHub usernames must match",
+              "error"
+            );
+            return;
+          }
+
+          const students = [];
+          for (let i = 0; i < names.length; i++) {
+            const name = names[i].trim();
+            const github = githubs[i].trim();
+
+            if (name && github) {
+              students.push({
+                name: name,
+                id: name.toLowerCase().replace(/\s+/g, ""),
+                github: { username: github, token: "" },
+                cohortNumber: parseInt(cohortNumber),
+              });
+            }
+          }
+
+          if (students.length === 0) {
+            showAlert("No valid students found in the data", "error");
+            return;
+          }
+
+          const response = await fetch("/api/students/bulk", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ students }),
+          });
+
+          if (response.ok) {
+            showAlert(
+              `${students.length} students added successfully!`,
+              "success"
+            );
+            document.getElementById("bulkStudentCohort").value = "";
+            document.getElementById("bulkStudentNames").value = "";
+            document.getElementById("bulkStudentGithubs").value = "";
+            await loadStudents();
+          } else {
+            const error = await response.json();
+            showAlert("Failed to add students: " + error.error, "error");
+          }
+        } catch (error) {
+          showAlert("Error adding students: " + error.message, "error");
+        }
+      }
+
+      async function removeStudent() {
+        const studentId = document.getElementById("removeStudentSelect").value;
+
+        if (!studentId) {
+          showAlert("Please select a student to remove", "error");
+          return;
+        }
+
+        const confirmed = await showConfirmation(
+          "Are you sure you want to remove this student?"
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        // Continue with removal
+        await removeStudentConfirmed(studentId);
+      }
+
+      async function removeStudentConfirmed(studentId) {
+        try {
+          const response = await fetch(`/api/students/${studentId}`, {
+            method: "DELETE",
+          });
+
+          if (response.ok) {
+            showAlert("Student removed successfully!", "success");
+            await loadStudents();
+          } else {
+            const error = await response.json();
+            showAlert("Failed to remove student: " + error.error, "error");
+          }
+        } catch (error) {
+          showAlert("Error removing student: " + error.message, "error");
+        }
+      }
+
+      // Grading Progress Tracking
+      let gradingProgress = {
+        total: 0,
+        completed: 0,
+        startTime: null,
+        isCancelled: false,
+        currentStudent: null,
+        currentLecture: null,
+        isRunning: false,
+      };
+
+      function updateGradingProgress() {
+        const progress =
+          (gradingProgress.completed / gradingProgress.total) * 100;
+
+        // Update both inline and modal progress
+        const progressFill = document.getElementById("progressFill");
+        const progressText = document.getElementById("progressText");
+        const completedCount = document.getElementById("completedCount");
+        const totalCount = document.getElementById("totalCount");
+        const timeRemaining = document.getElementById("timeRemaining");
+
+        if (progressFill) progressFill.style.width = `${progress}%`;
+        if (progressText) progressText.textContent = `${Math.round(progress)}%`;
+        if (completedCount)
+          completedCount.textContent = gradingProgress.completed;
+        if (totalCount) totalCount.textContent = gradingProgress.total;
+
+        // Calculate time remaining in MM:SS format
+        if (gradingProgress.completed > 0 && gradingProgress.startTime) {
+          const elapsed = Date.now() - gradingProgress.startTime;
+          const avgTimePerItem = elapsed / gradingProgress.completed;
+          const remaining =
+            (gradingProgress.total - gradingProgress.completed) *
+            avgTimePerItem;
+
+          if (timeRemaining && remaining > 0) {
+            const remainingMinutes = Math.floor(remaining / 60000);
+            const remainingSeconds = Math.floor((remaining % 60000) / 1000);
+
+            if (remainingMinutes > 0) {
+              timeRemaining.textContent = `${remainingMinutes}:${remainingSeconds
+                .toString()
+                .padStart(2, "0")} remaining`;
+            } else {
+              timeRemaining.textContent = `0:${remainingSeconds
+                .toString()
+                .padStart(2, "0")} remaining`;
+            }
+          } else if (timeRemaining) {
+            timeRemaining.textContent = "Almost done...";
+          }
+        }
+
+        // Also update modal progress
+        updateModalGradingProgress();
+      }
+
+      function updateCurrentStudent(studentName, lectureName) {
+        gradingProgress.currentStudent = studentName;
+        gradingProgress.currentLecture = lectureName;
+        document.getElementById("currentStudent").textContent = studentName;
+        document.getElementById("currentLecture").textContent = lectureName;
+      }
+
+      async function cancelGrading() {
+        // Show cancel confirmation within the same modal
+        showCancelConfirmationInModal();
+      }
+
+      function showCancelConfirmationInModal() {
+        const modal = document.getElementById("gradingProgressModal");
+        if (!modal) return;
+
+        const modalContent = modal.querySelector(".grading-modal-content");
+        const originalContent = modalContent.innerHTML;
+
+        modalContent.innerHTML = `
+          <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--error), #dc2626, var(--error));
+            border-radius: 20px 20px 0 0;
+          "></div>
+          
+          <div class="grading-header" style="
+            text-align: center;
+            margin-bottom: 30px;
+          ">
+            <h2 style="
+              color: var(--white);
+              font-size: 2rem;
+              font-weight: 700;
+              margin: 0 0 20px 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+            ">
+              <i class="fas fa-exclamation-triangle" style="color: var(--error); animation: pulse 2s infinite;"></i>
+              Cancel Grading?
+            </h2>
+          </div>
+          
+          <div class="modal-body" style="
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+          ">
+            <p style="
+              font-size: 1.2rem;
+              line-height: 1.6;
+              margin: 0 0 20px 0;
+              color: var(--gray-light);
+              font-weight: 500;
+            ">Are you sure you want to cancel the grading process?</p>
+            <p style="
+              font-size: 1rem;
+              line-height: 1.5;
+              margin: 0;
+              color: var(--error);
+              font-weight: 600;
+            ">⚠️ All progress will be lost and cannot be recovered!</p>
+          </div>
+          
+          <div class="modal-footer" style="
+            padding: 20px 30px 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+          ">
+            <button class="btn btn-secondary" onclick="resumeGrading()" style="
+              min-width: 120px;
+              padding: 12px 24px;
+              font-weight: 600;
+              border-radius: 12px;
+              transition: all 0.3s ease;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              background: rgba(255, 255, 255, 0.1);
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              color: var(--gray-light);
+              cursor: pointer;
+            ">
+              <i class="fas fa-arrow-left"></i> Continue Grading
+            </button>
+            <button class="btn btn-error" onclick="confirmCancelGrading()" style="
+              min-width: 120px;
+              padding: 12px 24px;
+              font-weight: 600;
+              border-radius: 12px;
+              transition: all 0.3s ease;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              background: linear-gradient(135deg, var(--error), #dc2626);
+              border: 1px solid var(--error);
+              color: white;
+              box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+              cursor: pointer;
+            ">
+              <i class="fas fa-stop"></i> Cancel Grading
+            </button>
+          </div>
+        `;
+
+        // Store original content for resume
+        modalContent.setAttribute("data-original-content", originalContent);
+
+        // Add hover effects
+        const continueBtn = modalContent.querySelector(".btn-secondary");
+        const cancelBtn = modalContent.querySelector(".btn-error");
+
+        continueBtn.addEventListener("mouseenter", function () {
+          this.style.background = "rgba(255, 255, 255, 0.2)";
+          this.style.color = "var(--white)";
+          this.style.transform = "translateY(-2px)";
+          this.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.3)";
+        });
+
+        continueBtn.addEventListener("mouseleave", function () {
+          this.style.background = "rgba(255, 255, 255, 0.1)";
+          this.style.color = "var(--gray-light)";
+          this.style.transform = "translateY(0)";
+          this.style.boxShadow = "none";
+        });
+
+        cancelBtn.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-2px)";
+          this.style.boxShadow = "0 8px 25px rgba(239, 68, 68, 0.4)";
+        });
+
+        cancelBtn.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+          this.style.boxShadow = "0 4px 15px rgba(239, 68, 68, 0.3)";
+        });
+      }
+
+      function resumeGrading() {
+        const modal = document.getElementById("gradingProgressModal");
+        if (!modal) return;
+
+        const modalContent = modal.querySelector(".grading-modal-content");
+        const originalContent = modalContent.getAttribute(
+          "data-original-content"
+        );
+
+        if (originalContent) {
+          modalContent.innerHTML = originalContent;
+          modalContent.removeAttribute("data-original-content");
+
+          // Re-add hover effect for cancel button
+          const cancelBtn = modalContent.querySelector(".btn-error");
+          if (cancelBtn) {
+            cancelBtn.addEventListener("mouseenter", function () {
+              this.style.transform = "translateY(-2px)";
+              this.style.boxShadow = "0 8px 25px rgba(239, 68, 68, 0.4)";
+            });
+            cancelBtn.addEventListener("mouseleave", function () {
+              this.style.transform = "translateY(0)";
+              this.style.boxShadow = "none";
+            });
+          }
+        }
+      }
+
+      function confirmCancelGrading() {
+        gradingProgress.isCancelled = true;
+        gradingProgress.isRunning = false;
+        hideGradingProgressModal();
+        showAlert("Grading cancelled by user", "error");
+      }
+
+      // Grading Completion Modal
+      function showGradingCompletionModal(
+        successCount,
+        errorCount,
+        totalStudents,
+        totalLectures,
+        isFailure = false
+      ) {
+        // Remove any existing grading modal
+        const existingModal = document.getElementById("gradingProgressModal");
+        if (existingModal) {
+          existingModal.remove();
+        }
+
+        // Also remove any other modals that might be interfering
+        const allModals = document.querySelectorAll(".modal");
+        allModals.forEach((modal) => {
+          if (modal.id !== "gradingProgressModal") {
+            modal.remove();
+          }
+        });
+
+        const modal = document.createElement("div");
+        modal.id = "gradingProgressModal";
+        modal.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(15px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 20000;
+          animation: fadeIn 0.3s ease-out;
+        `;
+
+        const totalGraded = successCount + errorCount;
+        const successRate =
+          totalGraded > 0 ? Math.round((successCount / totalGraded) * 100) : 0;
+
+        modal.innerHTML = `
+          <div class="grading-modal-content" style="
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideIn 0.4s ease-out;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+          ">
+            <div style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 4px;
+              background: linear-gradient(90deg, ${
+                isFailure ? "var(--error), #dc2626" : "#10b981, #059669"
+              }, ${isFailure ? "var(--error)" : "#10b981"});
+              border-radius: 20px 20px 0 0;
+            "></div>
+            
+            <div class="completion-header" style="margin-bottom: 30px;">
+              <div style="
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                background: ${
+                  isFailure
+                    ? "linear-gradient(135deg, var(--error), #dc2626)"
+                    : "linear-gradient(135deg, #10b981, #059669)"
+                };
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 20px;
+                animation: ${isFailure ? "pulse" : "bounce"} 1s ease-out;
+              ">
+                <i class="fas ${isFailure ? "fa-times" : "fa-check"}" style="
+                  color: white;
+                  font-size: 2.5rem;
+                "></i>
+              </div>
+              
+              <h2 style="
+                color: var(--white);
+                font-size: 2rem;
+                font-weight: 700;
+                margin: 0 0 10px 0;
+              ">${isFailure ? "Grading Failed" : "Grading Completed!"}</h2>
+              
+              <p style="
+                color: var(--gray-light);
+                font-size: 1.1rem;
+                margin: 0;
+              ">${
+                isFailure
+                  ? "All grading attempts failed"
+                  : `Successfully graded ${successCount} student-lecture combinations`
+              }</p>
+            </div>
+            
+            <div class="completion-stats" style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+              gap: 20px;
+              margin-bottom: 30px;
+            ">
+              <div class="stat-item" style="
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+              ">
+                <div style="
+                  color: #10b981;
+                  font-size: 2rem;
+                  font-weight: 700;
+                  margin-bottom: 5px;
+                ">${successCount}</div>
+                <div style="
+                  color: var(--gray-light);
+                  font-size: 0.9rem;
+                ">Successful</div>
+              </div>
+              
+              <div class="stat-item" style="
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+              ">
+                <div style="
+                  color: var(--error);
+                  font-size: 2rem;
+                  font-weight: 700;
+                  margin-bottom: 5px;
+                ">${errorCount}</div>
+                <div style="
+                  color: var(--gray-light);
+                  font-size: 0.9rem;
+                ">Failed</div>
+              </div>
+              
+              <div class="stat-item" style="
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+              ">
+                <div style="
+                  color: var(--primary);
+                  font-size: 2rem;
+                  font-weight: 700;
+                  margin-bottom: 5px;
+                ">${successRate}%</div>
+                <div style="
+                  color: var(--gray-light);
+                  font-size: 0.9rem;
+                ">Success Rate</div>
+              </div>
+            </div>
+            
+            <div class="completion-actions" style="
+              display: flex;
+              gap: 15px;
+              justify-content: center;
+              flex-wrap: wrap;
+            ">
+              <button class="btn btn-secondary" onclick="hideGradingProgressModal()" style="
+                min-width: 120px;
+                padding: 12px 24px;
+                font-weight: 600;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: var(--gray-light);
+                cursor: pointer;
+              ">
+                <i class="fas fa-times"></i> Close
+              </button>
+              
+              <button class="btn btn-primary" onclick="goToResultsSection()" style="
+                min-width: 150px;
+                padding: 12px 24px;
+                font-weight: 600;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                border: 1px solid var(--primary);
+                color: white;
+                box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+                cursor: pointer;
+              ">
+                <i class="fas fa-chart-bar"></i> View Results
+              </button>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Add hover effects
+        const closeBtn = modal.querySelector(".btn-secondary");
+        const resultsBtn = modal.querySelector(".btn-primary");
+
+        closeBtn.addEventListener("mouseenter", function () {
+          this.style.background = "rgba(255, 255, 255, 0.2)";
+          this.style.color = "var(--white)";
+          this.style.transform = "translateY(-2px)";
+          this.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.3)";
+        });
+
+        closeBtn.addEventListener("mouseleave", function () {
+          this.style.background = "rgba(255, 255, 255, 0.1)";
+          this.style.color = "var(--gray-light)";
+          this.style.transform = "translateY(0)";
+          this.style.boxShadow = "none";
+        });
+
+        resultsBtn.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-2px)";
+          this.style.boxShadow = "0 8px 25px rgba(99, 102, 241, 0.4)";
+        });
+
+        resultsBtn.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+          this.style.boxShadow = "0 4px 15px rgba(99, 102, 241, 0.3)";
+        });
+      }
+
+      function goToResultsSection() {
+        hideGradingProgressModal();
+
+        // Switch to Results tab
+        const resultsTab = document.querySelector('[data-section="results"]');
+        if (resultsTab) {
+          resultsTab.click();
+        }
+
+        // Scroll to top of results section
+        setTimeout(() => {
+          const resultsSection = document.getElementById("results");
+          if (resultsSection) {
+            resultsSection.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }, 100);
+      }
+
+      // Grading Progress Modal
+      function showGradingProgressModal(
+        studentsCount,
+        lecturesCount,
+        currentLecture
+      ) {
+        // Remove any existing grading modal
+        const existingModal = document.getElementById("gradingProgressModal");
+        if (existingModal) {
+          existingModal.remove();
+        }
+
+        const modal = document.createElement("div");
+        modal.id = "gradingProgressModal";
+        modal.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.95);
+          backdrop-filter: blur(15px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 20000;
+          animation: fadeIn 0.3s ease-out;
+        `;
+
+        modal.innerHTML = `
+          <div class="grading-modal-content" style="
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 800px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideIn 0.4s ease-out;
+            position: relative;
+            overflow: hidden;
+          ">
+            <div style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 4px;
+              background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+              border-radius: 20px 20px 0 0;
+            "></div>
+            
+            <div class="grading-header" style="
+              text-align: center;
+              margin-bottom: 30px;
+            ">
+              <h2 style="
+                color: var(--white);
+                font-size: 2rem;
+                font-weight: 700;
+                margin: 0 0 20px 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
+              ">
+                <i class="fas fa-rocket" style="color: var(--primary); animation: pulse 2s infinite;"></i>
+                Ultra Dynamic Grading
+              </h2>
+              
+              <div class="grading-progress" style="margin-top: 20px;">
+                <div class="progress-bar" style="
+                  width: 100%;
+                  height: 8px;
+                  background: rgba(255, 255, 255, 0.1);
+                  border-radius: 10px;
+                  overflow: hidden;
+                  margin-bottom: 10px;
+                ">
+                  <div class="progress-fill" id="modalProgressFill" style="
+                    height: 100%;
+                    background: linear-gradient(90deg, var(--primary), var(--secondary));
+                    border-radius: 10px;
+                    transition: width 0.3s ease;
+                    width: 0%;
+                    position: relative;
+                  ">
+                    <div style="
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                      animation: shimmer 2s infinite;
+                    "></div>
+                  </div>
+                </div>
+                <div class="progress-text" style="
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  color: var(--gray-light);
+                  font-size: 0.9rem;
+                ">
+                  <span id="modalProgressText" style="font-weight: 600; color: var(--primary);">0%</span>
+                  <span id="modalTimeRemaining">Calculating...</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grading-details" style="margin: 30px 0;">
+              <div class="grading-info" style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                margin-bottom: 25px;
+              ">
+                <div class="info-item" style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 15px;
+                  background: rgba(255, 255, 255, 0.05);
+                  border-radius: 12px;
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                ">
+                  <i class="fas fa-users" style="color: var(--primary); font-size: 1.1rem;"></i>
+                  <span style="color: var(--gray-light); font-size: 0.9rem;">
+                    Students: <strong id="modalStudentsCount" style="color: var(--white);">${studentsCount}</strong>
+                  </span>
+                </div>
+                <div class="info-item" style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 15px;
+                  background: rgba(255, 255, 255, 0.05);
+                  border-radius: 12px;
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                ">
+                  <i class="fas fa-book" style="color: var(--primary); font-size: 1.1rem;"></i>
+                  <span style="color: var(--gray-light); font-size: 0.9rem;">
+                    Lectures: <strong id="modalLecturesCount" style="color: var(--white);">${lecturesCount}</strong>
+                  </span>
+                </div>
+                <div class="info-item" style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 15px;
+                  background: rgba(255, 255, 255, 0.05);
+                  border-radius: 12px;
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                ">
+                  <i class="fas fa-clock" style="color: var(--primary); font-size: 1.1rem;"></i>
+                  <span style="color: var(--gray-light); font-size: 0.9rem;">
+                    Started: <strong id="modalStartTime" style="color: var(--white);">Just started</strong>
+                  </span>
+                </div>
+                <div class="info-item" style="
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 15px;
+                  background: rgba(255, 255, 255, 0.05);
+                  border-radius: 12px;
+                  border: 1px solid rgba(255, 255, 255, 0.1);
+                ">
+                  <i class="fas fa-tasks" style="color: var(--primary); font-size: 1.1rem;"></i>
+                  <span style="color: var(--gray-light); font-size: 0.9rem;">
+                    Completed: <strong id="modalCompletedCount" style="color: var(--white);">0</strong> / 
+                    <strong id="modalTotalCount" style="color: var(--white);">${
+                      studentsCount * lecturesCount
+                    }</strong>
+                  </span>
+                </div>
+              </div>
+              
+              <div class="current-student" style="margin-top: 20px;">
+                <div class="student-card" style="
+                  display: flex;
+                  align-items: center;
+                  gap: 15px;
+                  padding: 20px;
+                  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+                  border-radius: 16px;
+                  border: 1px solid rgba(99, 102, 241, 0.2);
+                ">
+                  <i class="fas fa-user-graduate" style="color: var(--primary); font-size: 1.5rem;"></i>
+                  <div class="student-info" style="flex: 1;">
+                    <div class="student-name" id="modalCurrentStudent" style="
+                      color: var(--white);
+                      font-weight: 600;
+                      font-size: 1.1rem;
+                      margin-bottom: 5px;
+                    ">Selecting first student...</div>
+                    <div class="student-lecture" id="modalCurrentLecture" style="
+                      color: var(--gray-light);
+                      font-size: 0.9rem;
+                    ">${currentLecture}</div>
+                    <div class="grading-status" id="modalGradingStatus" style="
+                      color: var(--primary);
+                      font-size: 0.8rem;
+                      font-weight: 500;
+                      margin-top: 3px;
+                      display: flex;
+                      align-items: center;
+                      gap: 5px;
+                    ">
+                      <i class="fas fa-cog fa-spin" style="font-size: 0.7rem;"></i>
+                      <span>Preparing to grade...</span>
+                    </div>
+                  </div>
+                  <div class="student-status" style="display: flex; align-items: center;">
+                    <div class="status-dot" style="
+                      width: 12px;
+                      height: 12px;
+                      border-radius: 50%;
+                      background: var(--primary);
+                      animation: pulse 1.5s infinite;
+                    "></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="grading-actions" style="text-align: center; margin-top: 30px;">
+              <button class="btn btn-error" onclick="cancelGrading()" style="
+                min-width: 150px;
+                padding: 12px 24px;
+                background: linear-gradient(135deg, var(--error), #dc2626);
+                border: 1px solid var(--error);
+                color: white;
+                border-radius: 12px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                margin: 0 auto;
+              ">
+                <i class="fas fa-stop"></i> Cancel Grading
+              </button>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Add hover effect for cancel button
+        const cancelBtn = modal.querySelector(".btn-error");
+        cancelBtn.addEventListener("mouseenter", function () {
+          this.style.transform = "translateY(-2px)";
+          this.style.boxShadow = "0 8px 25px rgba(239, 68, 68, 0.4)";
+        });
+        cancelBtn.addEventListener("mouseleave", function () {
+          this.style.transform = "translateY(0)";
+          this.style.boxShadow = "none";
+        });
+      }
+
+      function hideGradingProgressModal() {
+        const modal = document.getElementById("gradingProgressModal");
+        if (modal) {
+          modal.remove();
+        }
+        // Reset grading progress
+        gradingProgress = {
+          total: 0,
+          completed: 0,
+          startTime: null,
+          isCancelled: false,
+          currentStudent: null,
+          currentLecture: null,
+          isRunning: false,
+        };
+      }
+
+      // Force close any stuck grading modals
+      function forceCloseGradingModal() {
+        const modal = document.getElementById("gradingProgressModal");
+        if (modal) {
+          modal.remove();
+        }
+        // Reset grading progress
+        gradingProgress = {
+          total: 0,
+          completed: 0,
+          startTime: null,
+          isCancelled: false,
+          currentStudent: null,
+          currentLecture: null,
+          isRunning: false,
+        };
+        console.log("✅ Forced close of grading modal and reset progress");
+      }
+
+      // Check for stuck grading processes
+      function checkForStuckGrading() {
+        if (gradingProgress.isRunning && gradingProgress.startTime) {
+          const now = Date.now();
+          const elapsed = now - gradingProgress.startTime;
+          const elapsedMinutes = Math.floor(elapsed / 60000);
+
+          // If grading has been running for more than 30 minutes, consider it stuck
+          if (elapsedMinutes > 30) {
+            console.warn(
+              "⚠️ Grading appears to be stuck (running for",
+              elapsedMinutes,
+              "minutes)"
+            );
+            showAlert(
+              `Grading has been running for ${elapsedMinutes} minutes and may be stuck. You can force close it using the browser console.`,
+              "warning"
+            );
+            return true;
+          }
+        }
+        return false;
+      }
+
+      // Auto-check for stuck processes every 5 minutes
+      setInterval(checkForStuckGrading, 5 * 60 * 1000);
+
+      // Global function to force reset grading (can be called from browser console)
+      window.forceResetGrading = function () {
+        console.log("🔄 Force resetting grading system...");
+        forceCloseGradingModal();
+
+        // Also try to cancel any ongoing requests
+        if (window.currentAbortController) {
+          window.currentAbortController.abort();
+        }
+
+        showAlert(
+          "Grading system has been force reset. You can now start a new grading operation.",
+          "success"
+        );
+        console.log("✅ Grading system reset complete");
+      };
+
+      function updateModalGradingProgress() {
+        const progress =
+          (gradingProgress.completed / gradingProgress.total) * 100;
+        const progressFill = document.getElementById("modalProgressFill");
+        const progressText = document.getElementById("modalProgressText");
+        const completedCount = document.getElementById("modalCompletedCount");
+        const totalCount = document.getElementById("modalTotalCount");
+        const timeRemaining = document.getElementById("modalTimeRemaining");
+        const startTime = document.getElementById("modalStartTime");
+
+        if (progressFill) progressFill.style.width = `${progress}%`;
+        if (progressText) progressText.textContent = `${Math.round(progress)}%`;
+        if (completedCount)
+          completedCount.textContent = gradingProgress.completed;
+        if (totalCount) totalCount.textContent = gradingProgress.total;
+
+        // Update start time as "X min ago"
+        if (startTime && gradingProgress.startTime) {
+          const elapsed = Date.now() - gradingProgress.startTime;
+          const elapsedMinutes = Math.floor(elapsed / 60000);
+          const elapsedSeconds = Math.floor((elapsed % 60000) / 1000);
+
+          if (elapsedMinutes > 0) {
+            startTime.textContent = `${elapsedMinutes} min ago`;
+          } else if (elapsedSeconds > 0) {
+            startTime.textContent = `${elapsedSeconds} sec ago`;
+          } else {
+            startTime.textContent = "Just started";
+          }
+        }
+
+        // Calculate time remaining in MM:SS format
+        if (gradingProgress.completed > 0 && gradingProgress.startTime) {
+          const elapsed = Date.now() - gradingProgress.startTime;
+          const avgTimePerItem = elapsed / gradingProgress.completed;
+          const remaining =
+            (gradingProgress.total - gradingProgress.completed) *
+            avgTimePerItem;
+
+          if (timeRemaining && remaining > 0) {
+            const remainingMinutes = Math.floor(remaining / 60000);
+            const remainingSeconds = Math.floor((remaining % 60000) / 1000);
+
+            if (remainingMinutes > 0) {
+              timeRemaining.textContent = `${remainingMinutes}:${remainingSeconds
+                .toString()
+                .padStart(2, "0")} remaining`;
+            } else {
+              timeRemaining.textContent = `0:${remainingSeconds
+                .toString()
+                .padStart(2, "0")} remaining`;
+            }
+          } else if (timeRemaining) {
+            timeRemaining.textContent = "Almost done...";
+          }
+        }
+      }
+
+      function updateModalCurrentStudent(studentName, lectureName) {
+        const currentStudent = document.getElementById("modalCurrentStudent");
+        const currentLecture = document.getElementById("modalCurrentLecture");
+        const gradingStatus = document.getElementById("modalGradingStatus");
+
+        if (currentStudent) currentStudent.textContent = studentName;
+        if (currentLecture) currentLecture.textContent = lectureName;
+
+        if (gradingStatus) {
+          const statusElement = gradingStatus.querySelector("span");
+          const iconElement = gradingStatus.querySelector("i");
+
+          if (statusElement) {
+            statusElement.textContent = `Grading ${studentName} - ${lectureName}...`;
+          }
+          if (iconElement) {
+            iconElement.className = "fas fa-spinner fa-spin";
+            iconElement.style.color = "var(--primary)";
+          }
+        }
+      }
+
+      function updateModalGradingStatus(status, isSuccess = false) {
+        const gradingStatus = document.getElementById("modalGradingStatus");
+
+        if (gradingStatus) {
+          const statusElement = gradingStatus.querySelector("span");
+          const iconElement = gradingStatus.querySelector("i");
+
+          if (statusElement) {
+            statusElement.textContent = status;
+          }
+          if (iconElement) {
+            if (isSuccess) {
+              iconElement.className = "fas fa-check-circle";
+              iconElement.style.color = "#10b981";
+            } else {
+              iconElement.className = "fas fa-spinner fa-spin";
+              iconElement.style.color = "var(--primary)";
+            }
+          }
+        }
+      }
+
+      // Custom confirmation modal
+      function showConfirmation(message, onConfirm, onCancel) {
+        return new Promise((resolve) => {
+          const modal = document.createElement("div");
+          modal.className = "modal";
+          modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease-out;
+          `;
+
+          modal.innerHTML = `
+            <div class="modal-content confirmation-modal" style="
+              background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+              border-radius: 20px;
+              width: 90%;
+              max-width: 600px;
+              box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              animation: slideIn 0.4s ease-out;
+              position: relative;
+              overflow: hidden;
+            ">
+              <div class="modal-header" style="
+                background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%);
+                border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+                padding: 25px 30px 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              ">
+                <h2 style="
+                  color: var(--white);
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                  margin: 0;
+                  display: flex;
+                  align-items: center;
+                  gap: 12px;
+                ">
+                  <i class="fas fa-question-circle" style="color: #f59e0b; font-size: 1.3rem; animation: pulse 2s infinite;"></i>
+                  Confirmation Required
+                </h2>
+                <button class="modal-close" style="
+                  background: rgba(255, 255, 255, 0.1);
+                  border: 1px solid rgba(255, 255, 255, 0.2);
+                  color: var(--gray-light);
+                  font-size: 1.2rem;
+                  cursor: pointer;
+                  padding: 12px;
+                  border-radius: 12px;
+                  transition: all 0.3s ease;
+                  width: 44px;
+                  height: 44px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                ">
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+              <div class="modal-body" style="
+                padding: 30px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.02);
+              ">
+                <p style="
+                  font-size: 1.1rem;
+                  line-height: 1.6;
+                  margin: 0;
+                  color: var(--gray-light);
+                  font-weight: 500;
+                ">${message}</p>
+              </div>
+              <div class="modal-footer" style="
+                padding: 20px 30px 30px;
+                display: flex;
+                gap: 15px;
+                justify-content: flex-end;
+                background: rgba(255, 255, 255, 0.02);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+              ">
+                <button class="btn btn-secondary" style="
+                  min-width: 120px;
+                  padding: 12px 24px;
+                  font-weight: 600;
+                  border-radius: 12px;
+                  transition: all 0.3s ease;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
+                  background: rgba(255, 255, 255, 0.1);
+                  border: 1px solid rgba(255, 255, 255, 0.2);
+                  color: var(--gray-light);
+                ">
+                  <i class="fas fa-times"></i> Cancel
+                </button>
+                <button class="btn btn-primary" style="
+                  min-width: 120px;
+                  padding: 12px 24px;
+                  font-weight: 600;
+                  border-radius: 12px;
+                  transition: all 0.3s ease;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  gap: 8px;
+                  background: linear-gradient(135deg, var(--primary), var(--secondary));
+                  border: 1px solid var(--primary);
+                  color: white;
+                  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+                ">
+                  <i class="fas fa-check"></i> Confirm
+                </button>
+              </div>
+            </div>
+          `;
+
+          // Add confirmation modal styles if not already present
+          if (!document.querySelector("#confirmation-modal-styles")) {
+            const confirmationStyles = document.createElement("style");
+            confirmationStyles.id = "confirmation-modal-styles";
+            confirmationStyles.textContent = `
+              .confirmation-modal {
+                max-width: 600px;
+                width: 90%;
+                animation: slideIn 0.4s ease-out;
+              }
+              
+              .confirmation-modal .modal-header {
+                background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.15) 100%);
+                border-bottom: 1px solid rgba(245, 158, 11, 0.3);
+                padding: 25px 30px 20px;
+              }
+              
+              .confirmation-modal .modal-header h2 {
+                color: var(--white);
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+              }
+              
+              .confirmation-modal .modal-header h2 i {
+                color: #f59e0b;
+                font-size: 1.3rem;
+                animation: pulse 2s infinite;
+              }
+              
+              .confirmation-modal .modal-body {
+                padding: 30px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.02);
+              }
+              
+              .confirmation-modal .modal-body p {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin: 0;
+                color: var(--gray-light);
+                font-weight: 500;
+              }
+              
+              .confirmation-modal .modal-footer {
+                padding: 20px 30px 30px;
+                display: flex;
+                gap: 15px;
+                justify-content: flex-end;
+                background: rgba(255, 255, 255, 0.02);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+              }
+              
+              .confirmation-modal .btn {
+                min-width: 120px;
+                padding: 12px 24px;
+                font-weight: 600;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+              }
+              
+              .confirmation-modal .btn-secondary {
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: var(--gray-light);
+              }
+              
+              .confirmation-modal .btn-secondary:hover {
+                background: rgba(255, 255, 255, 0.2);
+                color: var(--white);
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+              }
+              
+              .confirmation-modal .btn-primary {
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                border: 1px solid var(--primary);
+                color: white;
+                box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+              }
+              
+              .confirmation-modal .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+              }
+              
+              .confirmation-modal .modal-close {
+                background: rgba(255, 255, 255, 0.1);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: var(--gray-light);
+                font-size: 1.2rem;
+                cursor: pointer;
+                padding: 12px;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              }
+              
+              .confirmation-modal .modal-close:hover {
+                background: var(--error);
+                color: white;
+                transform: scale(1.1);
+                box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+              }
+            `;
+            document.head.appendChild(confirmationStyles);
+          }
+
+          document.body.appendChild(modal);
+
+          // Add click event listeners for modal buttons
+          const cancelBtn = modal.querySelector(".btn-secondary");
+          const confirmBtn = modal.querySelector(".btn-primary");
+          const closeBtn = modal.querySelector(".modal-close");
+
+          // Cancel button click handler
+          cancelBtn.addEventListener("click", function () {
+            modal.remove();
+            resolve(false);
+          });
+
+          // Confirm button click handler
+          confirmBtn.addEventListener("click", function () {
+            modal.remove();
+            resolve(true);
+          });
+
+          // Close button click handler
+          closeBtn.addEventListener("click", function () {
+            modal.remove();
+            resolve(false);
+          });
+
+          // Add hover effects
+
+          cancelBtn.addEventListener("mouseenter", function () {
+            this.style.background = "rgba(255, 255, 255, 0.2)";
+            this.style.color = "var(--white)";
+            this.style.transform = "translateY(-2px)";
+            this.style.boxShadow = "0 5px 15px rgba(0, 0, 0, 0.3)";
+          });
+
+          cancelBtn.addEventListener("mouseleave", function () {
+            this.style.background = "rgba(255, 255, 255, 0.1)";
+            this.style.color = "var(--gray-light)";
+            this.style.transform = "translateY(0)";
+            this.style.boxShadow = "none";
+          });
+
+          confirmBtn.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-2px)";
+            this.style.boxShadow = "0 8px 25px rgba(99, 102, 241, 0.4)";
+          });
+
+          confirmBtn.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0)";
+            this.style.boxShadow = "0 4px 15px rgba(99, 102, 241, 0.3)";
+          });
+
+          closeBtn.addEventListener("mouseenter", function () {
+            this.style.background = "var(--error)";
+            this.style.color = "white";
+            this.style.transform = "scale(1.1)";
+            this.style.boxShadow = "0 5px 15px rgba(239, 68, 68, 0.4)";
+          });
+
+          closeBtn.addEventListener("mouseleave", function () {
+            this.style.background = "rgba(255, 255, 255, 0.1)";
+            this.style.color = "var(--gray-light)";
+            this.style.transform = "scale(1)";
+            this.style.boxShadow = "none";
+          });
+
+          // Handle the promise resolution
+          modal.addEventListener("click", function (e) {
+            if (e.target.closest(".btn-primary")) {
+              resolve(true);
+            } else if (
+              e.target.closest(".btn-secondary") ||
+              e.target.closest(".modal-close")
+            ) {
+              resolve(false);
+            }
+          });
+        });
+      }
+
+      // Grading Functions
+      async function gradeCohortLecture() {
+        // Check if grading is already running
+        if (gradingProgress.isRunning) {
+          showAlert(
+            "Grading is already in progress. Please wait for it to complete or cancel it first.",
+            "error"
+          );
+          return;
+        }
+
+        const cohort = document.getElementById("cohortSelect").value;
+        const lecture = document.getElementById("lectureSelect").value;
+
+        if (!cohort || !lecture) {
+          showAlert("Please select both cohort and lecture", "error");
+          return;
+        }
+
+        // Get students from the selected cohort
+        const cohortStudents = students.filter((s) => s.cohortNumber == cohort);
+
+        if (cohortStudents.length === 0) {
+          showAlert(`No students found in Cohort ${cohort}`, "error");
+          return;
+        }
+
+        // Initialize grading progress
+        gradingProgress = {
+          total: cohortStudents.length,
+          completed: 0,
+          startTime: Date.now(),
+          isCancelled: false,
+          currentStudent: null,
+          currentLecture: lecture,
+          isRunning: true,
+        };
+
+        // Show grading progress as modal
+        showGradingProgressModal(cohortStudents.length, 1, lecture);
+
+        let successCount = 0;
+        let errorCount = 0;
+
+        for (const student of cohortStudents) {
+          if (gradingProgress.isCancelled) break;
+
+          // Update to show current student being graded
+          updateCurrentStudent(student.name, lecture);
+          updateModalCurrentStudent(student.name, lecture);
+          updateModalGradingStatus(
+            `Grading ${student.name} - ${lecture}...`,
+            false
+          );
+
+          try {
+            // Add timeout to prevent hanging requests
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 300000); // 5 minute timeout
+
+            const response = await fetch("/api/grade-ultra-dynamic", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                studentId: student.id,
+                lectureId: lecture,
+              }),
+              signal: controller.signal,
+            });
+
+            clearTimeout(timeoutId);
+
+            if (response.ok) {
+              successCount++;
+            } else {
+              errorCount++;
+              console.error(
+                `Failed to grade ${student.name}:`,
+                await response.text()
+              );
+            }
+          } catch (error) {
+            errorCount++;
+            if (error.name === "AbortError") {
+              console.error(
+                `Timeout grading ${student.name} for ${lecture} (5 minutes)`
+              );
+            } else {
+              console.error(`Error grading ${student.name}:`, error);
+            }
+          }
+
+          gradingProgress.completed++;
+          updateGradingProgress();
+        }
+
+        gradingProgress.isRunning = false;
+
+        if (gradingProgress.isCancelled) {
+          return;
+        }
+
+        // Small delay to ensure modal transition
+        setTimeout(() => {
+          if (successCount > 0) {
+            showGradingCompletionModal(
+              successCount,
+              errorCount,
+              cohortStudents.length,
+              1
+            );
+          } else {
+            showGradingCompletionModal(
+              0,
+              errorCount,
+              cohortStudents.length,
+              1,
+              true
+            );
+          }
+        }, 500);
+
+        await loadResults();
+      }
+
+      async function gradeAllStudentsLecture() {
+        // Check if grading is already running
+        if (gradingProgress.isRunning) {
+          showAlert(
+            "Grading is already in progress. Please wait for it to complete or cancel it first.",
+            "error"
+          );
+          return;
+        }
+
+        const lecture = document.getElementById(
+          "allStudentsLectureSelect"
+        ).value;
+
+        if (!lecture) {
+          showAlert("Please select a lecture", "error");
+          return;
+        }
+
+        if (students.length === 0) {
+          showAlert("No students found", "error");
+          return;
+        }
+
+        // Initialize grading progress
+        gradingProgress = {
+          total: students.length,
+          completed: 0,
+          startTime: Date.now(),
+          isCancelled: false,
+          currentStudent: null,
+          currentLecture: lecture,
+          isRunning: true,
+        };
+
+        // Show grading progress as modal
+        showGradingProgressModal(students.length, 1, lecture);
+
+        let successCount = 0;
+        let errorCount = 0;
+
+        for (const student of students) {
+          if (gradingProgress.isCancelled) break;
+
+          // Update to show current student being graded
+          updateCurrentStudent(student.name, lecture);
+          updateModalCurrentStudent(student.name, lecture);
+          updateModalGradingStatus(
+            `Grading ${student.name} - ${lecture}...`,
+            false
+          );
+
+          try {
+            const response = await fetch("/api/grade-ultra-dynamic", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                studentId: student.id,
+                lectureId: lecture,
+              }),
+            });
+
+            if (response.ok) {
+              successCount++;
+            } else {
+              errorCount++;
+              console.error(
+                `Failed to grade ${student.name}:`,
+                await response.text()
+              );
+            }
+          } catch (error) {
+            errorCount++;
+            console.error(`Error grading ${student.name}:`, error);
+          }
+
+          gradingProgress.completed++;
+          updateGradingProgress();
+        }
+
+        gradingProgress.isRunning = false;
+
+        if (gradingProgress.isCancelled) {
+          return;
+        }
+
+        // Small delay to ensure modal transition
+        setTimeout(() => {
+          if (successCount > 0) {
+            showGradingCompletionModal(
+              successCount,
+              errorCount,
+              students.length,
+              1
+            );
+          } else {
+            showGradingCompletionModal(0, errorCount, students.length, 1, true);
+          }
+        }, 500);
+
+        await loadResults();
+      }
+
+      async function gradeCohortAllLectures() {
+        const cohort = document.getElementById("cohortAllLecturesSelect").value;
+        const stage = document.getElementById(
+          "cohortAllLecturesStageSelect"
+        ).value;
+
+        if (!cohort) {
+          showAlert("Please select a cohort", "error");
+          return;
+        }
+
+        const cohortStudents = students.filter((s) => s.cohortNumber == cohort);
+
+        if (cohortStudents.length === 0) {
+          showAlert(`No students found in Cohort ${cohort}`, "error");
+          return;
+        }
+
+        // Get lectures from curriculum stages (filter by stage if selected)
+        const allLectures = [];
+        if (stage) {
+          // Filter by selected stage
+          const selectedStage = curriculumStages.find((s) => s.id === stage);
+          if (selectedStage && selectedStage.lectures) {
+            allLectures.push(...selectedStage.lectures);
+          }
+        } else {
+          // Get all lectures from all stages
+          curriculumStages.forEach((stage) => {
+            if (stage.lectures) {
+              allLectures.push(...stage.lectures);
+            }
+          });
+        }
+
+        if (allLectures.length === 0) {
+          showAlert("No lectures found in curriculum", "error");
+          return;
+        }
+
+        const stageText = stage
+          ? ` (${
+              curriculumStages.find((s) => s.id === stage)?.name ||
+              "Selected Stage"
+            })`
+          : "";
+        const confirmed = await showConfirmation(
+          `Are you sure you want to grade ${allLectures.length} lectures${stageText} for ${cohortStudents.length} students in Cohort ${cohort}? This may take a very long time.`
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        // Continue with grading
+        await gradeCohortAllLecturesConfirmed(
+          cohort,
+          cohortStudents,
+          allLectures
+        );
+      }
+
+      async function gradeCohortAllLecturesConfirmed(
+        cohort,
+        cohortStudents,
+        allLectures
+      ) {
+        // Get status div element
+        const statusDiv = document.getElementById("gradingStatus");
+
+        // Initialize grading progress
+        gradingProgress = {
+          total: cohortStudents.length * allLectures.length,
+          completed: 0,
+          startTime: Date.now(),
+          isCancelled: false,
+          currentStudent: null,
+          currentLecture: null,
+          isRunning: true,
+        };
+
+        // Show grading progress as modal
+        showGradingProgressModal(
+          cohortStudents.length,
+          allLectures.length,
+          "Multiple Lectures"
+        );
+
+        let totalGraded = 0;
+        let totalErrors = 0;
+
+        for (const student of cohortStudents) {
+          if (gradingProgress.isCancelled) break;
+
+          for (const lecture of allLectures) {
+            if (gradingProgress.isCancelled) break;
+
+            // Update to show current student and lecture being graded
+            updateCurrentStudent(student.name, lecture);
+            updateModalCurrentStudent(student.name, lecture);
+            updateModalGradingStatus(
+              `Grading ${student.name} - ${lecture}...`,
+              false
+            );
+
+            try {
+              const response = await fetch("/api/grade-ultra-dynamic", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  studentId: student.id,
+                  lectureId: lecture,
+                }),
+              });
+
+              if (response.ok) {
+                totalGraded++;
+              } else {
+                totalErrors++;
+                console.error(
+                  `Failed to grade ${student.name} for ${lecture}:`,
+                  await response.text()
+                );
+              }
+            } catch (error) {
+              totalErrors++;
+              console.error(
+                `Error grading ${student.name} for ${lecture}:`,
+                error
+              );
+            }
+
+            gradingProgress.completed++;
+            updateGradingProgress();
+          }
+        }
+
+        statusDiv.classList.add("hidden");
+
+        if (gradingProgress.isCancelled) {
+          return;
+        }
+
+        // Small delay to ensure modal transition
+        setTimeout(() => {
+          if (totalGraded > 0) {
+            showGradingCompletionModal(
+              totalGraded,
+              totalErrors,
+              cohortStudents.length,
+              allLectures.length
+            );
+          } else {
+            showGradingCompletionModal(
+              0,
+              totalErrors,
+              cohortStudents.length,
+              allLectures.length,
+              true
+            );
+          }
+        }, 500);
+
+        await loadResults();
+      }
+
+      async function gradeStudentAllLectures() {
+        const studentId = document.getElementById(
+          "studentAllLecturesSelect"
+        ).value;
+
+        if (!studentId) {
+          showAlert("Please select a student", "error");
+          return;
+        }
+
+        const student = students.find((s) => s.id === studentId);
+        if (!student) {
+          showAlert("Student not found", "error");
+          return;
+        }
+
+        // Get all lectures from curriculum stages
+        const allLectures = [];
+        curriculumStages.forEach((stage) => {
+          if (stage.lectures) {
+            allLectures.push(...stage.lectures);
+          }
+        });
+
+        if (allLectures.length === 0) {
+          showAlert("No lectures found in curriculum", "error");
+          return;
+        }
+
+        const confirmed = await showConfirmation(
+          `Are you sure you want to grade ${allLectures.length} lectures for ${student.name}? This may take a while.`
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        // Continue with grading
+        await gradeStudentAllLecturesConfirmed(studentId, student, allLectures);
+      }
+
+      async function gradeStudentAllLecturesConfirmed(
+        studentId,
+        student,
+        allLectures
+      ) {
+        // Get status div element
+        const statusDiv = document.getElementById("gradingStatus");
+
+        // Initialize grading progress
+        gradingProgress = {
+          total: allLectures.length,
+          completed: 0,
+          startTime: Date.now(),
+          isCancelled: false,
+          currentStudent: student.name,
+          currentLecture: null,
+          isRunning: true,
+        };
+
+        // Show grading progress as modal
+        showGradingProgressModal(1, allLectures.length, "Multiple Lectures");
+
+        let successCount = 0;
+        let errorCount = 0;
+
+        for (const lecture of allLectures) {
+          if (gradingProgress.isCancelled) break;
+
+          // Update to show current lecture being graded
+          updateCurrentStudent(student.name, lecture);
+          updateModalCurrentStudent(student.name, lecture);
+          updateModalGradingStatus(
+            `Grading ${student.name} - ${lecture}...`,
+            false
+          );
+
+          try {
+            const response = await fetch("/api/grade-ultra-dynamic", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                studentId: studentId,
+                lectureId: lecture,
+              }),
+            });
+
+            if (response.ok) {
+              successCount++;
+            } else {
+              errorCount++;
+              console.error(
+                `Failed to grade ${student.name} for ${lecture}:`,
+                await response.text()
+              );
+            }
+          } catch (error) {
+            errorCount++;
+            console.error(
+              `Error grading ${student.name} for ${lecture}:`,
+              error
+            );
+          }
+
+          gradingProgress.completed++;
+          updateGradingProgress();
+        }
+
+        statusDiv.classList.add("hidden");
+
+        if (gradingProgress.isCancelled) {
+          return;
+        }
+
+        // Small delay to ensure modal transition
+        setTimeout(() => {
+          if (successCount > 0) {
+            showGradingCompletionModal(
+              successCount,
+              errorCount,
+              1,
+              allLectures.length
+            );
+          } else {
+            showGradingCompletionModal(
+              0,
+              errorCount,
+              1,
+              allLectures.length,
+              true
+            );
+          }
+        }, 500);
+
+        await loadResults();
+      }
+
+      async function gradeAllAll() {
+        // Check if grading is already running
+        if (gradingProgress.isRunning) {
+          showAlert(
+            "Grading is already in progress. Please wait for it to complete or cancel it first.",
+            "error"
+          );
+          return;
+        }
+
+        const confirmed = await showConfirmation(
+          "Are you sure you want to grade all lectures for all students? This may take a very long time."
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        // Continue with grading
+        await gradeAllAllConfirmed();
+      }
+
+      async function gradeAllAllConfirmed() {
+        if (students.length === 0) {
+          showAlert("No students found", "error");
+          return;
+        }
+
+        // Get all lectures from curriculum stages
+        const allLectures = [];
+        curriculumStages.forEach((stage) => {
+          if (stage.lectures) {
+            allLectures.push(...stage.lectures);
+          }
+        });
+
+        if (allLectures.length === 0) {
+          showAlert("No lectures found in curriculum", "error");
+          return;
+        }
+
+        // Initialize grading progress
+        gradingProgress = {
+          total: students.length * allLectures.length,
+          completed: 0,
+          startTime: Date.now(),
+          isCancelled: false,
+          currentStudent: null,
+          currentLecture: null,
+          isRunning: true,
+        };
+
+        // Show grading progress as modal
+        showGradingProgressModal(
+          students.length,
+          allLectures.length,
+          "All Lectures"
+        );
+
+        let totalGraded = 0;
+        let totalErrors = 0;
+
+        for (const student of students) {
+          if (gradingProgress.isCancelled) break;
+
+          for (const lecture of allLectures) {
+            if (gradingProgress.isCancelled) break;
+
+            // Update to show current student and lecture being graded
+            updateCurrentStudent(student.name, lecture);
+            updateModalCurrentStudent(student.name, lecture);
+            updateModalGradingStatus(
+              `Grading ${student.name} - ${lecture}...`,
+              false
+            );
+
+            try {
+              const response = await fetch("/api/grade-ultra-dynamic", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  studentId: student.id,
+                  lectureId: lecture,
+                }),
+              });
+
+              if (response.ok) {
+                totalGraded++;
+              } else {
+                totalErrors++;
+                console.error(
+                  `Failed to grade ${student.name} for ${lecture}:`,
+                  await response.text()
+                );
+              }
+            } catch (error) {
+              totalErrors++;
+              console.error(
+                `Error grading ${student.name} for ${lecture}:`,
+                error
+              );
+            }
+
+            gradingProgress.completed++;
+            updateGradingProgress();
+          }
+        }
+
+        gradingProgress.isRunning = false;
+
+        if (gradingProgress.isCancelled) {
+          return;
+        }
+
+        // Small delay to ensure modal transition
+        setTimeout(() => {
+          if (totalGraded > 0) {
+            showGradingCompletionModal(
+              totalGraded,
+              totalErrors,
+              students.length,
+              allLectures.length
+            );
+          } else {
+            showGradingCompletionModal(
+              0,
+              totalErrors,
+              students.length,
+              allLectures.length,
+              true
+            );
+          }
+        }, 500);
+
+        await loadResults();
+      }
+
+      async function startGrading(endpoint, data) {
+        const statusDiv = document.getElementById("gradingStatus");
+        statusDiv.classList.remove("hidden");
+
+        try {
+          const response = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          if (response.ok) {
+            const result = await response.json();
+            showAlert("Grading completed successfully!", "success");
+            await loadResults();
+          } else {
+            const error = await response.json();
+            showAlert("Grading failed: " + error.error, "error");
+          }
+        } catch (error) {
+          showAlert("Error during grading: " + error.message, "error");
+        } finally {
+          statusDiv.classList.add("hidden");
+        }
+      }
+
+      // Display Functions
+      function displayCohortsList() {
+        const listDiv = document.getElementById("cohortsList");
+
+        if (cohorts.length === 0) {
+          listDiv.innerHTML =
+            '<p style="text-align: center; color: var(--gray-light); padding: var(--spacing-xl);">No cohorts found.</p>';
+          return;
+        }
+
+        // Sort cohorts by status priority (upcoming first, then active, then complete)
+        const statusPriority = {
+          upcoming: 0,
+          active: 1,
+          complete: 2,
+        };
+
+        const sortedCohorts = [...cohorts].sort((a, b) => {
+          const priorityA = statusPriority[a.status] ?? 999; // Unknown status goes last
+          const priorityB = statusPriority[b.status] ?? 999;
+
+          if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+          }
+
+          // If same status, sort by cohort number (ascending)
+          return a.number - b.number;
+        });
+
+        const html = sortedCohorts
+          .map(
+            (cohort) => `
+                <div class="card" style="margin-bottom: var(--spacing-md);">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h3 style="color: var(--white); margin-bottom: var(--spacing-sm);">Cohort ${cohort.number}</h3>
+                            <span class="status-badge status-${cohort.status}">${cohort.status}</span>
+                        </div>
+                        <div style="display: flex; gap: var(--spacing-sm);">
+                            <button class="btn btn-outline" onclick="editCohort(${cohort.number})">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="btn btn-error" onclick="deleteCohort(${cohort.number})">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `
+          )
+          .join("");
+
+        listDiv.innerHTML = html;
+      }
+
+      function displayStudentsList() {
+        const listDiv = document.getElementById("studentsList");
+        const filter = document.getElementById("studentCohortFilter").value;
+
+        let filteredStudents = students;
+        if (filter) {
+          filteredStudents = students.filter((s) => s.cohortNumber == filter);
+        }
+
+        if (filteredStudents.length === 0) {
+          listDiv.innerHTML =
+            '<p style="text-align: center; color: var(--gray-light); padding: var(--spacing-xl);">No students found.</p>';
+          return;
+        }
+
+        const html = `
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>ID</th>
+                                <th>Cohort</th>
+                                <th>GitHub</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${filteredStudents
+                              .map(
+                                (student) => `
+                                <tr>
+                                    <td>${student.name}</td>
+                                    <td>${student.id}</td>
+                                    <td>${student.cohortNumber || "N/A"}</td>
+                                    <td>${
+                                      student.github?.username || "N/A"
+                                    }</td>
+                                </tr>
+                            `
+                              )
+                              .join("")}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+        listDiv.innerHTML = html;
+      }
+
+      function displayResultsList() {
+        const listDiv = document.getElementById("resultsList");
+        const filter = document.getElementById("resultsCohortFilter").value;
+
+        let filteredResults = results;
+        if (filter) {
+          filteredResults = results.filter((r) => r.cohortNumber == filter);
+        }
+
+        if (filteredResults.length === 0) {
+          listDiv.innerHTML =
+            '<p style="text-align: center; color: var(--gray-light); padding: var(--spacing-xl);">No results found.</p>';
+          return;
+        }
+
+        // Group results by student
+        const studentResults = {};
+        filteredResults.forEach((result) => {
+          if (!studentResults[result.studentId]) {
+            studentResults[result.studentId] = [];
+          }
+          studentResults[result.studentId].push(result);
+        });
+
+        const html = Object.keys(studentResults)
+          .map((studentId) => {
+            const student = students.find((s) => s.id === studentId);
+            const studentName = student ? student.name : studentId;
+            const results = studentResults[studentId];
+
+            return `
+                    <div class="card" style="margin-bottom: var(--spacing-md);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h3 style="color: var(--white); margin-bottom: var(--spacing-sm);">${studentName}</h3>
+                                <p style="color: var(--gray-light);">${results.length} results</p>
+                            </div>
+                            <button class="btn btn-primary" onclick="viewStudentResults('${studentId}')">
+                                <i class="fas fa-eye"></i> View Results
+                            </button>
+                        </div>
+                    </div>
+                `;
+          })
+          .join("");
+
+        listDiv.innerHTML = html;
+      }
+
+      // Filter Functions
+      function filterStudents() {
+        displayStudentsList();
+      }
+
+      function filterResults() {
+        displayResultsList();
+      }
+
+      // Utility Functions
+      async function refreshServerData() {
+        try {
+          // Show loading state
+          const refreshBtn = document.getElementById("refreshDataBtn");
+          const originalContent = refreshBtn.innerHTML;
+          refreshBtn.disabled = true;
+          refreshBtn.innerHTML =
+            '<i class="fas fa-spinner fa-spin"></i> Refreshing...';
+
+          // Call the server reload endpoint
+          const response = await fetch("/api/reload-config", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (response.ok) {
+            // Reload all data from the server
+            await loadInitialData();
+
+            showAlert(
+              "Server data refreshed successfully! New students and cohorts are now available.",
+              "success"
+            );
+          } else {
+            const errorData = await response.json();
+            showAlert(
+              `Failed to refresh data: ${errorData.error || "Unknown error"}`,
+              "error"
+            );
+          }
+        } catch (error) {
+          console.error("Error refreshing server data:", error);
+          showAlert(`Error refreshing data: ${error.message}`, "error");
+        } finally {
+          // Reset button state
+          const refreshBtn = document.getElementById("refreshDataBtn");
+          refreshBtn.disabled = false;
+          refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Data';
+        }
+      }
+
+      function showAlert(message, type) {
+        // Create modal instead of alert
+        const modal = document.createElement("div");
+        modal.className = "modal";
+        modal.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          backdrop-filter: blur(10px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 10000;
+          animation: fadeIn 0.3s ease-out;
+        `;
+
+        modal.innerHTML = `
+          <div class="modal-content alert-modal" style="
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideIn 0.4s ease-out;
+            position: relative;
+            overflow: hidden;
+          ">
+            <div class="modal-header" style="
+              padding: 2rem 2rem 1rem 2rem;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              position: relative;
+            ">
+              <h2 style="
+                color: var(--text-primary);
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+              ">
+                <i class="fas fa-${
+                  type === "success"
+                    ? "check-circle"
+                    : type === "error"
+                    ? "exclamation-circle"
+                    : "info-circle"
+                }" style="color: ${
+          type === "success"
+            ? "#10b981"
+            : type === "error"
+            ? "#ef4444"
+            : "#3b82f6"
+        }"></i>
+                ${
+                  type === "success"
+                    ? "Success"
+                    : type === "error"
+                    ? "Error"
+                    : "Information"
+                }
+              </h2>
+              <button class="modal-close" style="
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: var(--text-secondary);
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+              " onclick="this.closest('.modal').remove()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="modal-body" style="padding: 2rem;">
+              <p style="font-size: 1.1rem; line-height: 1.6; margin: 0; color: var(--text-primary);">${message}</p>
+            </div>
+            <div class="modal-footer" style="
+              padding: 1rem 2rem 2rem 2rem;
+              text-align: right;
+              border-top: 1px solid rgba(255, 255, 255, 0.1);
+            ">
+              <button class="btn btn-primary" style="
+                padding: 0.75rem 1.5rem;
+                background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+                border: none;
+                color: white;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 500;
+                transition: all 0.3s ease;
+                min-width: 100px;
+              " onclick="this.closest('.modal').remove()">
+                <i class="fas fa-check"></i> OK
+              </button>
+            </div>
+          </div>
+        `;
+
+        // Add modal to DOM
+        document.body.appendChild(modal);
+
+        // Add event listeners for closing modal
+        const closeBtn = modal.querySelector(".modal-close");
+        const okBtn = modal.querySelector(".btn-primary");
+
+        const closeModal = () => {
+          modal.remove();
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        okBtn.addEventListener("click", closeModal);
+
+        // Close modal when clicking outside
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+
+        // Add grading modal styles if not already present
+        if (!document.querySelector("#grading-modal-styles")) {
+          const gradingStyles = document.createElement("style");
+          gradingStyles.id = "grading-modal-styles";
+          gradingStyles.textContent = `
+            .grading-modal {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.95);
+              backdrop-filter: blur(15px);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              z-index: 2000;
+              animation: fadeIn 0.3s ease-out;
+            }
+            
+            .grading-content {
+              background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+              border-radius: 20px;
+              width: 90%;
+              max-width: 800px;
+              padding: 40px;
+              box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              animation: slideIn 0.4s ease-out;
+              position: relative;
+            }
+            
+            .grading-content::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 4px;
+              background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+              border-radius: 20px 20px 0 0;
+            }
+            
+            .grading-header {
+              text-align: center;
+              margin-bottom: 30px;
+            }
+            
+            .grading-header h2 {
+              color: var(--white);
+              font-size: 2rem;
+              font-weight: 700;
+              margin: 0 0 20px 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+            }
+            
+            .grading-header h2 i {
+              color: var(--primary);
+              animation: pulse 2s infinite;
+            }
+            
+            @keyframes pulse {
+              0%, 100% { transform: scale(1); }
+              50% { transform: scale(1.1); }
+            }
+            
+            .grading-progress {
+              margin-top: 20px;
+            }
+            
+            .progress-bar {
+              width: 100%;
+              height: 8px;
+              background: rgba(255, 255, 255, 0.1);
+              border-radius: 10px;
+              overflow: hidden;
+              margin-bottom: 10px;
+            }
+            
+            .progress-fill {
+              height: 100%;
+              background: linear-gradient(90deg, var(--primary), var(--secondary));
+              border-radius: 10px;
+              transition: width 0.3s ease;
+              width: 0%;
+              position: relative;
+            }
+            
+            .progress-fill::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+              animation: shimmer 2s infinite;
+            }
+            
+            @keyframes shimmer {
+              0% { transform: translateX(-100%); }
+              100% { transform: translateX(100%); }
+            }
+            
+            .progress-text {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              color: var(--gray-light);
+              font-size: 0.9rem;
+            }
+            
+            .progress-text span:first-child {
+              font-weight: 600;
+              color: var(--primary);
+            }
+            
+            .grading-details {
+              margin: 30px 0;
+            }
+            
+            .grading-info {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 15px;
+              margin-bottom: 25px;
+            }
+            
+            .info-item {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              padding: 15px;
+              background: rgba(255, 255, 255, 0.05);
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .info-item i {
+              color: var(--primary);
+              font-size: 1.1rem;
+            }
+            
+            .info-item span {
+              color: var(--gray-light);
+              font-size: 0.9rem;
+            }
+            
+            .info-item strong {
+              color: var(--white);
+            }
+            
+            .current-student {
+              margin-top: 20px;
+            }
+            
+            .student-card {
+              display: flex;
+              align-items: center;
+              gap: 15px;
+              padding: 20px;
+              background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+              border-radius: 16px;
+              border: 1px solid rgba(99, 102, 241, 0.2);
+            }
+            
+            .student-card i {
+              color: var(--primary);
+              font-size: 1.5rem;
+            }
+            
+            .student-info {
+              flex: 1;
+            }
+            
+            .student-name {
+              color: var(--white);
+              font-weight: 600;
+              font-size: 1.1rem;
+              margin-bottom: 5px;
+            }
+            
+            .student-lecture {
+              color: var(--gray-light);
+              font-size: 0.9rem;
+            }
+            
+            .student-status {
+              display: flex;
+              align-items: center;
+            }
+            
+            .status-dot {
+              width: 12px;
+              height: 12px;
+              border-radius: 50%;
+              background: var(--primary);
+              animation: pulse 1.5s infinite;
+            }
+            
+            .grading-actions {
+              text-align: center;
+              margin-top: 30px;
+            }
+            
+            .grading-actions .btn {
+              min-width: 150px;
+            }
+            
+            /* Responsive design */
+            @media (max-width: 768px) {
+              .grading-content {
+                width: 95%;
+                padding: 30px 20px;
+              }
+              
+              .grading-header h2 {
+                font-size: 1.5rem;
+              }
+              
+              .grading-info {
+                grid-template-columns: 1fr;
+              }
+              
+              .student-card {
+                padding: 15px;
+              }
+            }
+          `;
+          document.head.appendChild(gradingStyles);
+        }
+
+        document.body.appendChild(modal);
+      }
+
+      function viewStudentResults(studentId) {
+        // Find the student
+        const student = students.find((s) => s.id === studentId);
+        if (!student) {
+          showAlert("Student not found", "error");
+          return;
+        }
+
+        // Get results for this student
+        const studentResults = results.filter((r) => r.studentId === studentId);
+
+        if (studentResults.length === 0) {
+          showAlert(`No results found for ${student.name}`, "error");
+          return;
+        }
+
+        // Create detailed results modal
+        const modal = document.createElement("div");
+        modal.className = "modal";
+        modal.innerHTML = `
+          <div class="modal-content">
+            <div class="modal-header sticky-modal-header">
+              <h2><i class="fas fa-user-graduate"></i> ${
+                student.name
+              } - Detailed Results</h2>
+              <button class="modal-close" onclick="this.closest('.modal').remove()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="student-info">
+                <p><strong>Student ID:</strong> ${student.id}</p>
+                <p><strong>Cohort:</strong> ${student.cohortNumber || "N/A"}</p>
+                <p><strong>GitHub:</strong> ${
+                  student.github?.username || "N/A"
+                }</p>
+                <p><strong>Total Lectures Graded:</strong> ${
+                  studentResults.length
+                }</p>
+              </div>
+              
+              <div class="results-table-container">
+                <table class="results-table">
+                  <thead>
+                    <tr>
+                      <th>Lecture</th>
+                      <th>Score</th>
+                      <th>Percentage</th>
+                      <th>Status</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${studentResults
+                      .map(
+                        (result) => `
+                      <tr>
+                        <td>${result.lectureId}</td>
+                        <td>${result.score || 0}/${result.total || 100}</td>
+                        <td>${result.percentage || 0}%</td>
+                        <td>
+                          <span class="status-badge ${
+                            result.percentage >= 70
+                              ? "status-success"
+                              : result.percentage >= 50
+                              ? "status-warning"
+                              : "status-error"
+                          }">
+                            ${
+                              result.percentage >= 70
+                                ? "Pass"
+                                : result.percentage >= 50
+                                ? "Partial"
+                                : "Fail"
+                            }
+                          </span>
+                        </td>
+                        <td>${new Date(
+                          result.timestamp
+                        ).toLocaleDateString()}</td>
+                        <td>
+                          <button class="btn btn-sm btn-primary" onclick="viewDetailedResult('${
+                            result.studentId
+                          }', '${result.lectureId}')">
+                            <i class="fas fa-eye"></i> Details
+                          </button>
+                        </td>
+                      </tr>
+                    `
+                      )
+                      .join("")}
+                  </tbody>
+                </table>
+              </div>
+              
+              <div class="summary-stats">
+                <div class="stat-card">
+                  <h3>Average Score</h3>
+                  <p>${(
+                    studentResults.reduce(
+                      (sum, r) => sum + (r.percentage || 0),
+                      0
+                    ) / studentResults.length
+                  ).toFixed(2)}%</p>
+                </div>
+                <div class="stat-card">
+                  <h3>Passed Lectures</h3>
+                  <p>${
+                    studentResults.filter((r) => (r.percentage || 0) >= 70)
+                      .length
+                  }/${studentResults.length}</p>
+                </div>
+                <div class="stat-card">
+                  <h3>Student Status</h3>
+                  <p>${(() => {
+                    const averageScore =
+                      studentResults.reduce(
+                        (sum, r) => sum + (r.percentage || 0),
+                        0
+                      ) / studentResults.length;
+
+                    if (averageScore < 75) {
+                      return '<span style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white;">CRITICAL</span>';
+                    } else if (averageScore >= 75 && averageScore <= 85) {
+                      return '<span style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white;">OK</span>';
+                    } else if (averageScore >= 86 && averageScore <= 92) {
+                      return '<span style="background: linear-gradient(135deg, #10b981, #059669); color: white;">GOOD</span>';
+                    } else {
+                      return '<span style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white;">ADVANCED</span>';
+                    }
+                  })()}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // Add modal styles if not already present
+        if (!document.querySelector("#modal-styles")) {
+          const modalStyles = document.createElement("style");
+          modalStyles.id = "modal-styles";
+          modalStyles.textContent = `
+            .modal {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.9);
+              backdrop-filter: blur(10px);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              z-index: 1000;
+              animation: fadeIn 0.3s ease-out;
+            }
+            
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            
+            @keyframes slideIn {
+              from { 
+                opacity: 0;
+                transform: translateY(-50px) scale(0.95);
+              }
+              to { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+              }
+            }
+            
+            .modal-content {
+              background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+              border-radius: 20px;
+              width: 95%;
+              max-width: 1200px;
+              max-height: 95vh;
+              overflow-y: auto;
+              box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              animation: slideIn 0.4s ease-out;
+              position: relative;
+            }
+            
+            .modal-content::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 4px;
+              background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+              border-radius: 20px 20px 0 0;
+            }
+            
+            .modal-header {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding: 30px 40px 20px;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              background: rgba(255, 255, 255, 0.02);
+            }
+            
+            .modal-header h2 {
+              margin: 0;
+              color: var(--white);
+              font-size: 1.8rem;
+              font-weight: 700;
+              display: flex;
+              align-items: center;
+              gap: 12px;
+            }
+            
+            .modal-header h2 i {
+              color: var(--primary);
+              font-size: 1.5rem;
+            }
+            
+            .modal-close {
+              background: rgba(255, 255, 255, 0.1);
+              border: 1px solid rgba(255, 255, 255, 0.2);
+              color: var(--gray-light);
+              font-size: 1.2rem;
+              cursor: pointer;
+              padding: 12px;
+              border-radius: 12px;
+              transition: all 0.3s ease;
+              width: 44px;
+              height: 44px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            
+            .modal-close:hover {
+              background: var(--error);
+              color: white;
+              transform: scale(1.1);
+              box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+            }
+            
+            .modal-body {
+              padding: 30px 40px;
+            }
+            
+            .student-info {
+              background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+              padding: 25px;
+              border-radius: 16px;
+              margin-bottom: 30px;
+              border: 1px solid rgba(99, 102, 241, 0.2);
+              backdrop-filter: blur(10px);
+            }
+            
+            .student-info p {
+              margin: 8px 0;
+              color: var(--gray-light);
+              font-size: 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            
+            .student-info strong {
+              color: var(--white);
+              font-weight: 600;
+            }
+            
+            /* Sticky header for modal header */
+            .sticky-modal-header {
+              position: sticky;
+              top: 0;
+              z-index: 100;
+              background: rgba(255, 255, 255, 0.05) !important;
+              backdrop-filter: blur(15px);
+              border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+              box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+              transition: all 0.3s ease;
+            }
+            
+            .sticky-modal-header:hover {
+              background: rgba(255, 255, 255, 0.08) !important;
+              box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            }
+            
+            .results-table-container {
+              overflow-x: auto;
+              margin-bottom: 30px;
+              border-radius: 16px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              background: rgba(255, 255, 255, 0.02);
+            }
+            
+            .results-table {
+              width: 100%;
+              border-collapse: collapse;
+              background: transparent;
+            }
+            
+            .results-table th,
+            .results-table td {
+              padding: 18px 20px;
+              text-align: left;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            
+            .results-table th {
+              background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+              color: var(--white);
+              font-weight: 600;
+              font-size: 0.9rem;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            
+            .results-table td {
+              color: var(--gray-light);
+              font-size: 0.95rem;
+            }
+            
+            .results-table tr:hover {
+              background: rgba(255, 255, 255, 0.02);
+            }
+            
+            .summary-stats {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 20px;
+            }
+            
+            .stat-card {
+              background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+              padding: 25px;
+              border-radius: 16px;
+              text-align: center;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              transition: all 0.3s ease;
+              position: relative;
+              overflow: hidden;
+            }
+            
+            .stat-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 3px;
+              background: linear-gradient(90deg, var(--primary), var(--secondary));
+            }
+            
+            .stat-card:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            
+            .stat-card h3 {
+              margin: 0 0 15px 0;
+              color: var(--gray-light);
+              font-size: 0.9rem;
+              font-weight: 500;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            
+            .stat-card p {
+              margin: 0;
+              color: var(--primary);
+              font-size: 2rem;
+              font-weight: 700;
+              text-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+            }
+            
+            /* Student Status specific styling */
+            .stat-card p span {
+              display: inline-block;
+              padding: 8px 16px;
+              border-radius: 20px;
+              font-size: 1.2rem;
+              font-weight: 700;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              transition: all 0.3s ease;
+            }
+            
+            .stat-card p span:hover {
+              transform: scale(1.05);
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .status-badge {
+              display: inline-block;
+              padding: 6px 12px;
+              border-radius: 20px;
+              font-size: 0.8rem;
+              font-weight: 600;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            
+            .status-success { 
+              background: linear-gradient(135deg, #10b981, #059669);
+              color: white;
+              box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            }
+            
+            .status-warning { 
+              background: linear-gradient(135deg, #f59e0b, #d97706);
+              color: white;
+              box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            }
+            
+            .status-error { 
+              background: linear-gradient(135deg, #ef4444, #dc2626);
+              color: white;
+              box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+            }
+            
+            .detail-section {
+              background: rgba(255, 255, 255, 0.02);
+              padding: 25px;
+              border-radius: 16px;
+              margin-bottom: 20px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .detail-section h3 {
+              color: var(--white);
+              margin: 0 0 15px 0;
+              font-size: 1.2rem;
+              font-weight: 600;
+            }
+            
+            .detail-section p {
+              color: var(--gray-light);
+              margin: 8px 0;
+              line-height: 1.6;
+            }
+            
+            .detail-section pre {
+              background: rgba(0, 0, 0, 0.3);
+              padding: 20px;
+              border-radius: 12px;
+              color: var(--gray-light);
+              font-size: 0.9rem;
+              overflow-x: auto;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            /* Responsive design */
+            @media (max-width: 768px) {
+              .modal-content {
+                width: 98%;
+                margin: 10px;
+              }
+              
+              .modal-header {
+                padding: 20px 25px 15px;
+              }
+              
+              .modal-body {
+                padding: 20px 25px;
+              }
+              
+              .modal-header h2 {
+                font-size: 1.4rem;
+              }
+              
+              .results-table th,
+              .results-table td {
+                padding: 12px 15px;
+                font-size: 0.85rem;
+              }
+              
+              .summary-stats {
+                grid-template-columns: 1fr;
+              }
+            }
+          `;
+          document.head.appendChild(modalStyles);
+        }
+
+        document.body.appendChild(modal);
+      }
+
+      function viewDetailedResult(studentId, lectureId) {
+        // Find the detailed result
+        const detailedResult = results.find(
+          (r) => r.studentId === studentId && r.lectureId === lectureId
+        );
+
+        if (!detailedResult) {
+          showAlert("Detailed result not found", "error");
+          return;
+        }
+
+        // Create detailed result modal
+        const modal = document.createElement("div");
+        modal.className = "modal";
+        modal.innerHTML = `
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2><i class="fas fa-file-alt"></i> ${studentId} - ${lectureId}</h2>
+              <button class="modal-close" onclick="this.closest('.modal').remove()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="result-details">
+                <div class="detail-section">
+                  <h3>Grading Summary</h3>
+                  <p><strong>Score:</strong> ${detailedResult.score || 0}/${
+          detailedResult.total || 100
+        }</p>
+                  <p><strong>Percentage:</strong> ${
+                    detailedResult.percentage || 0
+                  }%</p>
+                  <p><strong>Status:</strong> ${
+                    detailedResult.status || "Completed"
+                  }</p>
+                  <p><strong>Graded:</strong> ${new Date(
+                    detailedResult.timestamp
+                  ).toLocaleString()}</p>
+                </div>
+                
+                ${
+                  detailedResult.message
+                    ? `
+                  <div class="detail-section">
+                    <h3>Feedback</h3>
+                    <p>${detailedResult.message}</p>
+                  </div>
+                `
+                    : ""
+                }
+                
+                ${
+                  detailedResult.grading
+                    ? `
+                  <div class="detail-section">
+                    <h3>Detailed Analysis</h3>
+                    <pre>${JSON.stringify(
+                      detailedResult.grading,
+                      null,
+                      2
+                    )}</pre>
+                  </div>
+                `
+                    : ""
+                }
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(modal);
+      }
+
+      function editCohort(cohortNumber) {
+        showEditCohortModal(cohortNumber);
+      }
+
+      function showEditCohortModal(cohortNumber) {
+        const modal = document.createElement("div");
+        modal.className = "modal";
+        modal.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          backdrop-filter: blur(10px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 10000;
+          animation: fadeIn 0.3s ease-out;
+        `;
+
+        modal.innerHTML = `
+          <div class="modal-content edit-cohort-modal" style="
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideIn 0.4s ease-out;
+            position: relative;
+            overflow: hidden;
+          ">
+            <div class="modal-header" style="
+              padding: 2rem 2rem 1rem 2rem;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+              position: relative;
+            ">
+              <h2 style="
+                color: var(--text-primary);
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin: 0;
+                text-align: center;
+              ">Edit Cohort ${cohortNumber}</h2>
+              <button class="modal-close" style="
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background: none;
+                border: none;
+                color: var(--text-secondary);
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 0.5rem;
+                border-radius: 50%;
+                transition: all 0.3s ease;
+              ">×</button>
+            </div>
+            
+            <div class="modal-body" style="padding: 2rem;">
+              <div class="form-group" style="margin-bottom: 1.5rem;">
+                <label class="form-label" style="
+                  display: block;
+                  color: var(--text-primary);
+                  font-weight: 500;
+                  margin-bottom: 0.5rem;
+                  font-size: 0.9rem;
+                ">Update Cohort Number</label>
+                <input 
+                  type="number" 
+                  id="editCohortNumber" 
+                  class="form-input" 
+                  value="${cohortNumber}"
+                  style="
+                    width: 100%;
+                    padding: 0.75rem 1rem;
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 8px;
+                    color: var(--text-primary);
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                  "
+                  placeholder="Enter new cohort number"
+                >
+              </div>
+              
+              <div class="form-group" style="margin-bottom: 2rem;">
+                <label class="form-label" style="
+                  display: block;
+                  color: var(--text-primary);
+                  font-weight: 500;
+                  margin-bottom: 0.5rem;
+                  font-size: 0.9rem;
+                ">Update Cohort Status</label>
+                <select 
+                  id="editCohortStatus" 
+                  class="form-select" 
+                  style="
+                    width: 100%;
+                    padding: 0.75rem 1rem;
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 8px;
+                    color: var(--text-primary);
+                    font-size: 1rem;
+                    transition: all 0.3s ease;
+                  "
+                >
+                  <option value="active">Active</option>
+                  <option value="complete">Complete</option>
+                  <option value="upcoming">Upcoming</option>
+                </select>
+              </div>
+              
+              <div class="modal-actions" style="
+                display: flex;
+                gap: 1rem;
+                justify-content: flex-end;
+              ">
+                <button class="btn btn-secondary" style="
+                  padding: 0.75rem 1.5rem;
+                  background: rgba(255, 255, 255, 0.1);
+                  border: 1px solid rgba(255, 255, 255, 0.2);
+                  color: var(--text-primary);
+                  border-radius: 8px;
+                  cursor: pointer;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                ">Cancel</button>
+                <button class="btn btn-primary" style="
+                  padding: 0.75rem 1.5rem;
+                  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+                  border: none;
+                  color: white;
+                  border-radius: 8px;
+                  cursor: pointer;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                ">Update Cohort</button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Add event listeners
+        const closeBtn = modal.querySelector(".modal-close");
+        const cancelBtn = modal.querySelector(".btn-secondary");
+        const updateBtn = modal.querySelector(".btn-primary");
+
+        const closeModal = () => {
+          modal.remove();
+        };
+
+        closeBtn.addEventListener("click", closeModal);
+        cancelBtn.addEventListener("click", closeModal);
+
+        updateBtn.addEventListener("click", async () => {
+          const newCohortNumber =
+            document.getElementById("editCohortNumber").value;
+          const newCohortStatus =
+            document.getElementById("editCohortStatus").value;
+
+          if (!newCohortNumber || newCohortNumber === "") {
+            showAlert("Please enter a valid cohort number", "error");
+            return;
+          }
+
+          try {
+            // Show loading state
+            updateBtn.disabled = true;
+            updateBtn.innerHTML =
+              '<i class="fas fa-spinner fa-spin"></i> Updating...';
+
+            // Make API call to update the cohort
+            const response = await fetch(`/api/cohorts/${cohortNumber}`, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                status: newCohortStatus,
+                // Note: We're not updating the cohort number via API as it might require more complex logic
+                // For now, we'll only update the status
+              }),
+            });
+
+            if (response.ok) {
+              const result = await response.json();
+
+              // Update the local cohorts array
+              const cohortIndex = cohorts.findIndex(
+                (cohort) => cohort.number == cohortNumber
+              );
+              if (cohortIndex !== -1) {
+                cohorts[cohortIndex].status = newCohortStatus;
+                // Update the display immediately
+                displayCohortsList();
+              }
+
+              showAlert(
+                `Cohort updated: Status changed to ${newCohortStatus}`,
+                "success"
+              );
+              closeModal();
+            } else {
+              const errorData = await response.json();
+              showAlert(
+                `Failed to update cohort: ${
+                  errorData.error || "Unknown error"
+                }`,
+                "error"
+              );
+            }
+          } catch (error) {
+            console.error("Error updating cohort:", error);
+            showAlert(`Error updating cohort: ${error.message}`, "error");
+          } finally {
+            // Reset button state
+            updateBtn.disabled = false;
+            updateBtn.innerHTML = '<i class="fas fa-check"></i> Update Cohort';
+          }
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      async function deleteCohort(cohortNumber) {
+        const confirmed = await showConfirmation(
+          `Are you sure you want to delete Cohort ${cohortNumber}?\n\n⚠️ WARNING: This will also delete ALL students and grades associated with this cohort. This action cannot be undone!`
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        // Continue with deletion
+        deleteCohortConfirmed(cohortNumber);
+      }
+
+      async function deleteCohortConfirmed(cohortNumber) {
+        try {
+          console.log(`Starting deletion of cohort ${cohortNumber}`);
+
+          // Step 1: Get all students in this cohort
+          console.log(`Step 1: Getting students for cohort ${cohortNumber}`);
+          const studentsResponse = await fetch(
+            `/api/cohorts/${cohortNumber}/students`
+          );
+
+          if (!studentsResponse.ok) {
+            throw new Error(
+              `Failed to get students for cohort ${cohortNumber}: ${studentsResponse.statusText}`
+            );
+          }
+
+          const studentsData = await studentsResponse.json();
+          const studentsToDelete = studentsData || [];
+          console.log(
+            `Found ${studentsToDelete.length} students to delete:`,
+            studentsToDelete.map((s) => s.id)
+          );
+
+          // Step 2: Delete all grades/results for these students
+          if (studentsToDelete.length > 0) {
+            console.log(
+              `Step 2: Deleting grades for ${studentsToDelete.length} students`
+            );
+
+            for (const student of studentsToDelete) {
+              try {
+                const gradesResponse = await fetch(
+                  `/api/results/${student.id}`,
+                  {
+                    method: "DELETE",
+                  }
+                );
+
+                if (gradesResponse.ok) {
+                  console.log(`✅ Deleted grades for student ${student.id}`);
+                } else {
+                  console.warn(
+                    `⚠️ Failed to delete grades for student ${student.id}: ${gradesResponse.statusText}`
+                  );
+                }
+              } catch (error) {
+                console.warn(
+                  `⚠️ Error deleting grades for student ${student.id}:`,
+                  error
+                );
+              }
+            }
+          }
+
+          // Step 3: Delete all students in this cohort
+          if (studentsToDelete.length > 0) {
+            console.log(`Step 3: Deleting ${studentsToDelete.length} students`);
+
+            for (const student of studentsToDelete) {
+              try {
+                const studentResponse = await fetch(
+                  `/api/students/${student.id}`,
+                  {
+                    method: "DELETE",
+                  }
+                );
+
+                if (studentResponse.ok) {
+                  console.log(`✅ Deleted student ${student.id}`);
+                } else {
+                  console.error(
+                    `❌ Failed to delete student ${student.id}: ${studentResponse.statusText}`
+                  );
+                  throw new Error(
+                    `Failed to delete student ${student.id}: ${studentResponse.statusText}`
+                  );
+                }
+              } catch (error) {
+                console.error(
+                  `❌ Error deleting student ${student.id}:`,
+                  error
+                );
+                throw error;
+              }
+            }
+          }
+
+          // Step 4: Delete the cohort itself
+          console.log(`Step 4: Deleting cohort ${cohortNumber}`);
+          const cohortResponse = await fetch(`/api/cohorts/${cohortNumber}`, {
+            method: "DELETE",
+          });
+
+          if (!cohortResponse.ok) {
+            throw new Error(
+              `Failed to delete cohort ${cohortNumber}: ${cohortResponse.statusText}`
+            );
+          }
+
+          console.log(`✅ Successfully deleted cohort ${cohortNumber}`);
+
+          // Step 5: Update local data immediately (no server reload needed)
+          console.log(`Step 5: Updating local data`);
+
+          // Remove from local arrays
+          cohorts = cohorts.filter((cohort) => cohort.number != cohortNumber);
+          students = students.filter(
+            (student) => student.cohortNumber != cohortNumber
+          );
+          results = results.filter((result) => {
+            const student = students.find((s) => s.id === result.studentId);
+            return student && student.cohortNumber != cohortNumber;
+          });
+
+          // Update all displays immediately
+          console.log(`Step 6: Updating all displays`);
+          displayCohortsList();
+          displayStudentsList();
+          displayResultsList();
+
+          // Update all cohort dropdowns
+          populateCohortSelects();
+
+          // Update Students Status section
+          await loadStudentsStatus();
+
+          showAlert(
+            `Cohort ${cohortNumber} and all associated students (${studentsToDelete.length}) and grades deleted successfully!`,
+            "success"
+          );
+
+          console.log(
+            `🎉 Cohort ${cohortNumber} deletion completed successfully`
+          );
+        } catch (error) {
+          console.error("❌ Error deleting cohort:", error);
+          showAlert("Error deleting cohort: " + error.message, "error");
+        }
+      }
+    </script>
+    <!-- Floating Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" title="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </body>
+</html>

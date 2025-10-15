@@ -1,0 +1,208 @@
+{
+  "lectureId": "W09D01_Backend_Development",
+  "title": "Backend Development - Node.js & Express",
+  "description": "Node.js setup, NPM package management, and Express server creation",
+  "week": 9,
+  "day": 1,
+  "questions": [
+    {
+      "id": "q1_nodejs_installation",
+      "title": "Node.js Installation",
+      "description": "Install NodeJS and verify installation.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileExists": "package.json",
+          "description": "package.json exists (indicates Node.js project)"
+        },
+        {
+          "fileContains": "node_modules",
+          "description": "node_modules directory exists",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q2_basic_js_file",
+      "title": "Basic JavaScript File",
+      "description": "Create index.js with basic arithmetic and run it using NodeJS.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileExists": "index.js",
+          "description": "index.js file exists",
+          "optional": true
+        },
+        {
+          "fileExists": "main.js",
+          "description": "main.js file exists",
+          "optional": true
+        },
+        {
+          "fileContains": "const a = 10",
+          "description": "Contains variable a = 10"
+        },
+        {
+          "fileContains": "const b = 20",
+          "description": "Contains variable b = 20"
+        },
+        {
+          "fileContains": "console.log.*a.*\\+.*b",
+          "description": "Contains console.log with addition"
+        }
+      ]
+    },
+    {
+      "id": "q3_nodemon_global",
+      "title": "Nodemon Global Installation",
+      "description": "Install nodemon package globally using NPM.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "nodemon",
+          "description": "References to nodemon in scripts or documentation",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q4_package_json_init",
+      "title": "Package.json Initialization",
+      "description": "Initialize package.json and install express package.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileExists": "package.json",
+          "description": "package.json file exists"
+        },
+        {
+          "fileContains": "express",
+          "description": "Express package in dependencies"
+        },
+        {
+          "fileContains": "name",
+          "description": "Package has name field"
+        },
+        {
+          "fileContains": "version",
+          "description": "Package has version field"
+        }
+      ]
+    },
+    {
+      "id": "q5_start_script",
+      "title": "Start Script",
+      "description": "Create a start script that runs index.js using node.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "start",
+          "description": "Contains start script"
+        },
+        {
+          "fileContains": "node index.js",
+          "description": "Start script runs index.js with node",
+          "optional": true
+        },
+        {
+          "fileContains": "node main.js",
+          "description": "Start script runs main.js with node",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q6_dev_script",
+      "title": "Dev Script",
+      "description": "Create a dev script that runs index.js using nodemon.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "dev",
+          "description": "Contains dev script"
+        },
+        {
+          "fileContains": "nodemon index.js",
+          "description": "Dev script runs index.js with nodemon",
+          "optional": true
+        },
+        {
+          "fileContains": "nodemon main.js",
+          "description": "Dev script runs main.js with nodemon",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q7_create_script",
+      "title": "Create Script",
+      "description": "Create a script called create that creates server.js using touch command.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "create",
+          "description": "Contains create script"
+        },
+        {
+          "fileContains": "touch server.js",
+          "description": "Create script uses touch to create server.js"
+        }
+      ]
+    },
+    {
+      "id": "q8_express_server",
+      "title": "Express Server",
+      "description": "Create a basic express server in server.js and run it using nodemon.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileExists": "server.js",
+          "description": "server.js file exists",
+          "optional": true
+        },
+        {
+          "fileExists": "main.js",
+          "description": "main.js file exists",
+          "optional": true
+        },
+        {
+          "fileExists": "index.js",
+          "description": "index.js file exists",
+          "optional": true
+        },
+        {
+          "fileContains": "require.*express",
+          "description": "Requires express module"
+        },
+        {
+          "fileContains": "express\\(\\)",
+          "description": "Creates express app"
+        },
+        {
+          "fileContains": "listen",
+          "description": "Server listens on a port"
+        },
+        {
+          "fileContains": "app.get",
+          "description": "Defines at least one route",
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "gradingCriteria": {
+    "file_system": {
+      "description": "File system and Node.js project structure checks",
+      "confidence": 90,
+      "detectionMethod": "file_system_detection"
+    }
+  }
+}

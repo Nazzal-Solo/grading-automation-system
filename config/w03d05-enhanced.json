@@ -1,0 +1,302 @@
+{
+  "lectures": [
+    {
+      "id": "W03D05_Recursion",
+      "name": "Recursion in JavaScript",
+      "description": "Recursive functions, base cases, and recursive algorithms - Learn to implement recursive solutions for mathematical problems, string manipulation, and complex algorithms",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "recursive_function",
+          "description": "Write a function factorial that accepts a number argument, and returns the factorial of that number",
+          "functionName": "factorial",
+          "parameters": ["number"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [5],
+              "expected": 120,
+              "description": "Factorial of 5 (1 * 2 * 3 * 4 * 5)"
+            },
+            {
+              "input": [3],
+              "expected": 6,
+              "description": "Factorial of 3 (1 * 2 * 3)"
+            },
+            {
+              "input": [1],
+              "expected": 1,
+              "description": "Factorial of 1"
+            },
+            {
+              "input": [0],
+              "expected": 1,
+              "description": "Factorial of 0 (base case)"
+            }
+          ],
+          "weight": 1,
+          "category": "mathematical_recursion"
+        },
+        {
+          "id": "Q2",
+          "type": "recursive_function",
+          "description": "Write a function sumCubes that accepts an array and returns the sum of the cubed numbers",
+          "functionName": "sumCubes",
+          "parameters": ["numbers"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [[1, 2]],
+              "expected": 9,
+              "description": "Sum of cubes [1, 2] = 1³ + 2³ = 1 + 8 = 9"
+            },
+            {
+              "input": [[1, 2, 3]],
+              "expected": 36,
+              "description": "Sum of cubes [1, 2, 3] = 1³ + 2³ + 3³ = 1 + 8 + 27 = 36"
+            },
+            {
+              "input": [[5, 3, 3]],
+              "expected": 179,
+              "description": "Sum of cubes [5, 3, 3] = 5³ + 3³ + 3³ = 125 + 27 + 27 = 179"
+            },
+            {
+              "input": [[]],
+              "expected": 0,
+              "description": "Sum of cubes of empty array"
+            }
+          ],
+          "weight": 1,
+          "category": "array_recursion"
+        },
+        {
+          "id": "Q3",
+          "type": "recursive_function",
+          "description": "Write a function getLength that accepts a string argument, and returns the length of the string. Do not use the length property",
+          "functionName": "getLength",
+          "parameters": ["string"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": ["Hello"],
+              "expected": 5,
+              "description": "Length of 'Hello'"
+            },
+            {
+              "input": ["John"],
+              "expected": 4,
+              "description": "Length of 'John'"
+            },
+            {
+              "input": [""],
+              "expected": 0,
+              "description": "Length of empty string"
+            }
+          ],
+          "weight": 1,
+          "category": "string_recursion"
+        },
+        {
+          "id": "Q4",
+          "type": "recursive_function",
+          "description": "Write a function reverseString that accepts a string argument, and returns a string in a reversed order",
+          "functionName": "reverseString",
+          "parameters": ["string"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["Hello World"],
+              "expected": "dlroW olleH",
+              "description": "Reverse 'Hello World'"
+            },
+            {
+              "input": ["John Doe"],
+              "expected": "eoD nhoJ",
+              "description": "Reverse 'John Doe'"
+            },
+            {
+              "input": [""],
+              "expected": "",
+              "description": "Reverse empty string"
+            }
+          ],
+          "weight": 1,
+          "category": "string_recursion"
+        },
+        {
+          "id": "Q5",
+          "type": "recursive_function",
+          "description": "Write a function countCharacter that accepts a string, and a character and returns the number of times the character was repeated",
+          "functionName": "countCharacter",
+          "parameters": ["string", "character"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": ["hello", "l"],
+              "expected": 2,
+              "description": "Count 'l' in 'hello'"
+            },
+            {
+              "input": ["hello", "e"],
+              "expected": 1,
+              "description": "Count 'e' in 'hello'"
+            },
+            {
+              "input": ["hello", "z"],
+              "expected": 0,
+              "description": "Count 'z' in 'hello' (not found)"
+            }
+          ],
+          "weight": 1,
+          "category": "string_recursion"
+        },
+        {
+          "id": "Q6",
+          "type": "recursive_function",
+          "description": "Write a function oddOrEven that accepts a number and returns a string 'The number is even' or 'The number is odd' depending on whether the number is odd or even. Do not use the modulo operator %",
+          "functionName": "oddOrEven",
+          "parameters": ["number"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [8],
+              "expected": "The number is even",
+              "description": "Check if 8 is even"
+            },
+            {
+              "input": [1],
+              "expected": "The number is odd",
+              "description": "Check if 1 is odd"
+            }
+          ],
+          "weight": 1,
+          "category": "mathematical_recursion"
+        },
+        {
+          "id": "Q7",
+          "type": "recursive_function",
+          "description": "Write a function multiply that accepts two number arguments and returns the multiple of both numbers without using the * operator",
+          "functionName": "multiply",
+          "parameters": ["numberOne", "numberTwo"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [2, 3],
+              "expected": 6,
+              "description": "Multiply 2 * 3 = 6"
+            },
+            {
+              "input": [4, 5],
+              "expected": 20,
+              "description": "Multiply 4 * 5 = 20"
+            }
+          ],
+          "weight": 1,
+          "category": "mathematical_recursion"
+        },
+        {
+          "id": "Q8",
+          "type": "recursive_function",
+          "description": "Write a function isPalindrome that accepts a string argument and returns true if the string is a palindrome and false if it is not",
+          "functionName": "isPalindrome",
+          "parameters": ["string"],
+          "expectedReturn": "boolean",
+          "testCases": [
+            {
+              "input": ["racecar"],
+              "expected": true,
+              "description": "Check if 'racecar' is palindrome"
+            },
+            {
+              "input": ["hello"],
+              "expected": false,
+              "description": "Check if 'hello' is palindrome"
+            },
+            {
+              "input": ["a"],
+              "expected": true,
+              "description": "Check if single character is palindrome"
+            },
+            {
+              "input": [""],
+              "expected": true,
+              "description": "Check if empty string is palindrome"
+            }
+          ],
+          "weight": 1,
+          "category": "string_recursion"
+        },
+        {
+          "id": "Q9",
+          "type": "recursive_function",
+          "description": "Write a function remainder that accepts two number arguments and returns the remainder of the division of both numbers, do not use % to solve this question",
+          "functionName": "remainder",
+          "parameters": ["numberOne", "numberTwo"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [5, 1],
+              "expected": 0,
+              "description": "Remainder of 5 / 1"
+            },
+            {
+              "input": [7, 2],
+              "expected": 1,
+              "description": "Remainder of 7 / 2"
+            },
+            {
+              "input": [7, 4],
+              "expected": 3,
+              "description": "Remainder of 7 / 4"
+            },
+            {
+              "input": [8, 2],
+              "expected": 0,
+              "description": "Remainder of 8 / 2"
+            },
+            {
+              "input": [4, 6],
+              "expected": 4,
+              "description": "Remainder of 4 / 6"
+            },
+            {
+              "input": [1, 8],
+              "expected": 1,
+              "description": "Remainder of 1 / 8"
+            }
+          ],
+          "weight": 1,
+          "category": "mathematical_recursion"
+        },
+        {
+          "id": "Q10",
+          "type": "recursive_function",
+          "description": "Write a function fibonacci that accepts a number argument, and returns the value of the Fibonacci sequence at that value",
+          "functionName": "fibonacci",
+          "parameters": ["fibNumber"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [4],
+              "expected": 3,
+              "description": "Fibonacci number at position 4"
+            },
+            {
+              "input": [7],
+              "expected": 13,
+              "description": "Fibonacci number at position 7"
+            },
+            {
+              "input": [13],
+              "expected": 233,
+              "description": "Fibonacci number at position 13"
+            }
+          ],
+          "weight": 1,
+          "category": "mathematical_recursion"
+        }
+      ]
+    }
+  ]
+}
+

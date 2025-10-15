@@ -1,0 +1,296 @@
+{
+  "lectures": [
+    {
+      "id": "W04D03_OOP",
+      "name": "Object-Oriented Programming in JavaScript",
+      "description": "Classes, inheritance, encapsulation, and OOP principles - Learn to create classes, implement inheritance, handle encapsulation, and build complex object-oriented systems",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "class_definition",
+          "description": "Define a class Activate and create a constructor with one property passCode containing a String representing the passCode",
+          "className": "Activate",
+          "expectedProperties": ["passCode"],
+          "testCases": [
+            {
+              "input": "new Activate()",
+              "expected": "Activate instance with passCode property",
+              "description": "Create Activate class instance"
+            }
+          ],
+          "weight": 1,
+          "category": "class_basics"
+        },
+        {
+          "id": "Q2",
+          "type": "class_method",
+          "description": "Write a method setPassCode, that accepts a passCode as String and saves it in the Activate then returns Passcode has been set, and if there is already a passCode return Reset passcode first",
+          "methodName": "setPassCode",
+          "parameters": ["passCode"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["1234"],
+              "expected": "Passcode has been set",
+              "description": "Set passcode for first time"
+            },
+            {
+              "input": ["1234"],
+              "expected": "Reset passcode first",
+              "description": "Try to set passcode when one already exists"
+            }
+          ],
+          "weight": 1,
+          "category": "class_methods"
+        },
+        {
+          "id": "Q3",
+          "type": "class_method",
+          "description": "Write a method resetPassCode that accepts argument passCode as String and meets specific requirements for resetting passcode",
+          "methodName": "resetPassCode",
+          "parameters": ["passCode"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["8642"],
+              "expected": "Set a passcode first",
+              "description": "Try to reset when no passcode is set"
+            },
+            {
+              "input": ["7531"],
+              "expected": "Wrong passcode",
+              "description": "Try to reset with wrong passcode"
+            },
+            {
+              "input": ["8642"],
+              "expected": "PassCode has been reset",
+              "description": "Reset with correct passcode"
+            }
+          ],
+          "weight": 1,
+          "category": "class_methods"
+        },
+        {
+          "id": "Q4",
+          "type": "class_inheritance",
+          "description": "Define a new class Lock that will inherit all features from Activate class",
+          "className": "Lock",
+          "parentClass": "Activate",
+          "testCases": [
+            {
+              "input": "new Lock()",
+              "expected": "Lock instance inheriting from Activate",
+              "description": "Create Lock class that extends Activate"
+            }
+          ],
+          "weight": 1,
+          "category": "inheritance"
+        },
+        {
+          "id": "Q5",
+          "type": "class_method",
+          "description": "Within class Lock add new property isOpen and openSafe method that accepts a passcode and meets specific requirements",
+          "methodName": "openSafe",
+          "parameters": ["passcode"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [],
+              "expected": "The safe is open and ready to use",
+              "description": "Open safe without passcode when no passcode is set"
+            },
+            {
+              "input": ["7531"],
+              "expected": "Wrong passcode",
+              "description": "Try to open with wrong passcode"
+            },
+            {
+              "input": ["8642"],
+              "expected": "The safe is open and ready to use",
+              "description": "Open safe with correct passcode"
+            }
+          ],
+          "weight": 1,
+          "category": "class_methods"
+        },
+        {
+          "id": "Q6",
+          "type": "class_method",
+          "description": "Write a method closeSafe that sets isOpen to false and returns The safe is closed",
+          "methodName": "closeSafe",
+          "parameters": [],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [],
+              "expected": "The safe is closed",
+              "description": "Close the safe"
+            }
+          ],
+          "weight": 1,
+          "category": "class_methods"
+        },
+        {
+          "id": "Q7",
+          "type": "class_constructor",
+          "description": "Modify Lock constructor to accept an argument maxAttempts and create a method lockSafe that locks the safe after failed attempts",
+          "methodName": "lockSafe",
+          "parameters": [],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [],
+              "expected": "The Safe is locked",
+              "description": "Lock safe after max attempts reached"
+            }
+          ],
+          "weight": 1,
+          "category": "class_constructor"
+        },
+        {
+          "id": "Q8",
+          "type": "class_constructor",
+          "description": "Modify Lock constructor to accept an argument lockDownDuration and implement time-based locking",
+          "methodName": "lockSafe",
+          "parameters": [],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [],
+              "expected": "The safe is locked",
+              "description": "Lock safe with time-based duration"
+            }
+          ],
+          "weight": 1,
+          "category": "class_constructor"
+        },
+        {
+          "id": "Q9",
+          "type": "class_inheritance",
+          "description": "Inside the class Safe create a constructor that accepts one argument safeSize and creates a property safeSize containing the safeSize and a storage property as a array of objects",
+          "className": "Safe",
+          "parentClass": "Lock",
+          "expectedProperties": ["safeSize", "storage"],
+          "testCases": [
+            {
+              "input": [10],
+              "expected": "Safe instance with safeSize and storage properties",
+              "description": "Create Safe class with safeSize property"
+            }
+          ],
+          "weight": 1,
+          "category": "inheritance"
+        },
+        {
+          "id": "Q10",
+          "type": "class_method",
+          "description": "Inside the class Safe create a method called insert that accepts two arguments name and size, and meets specific requirements for adding items",
+          "methodName": "insert",
+          "parameters": ["name", "size"],
+          "expectedReturn": "boolean",
+          "testCases": [
+            {
+              "input": ["passport", 1],
+              "expected": true,
+              "description": "Insert item within safe size limit"
+            },
+            {
+              "input": ["laptop", 8],
+              "expected": true,
+              "description": "Insert another item within limit"
+            },
+            {
+              "input": ["chair", 20],
+              "expected": false,
+              "description": "Try to insert item exceeding safe size"
+            }
+          ],
+          "weight": 1,
+          "category": "class_methods"
+        },
+        {
+          "id": "Q11",
+          "type": "class_method",
+          "description": "Write a method remove that removes the specified item from the storage and returns the removed item and if not found return a string Not Found",
+          "methodName": "remove",
+          "parameters": ["name"],
+          "expectedReturn": "object or string",
+          "testCases": [
+            {
+              "input": ["money"],
+              "expected": "Not Found",
+              "description": "Try to remove non-existent item"
+            },
+            {
+              "input": ["watermelon"],
+              "expected": { "name": "watermelon", "size": 7 },
+              "description": "Remove existing item"
+            },
+            {
+              "input": ["watermelon"],
+              "expected": "Not Found",
+              "description": "Try to remove already removed item"
+            }
+          ],
+          "weight": 1,
+          "category": "class_methods"
+        },
+        {
+          "id": "Q12",
+          "type": "class_method",
+          "description": "Modify insert and remove to only work if the safe is opened, if the safe is closed then return Please open the safe first",
+          "methodName": "insert",
+          "parameters": ["name", "size"],
+          "expectedReturn": "boolean or string",
+          "testCases": [
+            {
+              "input": ["laptop", 8],
+              "expected": "Please open the safe first",
+              "description": "Try to insert when safe is closed"
+            },
+            {
+              "input": ["watermelon", 7],
+              "expected": true,
+              "description": "Insert when safe is open"
+            }
+          ],
+          "weight": 1,
+          "category": "class_methods"
+        },
+        {
+          "id": "Q13",
+          "type": "static_method",
+          "description": "Create a static method guideline that will describe in clear steps how to use Safe class features",
+          "methodName": "guideline",
+          "parameters": [],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [],
+              "expected": "string with guidelines",
+              "description": "Get Safe class usage guidelines"
+            }
+          ],
+          "weight": 1,
+          "category": "static_methods"
+        },
+        {
+          "id": "Q14",
+          "type": "encapsulation",
+          "description": "Read about private class features and try to make the passCode, and storage properties private",
+          "expectedProperties": ["#passCode", "#storage"],
+          "testCases": [
+            {
+              "input": "private properties",
+              "expected": "Properties are private",
+              "description": "Verify passCode and storage are private"
+            }
+          ],
+          "weight": 1,
+          "category": "encapsulation"
+        }
+      ]
+    }
+  ]
+}
+

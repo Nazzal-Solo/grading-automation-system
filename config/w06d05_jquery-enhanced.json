@@ -1,0 +1,215 @@
+{
+  "lectureId": "W06D05_jQuery",
+  "title": "jQuery DOM - Todo List",
+  "description": "jQuery-based DOM creation, rendering, and item add/delete/update",
+  "week": 6,
+  "day": 5,
+  "questions": [
+    {
+      "id": "q1_html_and_script",
+      "title": "HTML and Script Setup",
+      "description": "Create an empty HTML page and connect it to a JavaScript file using a script tag.",
+      "type": "html_js_dom",
+      "points": 10,
+      "checks": [
+        { "htmlContains": "<html", "description": "Contains <html> tag" },
+        { "htmlContains": "<body", "description": "Contains <body> tag" },
+        {
+          "fileExistsFromHtmlScript": true,
+          "description": "External JS file exists",
+          "optional": true
+        },
+        {
+          "htmlRegex": "<script[^>]*src[^>]*jquery[^>]*>\\s*</script>",
+          "description": "Loads jQuery library"
+        }
+      ]
+    },
+    {
+      "id": "q2_header_and_ul_jquery",
+      "title": "Header and Empty List using jQuery",
+      "description": "Using jQuery, create an h1 'Todo List' and an empty <ul> on load.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "jsRegex": "(\\$\\(document\\)\\.ready|\\$\\s*\\(\\s*function|\\$\\s*\\(\\s*\\)\\s*=>|\\$\\s*\\(\\s*['\"`]body['\"`]\\s*\\)|\\$\\(\\s*\\)|document\\.ready|window\\.onload|DOMContentLoaded|\\$\\(window\\)\\.load)",
+          "description": "Uses any ready handler or document loading method",
+          "optional": true
+        },
+        {
+          "jsRegex": "(\\$\\s*\\(\\s*['\"`]h1['\"`]\\s*\\)\\s*\\.text\\s*\\(\\s*['\"`]Todo\\s*List['\"`]|\\$\\s*\\(\\s*['\"`]\\s*<h1>Todo|\\$\\s*\\(\\s*['\"`]\\s*<h1>Todo\\s*List|Todo\\s*List|Todo\\s+List|h1.*Todo|Todo|List|header.*Todo)",
+          "description": "Sets h1 text or creates header with Todo content"
+        },
+        {
+          "jsRegex": "(\\$\\s*\\(\\s*['\"`]ul['\"`]\\s*\\)|\\$\\s*\\(\\s*['\"`]\\s*<ul|\\$\\s*\\(\\s*['\"`]\\.my-list['\"`]\\s*\\)|\\$\\s*\\(\\s*['\"`]\\.todo-list['\"`]\\s*\\)|\\$\\s*\\(\\s*['\"`]#list['\"`]\\s*\\)|\\$\\s*\\(\\s*['\"`]\\.list['\"`]\\s*\\)|ul|list)",
+          "description": "Creates/selects ul or list element"
+        },
+        {
+          "jsRegex": "(\\.append\\s*\\(.*(ul|<ul)|\\.html\\s*\\(.*ul|ul.*append|list.*append|\\.prepend|\\.after|\\.before|innerHTML.*ul)",
+          "description": "Appends or inserts ul/list element"
+        }
+      ]
+    },
+    {
+      "id": "q3_todos_global",
+      "title": "Global toDos Array",
+      "description": "Create a global toDos variable with three items: wake up, eat breakfast, code.",
+      "type": "html_js_dom",
+      "points": 10,
+      "checks": [
+        {
+          "jsRegex": "(?:const|let|var)\\s+(?:toDos|todos|todoList|items|list)\\s*=\\s*\\[",
+          "description": "Array declared with any name"
+        },
+        {
+          "jsRegex": "(wake\\s*up|wakeup|wake)",
+          "description": "Contains 'wake up' or similar"
+        },
+        {
+          "jsRegex": "(breakfast|eat|food|meal)",
+          "description": "Contains 'breakfast' or similar"
+        },
+        {
+          "jsRegex": "(\\bcode\\b|coding|programming|program)",
+          "description": "Contains 'code' or similar"
+        }
+      ]
+    },
+    {
+      "id": "q4_renderList_function",
+      "title": "renderList Function (jQuery)",
+      "description": "Implement renderList to render all items into the ul; invoked on load.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "functionExists": [
+            "renderList",
+            "/render\\s*List/i",
+            "render",
+            "displayList",
+            "showList",
+            "display",
+            "show",
+            "load",
+            "init",
+            "populate"
+          ],
+          "description": "Any rendering/display function exists"
+        },
+        {
+          "jsRegex": "(forEach|for\\s*\\(|for\\s*of|\\$\\s*\\.each|while|map|for\\s*in)",
+          "description": "Iterates items"
+        },
+        {
+          "jsRegex": "(\\$\\s*\\(\\s*['\"`]\\s*<li|\\$\\s*\\(\\s*['\"`]li['\"`]|\\$\\s*\\(\\s*['\"`]\\.item['\"`]|createElement\\s*\\(\\s*['\"`]li['\"`]|li|item)",
+          "description": "Creates/selects li or item element"
+        },
+        {
+          "jsRegex": "(\\.append\\s*\\(.*li|list\\.append|ul\\.append|\\.html\\s*\\(.*li|innerHTML.*li|\\.prepend|\\.after|\\.before)",
+          "description": "Appends or inserts li element"
+        },
+        {
+          "jsRegex": "(renderList\\s*\\(|render\\s*\\(|displayList\\s*\\(|showList\\s*\\(|display\\s*\\(|show\\s*\\(|load\\s*\\(|init\\s*\\(|populate\\s*\\()",
+          "description": "Any rendering function invoked"
+        }
+      ]
+    },
+    {
+      "id": "q5_addToList",
+      "title": "Add Item via jQuery",
+      "description": "Using jQuery, create input+button; clicking the button invokes addToList to add to toDos and render a new li.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            {
+              "functionExists": [
+                "addToList",
+                "/add\\s*To\\s*List/i",
+                "addItem",
+                "addTodo",
+                "/add/i",
+                "add",
+                "insertItem",
+                "createItem",
+                "insert",
+                "create",
+                "push",
+                "append"
+              ]
+            },
+            { "jsRegex": "\\$\\s*\\(.*\\)\\.on\\s*\\(\\s*['\"`]click['\"`]" },
+            { "jsRegex": "\\.click\\s*\\(" },
+            { "jsRegex": "addEventListener\\s*\\(\\s*['\"`]click['\"`]" },
+            { "jsRegex": "onclick" }
+          ],
+          "description": "Add handler exists (any method)"
+        },
+        {
+          "jsRegex": "(\\$\\s*\\(.*['\"`]input['\"`].*\\)\\s*\\.val\\s*\\(|inp\\.val|input\\.val|const\\s+newItem\\s*=\\s*input\\.val|input\\.value|document\\.getElementById.*\\.value|getElementById.*value|querySelector.*value)",
+          "description": "Reads input value (any method)"
+        },
+        {
+          "jsRegex": "(toDos\\s*\\.push|todos\\s*\\.push|array\\s*\\.push|list\\s*\\.push|\\[.*\\]\\.push)",
+          "description": "Pushes to array"
+        },
+        {
+          "jsRegex": "(\\$\\s*\\(\\s*['\"`]ul['\"`]\\s*\\)\\s*\\.append\\s*\\(.*(li|<li)|myList\\.append|list\\.append|ul\\.append|innerHTML.*li|\\.html\\s*\\(.*li|\\.prepend|\\.after|\\.before)",
+          "description": "Appends or inserts new li element"
+        }
+      ]
+    },
+    {
+      "id": "q6_delete_buttons",
+      "title": "Delete Buttons (jQuery)",
+      "description": "Add delete button next to each li that removes the correct item using jQuery.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "jsRegex": "(\\$\\s*\\(\\s*['\"`]\\s*<button|\\$\\s*\\(\\s*['\"`]button['\"`]|createElement\\s*\\(\\s*['\"`]button['\"`]|\\$\\s*\\(\\s*['\"`]\\.delete['\"`]|\\$\\s*\\(\\s*['\"`]\\.remove['\"`]|button|delete|remove)",
+          "description": "Creates/targets delete button (any method)"
+        },
+        {
+          "jsRegex": "(\\.on\\s*\\(\\s*['\"`]click['\"`]|\\.click\\s*\\(|addEventListener\\s*\\(\\s*['\"`]click['\"`]|onclick)",
+          "description": "Binds click event (any method)"
+        },
+        {
+          "jsRegex": "(\\$\\s*\\(this\\)\\s*\\.closest\\s*\\(\\s*['\"`]li['\"`]\\s*\\)\\s*\\.remove\\s*\\(|todos\\s*\\.splice|toDos\\s*\\.splice|\\$\\s*\\(this\\)\\s*\\.parent\\s*\\(\\s*\\)\\s*\\.remove\\s*\\(|this\\.parentElement\\.remove|removeChild|\\$\\s*\\(this\\)\\s*\\.remove\\s*\\(|this\\.remove)",
+          "description": "Removes element or updates data (any method)"
+        }
+      ]
+    },
+    {
+      "id": "q7_update_buttons",
+      "title": "Update Buttons (jQuery)",
+      "description": "Add update button for each li that prompts or assigns text to update the item using jQuery.",
+      "type": "html_js_dom",
+      "points": 20,
+      "checks": [
+        {
+          "jsRegex": "(\\$\\s*\\(\\s*['\"`]\\s*<button|\\$\\s*\\(\\s*['\"`]button['\"`]|createElement\\s*\\(\\s*['\"`]button['\"`]|\\$\\s*\\(\\s*['\"`]\\.update['\"`]|\\$\\s*\\(\\s*['\"`]\\.edit['\"`]|button|update|edit)",
+          "description": "Creates/targets update button (any method)"
+        },
+        {
+          "jsRegex": "(prompt\\s*\\(|\\.text\\s*\\(|\\.html\\s*\\(|input\\.value|innerHTML|textContent|value|edit|update)",
+          "description": "Uses any text input/update method"
+        },
+        {
+          "jsRegex": "(\\.closest\\s*\\(\\s*['\"`]li['\"`]\\s*\\)\\s*\\.(text|html)\\s*\\(|todos\\s*\\[.*\\]\\s*=|toDos\\s*\\[.*\\]\\s*=|this\\.parentElement\\.textContent|this\\.parentElement\\.innerHTML|innerHTML|textContent|value\\s*=)",
+          "description": "Updates text/content (any method)"
+        }
+      ]
+    }
+  ],
+  "gradingCriteria": {
+    "html_js_dom": {
+      "description": "jQuery DOM validation checks",
+      "partialCredit": true,
+      "tolerance": "flexible"
+    }
+  }
+}

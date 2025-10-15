@@ -1,0 +1,102 @@
+{
+  "id": "W13D03_Redux",
+  "title": "Redux",
+  "description": "Redux state management with Redux Toolkit",
+  "questions": [
+    {
+      "id": "q1_create_react_app",
+      "title": "Create React App",
+      "description": "Create a new react project using create-react-app",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileExists": "package.json",
+          "description": "Creates React app with package.json"
+        },
+        {
+          "fileContains": "create-react-app|react.*app|package\\.json",
+          "description": "App is created using create-react-app",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q2_create_counter_component",
+      "title": "Create Counter Component",
+      "description": "Create a component Counter that has 3 buttons to increment, decrement and reset a counter, use local state to manage the state for the counter",
+      "type": "file_system",
+      "points": 25,
+      "checks": [
+        {
+          "fileContains": "function.*Counter|const.*Counter|Counter.*function|Counter.*component",
+          "description": "Creates Counter component"
+        },
+        {
+          "fileContains": "useState.*counter|counter.*useState|useState.*count|count.*useState|useState.*\\(|useState",
+          "description": "Uses local state to manage counter"
+        },
+        {
+          "fileContains": "increment|decrement|reset|\\+\\+|--|\\+.*1|-.*1",
+          "description": "Implements increment, decrement, and reset functionality",
+          "optional": true
+        },
+        {
+          "fileContains": "button.*increment|button.*decrement|button.*reset|onClick.*increment|onClick.*decrement|onClick.*reset",
+          "description": "Creates 3 buttons for increment, decrement, and reset",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q3_create_counter_slice",
+      "title": "Create Counter Slice",
+      "description": "Create a counterSlice with 3 reducers to increment, decrement and reset the counter",
+      "type": "file_system",
+      "points": 30,
+      "checks": [
+        {
+          "fileContains": "createSlice",
+          "description": "Creates counterSlice using createSlice"
+        },
+        {
+          "fileContains": "increment",
+          "description": "Creates 3 reducers for increment, decrement, and reset"
+        },
+        {
+          "fileContains": "decrement",
+          "description": "Creates 3 reducers for increment, decrement, and reset"
+        },
+        {
+          "fileContains": "reset",
+          "description": "Creates 3 reducers for increment, decrement, and reset"
+        }
+      ]
+    },
+    {
+      "id": "q4_use_reducers_in_component",
+      "title": "Use Reducers in Component",
+      "description": "Change the Counter component to use the reducers to change and display data in the component",
+      "type": "file_system",
+      "points": 35,
+      "checks": [
+        {
+          "fileContains": "useSelector",
+          "description": "Uses useSelector and useDispatch hooks"
+        },
+        {
+          "fileContains": "useDispatch",
+          "description": "Uses useSelector and useDispatch hooks"
+        },
+        {
+          "fileContains": "dispatch",
+          "description": "Connects component to Redux store"
+        },
+        {
+          "fileContains": "state",
+          "description": "Connects component to Redux store"
+        }
+      ]
+    }
+  ]
+}

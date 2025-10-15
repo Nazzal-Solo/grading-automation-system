@@ -1,0 +1,126 @@
+{
+  "id": "W10D05_Advanced_Mongoose",
+  "title": "Advanced Mongoose Features",
+  "description": "Advanced Mongoose features including schemas, middleware, static methods, and population",
+  "questions": [
+    {
+      "id": "q1_routes_controllers",
+      "title": "Routes and Controllers Setup",
+      "description": "Create the corresponding routes and controllers folders and files. Add the Routers to the app, to be able to create and retrieve role and user",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "rolesRouter|router.*roles",
+          "description": "Creates roles router"
+        },
+        {
+          "fileContains": "usersRouter|router.*users",
+          "description": "Creates users router"
+        },
+        {
+          "fileContains": "app\\.use.*roles|app\\.use.*users",
+          "description": "Adds routers to app"
+        }
+      ]
+    },
+    {
+      "id": "q2_mongoose_middleware",
+      "title": "Mongoose Middleware",
+      "description": "Create a mongoose middleware to log the number of elements returned every time you read all of the users on the console using the following format: Number of retrieved records: # the number goes here",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "post.*find|pre.*find",
+          "description": "Creates mongoose middleware"
+        },
+        {
+          "fileContains": "console\\.log.*records|console\\.log.*length",
+          "description": "Logs middleware message"
+        }
+      ]
+    },
+    {
+      "id": "q3_static_method",
+      "title": "Mongoose Static Method",
+      "description": "Create a mongoose statics method that gets all the users that have the role of Admin",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "statics.*Admin|static.*Admin",
+          "description": "Creates static method"
+        },
+        {
+          "fileContains": "find.*Admin|Admin.*find",
+          "description": "Finds users with Admin role"
+        }
+      ]
+    },
+    {
+      "id": "q4_pet_schema",
+      "title": "Pet Schema Creation",
+      "description": "Create a new schema for your application: petSchema, let the schema contain: type: that is String and required. name: that is String and required. owner: that is an ObjectId referring to the user",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "type.*String|name.*String|owner.*ObjectId",
+          "description": "Creates pet schema"
+        }
+      ]
+    },
+    {
+      "id": "q5_pet_routes_controllers",
+      "title": "Pet Routes and Controllers Setup",
+      "description": "Add the required files to the routes, and controllers folders. And add the router to your app",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "petRouter|router.*pet",
+          "description": "Creates pet router"
+        },
+        {
+          "fileContains": "app\\.use.*pet",
+          "description": "Adds pet router to app"
+        }
+      ]
+    },
+    {
+      "id": "q6_create_pet_api",
+      "title": "Create Pet API",
+      "description": "Create a post request with /pet endpoint that allows creating a new pet",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "post.*pet|create.*pet",
+          "description": "Creates pet API"
+        },
+        {
+          "fileContains": "new.*pet|save|create",
+          "description": "Saves pet to database"
+        }
+      ]
+    },
+    {
+      "id": "q7_get_pets_populate",
+      "title": "Get All Pets API with Population",
+      "description": "Create a get request with /pet endpoint that allows getting all pets. When you return the data, let the owner contain all of the object information, not just the _id. Hint: populate",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "get.*pet|find.*pet",
+          "description": "Creates get pets API"
+        },
+        {
+          "fileContains": "populate",
+          "description": "Populates owner field"
+        }
+      ]
+    }
+  ]
+}

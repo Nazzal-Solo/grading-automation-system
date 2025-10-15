@@ -1,0 +1,168 @@
+{
+  "lectureId": "W04D05_HTML",
+  "title": "HTML Practice",
+  "description": "Intro HTML practice with structure, links, lists, images, and simple multi-page navigation",
+  "week": 4,
+  "day": 5,
+  "questions": [
+    {
+      "id": "q1_basic_structure_title",
+      "title": "Basic HTML Skeleton and Title",
+      "description": "Create an HTML file with html, head, body tags and set title to 'Animal Blog'.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        { "htmlContains": "<html", "description": "Contains <html> tag" },
+        { "htmlContains": "<head", "description": "Contains <head> tag" },
+        { "htmlContains": "<body", "description": "Contains <body> tag" },
+        {
+          "htmlRegex": "<title>\\s*Animal\\s+Blog\\s*</title>",
+          "description": "Title is 'Animal Blog'"
+        }
+      ]
+    },
+    {
+      "id": "q2_header_and_intro_paragraph",
+      "title": "Header and Intro Paragraph",
+      "description": "Add an h1 'Cute Animal Blog' and a paragraph underneath explaining the blog.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        {
+          "htmlRegex": "<h1[^>]*>\\s*Cute\\s+Animal\\s+Blog\\s*</h1>",
+          "description": "Contains h1 'Cute Animal Blog'"
+        },
+        {
+          "htmlRegex": "<h1[\\s\\S]*?</h1>\\s*<p[\\s\\S]*?>[\\s\\S]*?</p>",
+          "description": "Paragraph directly after h1"
+        }
+      ]
+    },
+    {
+      "id": "q3_animals_list",
+      "title": "Unordered List of Animals",
+      "description": "Add a ul with at least 5 list items of favorite animals.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        { "htmlContains": "<ul", "description": "Contains <ul>" },
+        {
+          "minCount": { "pattern": "<li", "min": 5 },
+          "description": "At least 5 list items"
+        }
+      ]
+    },
+    {
+      "id": "q4_list_links_external",
+      "title": "Links for Each Animal",
+      "description": "Add an anchor for every list item linking to external info (e.g., Wikipedia).",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        {
+          "minCount": { "pattern": "<a ", "min": 5 },
+          "description": "At least 5 anchor tags"
+        },
+        {
+          "htmlRegex": "<a[^>]*href=\\\"https?://[^\\\"]+\\\"[^>]*>",
+          "description": "Anchors link to external sites"
+        }
+      ]
+    },
+    {
+      "id": "q5_gallery_header_and_images",
+      "title": "Gallery and Images",
+      "description": "Add an h2 'gallery' then an image for each animal.",
+      "type": "html_css",
+      "points": 15,
+      "checks": [
+        {
+          "htmlRegex": "<h2[^>]*>\\s*gallery\\s*</h2>",
+          "description": "Contains h2 'gallery'"
+        },
+        {
+          "minCount": { "pattern": "<img ", "min": 5 },
+          "description": "At least 5 images"
+        }
+      ]
+    },
+    {
+      "id": "q6_captions_with_title",
+      "title": "Paragraph Captions with Title Attribute",
+      "description": "Add a paragraph under each picture explaining the animal and include a title attribute.",
+      "type": "html_css",
+      "points": 15,
+      "checks": [
+        {
+          "minCount": { "pattern": "<p", "min": 5 },
+          "description": "At least 5 paragraphs (one under each image)"
+        },
+        {
+          "htmlRegex": "<img[^>]*title=\\\"[^\\\"]+\\\"",
+          "description": "Images have title attribute"
+        }
+      ]
+    },
+    {
+      "id": "q7_contact_page",
+      "title": "Contact Page",
+      "description": "Create contact.html and link to it from the main page with contact info.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        {
+          "htmlRegex": "<a[^>]*href=\\\"contact.html\\\"[^>]*>",
+          "description": "Link to contact.html exists"
+        },
+        {
+          "fileExistsFromHtmlHref": true,
+          "description": "contact.html file exists",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "id": "q8_login_page",
+      "title": "Login Page",
+      "description": "Create login.html and link to it from the main page. Include email and password inputs with labels and a login button.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        {
+          "htmlRegex": "<a[^>]*href=\\\"login.html\\\"[^>]*>",
+          "description": "Link to login.html exists"
+        },
+        {
+          "fileExistsFromHtmlHref": true,
+          "description": "login.html file exists",
+          "optional": false
+        }
+      ]
+    },
+    {
+      "id": "q9_register_page",
+      "title": "Register Page",
+      "description": "Create register.html and link to it from the login page. Include email input and two password inputs with labels and a register button.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        {
+          "htmlRegex": "<a[^>]*href=\\\"register.html\\\"[^>]*>",
+          "description": "Link to register.html exists"
+        },
+        {
+          "fileExistsFromHtmlHref": true,
+          "description": "register.html file exists",
+          "optional": false
+        }
+      ]
+    }
+  ],
+  "gradingCriteria": {
+    "html_css": {
+      "description": "HTML/CSS validation checks",
+      "partialCredit": false,
+      "tolerance": "strict"
+    }
+  }
+}

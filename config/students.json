@@ -1,0 +1,214 @@
+{
+  "globalToken": "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",
+  "students": [
+    {
+      "id": "a03_aseel",
+      "name": "A03_Aseel",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "AseelQabbaha",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "a04_eid",
+      "name": "A04_Eid",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "MohammadEiid",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "a05_issa",
+      "name": "A05_Issa",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "IssaAzeez",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "a08_yazan",
+      "name": "A08_Yazan",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "YazanHasanat",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b05_al_hadba",
+      "name": "B05_Al_Hadba",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "OmarAlHadba",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b10_momen",
+      "name": "B10_Momen",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "MomenAbdullah",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b11_najjar",
+      "name": "B11_Najjar",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "OmarNajar",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b13_saeed",
+      "name": "B13_Saeed",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "SaeedAlMasri",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b14_waleed",
+      "name": "B14_Waleed",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "WaleedAlZaben",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b17_raghad",
+      "name": "B17_Raghad",
+      "cohort": "C15",
+      "cohortNumber": 15,
+      "enrollmentDate": "2025-10-09",
+      "status": "active",
+      "github": {
+        "username": "RaghadAlFayoumi",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "a02_qasem",
+      "name": "A02_Qasem",
+      "cohort": "C16",
+      "cohortNumber": 16,
+      "enrollmentDate": "2025-10-15",
+      "status": "active",
+      "github": {
+        "username": "MahmoudQasm",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b01_hyari",
+      "name": "B01_Hyari",
+      "cohort": "C16",
+      "cohortNumber": 16,
+      "enrollmentDate": "2025-10-15",
+      "status": "active",
+      "github": {
+        "username": "AhmadMHyari",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b02_ahmeds",
+      "name": "B02_AhmedS",
+      "cohort": "C16",
+      "cohortNumber": 16,
+      "enrollmentDate": "2025-10-15",
+      "status": "active",
+      "github": {
+        "username": "AhmedAlsous",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b03_al_borno",
+      "name": "B03_Al_Borno",
+      "cohort": "C16",
+      "cohortNumber": 16,
+      "enrollmentDate": "2025-10-15",
+      "status": "active",
+      "github": {
+        "username": "AhmadAlBorno",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b04_ali",
+      "name": "B04_Ali",
+      "cohort": "C16",
+      "cohortNumber": 16,
+      "enrollmentDate": "2025-10-15",
+      "status": "active",
+      "github": {
+        "username": "AliAlZawawi",
+        "token": ""
+      },
+      "lectures": []
+    },
+    {
+      "id": "b06_ammar",
+      "name": "B06_Ammar",
+      "cohort": "C16",
+      "cohortNumber": 16,
+      "enrollmentDate": "2025-10-15",
+      "status": "active",
+      "github": {
+        "username": "AmmarQawasmeh",
+        "token": ""
+      },
+      "lectures": []
+    }
+  ],
+  "lastUpdated": "2025-10-15T23:09:02.429Z"
+}

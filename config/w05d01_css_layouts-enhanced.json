@@ -1,0 +1,173 @@
+{
+  "lectureId": "W05D01_CSS_Layouts",
+  "title": "CSS Layouts - Flexbox and Grid",
+  "description": "Learn CSS Flexbox and Grid layouts for modern web design.",
+  "week": 5,
+  "day": 1,
+  "questions": [
+    {
+      "id": "q1_html_structure",
+      "title": "HTML Structure Setup",
+      "description": "Create a basic HTML structure with semantic elements.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        { "htmlContains": "<html", "description": "Contains <html> tag" },
+        { "htmlContains": "<body", "description": "Contains <body> tag" },
+        { "htmlContains": "<head", "description": "Contains <head> tag" },
+        { "htmlContains": "<title", "description": "Contains <title> tag" }
+      ]
+    },
+    {
+      "id": "q2_css_file",
+      "title": "CSS File Connection",
+      "description": "Create and link a CSS file to the HTML.",
+      "type": "html_css",
+      "points": 10,
+      "checks": [
+        {
+          "htmlContains": "<link",
+          "description": "Contains <link> tag for CSS"
+        },
+        { "htmlContains": ".css", "description": "Links to CSS file" },
+        {
+          "fileExistsFromHtmlScript": true,
+          "description": "CSS file exists",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q3_flexbox_container",
+      "title": "Flexbox Container",
+      "description": "Create a flexbox container with basic properties.",
+      "type": "html_css",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            { "cssContains": "display: flex" },
+            { "cssContains": "display:flex" },
+            { "cssContains": "display: -webkit-flex" },
+            { "cssContains": "display:-webkit-flex" }
+          ],
+          "description": "Uses flexbox display property"
+        },
+        {
+          "anyPass": [
+            { "cssContains": "flex-direction" },
+            { "cssContains": "justify-content" },
+            { "cssContains": "align-items" },
+            { "cssContains": "flex-wrap" }
+          ],
+          "description": "Uses flexbox properties"
+        }
+      ]
+    },
+    {
+      "id": "q4_flexbox_items",
+      "title": "Flexbox Items",
+      "description": "Create flex items with proper styling.",
+      "type": "html_css",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            { "cssContains": "flex:" },
+            { "cssContains": "flex-grow" },
+            { "cssContains": "flex-shrink" },
+            { "cssContains": "flex-basis" }
+          ],
+          "description": "Uses flex item properties"
+        },
+        { "htmlContains": "<div", "description": "Uses div elements" }
+      ]
+    },
+    {
+      "id": "q5_css_grid",
+      "title": "CSS Grid Layout",
+      "description": "Implement CSS Grid layout.",
+      "type": "html_css",
+      "points": 20,
+      "checks": [
+        {
+          "anyPass": [
+            { "cssContains": "display: grid" },
+            { "cssContains": "display:grid" },
+            { "cssContains": "display: -ms-grid" },
+            { "cssContains": "display:-ms-grid" }
+          ],
+          "description": "Uses CSS Grid display"
+        },
+        {
+          "anyPass": [
+            { "cssContains": "grid-template-columns" },
+            { "cssContains": "grid-template-rows" },
+            { "cssContains": "grid-gap" },
+            { "cssContains": "gap" }
+          ],
+          "description": "Uses grid properties"
+        }
+      ]
+    },
+    {
+      "id": "q6_responsive_design",
+      "title": "Responsive Design",
+      "description": "Add responsive design with media queries.",
+      "type": "html_css",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            { "cssContains": "@media" },
+            { "cssContains": "max-width" },
+            { "cssContains": "min-width" }
+          ],
+          "description": "Uses media queries"
+        },
+        {
+          "anyPass": [
+            { "htmlContains": "viewport" },
+            { "htmlContains": "width=device-width" }
+          ],
+          "description": "Has viewport meta tag",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q7_positioning",
+      "title": "CSS Positioning",
+      "description": "Use CSS positioning properties.",
+      "type": "html_css",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            { "cssContains": "position: relative" },
+            { "cssContains": "position: absolute" },
+            { "cssContains": "position: fixed" },
+            { "cssContains": "position: sticky" }
+          ],
+          "description": "Uses positioning"
+        },
+        {
+          "anyPass": [
+            { "cssContains": "top:" },
+            { "cssContains": "left:" },
+            { "cssContains": "right:" },
+            { "cssContains": "bottom:" }
+          ],
+          "description": "Uses positioning properties"
+        }
+      ]
+    }
+  ],
+  "gradingCriteria": {
+    "html_js_dom": {
+      "description": "HTML + CSS validation checks",
+      "partialCredit": true,
+      "tolerance": "flexible"
+    }
+  }
+}

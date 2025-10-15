@@ -1,0 +1,145 @@
+{
+  "id": "W12D01_React_Intro",
+  "title": "React Introduction",
+  "description": "React basics including components, props, state, and event handling",
+  "questions": [
+    {
+      "id": "q1_modify_app_component",
+      "title": "Modify App Component",
+      "description": "Modify the app component so it returns a div containing an h1 saying hello world",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "hello",
+          "description": "App component returns div with h1 saying hello world"
+        }
+      ]
+    },
+    {
+      "id": "q2_create_components_folder",
+      "title": "Create Components Folder",
+      "description": "Create a new folder called components in the src directory",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileExists": "src/components",
+          "description": "Creates components folder in src directory"
+        }
+      ]
+    },
+    {
+      "id": "q3_create_list_component",
+      "title": "Create List Component",
+      "description": "Create a new file called List.jsx in the components directory then create and export a component called List",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileExists": "src/components/List.jsx",
+          "description": "Creates List.jsx file in components directory"
+        },
+        {
+          "fileContains": "List",
+          "description": "Creates and exports List component"
+        }
+      ]
+    },
+    {
+      "id": "q4_create_listitem_component",
+      "title": "Create ListItem Component",
+      "description": "Create and export another component called ListItem and save it in src/components",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileExists": "src/components/ListItem.jsx",
+          "description": "Creates ListItem.jsx file in components directory"
+        },
+        {
+          "fileContains": "ListItem",
+          "description": "Creates and exports ListItem component"
+        }
+      ]
+    },
+    {
+      "id": "q5_create_todos_array",
+      "title": "Create Todos Array",
+      "description": "Create an array called todos in App.jsx with three todo elements [{ todo: \"wake up\", id: 1 }, { todo: \"breakfast\", id: 2 }, { todo: \"study\", id: 3 }]",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "todos",
+          "description": "Creates todos array with required elements"
+        }
+      ]
+    },
+    {
+      "id": "q6_import_and_pass_props",
+      "title": "Import and Pass Props",
+      "description": "Import List component in App component and use it there then pass the todos array as a prop to List component",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "import",
+          "description": "Imports List component and passes todos as prop"
+        }
+      ]
+    },
+    {
+      "id": "q7_destructure_and_render_ul",
+      "title": "Destructure and Render Unordered List",
+      "description": "In List component use destructuring on the incoming props (the todos array) and render an empty unordered list",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "ul",
+          "description": "Uses destructuring and renders unordered list"
+        }
+      ]
+    },
+    {
+      "id": "q8_modify_listitem_props",
+      "title": "Modify ListItem Props",
+      "description": "Modify ListItem component to accept two props todo and id and it should return the passed prop todo in a li tag",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "li",
+          "description": "ListItem accepts todo and id props and returns li tag"
+        }
+      ]
+    },
+    {
+      "id": "q9_iterate_and_render_todos",
+      "title": "Iterate and Render Todos",
+      "description": "Modify List component to iterate over the todos prop and use the ListItem component to render all the todos from the array",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "map",
+          "description": "Iterates over todos and uses ListItem component"
+        }
+      ]
+    },
+    {
+      "id": "q10_console_log_on_click",
+      "title": "Console Log on Click",
+      "description": "Modify ListItem to console log the todo id when clicking on the corresponding li",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "console",
+          "description": "Adds onClick handler and console logs"
+        }
+      ]
+    }
+  ]
+}

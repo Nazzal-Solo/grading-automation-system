@@ -1,0 +1,297 @@
+{
+  "lectures": [
+    {
+      "id": "W02D05_Objects",
+      "name": "Objects in JavaScript",
+      "description": "Object creation, manipulation, and factory functions - Create and work with objects, understand object properties, and implement factory functions",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "syntax_fix",
+          "description": "Figure out the syntax errors in the following, and fix them",
+          "weight": 1,
+          "category": "object_syntax",
+          "testCases": [
+            {
+              "input": "const person_2 = (name: john, age:20)",
+              "expected": "const person_2 = {name: 'john', age: 20}",
+              "description": "Fix object syntax with proper braces and quotes"
+            },
+            {
+              "input": "const car = {brand \"Toyota\", model: 2020}",
+              "expected": "const car = {brand: \"Toyota\", model: 2020}",
+              "description": "Fix missing colon in object property"
+            },
+            {
+              "input": "const employee ={name: \"Jane\", position: developer}",
+              "expected": "const employee = {name: \"Jane\", position: \"developer\"}",
+              "description": "Fix spacing and add quotes to string value"
+            }
+          ]
+        },
+        {
+          "id": "Q2",
+          "type": "object_manipulation",
+          "description": "Check the following objects and solve the requirements for object access and modification",
+          "weight": 2,
+          "category": "object_manipulation",
+          "testCases": [
+            {
+              "input": "Access age property",
+              "expected": "person_3.age",
+              "description": "Access object property using dot notation"
+            },
+            {
+              "input": "Modify age to 23",
+              "expected": "person_3.age = 23",
+              "description": "Modify object property value"
+            },
+            {
+              "input": "Add work property",
+              "expected": "person_3.work = {position: 'developer', salary: 50000}",
+              "description": "Add nested object property"
+            },
+            {
+              "input": "Access first name of employees",
+              "expected": "employees[0].name.first",
+              "description": "Access nested object property in array"
+            },
+            {
+              "input": "Add new employee",
+              "expected": "employees.push({id: 3, name: {first: 'YourName', last: 'LastName'}, position: 'full-stack developer'})",
+              "description": "Add new object to array"
+            },
+            {
+              "input": "Access car model",
+              "expected": "cars.toyota.model",
+              "description": "Access nested object property"
+            },
+            {
+              "input": "Change prius model to 2020",
+              "expected": "cars.toyota.model = 2020",
+              "description": "Modify nested object property"
+            },
+            {
+              "input": "Add new car",
+              "expected": "cars.honda = {name: 'civic', model: 2021}",
+              "description": "Add new property to object"
+            },
+            {
+              "input": "Add isAutomatic property",
+              "expected": "cars.toyota.isAutomatic = true",
+              "description": "Add boolean property to nested object"
+            }
+          ]
+        },
+        {
+          "id": "Q3",
+          "type": "factory_function",
+          "description": "Write a factory function createUser that accepts two string arguments, firstName and lastName, returning an object representing the user",
+          "functionName": "createUser",
+          "parameters": ["firstName", "lastName"],
+          "expectedReturn": "object with firstName and lastName properties",
+          "testCases": [
+            {
+              "input": ["John", "Doe"],
+              "expected": { "firstName": "John", "lastName": "Doe" },
+              "description": "Create user object with provided names"
+            },
+            {
+              "input": ["Peter", "Brown"],
+              "expected": { "firstName": "Peter", "lastName": "Brown" },
+              "description": "Create user object with different names"
+            }
+          ],
+          "weight": 1,
+          "category": "factory_functions"
+        },
+        {
+          "id": "Q4",
+          "type": "factory_function",
+          "description": "Write a factory function createCar that accepts three string arguments, brand, name, and color, returning an object representing the car",
+          "functionName": "createCar",
+          "parameters": ["brand", "name", "color"],
+          "expectedReturn": "object with brand, name, and color properties",
+          "testCases": [
+            {
+              "input": ["Toyota", "Prius", "Black"],
+              "expected": {
+                "brand": "Toyota",
+                "name": "Prius",
+                "color": "Black"
+              },
+              "description": "Create car object with Toyota Prius"
+            },
+            {
+              "input": ["Audi", "A1", "Blue"],
+              "expected": { "brand": "Audi", "name": "A1", "color": "Blue" },
+              "description": "Create car object with Audi A1"
+            }
+          ],
+          "weight": 1,
+          "category": "factory_functions"
+        },
+        {
+          "id": "Q5",
+          "type": "object_function",
+          "description": "Write a function getFullName that accepts an object representing a person and returns that person's full name in a string",
+          "functionName": "getFullName",
+          "parameters": ["person"],
+          "expectedReturn": "string with full name",
+          "testCases": [
+            {
+              "input": [{ "first": "Elon", "middle": "Reeve", "last": "Musk" }],
+              "expected": "Elon Reeve Musk",
+              "description": "Get full name with first, middle, and last"
+            },
+            {
+              "input": [{ "first": "John", "middle": "Mark", "last": "Doe" }],
+              "expected": "John Mark Doe",
+              "description": "Get full name with different person"
+            }
+          ],
+          "weight": 1,
+          "category": "object_functions"
+        },
+        {
+          "id": "Q6",
+          "type": "object_function",
+          "description": "Write a function olderThan that accepts two objects, personOne and personTwo, and returns a string that represents who is older than the other",
+          "functionName": "olderThan",
+          "parameters": ["personOne", "personTwo"],
+          "expectedReturn": "string comparing ages",
+          "testCases": [
+            {
+              "input": [
+                { "name": "John", "age": 23 },
+                { "name": "Jane", "age": 26 }
+              ],
+              "expected": "Jane is older than John",
+              "description": "Compare ages when second person is older"
+            },
+            {
+              "input": [
+                { "name": "Mark", "age": 30 },
+                { "name": "Smith", "age": 25 }
+              ],
+              "expected": "Mark is older than Smith",
+              "description": "Compare ages when first person is older"
+            },
+            {
+              "input": [
+                { "name": "Marry", "age": 20 },
+                { "name": "Sarah", "age": 20 }
+              ],
+              "expected": "Marry is as old as Sarah",
+              "description": "Compare ages when both are same age"
+            }
+          ],
+          "weight": 1,
+          "category": "object_functions"
+        },
+        {
+          "id": "Q7",
+          "type": "object_function",
+          "description": "Write a function isPropertyOf that accepts a string and an object and returns true if the string is a property of the object",
+          "functionName": "isPropertyOf",
+          "parameters": ["string", "object"],
+          "expectedReturn": "boolean",
+          "testCases": [
+            {
+              "input": ["hello", { "hello": "world" }],
+              "expected": true,
+              "description": "Check if property exists in object"
+            },
+            {
+              "input": ["world", { "hello": "world" }],
+              "expected": false,
+              "description": "Check if non-existent property returns false"
+            }
+          ],
+          "weight": 1,
+          "category": "object_functions"
+        },
+        {
+          "id": "Q8",
+          "type": "object_function",
+          "description": "Write a function numberOfKeys that accepts an object and returns the number of keys present in the object",
+          "functionName": "numberOfKeys",
+          "parameters": ["object"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [{ "name": "James", "age": 27 }],
+              "expected": 2,
+              "description": "Count keys in object with 2 properties"
+            },
+            {
+              "input": [
+                { "fruit": "orange", "vegetable": "broccoli", "animal": "cat" }
+              ],
+              "expected": 3,
+              "description": "Count keys in object with 3 properties"
+            }
+          ],
+          "weight": 1,
+          "category": "object_functions"
+        },
+        {
+          "id": "Q9",
+          "type": "object_function",
+          "description": "Write a function valuesToString that accepts an object and returns a string of all the values from the object separated by an empty space",
+          "functionName": "valuesToString",
+          "parameters": ["object"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [{ "name": "James", "age": 27 }],
+              "expected": "James 27",
+              "description": "Convert object values to space-separated string"
+            },
+            {
+              "input": [
+                { "fruit": "apple", "vegetable": "asparagus", "animal": "dog" }
+              ],
+              "expected": "apple asparagus dog",
+              "description": "Convert multiple object values to string"
+            }
+          ],
+          "weight": 1,
+          "category": "object_functions"
+        },
+        {
+          "id": "Q10",
+          "type": "object_function",
+          "description": "Write a function keyInObject that accepts two arguments, object and key, and checks if the key is present within the object",
+          "functionName": "keyInObject",
+          "parameters": ["object", "key"],
+          "expectedReturn": "boolean",
+          "testCases": [
+            {
+              "input": [
+                { "order": "chicken sandwich", "orderId": 0, "quantity": 1 },
+                "orderId"
+              ],
+              "expected": true,
+              "description": "Check if key exists in object"
+            },
+            {
+              "input": [
+                {
+                  "order": "hamburger with fries",
+                  "orderId": 1,
+                  "quantity": 2
+                },
+                "name"
+              ],
+              "expected": false,
+              "description": "Check if non-existent key returns false"
+            }
+          ],
+          "weight": 1,
+          "category": "object_functions"
+        }
+      ]
+    }
+  ]
+}

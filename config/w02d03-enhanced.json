@@ -1,0 +1,171 @@
+{
+  "lectures": [
+    {
+      "id": "W02D03_Arrays",
+      "name": "Arrays in JavaScript",
+      "description": "Array manipulation, methods, and operations - Work with arrays, use array methods, and implement array-based algorithms",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "array_function",
+          "description": "Write a function addToArray that accepts two arguments, array and string, and returns the same array after adding the string element to the end of it",
+          "functionName": "addToArray",
+          "parameters": ["array", "string"],
+          "expectedReturn": "array",
+          "testCases": [
+            { "input": [["Hello", "i", "am"], "John"], "expected": ["Hello", "i", "am", "John"], "description": "Add string to array" },
+            { "input": [["Hello", "John", "i", "am"], "Jane"], "expected": ["Hello", "John", "i", "am", "Jane"], "description": "Add another string to array" }
+          ],
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q2",
+          "type": "array_function",
+          "description": "Write a function convertToString that accepts an array of strings and returns a string made out of the array values",
+          "functionName": "convertToString",
+          "parameters": ["array"],
+          "expectedReturn": "string",
+          "testCases": [
+            { "input": [["Hello", "i", "am", "John"]], "expected": "Hello i am John", "description": "Convert array to string" },
+            { "input": [["Hello", "John", "i", "am", "Jane"]], "expected": "Hello John i am Jane", "description": "Convert another array to string" }
+          ],
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q3",
+          "type": "array_function",
+          "description": "Write a function accessElement that accepts two arguments, array and index, and returns the corresponding array element depending on the passed index",
+          "functionName": "accessElement",
+          "parameters": ["array", "index"],
+          "expectedReturn": "any",
+          "testCases": [
+            { "input": [[1, 2, 3, 4, 5], 0], "expected": 1, "description": "Access first element" },
+            { "input": [[1, 2, 3, 4, 5], 3], "expected": 4, "description": "Access fourth element" },
+            { "input": [[1, 2, 3, 4, 5], 10], "expected": "No element at index 10", "description": "Access out of bounds index" }
+          ],
+          "weight": 1,
+          "category": "array_access"
+        },
+        {
+          "id": "Q4",
+          "type": "array_function",
+          "description": "Write a function isInArray that accepts two arguments, array and string, and returns true or false depending on whether the string is an element in the array or not",
+          "functionName": "isInArray",
+          "parameters": ["array", "string"],
+          "expectedReturn": "boolean",
+          "testCases": [
+            { "input": [["John", "Jane", "Mark"], "Jane"], "expected": true, "description": "String exists in array" },
+            { "input": [["John", "Jane", "Mark"], "Mark"], "expected": true, "description": "Another string exists in array" },
+            { "input": [["John", "Jane", "Mark"], "Smith"], "expected": false, "description": "String does not exist in array" },
+            { "input": [["John", "Jane", "Mark"], "Doe"], "expected": false, "description": "Another string does not exist in array" }
+          ],
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q5",
+          "type": "array_function",
+          "description": "Write a function reverseWords that accepts a string argument and returns the same string if only one word was passed in. If more than one word is passed, it will return a string of the words in the reverse order",
+          "functionName": "reverseWords",
+          "parameters": ["string"],
+          "expectedReturn": "string",
+          "testCases": [
+            { "input": ["Hello"], "expected": "Hello", "description": "Single word string" },
+            { "input": ["Hello World"], "expected": "World Hello", "description": "Multiple word string" }
+          ],
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q6",
+          "type": "array_function",
+          "description": "Write a function addToLast that accepts two arguments, array and value, and returns an array with the value added to the end of the array. Use unshift instead of push",
+          "functionName": "addToLast",
+          "parameters": ["array", "value"],
+          "expectedReturn": "array",
+          "testCases": [
+            { "input": [[1, 2, 3], 4], "expected": [1, 2, 3, 4], "description": "Add number to array using unshift" },
+            { "input": [[10, 6], 1], "expected": [10, 6, 1], "description": "Add another number to array using unshift" }
+          ],
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q7",
+          "type": "array_function",
+          "description": "Write functions getLength and getFirstVal that work with arrays without using built-in properties",
+          "functionName": "getLength",
+          "parameters": ["array"],
+          "expectedReturn": "number",
+          "testCases": [
+            { "input": [[1, 2, 3, 4]], "expected": 4, "description": "Get length without using .length" },
+            { "input": [[10, 22, 30]], "expected": 3, "description": "Get length of another array" }
+          ],
+          "weight": 0.5,
+          "category": "array_utilities"
+        },
+        {
+          "id": "Q7b",
+          "type": "array_function",
+          "description": "Write a function getFirstVal that accepts an array and returns the first value of the array without using the index to access the value",
+          "functionName": "getFirstVal",
+          "parameters": ["array"],
+          "expectedReturn": "any",
+          "testCases": [
+            { "input": [[1, 2, 3, 4]], "expected": 1, "description": "Get first value without using index" },
+            { "input": [[51, 3, 3, 4]], "expected": 51, "description": "Get first value from another array" }
+          ],
+          "weight": 0.5,
+          "category": "array_utilities"
+        },
+        {
+          "id": "Q8",
+          "type": "array_function",
+          "description": "Write a function updateOrCreate that accepts three arguments, array, value, and index, and returns an updated array",
+          "functionName": "updateOrCreate",
+          "parameters": ["array", "value", "index"],
+          "expectedReturn": "array",
+          "testCases": [
+            { "input": [[10, 20, 30], 50, 1], "expected": [10, 50, 30], "description": "Update existing index" },
+            { "input": [[10, 20, 30], 40, 3], "expected": [10, 20, 30, 40], "description": "Add to end of array" },
+            { "input": [[10, 20, 30], 100, 10], "expected": [10, 20, 30, null, null, null, null, null, null, null, 100], "description": "Add to far index with empty slots" }
+          ],
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q9",
+          "type": "array_function",
+          "description": "Write a function sliceArray that accepts three arguments, an ordered numeric array (unique numbers), startVal, and endVal, and returns an array starting at the startVal and ending at the endVal",
+          "functionName": "sliceArray",
+          "parameters": ["array", "startVal", "endVal"],
+          "expectedReturn": "array",
+          "testCases": [
+            { "input": [[10, 20, 30, 40, 50, 60], 10, 60], "expected": [10, 20, 30, 40, 50, 60], "description": "Slice entire array" },
+            { "input": [[10, 20, 30, 40, 50, 60], 20, 40], "expected": [20, 30, 40], "description": "Slice middle section" },
+            { "input": [[10, 20, 30, 40, 50, 60], 20, 20], "expected": [], "description": "Slice same start and end" },
+            { "input": [[10, 20, 30, 40, 50, 60], 50, 20], "expected": [], "description": "Slice with end before start" }
+          ],
+          "weight": 1,
+          "category": "array_slicing"
+        },
+        {
+          "id": "Q10",
+          "type": "array_function",
+          "description": "Write a function randomFruit that accepts an array of fruits and returns a random element from that array",
+          "functionName": "randomFruit",
+          "parameters": ["array"],
+          "expectedReturn": "string",
+          "testCases": [
+            { "input": [["Apple", "Banana", "Strawberry", "Mango"]], "expected": "any", "description": "Return random fruit from array" }
+          ],
+          "weight": 1,
+          "category": "array_random"
+        }
+      ]
+    }
+  ]
+}
+

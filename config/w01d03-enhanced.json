@@ -1,0 +1,172 @@
+{
+  "lectures": [
+    {
+      "id": "W01D03_Functions",
+      "name": "Functions in JavaScript",
+      "description": "Function definitions, parameters, return values, and function composition - Create functions, handle parameters, and understand function behavior",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function_definition",
+          "description": "Write a function double that accepts one argument number and returns the number doubled",
+          "functionName": "double",
+          "parameters": ["number"],
+          "expectedReturn": "number * 2",
+          "testCases": [
+            { "input": [2], "expected": 4 },
+            { "input": [5], "expected": 10 },
+            { "input": [10], "expected": 20 }
+          ],
+          "weight": 1,
+          "category": "basic_functions"
+        },
+        {
+          "id": "Q2",
+          "type": "function_definition",
+          "description": "Write a function fullName that accepts string arguments, firstName and lastName then returns a string containing your full name combined",
+          "functionName": "fullName",
+          "parameters": ["firstName", "lastName"],
+          "expectedReturn": "firstName + ' ' + lastName",
+          "testCases": [
+            { "input": ["John", "Doe"], "expected": "John Doe" },
+            { "input": ["Mark", "Smith"], "expected": "Mark Smith" }
+          ],
+          "weight": 1,
+          "category": "string_functions"
+        },
+        {
+          "id": "Q3",
+          "type": "function_definition",
+          "description": "Write a function average that accepts two number arguments and returns the average of these numbers",
+          "functionName": "average",
+          "parameters": ["a", "b"],
+          "expectedReturn": "(a + b) / 2",
+          "testCases": [
+            { "input": [20, 25], "expected": 22.5 },
+            { "input": [15, 7], "expected": 11 }
+          ],
+          "weight": 1,
+          "category": "math_functions"
+        },
+        {
+          "id": "Q4",
+          "type": "function_composition",
+          "description": "Using the defined functions below and your average function try to guess the output of the following expressions",
+          "functionName": "functionComposition",
+          "parameters": [],
+          "expectedReturn": "various",
+          "testCases": [
+            { "input": [], "expression": "cube(25) + 20", "expected": 15645 },
+            {
+              "input": [],
+              "expression": "square(5) + cube(2)",
+              "expected": 33
+            },
+            {
+              "input": [],
+              "expression": "square(10 / 5) + cube(2 + 1)",
+              "expected": 31
+            },
+            {
+              "input": [],
+              "expression": "average(square(average(6, 2)), cube(4))",
+              "expected": 40
+            }
+          ],
+          "weight": 1,
+          "category": "function_composition"
+        },
+        {
+          "id": "Q5",
+          "type": "function_definition",
+          "description": "Write a function totalBill that accepts three arguments total, taxPercentage, tip, and returns the total after adding the tax and the tip",
+          "functionName": "totalBill",
+          "parameters": ["total", "taxPercentage", "tip"],
+          "expectedReturn": "total + (total * taxPercentage) + tip",
+          "testCases": [
+            { "input": [40, 0.16, 2], "expected": 48.4 },
+            { "input": [10, 0.16, 0], "expected": 11.6 }
+          ],
+          "weight": 1,
+          "category": "real_world_functions"
+        },
+        {
+          "id": "Q6",
+          "type": "function_definition",
+          "description": "Write a function ageInHours that accepts a number argument ageInYears and returns the age in hours (ignore leap years)",
+          "functionName": "ageInHours",
+          "parameters": ["ageInYears"],
+          "expectedReturn": "ageInYears * 365 * 24",
+          "testCases": [
+            { "input": [10], "expected": 87600 },
+            { "input": [19], "expected": 166440 }
+          ],
+          "weight": 1,
+          "category": "conversion_functions"
+        },
+        {
+          "id": "Q7",
+          "type": "function_definition",
+          "description": "Write a function calculateProfit that accepts three arguments unitsSold, unitCost, unitPrice, and returns the net profit",
+          "functionName": "calculateProfit",
+          "parameters": ["unitsSold", "unitCost", "unitPrice"],
+          "expectedReturn": "unitsSold * (unitPrice - unitCost)",
+          "testCases": [
+            { "input": [1, 3, 5], "expected": 2 },
+            { "input": [4, 2, 5], "expected": 12 },
+            { "input": [10, 5, 15], "expected": 100 }
+          ],
+          "weight": 1,
+          "category": "business_functions"
+        },
+        {
+          "id": "Q8",
+          "type": "function_definition",
+          "description": "Write a function floor that accepts one number argument, number, and returns the number as an integer",
+          "functionName": "floor",
+          "parameters": ["number"],
+          "expectedReturn": "Math.floor(number)",
+          "testCases": [
+            { "input": [5], "expected": 5 },
+            { "input": [2.4], "expected": 2 },
+            { "input": [0.2], "expected": 0 },
+            { "input": [1.7], "expected": 1 }
+          ],
+          "weight": 1,
+          "category": "math_functions"
+        },
+        {
+          "id": "Q9",
+          "type": "function_definition",
+          "description": "Write a function toThePowerOf that accepts two number arguments, base and exponent, and returns the base to the exponent power",
+          "functionName": "toThePowerOf",
+          "parameters": ["base", "exponent"],
+          "expectedReturn": "Math.pow(base, exponent)",
+          "testCases": [
+            { "input": [2, 2], "expected": 4 },
+            { "input": [2, 3], "expected": 8 },
+            { "input": [4, 2], "expected": 16 }
+          ],
+          "weight": 1,
+          "category": "math_functions"
+        },
+        {
+          "id": "Q10",
+          "type": "function_definition",
+          "description": "Write a function upperCase that accepts a string argument string and returns the same string in upper case",
+          "functionName": "upperCase",
+          "parameters": ["string"],
+          "expectedReturn": "string.toUpperCase()",
+          "testCases": [
+            { "input": ["john"], "expected": "JOHN" },
+            { "input": ["cat"], "expected": "CAT" },
+            { "input": ["DOG"], "expected": "DOG" }
+          ],
+          "weight": 1,
+          "category": "string_functions"
+        }
+      ]
+    }
+  ]
+}
+

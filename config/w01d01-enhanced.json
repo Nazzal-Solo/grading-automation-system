@@ -1,0 +1,283 @@
+{
+  "lectures": [
+    {
+      "id": "W01D01_Intro_To_JS",
+      "name": "Introduction to JavaScript",
+      "description": "Basic JavaScript concepts and syntax - Predict expressions, fix syntax errors, define variables, string operations, and real-world calculations",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "arithmetic",
+          "description": "9 + 1 * 5 = ?",
+          "expectedValue": "14",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "basic_math"
+        },
+        {
+          "id": "Q2",
+          "type": "arithmetic",
+          "description": "9 % 2 = ?",
+          "expectedValue": "1",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "basic_math"
+        },
+        {
+          "id": "Q3",
+          "type": "arithmetic",
+          "description": "(9 / 3) * (10 - 7) = ?",
+          "expectedValue": "9",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "basic_math"
+        },
+        {
+          "id": "Q4",
+          "type": "arithmetic",
+          "description": "21 / 3 + 3 * 9 * 9 + 5 = ?",
+          "expectedValue": "255",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "complex_math"
+        },
+        {
+          "id": "Q5",
+          "type": "arithmetic",
+          "description": "36 / 9 + 48 - 10 / 2 = ?",
+          "expectedValue": "47",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "complex_math"
+        },
+        {
+          "id": "Q6",
+          "type": "syntax_fix",
+          "description": "Fix: const @name = 'John'",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q7",
+          "type": "syntax_fix",
+          "description": "Fix: const 'age' = 10",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q8",
+          "type": "syntax_fix",
+          "description": "Fix: const const = \"Constant\"",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q9",
+          "type": "syntax_fix",
+          "description": "Fix: const variable 1 = \"value\"",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q10",
+          "type": "variable",
+          "description": "Define a variable color containing your favorite color",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q11",
+          "type": "variable",
+          "description": "Define a variable positiveNumber containing any positive number",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q12",
+          "type": "variable",
+          "description": "Define a variable food containing your favorite food",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q13",
+          "type": "variable",
+          "description": "Define a variable PhoneNumber containing a phone number",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q14",
+          "type": "string_operation",
+          "description": "10 + \"10\" = ?",
+          "expectedValue": "1010",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q15",
+          "type": "string_operation",
+          "description": "\"10\" + \"10\" = ?",
+          "expectedValue": "1010",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q16",
+          "type": "string_operation",
+          "description": "10 + 10 + \"5\" = ?",
+          "expectedValue": "205",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q17",
+          "type": "string_operation",
+          "description": "\"Hello\" + 1 = ?",
+          "expectedValue": "Hello1",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q18",
+          "type": "string_operation",
+          "description": "\"10\" + 5 + 5 = ?",
+          "expectedValue": "1055",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q19",
+          "type": "string_operation",
+          "description": "\"20\" - 10 = ?",
+          "expectedValue": "10",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q20",
+          "type": "string_operation",
+          "description": "\"9\" - \"5\" = ?",
+          "expectedValue": "4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q21",
+          "type": "string_operation",
+          "description": "\"19\" - \"13\" + 17 = ?",
+          "expectedValue": "23",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q22",
+          "type": "string_operation",
+          "description": "5 + 6 + \"4\" + 9 - 4 - 2 = ?",
+          "expectedValue": "1143",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q23",
+          "type": "string_concatenation",
+          "description": "Using string concatenation write an expression that represents your first name, last name, gender, and nationality",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations",
+          "flexible": true
+        },
+        {
+          "id": "Q24",
+          "type": "calculation",
+          "description": "Write an expression that represents the number of seconds in 30 days",
+          "expectedValue": "2592000",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "time_math"
+        },
+        {
+          "id": "Q25",
+          "type": "algebra",
+          "description": "Reassign the value of a to make the following expression equal to nine: c - b * c + a = 9",
+          "expectedValue": "9",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "algebra",
+          "flexible": true
+        },
+        {
+          "id": "Q26",
+          "type": "real_world",
+          "description": "Using the variables below write an expression that calculates the total amount for buying two coffee cups",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "real_world",
+          "flexible": true
+        },
+        {
+          "id": "Q27",
+          "type": "real_world",
+          "description": "Write an expression that represents the average grade of an exam, knowing that in a class of ten students, five of them got 24/30, two of them got 16/30 and the remainder got 29/30",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "real_world",
+          "flexible": true
+        },
+        {
+          "id": "Q28",
+          "type": "geometry",
+          "description": "Write expressions that calculate the area and the perimeter of a rectangle with a length of 10m and a width of 5m",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "geometry",
+          "flexible": true
+        },
+        {
+          "id": "Q29",
+          "type": "geometry",
+          "description": "Write expressions that calculate the diameter and the circumference of a circle with a radius of 5m",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "geometry",
+          "flexible": true
+        },
+        {
+          "id": "Q30",
+          "type": "conversion",
+          "description": "Write an expression that converts 30 degrees Celsius to Fahrenheit",
+          "expectedValue": "86",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "conversions"
+        }
+      ]
+    }
+  ]
+}
+

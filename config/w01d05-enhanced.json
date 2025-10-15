@@ -1,0 +1,414 @@
+{
+  "lectures": [
+    {
+      "id": "W01D05_Conditionals",
+      "name": "Conditionals in JavaScript",
+      "description": "Conditional statements, string manipulation, type validation, and complex logic - Learn to use if/else statements, string methods, type checking, and implement complex conditional logic",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function_definition",
+          "description": "Write a function toLowerOrUpperCase that accepts two arguments, string and strCase, and returns the string in lower case or upper case depending on what was specified in the second parameter",
+          "functionName": "toLowerOrUpperCase",
+          "expectedParameters": ["string", "strCase"],
+          "testCases": [
+            {
+              "input": ["HELLO WORLD", "lower"],
+              "expected": "hello world",
+              "description": "Convert to lowercase"
+            },
+            {
+              "input": ["my name is john", "upper"],
+              "expected": "MY NAME IS JOHN",
+              "description": "Convert to uppercase"
+            },
+            {
+              "input": ["my name is john", "mixed"],
+              "expected": "String case must be lower or upper",
+              "description": "Invalid case parameter"
+            }
+          ],
+          "weight": 1,
+          "category": "string_manipulation",
+          "flexible": false
+        },
+        {
+          "id": "Q2",
+          "type": "function_definition",
+          "description": "Write a function howLong that accepts one argument word and returns whether the word is short, medium, long, or very long",
+          "functionName": "howLong",
+          "expectedParameters": ["word"],
+          "testCases": [
+            {
+              "input": ["and"],
+              "expected": "short",
+              "description": "Short word (less than 5 characters)"
+            },
+            {
+              "input": ["function"],
+              "expected": "medium",
+              "description": "Medium word (5-8 characters)"
+            },
+            {
+              "input": ["corresponding"],
+              "expected": "long",
+              "description": "Long word (9-13 characters)"
+            },
+            {
+              "input": ["Supercalifragilisticexpialidocious"],
+              "expected": "very long",
+              "description": "Very long word (more than 13 characters)"
+            }
+          ],
+          "weight": 1,
+          "category": "conditional_logic",
+          "flexible": false
+        },
+        {
+          "id": "Q3",
+          "type": "function_definition",
+          "description": "Write a function startsWith that accept two string arguments string, character and returns true if the string starts with that character. It doesn't matter if it's lowercase or uppercase",
+          "functionName": "startsWith",
+          "expectedParameters": ["string", "character"],
+          "testCases": [
+            {
+              "input": ["Hello", "h"],
+              "expected": true,
+              "description": "Starts with lowercase h"
+            },
+            {
+              "input": ["hello", "h"],
+              "expected": true,
+              "description": "Starts with lowercase h"
+            },
+            {
+              "input": ["hello", "a"],
+              "expected": false,
+              "description": "Does not start with a"
+            },
+            {
+              "input": ["World", "h"],
+              "expected": false,
+              "description": "Does not start with h"
+            },
+            {
+              "input": ["World", "a"],
+              "expected": false,
+              "description": "Does not start with a"
+            }
+          ],
+          "weight": 1,
+          "category": "string_manipulation",
+          "flexible": false
+        },
+        {
+          "id": "Q4",
+          "type": "function_definition",
+          "description": "Write a function endsWith that accepts two string arguments, string and character, and returns true if the string ends with that character",
+          "functionName": "endsWith",
+          "expectedParameters": ["string", "character"],
+          "testCases": [
+            {
+              "input": ["Hello", "o"],
+              "expected": true,
+              "description": "Ends with lowercase o"
+            },
+            {
+              "input": ["Hello", "O"],
+              "expected": true,
+              "description": "Ends with uppercase O"
+            },
+            {
+              "input": ["hellO", "o"],
+              "expected": true,
+              "description": "Ends with lowercase o"
+            },
+            {
+              "input": ["World", "h"],
+              "expected": false,
+              "description": "Does not end with h"
+            },
+            {
+              "input": ["World", "a"],
+              "expected": false,
+              "description": "Does not end with a"
+            },
+            {
+              "input": ["World", "c"],
+              "expected": false,
+              "description": "Does not end with c"
+            }
+          ],
+          "weight": 1,
+          "category": "string_manipulation",
+          "flexible": false
+        },
+        {
+          "id": "Q5",
+          "type": "function_definition",
+          "description": "Write a function deposit that accepts an argument amount and returns the deposited amount. The function should only accept positive number arguments otherwise return appropriate error messages",
+          "functionName": "deposit",
+          "expectedParameters": ["amount"],
+          "testCases": [
+            {
+              "input": [100],
+              "expected": 100,
+              "description": "Valid positive amount"
+            },
+            {
+              "input": [250],
+              "expected": 250,
+              "description": "Valid positive amount"
+            },
+            {
+              "input": [-100],
+              "expected": "Please enter a positive number",
+              "description": "Negative amount"
+            },
+            {
+              "input": ["100"],
+              "expected": "Please enter a number",
+              "description": "String input"
+            }
+          ],
+          "weight": 1,
+          "category": "type_validation",
+          "flexible": false
+        },
+        {
+          "id": "Q6",
+          "type": "function_definition",
+          "description": "Write a function oddOrEven that accepts a number argument number and returns a string stating if the number is odd or even",
+          "functionName": "oddOrEven",
+          "expectedParameters": ["number"],
+          "testCases": [
+            {
+              "input": [1],
+              "expected": "1 is odd",
+              "description": "Odd number"
+            },
+            {
+              "input": [2],
+              "expected": "2 is even",
+              "description": "Even number"
+            },
+            {
+              "input": [5],
+              "expected": "5 is odd",
+              "description": "Odd number"
+            },
+            {
+              "input": [10],
+              "expected": "10 is even",
+              "description": "Even number"
+            }
+          ],
+          "weight": 1,
+          "category": "conditional_logic",
+          "flexible": false
+        },
+        {
+          "id": "Q7",
+          "type": "function_definition",
+          "description": "Write a function stringCase that accepts a string argument string and returns whether the string is all upper case or all lower case or mix case",
+          "functionName": "stringCase",
+          "expectedParameters": ["string"],
+          "testCases": [
+            {
+              "input": ["JOHN"],
+              "expected": "all upper case",
+              "description": "All uppercase string"
+            },
+            {
+              "input": ["john"],
+              "expected": "all lower case",
+              "description": "All lowercase string"
+            },
+            {
+              "input": ["joHN"],
+              "expected": "mix case",
+              "description": "Mixed case string"
+            }
+          ],
+          "weight": 1,
+          "category": "string_manipulation",
+          "flexible": false
+        },
+        {
+          "id": "Q8",
+          "type": "function_definition",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year",
+          "functionName": "isLeapYear",
+          "expectedParameters": ["year"],
+          "testCases": [
+            {
+              "input": [2000],
+              "expected": true,
+              "description": "Leap year (divisible by 400)"
+            },
+            {
+              "input": [2004],
+              "expected": true,
+              "description": "Leap year (divisible by 4)"
+            },
+            {
+              "input": [2020],
+              "expected": true,
+              "description": "Leap year (divisible by 4)"
+            },
+            {
+              "input": [2096],
+              "expected": true,
+              "description": "Leap year (divisible by 4)"
+            },
+            {
+              "input": [1603],
+              "expected": false,
+              "description": "Not leap year"
+            },
+            {
+              "input": [2021],
+              "expected": false,
+              "description": "Not leap year"
+            },
+            {
+              "input": [2200],
+              "expected": false,
+              "description": "Not leap year (divisible by 100 but not 400)"
+            },
+            {
+              "input": [2500],
+              "expected": false,
+              "description": "Not leap year (divisible by 100 but not 400)"
+            },
+            {
+              "input": [2600],
+              "expected": false,
+              "description": "Not leap year (divisible by 100 but not 400)"
+            },
+            {
+              "input": [3000],
+              "expected": false,
+              "description": "Not leap year (divisible by 100 but not 400)"
+            }
+          ],
+          "weight": 1,
+          "category": "leap_year",
+          "flexible": false
+        },
+        {
+          "id": "Q9",
+          "type": "function_definition",
+          "description": "Write a function login_v01 that accepts two string arguments, username and password, and returns a string login successful if the username length is more than 6 and the password length is more than or equal to 8 otherwise return login failed",
+          "functionName": "login_v01",
+          "expectedParameters": ["username", "password"],
+          "testCases": [
+            {
+              "input": ["John", "1234"],
+              "expected": "login failed",
+              "description": "Short username and password"
+            },
+            {
+              "input": ["John", "12345678"],
+              "expected": "login failed",
+              "description": "Short username, long password"
+            },
+            {
+              "input": ["john_doe", "123456"],
+              "expected": "login failed",
+              "description": "Long username, short password"
+            },
+            {
+              "input": ["john_doe", "12345678"],
+              "expected": "login successful",
+              "description": "Long username and password"
+            }
+          ],
+          "weight": 1,
+          "category": "login_logic",
+          "flexible": false
+        },
+        {
+          "id": "Q10",
+          "type": "function_definition",
+          "description": "Write a function login_v02 that checks whether the username and password match the corresponding values from the account list. Make sure not to remove the length validation from the previous question",
+          "functionName": "login_v02",
+          "expectedParameters": ["username", "password"],
+          "testCases": [
+            {
+              "input": ["JOHN_DOE", "koljgwEA"],
+              "expected": "login successful",
+              "description": "Valid credentials (case insensitive username)"
+            },
+            {
+              "input": ["john_doe", "KOLJGWEA"],
+              "expected": "login failed",
+              "description": "Wrong password (case sensitive)"
+            },
+            {
+              "input": ["john_doe", "12345678"],
+              "expected": "login failed",
+              "description": "Wrong password"
+            },
+            {
+              "input": ["jane_doe", "koljgwEA"],
+              "expected": "login failed",
+              "description": "Wrong username"
+            },
+            {
+              "input": ["jane_doe", "12345678"],
+              "expected": "login successful",
+              "description": "Valid credentials for jane_doe"
+            }
+          ],
+          "weight": 1,
+          "category": "login_logic",
+          "flexible": false
+        },
+        {
+          "id": "Q11",
+          "type": "function_definition",
+          "description": "Write a function login_v03 that returns the appropriate reason for failed login attempts. Keep the validation from the previous questions",
+          "functionName": "login_v03",
+          "expectedParameters": ["username", "password"],
+          "testCases": [
+            {
+              "input": ["john_doe", "koljgwEA"],
+              "expected": "login successful",
+              "description": "Valid credentials"
+            },
+            {
+              "input": ["jane_doe", "12345678"],
+              "expected": "login successful",
+              "description": "Valid credentials"
+            },
+            {
+              "input": ["john", "12345678"],
+              "expected": "username must be more than 6 characters long",
+              "description": "Short username"
+            },
+            {
+              "input": ["jane_doe", "123456"],
+              "expected": "password must be at least 8 characters long",
+              "description": "Short password"
+            },
+            {
+              "input": ["MrPotato", "12345678"],
+              "expected": "username doesn't exist",
+              "description": "Non-existent username"
+            },
+            {
+              "input": ["jane_doe", "123456789"],
+              "expected": "wrong password",
+              "description": "Wrong password"
+            }
+          ],
+          "weight": 1,
+          "category": "login_logic",
+          "flexible": false
+        }
+      ]
+    }
+  ]
+}
+

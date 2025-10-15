@@ -1,0 +1,29 @@
+{
+  "cohorts": [
+    {
+      "id": "C15",
+      "number": 15,
+      "name": "Cohort 15",
+      "status": "complete",
+      "duration": "5 months"
+    },
+    {
+      "id": "C17",
+      "number": 17,
+      "name": "Cohort 17",
+      "status": "upcoming",
+      "duration": "5 months"
+    },
+    {
+      "id": "C16",
+      "number": 16,
+      "name": "Cohort 16",
+      "status": "active",
+      "duration": "5 months"
+    }
+  ],
+  "activeCohort": 16,
+  "cohortDuration": "5 months",
+  "nextCohortStart": "2025-01-01",
+  "lastUpdated": "2025-10-15T23:08:43.958Z"
+}

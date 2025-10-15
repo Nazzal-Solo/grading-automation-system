@@ -1,0 +1,336 @@
+{
+  "lectures": [
+    {
+      "id": "W03D03_Iteration_P2",
+      "name": "Iteration Part-2 in JavaScript",
+      "description": "Object iteration, for-in loops, and advanced data manipulation - Learn to iterate through objects, manipulate object properties, and implement complex validation logic",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "object_iteration_function",
+          "description": "Write a function keyValuePairs that accepts an object and returns an array of arrays that contains both the key and value",
+          "functionName": "keyValuePairs",
+          "parameters": ["object"],
+          "expectedReturn": "array of arrays",
+          "testCases": [
+            {
+              "input": [{ "name": "John", "age": 24 }],
+              "expected": [
+                ["name", "John"],
+                ["age", 24]
+              ],
+              "description": "Convert object to key-value pairs array"
+            },
+            {
+              "input": [{ "firstName": "John", "lastName": "Doe" }],
+              "expected": [
+                ["firstName", "John"],
+                ["lastName", "Doe"]
+              ],
+              "description": "Convert object with different keys to pairs"
+            },
+            {
+              "input": [
+                {
+                  "name": "Mark",
+                  "position": "Full-Stack Developer",
+                  "salary": 600
+                }
+              ],
+              "expected": [
+                ["name", "Mark"],
+                ["position", "Full-Stack Developer"],
+                ["salary", 600]
+              ],
+              "description": "Convert complex object to key-value pairs"
+            }
+          ],
+          "weight": 1,
+          "category": "object_iteration"
+        },
+        {
+          "id": "Q2",
+          "type": "object_iteration_function",
+          "description": "Write a function absoluteNumbers that accepts an object of grades and changes all negative numbers to become positive then returns the object after checking all the values",
+          "functionName": "absoluteNumbers",
+          "parameters": ["grades"],
+          "expectedReturn": "object with absolute values",
+          "testCases": [
+            {
+              "input": [{ "science": 50, "art": 60 }],
+              "expected": { "science": 50, "art": 60 },
+              "description": "Object with positive values remains unchanged"
+            },
+            {
+              "input": [{ "science": -80, "art": 75, "english": 77 }],
+              "expected": { "science": 80, "art": 75, "english": 77 },
+              "description": "Convert negative values to positive"
+            }
+          ],
+          "weight": 1,
+          "category": "object_manipulation"
+        },
+        {
+          "id": "Q3",
+          "type": "object_iteration_function",
+          "description": "Write a function PassedOrFailed that accepts an object of student grades and returns a string The student have passed if all of the grades are equal or above 50% of the material total grades otherwise return The student have failed",
+          "functionName": "passedOrFailed",
+          "parameters": ["studentGrades"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [
+                {
+                  "math": { "grade": 70, "total": 120 },
+                  "english": { "grade": 80, "total": 100 },
+                  "art": { "grade": 90, "total": 100 }
+                }
+              ],
+              "expected": "The student have passed",
+              "description": "Student with all grades above 50% passes"
+            },
+            {
+              "input": [
+                {
+                  "math": { "grade": 59, "total": 120 },
+                  "english": { "grade": 80, "total": 100 },
+                  "art": { "grade": 90, "total": 100 }
+                }
+              ],
+              "expected": "The student have failed",
+              "description": "Student with one grade below 50% fails"
+            }
+          ],
+          "weight": 1,
+          "category": "object_analysis"
+        },
+        {
+          "id": "Q4",
+          "type": "object_iteration_function",
+          "description": "Write a function convertToArray that accepts an object with numerical keys and returns an array containing the values with the corresponding index don't use push or unshift",
+          "functionName": "convertToArray",
+          "parameters": ["object"],
+          "expectedReturn": "array",
+          "testCases": [
+            {
+              "input": [{ "0": "one", "1": "two", "2": "three" }],
+              "expected": ["one", "two", "three"],
+              "description": "Convert object with numerical keys to array"
+            },
+            {
+              "input": [{ "0": "two", "1": "three", "2": "one" }],
+              "expected": ["two", "three", "one"],
+              "description": "Convert object with different order to array"
+            },
+            {
+              "input": [{ "0": "three", "1": "two", "2": "one" }],
+              "expected": ["three", "two", "one"],
+              "description": "Convert object with reversed order to array"
+            }
+          ],
+          "weight": 1,
+          "category": "object_conversion"
+        },
+        {
+          "id": "Q5",
+          "type": "object_iteration_function",
+          "description": "Write a function safeToConsume that accepts an object of some of the chemicals compounds of the object, and returns a string Safe to consume if none of the chemical compounds is poisonous and if it does then return Poisonous do not consume",
+          "functionName": "safeToConsume",
+          "parameters": ["object"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [{ "h2o": "10.0g" }],
+              "expected": "Safe to consume",
+              "description": "Safe compound returns safe message"
+            },
+            {
+              "input": [
+                {
+                  "pyridoxine": "0.4mg",
+                  "choline": "9.8mg",
+                  "vitaminC": "8.7mg"
+                }
+              ],
+              "expected": "Safe to consume",
+              "description": "Multiple safe compounds return safe message"
+            },
+            {
+              "input": [
+                {
+                  "genkwanin": "3.1mg",
+                  "mezerein": "2.7mg",
+                  "daphnetoxin": "7.3mg"
+                }
+              ],
+              "expected": "Poisonous do not consume",
+              "description": "Contains poisonous compound returns warning"
+            },
+            {
+              "input": [
+                { "h2o": "5.2mg", "glucose": "1.3mg", "cyanide": "4.0mg" }
+              ],
+              "expected": "Poisonous do not consume",
+              "description": "Contains cyanide returns warning"
+            }
+          ],
+          "weight": 1,
+          "category": "object_validation"
+        },
+        {
+          "id": "Q6",
+          "type": "object_iteration_function",
+          "description": "Write a function toString that accepts an object and return all of its values in a string, solving it using for in loop",
+          "functionName": "toString",
+          "parameters": ["object"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [{ "name": "John", "age": 24 }],
+              "expected": "John, 24",
+              "description": "Convert object values to comma-separated string"
+            },
+            {
+              "input": [{ "firstName": "John", "lastName": "Doe" }],
+              "expected": "John, Doe",
+              "description": "Convert object with different keys to string"
+            },
+            {
+              "input": [
+                {
+                  "name": "Mark",
+                  "position": "Full-Stack Developer",
+                  "salary": 600
+                }
+              ],
+              "expected": "Mark, Full-Stack Developer, 600",
+              "description": "Convert complex object to string"
+            }
+          ],
+          "weight": 1,
+          "category": "object_string_conversion"
+        },
+        {
+          "id": "Q7",
+          "type": "object_iteration_function",
+          "description": "Write a function totalBill that accepts an object representing separate bills and returns the sum of all bills",
+          "functionName": "totalBill",
+          "parameters": ["billsObject"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [
+                { "waterBill": 25, "electricityBill": 50, "hospitalBill": 1000 }
+              ],
+              "expected": 1075,
+              "description": "Sum of January bills"
+            },
+            {
+              "input": [
+                { "waterBill": 30, "electricityBill": 45, "insurance": 300 }
+              ],
+              "expected": 375,
+              "description": "Sum of February bills"
+            }
+          ],
+          "weight": 1,
+          "category": "object_summation"
+        },
+        {
+          "id": "Q8",
+          "type": "object_iteration_function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message saying 'Login Successful' or 'Login Failed' depending on whether the login information matches the data in the given object",
+          "functionName": "login",
+          "parameters": ["username", "password"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["Jane", "123456"],
+              "expected": "Login Successful",
+              "description": "Valid login credentials"
+            },
+            {
+              "input": ["Jane", "5321"],
+              "expected": "Login Failed",
+              "description": "Invalid password for existing user"
+            },
+            {
+              "input": ["Mark", "123456"],
+              "expected": "Login Failed",
+              "description": "Non-existent username"
+            },
+            {
+              "input": ["admin", "abc123"],
+              "expected": "Login Successful",
+              "description": "Valid admin login"
+            },
+            {
+              "input": ["admin", "aaabc123"],
+              "expected": "Login Failed",
+              "description": "Invalid admin password"
+            }
+          ],
+          "weight": 1,
+          "category": "object_search"
+        },
+        {
+          "id": "Q9",
+          "type": "object_iteration_function",
+          "description": "Write a function createDog that accepts three string arguments, name, dogBreed, and furColor, and adds a new dog to the uniqueDogs object then returns a string Added the dog successfully if there is no other dog with the same name otherwise return The dog isn't unique enough :(",
+          "functionName": "createDog",
+          "parameters": ["name", "dogBreed", "furColor"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["luna", "Husky", "black and white"],
+              "expected": "Added the dog successfully",
+              "description": "Add new unique dog successfully"
+            },
+            {
+              "input": ["rex", "Golden Retriever", "blond"],
+              "expected": "The dog isn't unique enough :(",
+              "description": "Try to add dog with existing name"
+            }
+          ],
+          "weight": 1,
+          "category": "object_management"
+        },
+        {
+          "id": "Q10",
+          "type": "object_iteration_function",
+          "description": "Write a function validateMessage that accepts an object representing a message and returns the object if it is valid and after removing any Advanced keys. The message will consist of three keys, username, message, and date, with all of their values as strings. Return the object only if all three keys are strings. If the number of keys is more than three then delete the Advanced keys, and if the message doesn't have the right data type then return invalid message",
+          "functionName": "validateMessage",
+          "parameters": ["message"],
+          "expectedReturn": "object or string",
+          "testCases": [
+            {
+              "input": [
+                {
+                  "username": "John",
+                  "message": "Hello",
+                  "date": "01/01/2020",
+                  "someKey": "someValue"
+                }
+              ],
+              "expected": {
+                "username": "John",
+                "message": "Hello",
+                "date": "01/01/2020"
+              },
+              "description": "Valid message with extra keys removed"
+            },
+            {
+              "input": [
+                { "username": 10, "message": "Hello", "date": "01/01/2020" }
+              ],
+              "expected": "invalid message",
+              "description": "Invalid message with wrong data type"
+            }
+          ],
+          "weight": 1,
+          "category": "object_validation"
+        }
+      ]
+    }
+  ]
+}

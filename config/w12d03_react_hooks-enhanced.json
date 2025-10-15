@@ -1,0 +1,182 @@
+{
+  "id": "W12D03_React_Hooks",
+  "title": "React Hooks",
+  "description": "React hooks including useState, useEffect, and event handling",
+  "questions": [
+    {
+      "id": "q1_create_react_app",
+      "title": "Create React App",
+      "description": "Create a react app called react_blog using create-react-app",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileExists": "package.json",
+          "description": "Creates React app with package.json"
+        },
+        {
+          "fileContains": "react_blog|react-blog|react_name|react-name|package\\.json",
+          "description": "App is named react_blog or similar, or has package.json",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q2_modify_app_component",
+      "title": "Modify App Component",
+      "description": "Modify the app component so it returns a div containing and h1 saying Blog App",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "Blog App|h1.*Blog|div.*h1|Blog|h1|Blog.*App",
+          "description": "App component returns div with h1 saying Blog App"
+        }
+      ]
+    },
+    {
+      "id": "q3_create_posts_state",
+      "title": "Create Posts State",
+      "description": "In the app component create a stateful variable using the state hook to hold the information of posts ([posts, setPosts])",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "useState.*posts|posts.*useState|useState.*articles|articles.*useState|useState|posts|articles",
+          "description": "Creates posts/articles state using useState hook"
+        },
+        {
+          "fileContains": "setPosts|posts.*set|setArticles|articles.*set|setState|set.*State|setposts|setPost",
+          "description": "Creates setPosts/setArticles function",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q4_default_posts_value",
+      "title": "Default Posts Value",
+      "description": "Add a default value for the posts state variable, an array with two objects with the following keys, userId, id, title, and body",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "userId.*id.*title.*body|userId|id.*title|body|authorId.*articleId.*headline.*content|authorId|articleId.*headline|content|id.*title|body|userId.*id|title.*body",
+          "description": "Default posts/articles array contains objects with required fields"
+        }
+      ]
+    },
+    {
+      "id": "q5_render_posts",
+      "title": "Render Posts",
+      "description": "Render the posts on the screen, The title and body must be visible",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "posts.*map|map.*posts|articles.*map|map.*articles|map.*\\(|posts\\.map|articles\\.map",
+          "description": "Maps over posts/articles array to render them"
+        },
+        {
+          "fileContains": "title.*body|post.*title|post.*body|headline.*content|article.*headline|article.*content|title|body|headline|content|post\\.title|post\\.body",
+          "description": "Renders title/body or headline/content of posts/articles",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q6_create_inputs_button",
+      "title": "Create Inputs and Button",
+      "description": "Create a button and four inputs, each input is for one of the post keys then create a state variable using useState Hook for each one of the inputs",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "input.*button|button.*input",
+          "description": "Creates button and inputs"
+        },
+        {
+          "fileContains": "useState.*userId|useState.*id|useState.*title|useState.*body|useState.*authorId|useState.*articleId|useState.*headline|useState.*content|useState|userId|id|title|body",
+          "description": "Creates state variables for each input using useState",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q7_onChange_events",
+      "title": "Add onChange Events",
+      "description": "Add onChange event for each input and set the input value as the value for the corresponding state variable",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "onChange|change|onChange.*e|e.*target.*value|setUserId|setId|setTitle|setBody",
+          "description": "Adds onChange events to inputs"
+        },
+        {
+          "fileContains": "value.*setState|setState.*value|value.*set|set.*value|e\\.target\\.value",
+          "description": "Sets input values using state variables",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q8_onClick_event",
+      "title": "Add onClick Event",
+      "description": "Add onClick event for the button to handle creating a new post",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "onClick|click|onClick.*\\{|\\}.*onClick|addPost|create.*post",
+          "description": "Adds onClick event to button"
+        },
+        {
+          "fileContains": "addPost|create.*post|submitArticle|add.*article|submit|add|create.*post",
+          "description": "Button handles creating new post/article",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q9_addPost_function",
+      "title": "Create addPost Function",
+      "description": "create function addPost, create a new post object using state variables that holds the each input value, add the new post object to the posts state",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "function.*addPost|addPost.*function|const.*addPost|function.*submitArticle|submitArticle.*function|const.*submitArticle|function.*submit|submit.*function|addPost|submitArticle",
+          "description": "Creates addPost/submitArticle function"
+        },
+        {
+          "fileContains": "spread.*operator|\\.\\.\\.|setPosts.*\\[.*\\]|setArticles.*\\[.*\\]|\\[.*\\]|spread|\\[.*posts.*\\]|\\[.*articles.*\\]",
+          "description": "Uses spread operator to add new post/article to posts/articles array",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q10_useEffect_fetch",
+      "title": "Use useEffect to Fetch Posts",
+      "description": "Use the useEffect hook to fetch posts from the following endpoint https://jsonplaceholder.typicode.com/posts and then set the posts state variable with the value of the received posts",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "useEffect|effect|useEffect.*\\{|\\}.*useEffect|useEffect.*\\(|\\).*useEffect",
+          "description": "Uses useEffect hook"
+        },
+        {
+          "fileContains": "jsonplaceholder|fetch.*posts|posts.*fetch|fetch.*\\(|axios|get.*posts|posts.*get",
+          "description": "Fetches posts from jsonplaceholder API",
+          "optional": true
+        },
+        {
+          "fileContains": "dependency.*array|\\[\\]|empty.*array|\\[\\s*\\]|\\[\\s*\\]|\\[\\]",
+          "description": "Adds empty dependency array to useEffect",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

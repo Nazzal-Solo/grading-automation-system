@@ -1,0 +1,266 @@
+{
+  "lectures": [
+    {
+      "id": "W03D01_Iteration_P1",
+      "name": "Iteration Part-1 in JavaScript",
+      "description": "Array iteration, loops, and data manipulation - Learn to iterate through arrays, filter data, and implement common iteration patterns",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "iteration_function",
+          "description": "Write a function sum that accepts an array of numbers and returns the sum of the numbers",
+          "functionName": "sum",
+          "parameters": ["numbers"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [[1, 2, 3, 4, 5, 6]],
+              "expected": 21,
+              "description": "Sum of array [1, 2, 3, 4, 5, 6]"
+            },
+            {
+              "input": [[1, 2, 3]],
+              "expected": 6,
+              "description": "Sum of array [1, 2, 3]"
+            }
+          ],
+          "weight": 1,
+          "category": "array_iteration"
+        },
+        {
+          "id": "Q2",
+          "type": "iteration_function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message saying 'Login Successful' or 'Login Failed' depending on whether the login information matches the data in the given array",
+          "functionName": "login",
+          "parameters": ["username", "password"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["Jane", "123456"],
+              "expected": "Login Successful",
+              "description": "Valid login credentials"
+            },
+            {
+              "input": ["Jane", "5321"],
+              "expected": "Login Failed",
+              "description": "Invalid password for existing user"
+            },
+            {
+              "input": ["Mark", "123456"],
+              "expected": "Login Failed",
+              "description": "Non-existent username"
+            },
+            {
+              "input": ["admin", "abc123"],
+              "expected": "Login Successful",
+              "description": "Valid admin login"
+            },
+            {
+              "input": ["admin", "aaabc123"],
+              "expected": "Login Failed",
+              "description": "Invalid admin password"
+            }
+          ],
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q3",
+          "type": "iteration_function",
+          "description": "Write a function onlyStrings that accepts an array of strings, numbers, and booleans, and returns a new array with only the strings",
+          "functionName": "onlyStrings",
+          "parameters": ["array"],
+          "expectedReturn": "array of strings",
+          "testCases": [
+            {
+              "input": [[0, 1, "Hello", true, 4, "World", 6]],
+              "expected": ["Hello", "World"],
+              "description": "Filter strings from mixed array"
+            },
+            {
+              "input": [["John", 87, true, 26, "Doe", false]],
+              "expected": ["John", "Doe"],
+              "description": "Filter strings from different mixed array"
+            }
+          ],
+          "weight": 1,
+          "category": "array_filtering"
+        },
+        {
+          "id": "Q4",
+          "type": "iteration_function",
+          "description": "Write a function range that accepts two number arguments and returns a string of all the numbers in between the two values in an ascending order, start and end are included and if only one value is provided then consider that the other value is zero",
+          "functionName": "range",
+          "parameters": ["start", "end"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [5, 8],
+              "expected": "5, 6, 7, 8",
+              "description": "Range from 5 to 8"
+            },
+            {
+              "input": [8, 5],
+              "expected": "5, 6, 7, 8",
+              "description": "Range from 8 to 5 (reverse order)"
+            },
+            {
+              "input": [5],
+              "expected": "0, 1, 2, 3, 4, 5",
+              "description": "Range from 0 to 5 (single argument)"
+            },
+            {
+              "input": [-5],
+              "expected": "-5, -4, -3, -2, -1, 0",
+              "description": "Range from -5 to 0 (negative start)"
+            }
+          ],
+          "weight": 1,
+          "category": "array_generation"
+        },
+        {
+          "id": "Q5",
+          "type": "iteration_function",
+          "description": "Write a function onlyOddNumbers that accepts an array of numbers and returns a new array with only the odd numbers",
+          "functionName": "onlyOddNumbers",
+          "parameters": ["numbers"],
+          "expectedReturn": "array of odd numbers",
+          "testCases": [
+            {
+              "input": [[0, 1, 2, 3, 4, 5, 6]],
+              "expected": [1, 3, 5],
+              "description": "Filter odd numbers from array"
+            },
+            {
+              "input": [[0, 12, 6]],
+              "expected": [],
+              "description": "No odd numbers in array"
+            }
+          ],
+          "weight": 1,
+          "category": "array_filtering"
+        },
+        {
+          "id": "Q6",
+          "type": "iteration_function",
+          "description": "Write a function maximumNumber that accepts an array of numbers and returns the highest number in the array",
+          "functionName": "maximumNumber",
+          "parameters": ["numbers"],
+          "expectedReturn": "number",
+          "testCases": [
+            {
+              "input": [[0, 5, 2, 10, 8, 6]],
+              "expected": 10,
+              "description": "Find maximum in array with 10"
+            },
+            {
+              "input": [[0, 5, 6]],
+              "expected": 6,
+              "description": "Find maximum in smaller array"
+            }
+          ],
+          "weight": 1,
+          "category": "array_analysis"
+        },
+        {
+          "id": "Q7",
+          "type": "iteration_function",
+          "description": "Write a function reversString that accepts a string and returns the string reversed, don't use .reverse()",
+          "functionName": "reversString",
+          "parameters": ["string"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["Hello"],
+              "expected": "olleH",
+              "description": "Reverse 'Hello' to 'olleH'"
+            },
+            {
+              "input": ["John"],
+              "expected": "nhoJ",
+              "description": "Reverse 'John' to 'nhoJ'"
+            }
+          ],
+          "weight": 1,
+          "category": "string_iteration"
+        },
+        {
+          "id": "Q8",
+          "type": "iteration_function",
+          "description": "Write a function onlyEven that accepts an array of numbers and returns the same array with only the even numbers, make sure not to create a new array",
+          "functionName": "onlyEven",
+          "parameters": ["numbers"],
+          "expectedReturn": "array of even numbers",
+          "testCases": [
+            {
+              "input": [[0, 1, 2, 3, 4, 5, 6]],
+              "expected": [0, 2, 4, 6],
+              "description": "Filter even numbers in place"
+            },
+            {
+              "input": [[1, 9, 2, 3, 4]],
+              "expected": [2, 4],
+              "description": "Filter even numbers from mixed array"
+            }
+          ],
+          "weight": 1,
+          "category": "array_mutation"
+        },
+        {
+          "id": "Q9",
+          "type": "iteration_function",
+          "description": "Write a function createUser that accepts two string arguments, username and password, and adds the new user to the allUsers array returning a message 'Registration successful'. Make sure to check if the username of the new user matches any of the usernames from existing users, if it does, return a message saying 'That username is not available' instead",
+          "functionName": "createUser",
+          "parameters": ["username", "password"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": ["James", "123456"],
+              "expected": "Registration successful",
+              "description": "Register new user successfully"
+            },
+            {
+              "input": ["Jane", "5321"],
+              "expected": "That username is not available",
+              "description": "Username already exists"
+            },
+            {
+              "input": ["Mark", "22222"],
+              "expected": "Registration successful",
+              "description": "Register another new user"
+            },
+            {
+              "input": ["admin", "abc123"],
+              "expected": "That username is not available",
+              "description": "Admin username already exists"
+            }
+          ],
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q10",
+          "type": "iteration_function",
+          "description": "Write a function convertToObject that accepts an array and returns an object containing the values with the corresponding index as keys",
+          "functionName": "convertToObject",
+          "parameters": ["array"],
+          "expectedReturn": "object",
+          "testCases": [
+            {
+              "input": [["one", "two", "three"]],
+              "expected": { "0": "one", "1": "two", "2": "three" },
+              "description": "Convert array to object with index keys"
+            },
+            {
+              "input": [["Hello", "World", "!!!"]],
+              "expected": { "0": "Hello", "1": "World", "2": "!!!" },
+              "description": "Convert string array to object"
+            }
+          ],
+          "weight": 1,
+          "category": "array_conversion"
+        }
+      ]
+    }
+  ]
+}

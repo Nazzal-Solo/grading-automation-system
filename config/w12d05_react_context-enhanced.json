@@ -1,0 +1,216 @@
+{
+  "id": "W12D05_React_Context",
+  "title": "React Context API",
+  "description": "React Context API for state management and component communication",
+  "questions": [
+    {
+      "id": "q1_create_context",
+      "title": "Create Context",
+      "description": "Create context with createContext() hook and put the result in a variable, UserContext, and export it",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "createContext\\(\\)|UserContext.*createContext|createContext.*UserContext",
+          "description": "Creates context using createContext() hook"
+        },
+        {
+          "fileContains": "export.*UserContext|UserContext.*export",
+          "description": "Exports UserContext",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q2_provider_wrapper",
+      "title": "Provider Wrapper",
+      "description": "In App component, use UserContext Specifically UserContext.Provider to wrap the component tree with context provider",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "UserContext\\.Provider|Provider.*UserContext",
+          "description": "Uses UserContext.Provider to wrap component tree"
+        },
+        {
+          "fileContains": "<UserContext\\.Provider|Provider.*>",
+          "description": "Wraps component tree with Provider",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q3_provider_value",
+      "title": "Provider Value",
+      "description": "On UserContext.Provider, put any value that will be (shared with the App child component) passed down into the entire component tree",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "value.*=|value\\s*:|Provider.*value",
+          "description": "Sets value prop on Provider"
+        },
+        {
+          "fileContains": "Provider.*value|shared.*state",
+          "description": "Passes value through Provider",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q4_dashboard_component",
+      "title": "Dashboard Component",
+      "description": "Create a Dashboard component that will return a header and paragraph with static content",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "function.*Dashboard|const.*Dashboard|Dashboard.*function|Dashboard.*component",
+          "description": "Creates Dashboard component"
+        },
+        {
+          "fileContains": "header|h1|h2|h3|paragraph|p.*>|welcome|Dashboard",
+          "description": "Returns header and paragraph elements",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q5_use_context_hook",
+      "title": "Use Context Hook",
+      "description": "Read the value from UserContext within Dashboard component by using the useContext hook",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "useContext\\(|useContext.*UserContext|useContext.*Context",
+          "description": "Uses useContext hook"
+        },
+        {
+          "fileContains": "UserContext.*useContext|useContext.*UserContext",
+          "description": "Reads value from UserContext",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q6_login_component",
+      "title": "Login Component",
+      "description": "Create a new component Login that will return four input for userName, email, phoneNumber, and password and one button",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "function.*Login|const.*Login|Login.*function|Login.*component",
+          "description": "Creates Login component"
+        },
+        {
+          "fileContains": "input.*userName|userName.*input|input.*email|email.*input|input.*phoneNumber|phoneNumber.*input|input.*password|password.*input",
+          "description": "Creates four inputs for user data",
+          "optional": true
+        },
+        {
+          "fileContains": "button|onClick|Login.*button",
+          "description": "Creates button element",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q7_login_state_management",
+      "title": "Login State Management",
+      "description": "When the user login hide Login component and show the Dashboard using state shared with Context API",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "login.*state|state.*login|isLoggedIn|loggedIn|showLogin|hideLogin|showHide|setShowHide|isLogged|setIsLogged",
+          "description": "Manages login state with Context API"
+        },
+        {
+          "fileContains": "Login.*Dashboard|Dashboard.*Login|conditional.*render|\\?.*:|showHide.*Login|Login.*showHide|isLogged.*\\?",
+          "description": "Conditionally renders Login or Dashboard",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q8_share_username",
+      "title": "Share Username",
+      "description": "Share the userName with other components using Context API, and display the userName in the Dashboard",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "userName.*context|context.*userName|userName.*Provider|Provider.*userName|userName.*user|user.*userName",
+          "description": "Shares userName through Context API"
+        },
+        {
+          "fileContains": "userName.*Dashboard|Dashboard.*userName|display.*userName|welcome.*userName|userName.*welcome",
+          "description": "Displays userName in Dashboard",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q9_userinfo_component",
+      "title": "UserInfo Component",
+      "description": "Create a new component UserInfo that will be a sub-component of Dashboard to display the user information email, userName, and phoneNumber",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "function.*UserInfo|const.*UserInfo|UserInfo.*function|UserInfo.*component",
+          "description": "Creates UserInfo component"
+        },
+        {
+          "fileContains": "UserInfo.*Dashboard|Dashboard.*UserInfo|email.*userName.*phoneNumber|userName.*email.*phoneNumber",
+          "description": "UserInfo displays user information",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q10_dark_mode_toggle",
+      "title": "Dark Mode Toggle",
+      "description": "Create a new button to toggle between dark mode and light mode to change the text-color and the background-color using Context API",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "dark.*mode|light.*mode|toggle.*mode|mode.*toggle|mode.*dark|mode.*light|colorTheme|setColorTheme",
+          "description": "Implements dark/light mode toggle"
+        },
+        {
+          "fileContains": "text.*color|background.*color|color.*context|context.*color|light.*dark|dark.*light|backgroundColor|color.*white|color.*black",
+          "description": "Changes text and background colors using Context",
+          "optional": true
+        },
+        {
+          "fileContains": "button.*toggle|toggle.*button|Dark.*Mode|Light.*Mode|chang.*theme|theme.*button",
+          "description": "Creates toggle button",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q11_food_recipes_refactor",
+      "title": "Food Recipes Refactor",
+      "description": "Refactor Food Recipes app to use Context API instead of using props",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "Food.*Recipes|Recipes.*Food|food.*recipe|recipe.*food|Food.*Recipe",
+          "description": "References Food Recipes app",
+          "optional": true
+        },
+        {
+          "fileContains": "props.*context|context.*props|refactor.*context|context.*refactor|Context.*API",
+          "description": "Refactors from props to Context API",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

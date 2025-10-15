@@ -1,0 +1,203 @@
+{
+  "id": "W16D03_Postgress_Relational_Database",
+  "title": "PostgreSQL Relational Database",
+  "description": "PostgreSQL relational database operations with foreign keys and joins",
+  "questions": [
+    {
+      "id": "q1_sql_operations",
+      "title": "SQL Database Operations",
+      "description": "Create users table, insert users, create orders table, create foreign key relationship, and insert orders",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "users",
+          "description": "References users table"
+        },
+        {
+          "fileContains": "orders",
+          "description": "References orders table"
+        },
+        {
+          "fileContains": "email",
+          "description": "Includes email column"
+        },
+        {
+          "fileContains": "name",
+          "description": "Includes name column"
+        },
+        {
+          "fileContains": "price",
+          "description": "Includes price column"
+        },
+        {
+          "fileContains": "user_id",
+          "description": "Uses user_id as foreign key"
+        },
+        {
+          "fileContains": "INSERT INTO users",
+          "description": "Inserts data into users table"
+        },
+        {
+          "fileContains": "INSERT INTO orders",
+          "description": "Inserts data into orders table"
+        }
+      ]
+    },
+    {
+      "id": "q2_sql_queries",
+      "title": "SQL Queries",
+      "description": "Retrieve all users, retrieve all orders, and create join query to display order price and user email",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "users",
+          "description": "References users table"
+        },
+        {
+          "fileContains": "orders",
+          "description": "References orders table"
+        },
+        {
+          "fileContains": "JOIN",
+          "description": "Uses JOIN operation"
+        },
+        {
+          "fileContains": "price",
+          "description": "Selects price column"
+        },
+        {
+          "fileContains": "email",
+          "description": "Selects email column"
+        }
+      ]
+    },
+    {
+      "id": "q3_basic_server",
+      "title": "Basic Server Setup",
+      "description": "Create a basic server without any APIs and connect the app to PostgreSQL using the pg package",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "express",
+          "description": "Uses Express framework"
+        },
+        {
+          "fileContains": "pg",
+          "description": "Uses pg package for PostgreSQL"
+        },
+        {
+          "fileContains": "Pool",
+          "description": "Uses PostgreSQL Pool",
+          "optional": true
+        },
+        {
+          "fileContains": "listen",
+          "description": "Starts server",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q4_users_api",
+      "title": "Users API",
+      "description": "Create an API with the endpoint of /users that will insert a new user into the database",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "/users",
+          "description": "Creates /users endpoint",
+          "optional": true
+        },
+        {
+          "fileContains": "users",
+          "description": "References users endpoint"
+        },
+        {
+          "fileContains": "INSERT INTO users",
+          "description": "Inserts user into database",
+          "optional": true
+        },
+        {
+          "fileContains": "getAllUsers",
+          "description": "Has users functionality",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q5_orders_api",
+      "title": "Orders API",
+      "description": "Create an API with the endpoint of /orders that will insert a new order into the database, and make sure it is connected to a user",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "/orders",
+          "description": "Creates /orders endpoint",
+          "optional": true
+        },
+        {
+          "fileContains": "orders",
+          "description": "References orders endpoint"
+        },
+        {
+          "fileContains": "INSERT INTO orders",
+          "description": "Inserts order into database",
+          "optional": true
+        },
+        {
+          "fileContains": "getAllOrders",
+          "description": "Has orders functionality",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q6_order_management_api",
+      "title": "Order Management API",
+      "description": "Create an API with the endpoint of /orders/:id that will delete an order with the specified id, and create an API with the endpoint of /orders that will retrieve all orders and display all columns from both tables",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "/orders/:id",
+          "description": "Creates /orders/:id endpoint",
+          "optional": true
+        },
+        {
+          "fileContains": "DELETE FROM orders",
+          "description": "Deletes order from database",
+          "optional": true
+        },
+        {
+          "fileContains": "/orders",
+          "description": "Creates /orders endpoint",
+          "optional": true
+        },
+        {
+          "fileContains": "JOIN",
+          "description": "Uses JOIN to get data from both tables",
+          "optional": true
+        },
+        {
+          "fileContains": "orders",
+          "description": "References orders endpoint"
+        },
+        {
+          "fileContains": "deleteOrder",
+          "description": "Has delete order functionality",
+          "optional": true
+        },
+        {
+          "fileContains": "getOrdersJoin",
+          "description": "Has join query functionality",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{
+  "lectureId": "W10D01_Express_Middlewares",
+  "title": "Express Middlewares",
+  "description": "Express.js Routers, Middleware Functions, and Error Handling",
+  "questions": [
+    {
+      "id": "q1_users_router",
+      "title": "Users Router Setup",
+      "description": "Create a new express router to handle all requests to /users, and use it in the application, the endpoint /users should return all users.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "Router\\(\\)",
+          "description": "Creates Express router"
+        },
+        {
+          "fileContains": "app\\.use.*users",
+          "description": "Uses users router in application",
+          "optional": true
+        },
+        {
+          "fileContains": "router\\.get.*users",
+          "description": "Defines GET /users route",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.json.*users",
+          "description": "Returns users array",
+          "optional": true
+        },
+        {
+          "fileContains": "require.*express",
+          "description": "Requires express module"
+        }
+      ]
+    },
+    {
+      "id": "q2_users_create_middleware",
+      "title": "Users Create Route with Middleware",
+      "description": "Add a new route /users/create that will add a new user to the users array, and create a router-level middleware function that will log the request body.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "userRouter\\.post.*create",
+          "description": "Defines POST /users/create route",
+          "optional": true
+        },
+        {
+          "fileContains": "userRouter\\.use",
+          "description": "Uses router-level middleware",
+          "optional": true
+        },
+        {
+          "fileContains": "console\\.log.*req\\.body",
+          "description": "Logs request body",
+          "optional": true
+        },
+        {
+          "fileContains": "users\\.push",
+          "description": "Adds new user to users array",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q3_products_router",
+      "title": "Products Router Setup",
+      "description": "Create a new express router to handle all requests to /products, and use it in the application.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": ".*Router.*=.*Router\\(\\)",
+          "description": "Creates router",
+          "optional": true
+        },
+        {
+          "fileContains": "app\\.use.*products",
+          "description": "Uses products router in application"
+        }
+      ]
+    },
+    {
+      "id": "q4_products_array_update",
+      "title": "Products Array and Update Route",
+      "description": "Create a products array with keyboard, mouse and add a route to update the items /products/update in the array.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "products.*=.*\\[.*keyboard.*mouse.*\\]|product.*=.*\\[.*keyboard.*mouse.*\\]",
+          "description": "Creates products array with keyboard and mouse"
+        },
+        {
+          "fileContains": ".*Router.*put.*update",
+          "description": "Defines PUT /products/update route"
+        },
+        {
+          "fileContains": "products\\[.*\\].*=|products\\.push|product\\[.*\\].*=",
+          "description": "Updates products array item"
+        }
+      ]
+    },
+    {
+      "id": "q5_products_middleware",
+      "title": "Products Router Middleware",
+      "description": "Create a new router-level middleware attached on the products router that will log the products router request path at every HTTP request.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": ".*Router.*use",
+          "description": "Uses router middleware",
+          "optional": true
+        },
+        {
+          "fileContains": "console\\.log.*req\\.path|console\\.log.*req\\.method",
+          "description": "Logs request path or method"
+        }
+      ]
+    },
+    {
+      "id": "q6_error_middleware",
+      "title": "Application-Level Error Middleware",
+      "description": "Create an application-level error-handling middleware, that has the message of NOT FOUND and a status code of 404 and that will be called when trying to access unassigned endpoints.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "app\\.use.*\\(.*req.*res.*next.*\\)|app\\.all.*\\*",
+          "description": "Uses application-level middleware",
+          "optional": true
+        },
+        {
+          "fileContains": "NOT FOUND|not found|Not Found",
+          "description": "Returns NOT FOUND message",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.status\\(404\\)",
+          "description": "Sets status code to 404",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

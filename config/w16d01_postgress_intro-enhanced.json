@@ -1,0 +1,88 @@
+{
+  "id": "W16D01_Postgress_Intro",
+  "title": "PostgreSQL Introduction",
+  "description": "PostgreSQL database operations and SQL queries",
+  "questions": [
+    {
+      "id": "q1_update_book_api",
+      "title": "Update Book API",
+      "description": "Create an API with the endpoint of /books/:book_id that will update a book from the database",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "/books/:book_id",
+          "description": "Creates API endpoint with book_id parameter"
+        },
+        {
+          "fileContains": "UPDATE",
+          "description": "Uses SQL UPDATE statement"
+        }
+      ]
+    },
+    {
+      "id": "q2_delete_book_api",
+      "title": "Delete Book API",
+      "description": "Create an API with the endpoint of /books/:book_id that will delete a book from the database",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "/books/:book_id",
+          "description": "Creates API endpoint with book_id parameter"
+        },
+        {
+          "fileContains": "DELETE",
+          "description": "Uses DELETE method for delete operation"
+        }
+      ]
+    },
+    {
+      "id": "q3_books_descending_order",
+      "title": "Books Descending Order",
+      "description": "Create a function that returns all books ordered in descending order. Read about ORDER BY",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "ORDER BY",
+          "description": "Uses ORDER BY clause"
+        }
+      ]
+    },
+    {
+      "id": "q4_null_price_books",
+      "title": "Books with Null Price",
+      "description": "Insert a book with a null value for the price column then create a function that returns all books that don't have a price. Read about IS NULL",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "INSERT",
+          "description": "Uses INSERT statement"
+        },
+        {
+          "fileContains": "IS NULL",
+          "description": "Uses IS NULL condition"
+        }
+      ]
+    },
+    {
+      "id": "q5_books_with_price",
+      "title": "Books with Price",
+      "description": "Create a function that returns all books that have a price",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "IS NOT NULL",
+          "description": "Uses IS NOT NULL condition"
+        },
+        {
+          "fileContains": "price",
+          "description": "References price column"
+        }
+      ]
+    }
+  ]
+}

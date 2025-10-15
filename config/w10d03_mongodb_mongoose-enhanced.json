@@ -1,0 +1,135 @@
+{
+  "lectureId": "W10D03_MongoDB_Mongoose",
+  "title": "MongoDB and Mongoose",
+  "description": "MongoDB Database Operations with Mongoose ODM",
+  "questions": [
+    {
+      "id": "q1_create_todo",
+      "title": "Create Todo API",
+      "description": "Complete the API for creating a new todo list item, save the new todo item and send back a response of the newly saved item.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "create",
+          "description": "Defines POST route for creating todos"
+        },
+        {
+          "fileContains": "create",
+          "description": "Creates new todo instance or saves todo"
+        },
+        {
+          "fileContains": "res\\.json.*todo|res\\.send.*todo|res\\.json\\(result\\)|res\\.json\\(newTodo\\)|res\\.status.*201.*json\\(newTodo\\)",
+          "description": "Sends response with newly created todo"
+        }
+      ]
+    },
+    {
+      "id": "q2_mongodb_compass",
+      "title": "MongoDB Compass Usage",
+      "description": "Use MongoDB Compass to preview your database after adding data to the database.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "mongoose\\.connect|mongodb://",
+          "description": "Connects to MongoDB database",
+          "optional": true
+        },
+        {
+          "fileContains": "compass|Compass",
+          "description": "Mentions MongoDB Compass usage",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q3_get_all_todos",
+      "title": "Get All Todos API",
+      "description": "Complete the API for getting all of the todo list items from the database, find all the todos and send back a response of all the todos.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "todos",
+          "description": "Defines GET route for retrieving todos"
+        },
+        {
+          "fileContains": "find",
+          "description": "Finds all todos in database"
+        },
+        {
+          "fileContains": "res\\.json.*todos|res\\.send.*todos|res\\.json\\(result\\)|res\\.json\\(todos\\)|res\\.status.*200.*json\\(todos\\)",
+          "description": "Sends response with all todos"
+        }
+      ]
+    },
+    {
+      "id": "q4_get_completed_todos",
+      "title": "Get Completed Todos API",
+      "description": "Create an API for getting all the completed todos.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "completed",
+          "description": "Defines GET route for completed todos"
+        },
+        {
+          "fileContains": "completed",
+          "description": "Finds completed todos in database"
+        },
+        {
+          "fileContains": "res\\.json.*todos|res\\.send.*todos|res\\.json\\(completeTodo\\)|res\\.json\\(completedTodos\\)|res\\.status.*200.*json\\(completeTodo\\)|res\\.status.*200.*json\\(completedTodos\\)",
+          "description": "Sends response with completed todos"
+        }
+      ]
+    },
+    {
+      "id": "q5_update_todo",
+      "title": "Update Todo API",
+      "description": "Complete the API for updating the todo list item. Search the mongoose documentation to learn how to update a record in the database.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "router\\.put.*update|router\\.patch.*update|app\\.put.*update|app\\.patch.*update|put.*update|put.*:",
+          "description": "Defines PUT/PATCH route for updating todos",
+          "optional": true
+        },
+        {
+          "fileContains": "findOneAndUpdate",
+          "description": "Updates todo in database using Mongoose"
+        },
+        {
+          "fileContains": "res\\.json.*todo|res\\.send.*todo|res\\.json\\(updatedTodo\\)|res\\.json.*Todo updated|res\\.json\\(\"Todo updated\"",
+          "description": "Sends response with updated todo",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q6_delete_todo",
+      "title": "Delete Todo API",
+      "description": "Complete the API for deleting the todo list item. Search the mongoose documentation to learn how to delete a record in the database.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "router\\.delete.*delete|app\\.delete.*delete|delete.*delete|delete.*:",
+          "description": "Defines DELETE route for deleting todos",
+          "optional": true
+        },
+        {
+          "fileContains": "findOneAndDelete",
+          "description": "Deletes todo from database using Mongoose"
+        },
+        {
+          "fileContains": "res\\.json.*message|res\\.send.*message|res\\.status.*200|res\\.json\\(deletedTodo\\)|res\\.json.*Todo deleted|res\\.json\\(\"Todo deleted\"",
+          "description": "Sends response confirming deletion",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

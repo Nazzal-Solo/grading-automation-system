@@ -1,0 +1,299 @@
+{
+  "lectureId": "W09D03_APIs",
+  "title": "API Development",
+  "description": "Building REST APIs with Express.js for Todo List Management",
+  "questions": [
+    {
+      "id": "q1_server_setup",
+      "title": "Server Setup",
+      "description": "Create a new server app.js and run it.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileExists": "app.js",
+          "description": "app.js file exists",
+          "optional": true
+        },
+        {
+          "fileExists": "main.js",
+          "description": "main.js file exists",
+          "optional": true
+        },
+        {
+          "fileContains": "require.*express",
+          "description": "Requires express module"
+        },
+        {
+          "fileContains": "express\\(\\)",
+          "description": "Creates express app"
+        },
+        {
+          "fileContains": "listen",
+          "description": "Server listens on a port"
+        }
+      ]
+    },
+    {
+      "id": "q2_todos_array",
+      "title": "Todos Array Initialization",
+      "description": "In the global scope create an array with initial todos.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "const todos",
+          "description": "Declares todos array"
+        },
+        {
+          "fileContains": "wake up",
+          "description": "Contains 'wake up' todo"
+        },
+        {
+          "fileContains": "Eat Breakfast",
+          "description": "Contains 'Eat Breakfast' todo"
+        },
+        {
+          "fileContains": "isCompleted.*false",
+          "description": "Sets isCompleted to false"
+        }
+      ]
+    },
+    {
+      "id": "q3_get_todos",
+      "title": "GET /todos Endpoint",
+      "description": "Create an API to handle a GET request to the endpoint /todos that sends a response of all todos.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "app\\.get.*todos",
+          "description": "Defines GET /todos route",
+          "optional": true
+        },
+        {
+          "fileContains": "app\\.get.*create.*todo",
+          "description": "Defines GET /create/todo route",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.json.*todos",
+          "description": "Sends todos array as JSON response",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.status.*json.*todos",
+          "description": "Sends todos array as JSON response with status",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.send.*todos",
+          "description": "Sends todos array as response",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q4_post_create_todo",
+      "title": "POST /create/todo Endpoint",
+      "description": "Create an API to handle a POST request to the endpoint /create/todo that adds the new todo object to the todos array.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "app\\.post.*create.*todo",
+          "description": "Defines POST /create/todo route"
+        },
+        {
+          "fileContains": "req\\.body",
+          "description": "Accesses request body",
+          "optional": true
+        },
+        {
+          "fileContains": "todos\\.push",
+          "description": "Adds new todo to todos array",
+          "optional": true
+        },
+        {
+          "fileContains": "push.*todo",
+          "description": "Adds new todo to array",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.json",
+          "description": "Sends JSON response",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.status.*json",
+          "description": "Sends JSON response with status",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q5_put_update_todo",
+      "title": "PUT /update/todo/:name Endpoint",
+      "description": "Create an API to handle a PUT request to the endpoint /update/todo/:name that updates the matched todo object.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "app\\.put.*update.*todo",
+          "description": "Defines PUT /update/todo route"
+        },
+        {
+          "fileContains": "req\\.params",
+          "description": "Accesses URL parameters",
+          "optional": true
+        },
+        {
+          "fileContains": "req\\.body",
+          "description": "Accesses request body for update data",
+          "optional": true
+        },
+        {
+          "fileContains": "find.*todo",
+          "description": "Finds todo by name",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.json",
+          "description": "Sends JSON response",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.status.*json",
+          "description": "Sends JSON response with status",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q6_delete_todo",
+      "title": "DELETE /delete/todo/:name Endpoint",
+      "description": "Create an API to handle a DELETE request to the endpoint /delete/todo/:name that deletes the matched todo object.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "app\\.delete.*delete.*todo",
+          "description": "Defines DELETE /delete/todo route"
+        },
+        {
+          "fileContains": "req\\.params",
+          "description": "Accesses URL parameters",
+          "optional": true
+        },
+        {
+          "fileContains": "splice",
+          "description": "Uses splice to remove todo",
+          "optional": true
+        },
+        {
+          "fileContains": "filter",
+          "description": "Uses filter to remove todo",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.json",
+          "description": "Sends JSON response",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.status.*json",
+          "description": "Sends JSON response with status",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q7_put_complete_todo",
+      "title": "PUT /complete/todo/:name Endpoint",
+      "description": "Create an API to handle a PUT request to the endpoint /complete/todo/:name that sets isCompleted to true.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "app\\.put.*complete.*todo",
+          "description": "Defines PUT /complete/todo route"
+        },
+        {
+          "fileContains": "req\\.params",
+          "description": "Accesses URL parameters",
+          "optional": true
+        },
+        {
+          "fileContains": "isCompleted.*true",
+          "description": "Sets isCompleted to true"
+        },
+        {
+          "fileContains": "res\\.json",
+          "description": "Sends JSON response",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.status.*json",
+          "description": "Sends JSON response with status",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q8_get_completed_todos",
+      "title": "GET /completed/todos Endpoint",
+      "description": "Create an API to handle a GET request to the endpoint /completed/todos that sends back all completed todo objects.",
+      "type": "file_system",
+      "points": 10,
+      "checks": [
+        {
+          "fileContains": "app\\.get.*completed.*todos",
+          "description": "Defines GET /completed/todos route"
+        },
+        {
+          "fileContains": "filter.*isCompleted",
+          "description": "Filters completed todos",
+          "optional": true
+        },
+        {
+          "fileContains": "isCompleted.*true",
+          "description": "Checks for completed todos"
+        },
+        {
+          "fileContains": "res\\.json",
+          "description": "Sends JSON response",
+          "optional": true
+        },
+        {
+          "fileContains": "res\\.status.*json",
+          "description": "Sends JSON response with status",
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "gradingCriteria": {
+    "file_system": {
+      "description": "File system and API endpoint implementation checks",
+      "weight": 1.0
+    }
+  },
+  "rubric": {
+    "excellent": {
+      "range": [90, 100],
+      "description": "All API endpoints correctly implemented with proper Express.js patterns, request/response handling, and data manipulation."
+    },
+    "good": {
+      "range": [70, 89],
+      "description": "Most API endpoints implemented correctly with minor issues in request handling or response formatting."
+    },
+    "satisfactory": {
+      "range": [50, 69],
+      "description": "Basic API structure present with several endpoints missing or incorrectly implemented."
+    },
+    "needs_improvement": {
+      "range": [0, 49],
+      "description": "Minimal API implementation with major missing endpoints or fundamental Express.js concepts not applied."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "stages": [
+    {
+      "id": "stage1",
+      "name": "Stage 1",
+      "description": "JavaScript Fundamentals, HTML, CSS, and Frontend Development",
+      "weeks": ["W01", "W02", "W03", "W04", "W05", "W06"],
+      "lectures": [
+        "W01D01_Intro_To_JS",
+        "W01D03_Functions",
+        "W01D05_Conditionals",
+        "W02D01_Scopes",
+        "W02D03_Arrays",
+        "W02D05_Objects",
+        "W03D01_Iteration_P1",
+        "W03D03_Iteration_P2",
+        "W03D05_Recursion",
+        "W04D01_CB_HOF",
+        "W04D03_OOP",
+        "W04D05_HTML",
+        "W04D05_CSS_Intro",
+        "W05D01_CSS_Layouts",
+        "W05D03_DOM",
+        "W06D05_jQuery"
+      ]
+    },
+    {
+      "id": "stage2",
+      "name": "Stage 2",
+      "description": "Backend Development, APIs, Asynchronous Programming, React, and Databases",
+      "weeks": ["W09", "W10", "W12", "W13", "W16"],
+      "lectures": [
+        "W09D01_Backend_Development",
+        "W09D03_APIs",
+        "W09D05_Asynchronous_Programming",
+        "W10D01_Express_Middlewares",
+        "W10D03_MongoDB_Mongoose",
+        "W10D05_Advanced_Mongoose",
+        "W12D01_React_Intro",
+        "W12D03_React_Hooks",
+        "W12D05_React_Context",
+        "W13D03_Redux",
+        "W16D01_Postgress_Intro",
+        "W16D03_Postgress_Relational_Database"
+      ]
+    }
+  ]
+}

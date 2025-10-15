@@ -1,0 +1,2766 @@
+{
+  "lectures": [
+    {
+      "id": "W01D01_Intro_To_JS",
+      "name": "Introduction to JavaScript",
+      "description": "Basic JavaScript concepts and syntax - Predict expressions, fix syntax errors, define variables, string operations, and real-world calculations",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "arithmetic",
+          "description": "9 + 1 * 5 = ?",
+          "expectedValue": "14",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "basic_math"
+        },
+        {
+          "id": "Q2",
+          "type": "arithmetic",
+          "description": "9 % 2 = ?",
+          "expectedValue": "1",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "basic_math"
+        },
+        {
+          "id": "Q3",
+          "type": "arithmetic",
+          "description": "(9 / 3) * (10 - 7) = ?",
+          "expectedValue": "9",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "basic_math"
+        },
+        {
+          "id": "Q4",
+          "type": "arithmetic",
+          "description": "21 / 3 + 3 * 9 * 9 + 5 = ?",
+          "expectedValue": "255",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "complex_math"
+        },
+        {
+          "id": "Q5",
+          "type": "arithmetic",
+          "description": "36 / 9 + 48 - 10 / 2 = ?",
+          "expectedValue": "47",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "complex_math"
+        },
+        {
+          "id": "Q6",
+          "type": "syntax_fix",
+          "description": "Fix: const @name = 'John'",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q7",
+          "type": "syntax_fix",
+          "description": "Fix: const 'age' = 10",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q8",
+          "type": "syntax_fix",
+          "description": "Fix: const const = \"Constant\"",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q9",
+          "type": "syntax_fix",
+          "description": "Fix: const variable 1 = \"value\"",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "syntax_errors",
+          "flexible": true
+        },
+        {
+          "id": "Q10",
+          "type": "variable",
+          "description": "Define a variable color containing your favorite color",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q11",
+          "type": "variable",
+          "description": "Define a variable positiveNumber containing any positive number",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q12",
+          "type": "variable",
+          "description": "Define a variable food containing your favorite food",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q13",
+          "type": "variable",
+          "description": "Define a variable PhoneNumber containing a phone number",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "variables",
+          "flexible": true
+        },
+        {
+          "id": "Q14",
+          "type": "string_operation",
+          "description": "10 + \"10\" = ?",
+          "expectedValue": "1010",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q15",
+          "type": "string_operation",
+          "description": "\"10\" + \"10\" = ?",
+          "expectedValue": "1010",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q16",
+          "type": "string_operation",
+          "description": "10 + 10 + \"5\" = ?",
+          "expectedValue": "205",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q17",
+          "type": "string_operation",
+          "description": "\"Hello\" + 1 = ?",
+          "expectedValue": "Hello1",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q18",
+          "type": "string_operation",
+          "description": "\"10\" + 5 + 5 = ?",
+          "expectedValue": "1055",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q19",
+          "type": "string_operation",
+          "description": "\"20\" - 10 = ?",
+          "expectedValue": "10",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q20",
+          "type": "string_operation",
+          "description": "\"9\" - \"5\" = ?",
+          "expectedValue": "4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q21",
+          "type": "string_operation",
+          "description": "\"19\" - \"13\" + 17 = ?",
+          "expectedValue": "23",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q22",
+          "type": "string_operation",
+          "description": "5 + 6 + \"4\" + 9 - 4 - 2 = ?",
+          "expectedValue": "1143",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "string_operations"
+        },
+        {
+          "id": "Q23",
+          "type": "string_concatenation",
+          "description": "Using string concatenation write an expression that represents your first name, last name, gender, and nationality",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_operations",
+          "flexible": true
+        },
+        {
+          "id": "Q24",
+          "type": "time_calculation",
+          "description": "Write an expression that represents the number of seconds in 30 days",
+          "expectedValue": "2592000",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "time_math"
+        },
+        {
+          "id": "Q25",
+          "type": "algebraic",
+          "description": "Reassign the value of a to make the expression c - b * c + a equal to nine (where b=3, c=10)",
+          "expectedValue": "9",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "algebra"
+        },
+        {
+          "id": "Q26",
+          "type": "real_world",
+          "description": "Using the variables below write an expression that calculates the total amount for buying two coffee cups (tip=0.1, taxRate=0.08, coffeeCupPrice=6)",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "real_world",
+          "flexible": true
+        },
+        {
+          "id": "Q27",
+          "type": "real_world",
+          "description": "Write an expression that represents the average grade of an exam, knowing that in a class of ten students, five of them got 24/30, two of them got 16/30 and the remainder got 29/30",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "real_world",
+          "flexible": true
+        },
+        {
+          "id": "Q28",
+          "type": "geometry",
+          "description": "Write expressions that calculate the area and the perimeter of a rectangle with a length of 10m and a width of 5m",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "geometry",
+          "flexible": true
+        },
+        {
+          "id": "Q29",
+          "type": "geometry",
+          "description": "Write expressions that calculate the diameter and the circumference of a circle with a radius of 5m",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "geometry",
+          "flexible": true
+        },
+        {
+          "id": "Q30",
+          "type": "conversion",
+          "description": "Write an expression that converts 30 degrees Celsius to Fahrenheit",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "conversions",
+          "flexible": true
+        }
+      ],
+      "totalQuestions": 12,
+      "categories": {
+        "basic_math": 3,
+        "complex_math": 2,
+        "syntax_errors": 4,
+        "variables": 4,
+        "string_operations": 9,
+        "time_math": 1,
+        "algebra": 1,
+        "real_world": 2,
+        "geometry": 2,
+        "conversions": 1
+      }
+    },
+    {
+      "id": "W01D03_Functions",
+      "name": "Functions in JavaScript",
+      "description": "Learn to write functions, pass arguments, return values, and use built-in methods like Math.floor(), Math.pow(), and toUpperCase()",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function",
+          "description": "Write a function double that accepts one argument number and returns the number doubled. Test: double(2) should return 4",
+          "expectedValue": "4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "basic_functions"
+        },
+        {
+          "id": "Q2",
+          "type": "function",
+          "description": "Write a function fullName that accepts string arguments, firstName and lastName then returns a string containing your full name combined. Test: fullName('John', 'Doe') should return 'John Doe'",
+          "expectedValue": "John Doe",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_functions"
+        },
+        {
+          "id": "Q3",
+          "type": "function",
+          "description": "Write a function average that accepts two number arguments and returns the average of these numbers. Test: average(20, 25) should return 22.5",
+          "expectedValue": "22.5",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "math_functions"
+        },
+        {
+          "id": "Q4",
+          "type": "expression",
+          "description": "Guess the output of cube(25) + 20",
+          "expectedValue": "15645",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "expression_evaluation"
+        },
+        {
+          "id": "Q5",
+          "type": "expression",
+          "description": "Guess the output of square(5) + cube(2)",
+          "expectedValue": "33",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "expression_evaluation"
+        },
+        {
+          "id": "Q6",
+          "type": "expression",
+          "description": "Guess the output of square(10 / 5) + cube(2 + 1)",
+          "expectedValue": "31",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "expression_evaluation"
+        },
+        {
+          "id": "Q7",
+          "type": "expression",
+          "description": "Guess the output of average(square(average(6, 2)), cube(4))",
+          "expectedValue": "40",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "complex_expression"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "description": "Write a function totalBill that accepts three arguments total, taxPercentage, tip, and returns the total after adding the tax and the tip. Test: totalBill(40, 0.16, 2) should return 48.4",
+          "expectedValue": "48.4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "business_functions"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "description": "Write a function ageInHours that accepts a number argument ageInYears and returns the age in hours (ignore leap years). Test: ageInHours(10) should return 87600",
+          "expectedValue": "87600",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "conversion_functions"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "description": "Write a function calculateProfit that accepts three arguments unitsSold, unitCost, unitPrice, and returns the net profit. Test: calculateProfit(1, 3, 5) should return 2",
+          "expectedValue": "2",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "business_functions"
+        },
+        {
+          "id": "Q11",
+          "type": "function",
+          "description": "Write a function floor that accepts one number argument, number, and returns the number as an integer. Test: floor(2.4) should return 2",
+          "expectedValue": "2",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "math_functions"
+        },
+        {
+          "id": "Q12",
+          "type": "function",
+          "description": "Write a function toThePowerOf that accepts two number arguments, base and exponent, and returns the base to the exponent power. Test: toThePowerOf(2, 3) should return 8",
+          "expectedValue": "8",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "math_functions"
+        },
+        {
+          "id": "Q13",
+          "type": "function",
+          "description": "Write a function upperCase that accepts a string argument string and returns the same string in upper case. Test: upperCase('john') should return 'JOHN'",
+          "expectedValue": "JOHN",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_functions"
+        }
+      ],
+      "totalQuestions": 10,
+      "totalPoints": 13,
+      "categories": {
+        "basic_functions": 1,
+        "string_functions": 2,
+        "math_functions": 3,
+        "expression_evaluation": 3,
+        "complex_expression": 1,
+        "business_functions": 2,
+        "conversion_functions": 1
+      }
+    },
+    {
+      "id": "W01D05_Conditionals",
+      "name": "Conditionals in JavaScript",
+      "description": "Learn conditional statements, string methods, type checking, and logical operators for decision making in JavaScript",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function",
+          "description": "Write a function toLowerOrUpperCase that accepts two arguments, string and strCase, and returns the string in lower case or upper case depending on what was specified in the second parameter. Test: toLowerOrUpperCase('HELLO WORLD', 'lower') should return 'hello world'",
+          "expectedValue": "hello world",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_methods"
+        },
+        {
+          "id": "Q2",
+          "type": "function",
+          "description": "Write a function toLowerOrUpperCase that accepts two arguments, string and strCase, and returns the string in lower case or upper case depending on what was specified in the second parameter. Test: toLowerOrUpperCase('my name is john', 'upper') should return 'MY NAME IS JOHN'",
+          "expectedValue": "MY NAME IS JOHN",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_methods"
+        },
+        {
+          "id": "Q3",
+          "type": "function",
+          "description": "Write a function toLowerOrUpperCase that accepts two arguments, string and strCase, and returns the string in lower case or upper case depending on what was specified in the second parameter. Test: toLowerOrUpperCase('my name is john', 'mixed') should return 'String case must be lower or upper'",
+          "expectedValue": "String case must be lower or upper",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_methods"
+        },
+        {
+          "id": "Q4",
+          "type": "function",
+          "description": "Write a function howLong that accepts one argument word and returns whether the word is short, medium, long, or very long. Test: howLong('and') should return 'short'",
+          "expectedValue": "short",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_length"
+        },
+        {
+          "id": "Q5",
+          "type": "function",
+          "description": "Write a function howLong that accepts one argument word and returns whether the word is short, medium, long, or very long. Test: howLong('function') should return 'medium'",
+          "expectedValue": "medium",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_length"
+        },
+        {
+          "id": "Q6",
+          "type": "function",
+          "description": "Write a function howLong that accepts one argument word and returns whether the word is short, medium, long, or very long. Test: howLong('corresponding') should return 'long'",
+          "expectedValue": "long",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_length"
+        },
+        {
+          "id": "Q7",
+          "type": "function",
+          "description": "Write a function howLong that accepts one argument word and returns whether the word is short, medium, long, or very long. Test: howLong('Supercalifragilisticexpialidocious') should return 'very long'",
+          "expectedValue": "very long",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_length"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "description": "Write a function startsWith that accept two string arguments string, character and returns true if the string starts with that character. Test: startsWith('Hello', 'h') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "description": "Write a function startsWith that accept two string arguments string, character and returns true if the string starts with that character. Test: startsWith('hello', 'h') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "description": "Write a function startsWith that accept two string arguments string, character and returns true if the string starts with that character. Test: startsWith('hello', 'a') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q11",
+          "type": "function",
+          "description": "Write a function startsWith that accept two string arguments string, character and returns true if the string starts with that character. Test: startsWith('World', 'h') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q12",
+          "type": "function",
+          "description": "Write a function startsWith that accept two string arguments string, character and returns true if the string starts with that character. Test: startsWith('World', 'a') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q13",
+          "type": "function",
+          "description": "Write a function endsWith that accepts two string arguments, string and character, and returns true if the string ends with that character. Test: endsWith('Hello', 'o') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q14",
+          "type": "function",
+          "description": "Write a function endsWith that accepts two string arguments, string and character, and returns true if the string ends with that character. Test: endsWith('Hello', 'O') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q15",
+          "type": "function",
+          "description": "Write a function endsWith that accepts two string arguments, string and character, and returns true if the string ends with that character. Test: endsWith('hellO', 'o') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q16",
+          "type": "function",
+          "description": "Write a function endsWith that accepts two string arguments, string and character, and returns true if the string ends with that character. Test: endsWith('World', 'h') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q17",
+          "type": "function",
+          "description": "Write a function endsWith that accepts two string arguments, string and character, and returns true if the string ends with that character. Test: endsWith('World', 'a') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q18",
+          "type": "function",
+          "description": "Write a function endsWith that accepts two string arguments, string and character, and returns true if the string ends with that character. Test: endsWith('World', 'c') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "string_character_access"
+        },
+        {
+          "id": "Q19",
+          "type": "function",
+          "description": "Write a function deposit that accepts an argument amount and returns the deposited amount. Test: deposit(100) should return 100",
+          "expectedValue": "100",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "type_checking"
+        },
+        {
+          "id": "Q20",
+          "type": "function",
+          "description": "Write a function deposit that accepts an argument amount and returns the deposited amount. Test: deposit(250) should return 250",
+          "expectedValue": "250",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "type_checking"
+        },
+        {
+          "id": "Q21",
+          "type": "function",
+          "description": "Write a function deposit that accepts an argument amount and returns the deposited amount. Test: deposit(-100) should return 'Please enter a positive number'",
+          "expectedValue": "Please enter a positive number",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "type_checking"
+        },
+        {
+          "id": "Q22",
+          "type": "function",
+          "description": "Write a function deposit that accepts an argument amount and returns the deposited amount. Test: deposit('100') should return 'Please enter a number'",
+          "expectedValue": "Please enter a number",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "type_checking"
+        },
+        {
+          "id": "Q23",
+          "type": "function",
+          "description": "Write a function oddOrEven that accepts a number argument number and returns a string stating if the number is odd or even. Test: oddOrEven(1) should return '1 is odd'",
+          "expectedValue": "1 is odd",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "modulo_operator"
+        },
+        {
+          "id": "Q24",
+          "type": "function",
+          "description": "Write a function oddOrEven that accepts a number argument number and returns a string stating if the number is odd or even. Test: oddOrEven(2) should return '2 is even'",
+          "expectedValue": "2 is even",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "modulo_operator"
+        },
+        {
+          "id": "Q25",
+          "type": "function",
+          "description": "Write a function oddOrEven that accepts a number argument number and returns a string stating if the number is odd or even. Test: oddOrEven(5) should return '5 is odd'",
+          "expectedValue": "5 is odd",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "modulo_operator"
+        },
+        {
+          "id": "Q26",
+          "type": "function",
+          "description": "Write a function oddOrEven that accepts a number argument number and returns a string stating if the number is odd or even. Test: oddOrEven(10) should return '10 is even'",
+          "expectedValue": "10 is even",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "modulo_operator"
+        },
+        {
+          "id": "Q27",
+          "type": "function",
+          "description": "Write a function stringCase that accepts a string argument string and returns whether the string is all upper case or all lower case or mix case. Test: stringCase('JOHN') should return 'all upper case'",
+          "expectedValue": "all upper case",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_case_analysis"
+        },
+        {
+          "id": "Q28",
+          "type": "function",
+          "description": "Write a function stringCase that accepts a string argument string and returns whether the string is all upper case or all lower case or mix case. Test: stringCase('john') should return 'all lower case'",
+          "expectedValue": "all lower case",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_case_analysis"
+        },
+        {
+          "id": "Q29",
+          "type": "function",
+          "description": "Write a function stringCase that accepts a string argument string and returns whether the string is all upper case or all lower case or mix case. Test: stringCase('joHN') should return 'mix case'",
+          "expectedValue": "mix case",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_case_analysis"
+        },
+        {
+          "id": "Q30",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2000) should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q31",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2004) should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q32",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2020) should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q33",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2096) should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q34",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(1603) should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q35",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2021) should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q36",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2200) should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q37",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2500) should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q38",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(2600) should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q39",
+          "type": "function",
+          "description": "Write a function isLeapYear that accepts a number argument year and returns true if the year is a leap year. Test: isLeapYear(3000) should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "leap_year_logic"
+        },
+        {
+          "id": "Q40",
+          "type": "function",
+          "description": "Write a function login_v01 that accepts two string arguments, username and password, and returns a string login successful if the username length is more than 6 and the password length is more than or equal to 8 otherwise return login failed. Test: login_v01('John', '1234') should return 'login failed'",
+          "expectedValue": "login failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_validation"
+        },
+        {
+          "id": "Q41",
+          "type": "function",
+          "description": "Write a function login_v01 that accepts two string arguments, username and password, and returns a string login successful if the username length is more than 6 and the password length is more than or equal to 8 otherwise return login failed. Test: login_v01('John', '12345678') should return 'login failed'",
+          "expectedValue": "login failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_validation"
+        },
+        {
+          "id": "Q42",
+          "type": "function",
+          "description": "Write a function login_v01 that accepts two string arguments, username and password, and returns a string login successful if the username length is more than 6 and the password length is more than or equal to 8 otherwise return login failed. Test: login_v01('john_doe', '123456') should return 'login failed'",
+          "expectedValue": "login failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_validation"
+        },
+        {
+          "id": "Q43",
+          "type": "function",
+          "description": "Write a function login_v01 that accepts two string arguments, username and password, and returns a string login successful if the username length is more than 6 and the password length is more than or equal to 8 otherwise return login failed. Test: login_v01('john_doe', '12345678') should return 'login successful'",
+          "expectedValue": "login successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_validation"
+        },
+        {
+          "id": "Q44",
+          "type": "function",
+          "description": "Write a function login_v02 that checks whether the username and password match the corresponding values from the account list. Test: login_v02('JOHN_DOE', 'koljgwEA') should return 'login successful'",
+          "expectedValue": "login successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_authentication"
+        },
+        {
+          "id": "Q45",
+          "type": "function",
+          "description": "Write a function login_v02 that checks whether the username and password match the corresponding values from the account list. Test: login_v02('john_doe', 'KOLJGWEA') should return 'login failed'",
+          "expectedValue": "login failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_authentication"
+        },
+        {
+          "id": "Q46",
+          "type": "function",
+          "description": "Write a function login_v02 that checks whether the username and password match the corresponding values from the account list. Test: login_v02('john_doe', '12345678') should return 'login failed'",
+          "expectedValue": "login failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_authentication"
+        },
+        {
+          "id": "Q47",
+          "type": "function",
+          "description": "Write a function login_v02 that checks whether the username and password match the corresponding values from the account list. Test: login_v02('jane_doe', 'koljgwEA') should return 'login failed'",
+          "expectedValue": "login failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_authentication"
+        },
+        {
+          "id": "Q48",
+          "type": "function",
+          "description": "Write a function login_v02 that checks whether the username and password match the corresponding values from the account list. Test: login_v02('jane_doe', '12345678') should return 'login successful'",
+          "expectedValue": "login successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_authentication"
+        },
+        {
+          "id": "Q49",
+          "type": "function",
+          "description": "Write a function login_v03 that returns the appropriate reason for failed login attempts. Test: login_v03('john_doe', 'koljgwEA') should return 'login successful'",
+          "expectedValue": "login successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_error_handling"
+        },
+        {
+          "id": "Q50",
+          "type": "function",
+          "description": "Write a function login_v03 that returns the appropriate reason for failed login attempts. Test: login_v03('jane_doe', '12345678') should return 'login successful'",
+          "expectedValue": "login successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_error_handling"
+        },
+        {
+          "id": "Q51",
+          "type": "function",
+          "description": "Write a function login_v03 that returns the appropriate reason for failed login attempts. Test: login_v03('john', '12345678') should return 'username must be more than 6 characters long'",
+          "expectedValue": "username must be more than 6 characters long",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_error_handling"
+        },
+        {
+          "id": "Q52",
+          "type": "function",
+          "description": "Write a function login_v03 that returns the appropriate reason for failed login attempts. Test: login_v03('jane_doe', '123456') should return 'password must be at least 8 characters long'",
+          "expectedValue": "password must be at least 8 characters long",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_error_handling"
+        },
+        {
+          "id": "Q53",
+          "type": "function",
+          "description": "Write a function login_v03 that returns the appropriate reason for failed login attempts. Test: login_v03('MrPotato', '12345678') should return 'username doesn't exist'",
+          "expectedValue": "username doesn't exist",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_error_handling"
+        },
+        {
+          "id": "Q54",
+          "type": "function",
+          "description": "Write a function login_v03 that returns the appropriate reason for failed login attempts. Test: login_v03('jane_doe', '123456789') should return 'wrong password'",
+          "expectedValue": "wrong password",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "login_error_handling"
+        }
+      ],
+      "totalQuestions": 11,
+      "totalPoints": 54,
+      "categories": {
+        "string_methods": 3,
+        "string_length": 4,
+        "string_character_access": 11,
+        "type_checking": 4,
+        "modulo_operator": 4,
+        "string_case_analysis": 3,
+        "leap_year_logic": 10,
+        "login_validation": 4,
+        "login_authentication": 5,
+        "login_error_handling": 6
+      }
+    },
+    {
+      "id": "W02D01_Scopes",
+      "name": "JavaScript Scopes",
+      "description": "Learn about variable scoping, closures, global variables, and how scope affects variable access in JavaScript",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "prediction",
+          "description": "Predict the value of age after the if block. let age = 25; if (true) { age = 30; } age;",
+          "expectedValue": "30",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "variable_scope"
+        },
+        {
+          "id": "Q2",
+          "type": "prediction",
+          "description": "Predict the value of myName after the if block. const myName = 'John'; if (true) { const myName = 'Jane'; } myName;",
+          "expectedValue": "John",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "variable_scope"
+        },
+        {
+          "id": "Q3",
+          "type": "prediction",
+          "description": "Predict the return value of func1(). let number = 10; const func1 = function () { let number = 15; if (true) { let number = 24; } return number; }; func1();",
+          "expectedValue": "15",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "function_scope"
+        },
+        {
+          "id": "Q4",
+          "type": "prediction",
+          "description": "Predict the return value of func2(26). const func2 = function (age) { age = 10; if (true) { let age = 24; age = 20; } return age; }; func2(26);",
+          "expectedValue": "10",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "function_scope"
+        },
+        {
+          "id": "Q5",
+          "type": "function",
+          "description": "Write a function countDown that returns a number representing a count down value. Test: countDown() should return 4",
+          "expectedValue": "4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q6",
+          "type": "function",
+          "description": "Write a function countDown that returns a number representing a count down value. Test: countDown() should return 3",
+          "expectedValue": "3",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q7",
+          "type": "function",
+          "description": "Write a function countDown that returns a number representing a count down value. Test: countDown() should return 2",
+          "expectedValue": "2",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "description": "Write a function countDown that returns a number representing a count down value. Test: countDown() should return 1",
+          "expectedValue": "1",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "description": "Write a function countDown that returns a number representing a count down value. Test: countDown() should return 0",
+          "expectedValue": "0",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "description": "Write a function countDown that returns a number representing a count down value. Test: countDown() should return 'count down is over'",
+          "expectedValue": "count down is over",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q11",
+          "type": "function",
+          "description": "Write a function countUp that should do the opposite of countDown. Test: countUp() should return 4",
+          "expectedValue": "4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q12",
+          "type": "function",
+          "description": "Write a function countUp that should do the opposite of countDown. Test: countUp() should return 5",
+          "expectedValue": "5",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q13",
+          "type": "function",
+          "description": "Write a function countUp that should do the opposite of countDown. Test: countUp() should return 6",
+          "expectedValue": "6",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q14",
+          "type": "function",
+          "description": "Write a function countUp that should do the opposite of countDown. Test: countUp() should return 7",
+          "expectedValue": "7",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q15",
+          "type": "function",
+          "description": "Write a function countUp that should do the opposite of countDown. Test: countUp() should return 8",
+          "expectedValue": "8",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q16",
+          "type": "function",
+          "description": "Write a function resetCount that accepts a number argument start and updates the count variable. Test: resetCount(0) should return 'the count has been reset'",
+          "expectedValue": "the count has been reset",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q17",
+          "type": "function",
+          "description": "Write a function resetCount that accepts a number argument start and updates the count variable. Test: countUp() after resetCount(0) should return 1",
+          "expectedValue": "1",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q18",
+          "type": "function",
+          "description": "Write a function resetCount that accepts a number argument start and updates the count variable. Test: resetCount(10) should return 'the count has been reset'",
+          "expectedValue": "the count has been reset",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q19",
+          "type": "function",
+          "description": "Write a function resetCount that accepts a number argument start and updates the count variable. Test: countUp() after resetCount(10) should return 11",
+          "expectedValue": "11",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q20",
+          "type": "function",
+          "description": "Write a function addToList that accepts a string argument toDo and returns the current list as a string. Test: addToList('Eat') should return 'Eat'",
+          "expectedValue": "Eat",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q21",
+          "type": "function",
+          "description": "Write a function addToList that accepts a string argument toDo and returns the current list as a string. Test: addToList('Play') should return 'Eat Play'",
+          "expectedValue": "Eat Play",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q22",
+          "type": "function",
+          "description": "Write a function addToList that accepts a string argument toDo and returns the current list as a string. Test: addToList('Sleep') should return 'Eat Play Sleep'",
+          "expectedValue": "Eat Play Sleep",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q23",
+          "type": "function",
+          "description": "Write a function addToList that accepts a string argument toDo and returns the current list as a string. Test: addToList('repeat') should return 'Eat Play Sleep repeat'",
+          "expectedValue": "Eat Play Sleep repeat",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q24",
+          "type": "function",
+          "description": "Write a function createToDoList that works similarly to addToList function but instead of a Global variable use a closure variable. Test: toDoListOne('Eat') should return 'Eat'",
+          "expectedValue": "Eat",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q25",
+          "type": "function",
+          "description": "Write a function createToDoList that works similarly to addToList function but instead of a Global variable use a closure variable. Test: toDoListOne('Play') should return 'Eat Play'",
+          "expectedValue": "Eat Play",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q26",
+          "type": "function",
+          "description": "Write a function createToDoList that works similarly to addToList function but instead of a Global variable use a closure variable. Test: toDoListOne('Sleep') should return 'Eat Play Sleep'",
+          "expectedValue": "Eat Play Sleep",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q27",
+          "type": "function",
+          "description": "Write a function createToDoList that works similarly to addToList function but instead of a Global variable use a closure variable. Test: toDoListOne('repeat') should return 'Eat Play Sleep repeat'",
+          "expectedValue": "Eat Play Sleep repeat",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q28",
+          "type": "function",
+          "description": "Write a function deposit that accepts a number argument amount and returns the current account balance after depositing the amount. Test: deposit(100) should return 100",
+          "expectedValue": "100",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q29",
+          "type": "function",
+          "description": "Write a function deposit that accepts a number argument amount and returns the current account balance after depositing the amount. Test: deposit(50) should return 150",
+          "expectedValue": "150",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q30",
+          "type": "function",
+          "description": "Write a function withdraw that accepts a number argument amount and returns the current account balance after withdrawing the amount. Test: withdraw(70) should return 80",
+          "expectedValue": "80",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q31",
+          "type": "function",
+          "description": "Write a function withdraw that accepts a number argument amount and returns the current account balance after withdrawing the amount. Test: deposit(50) should return 130",
+          "expectedValue": "130",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q32",
+          "type": "function",
+          "description": "Write a function withdraw that accepts a number argument amount and returns the current account balance after withdrawing the amount. Test: withdraw(100) should return 30",
+          "expectedValue": "30",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q33",
+          "type": "function",
+          "description": "Write a function withdraw that accepts a number argument amount and returns the current account balance after withdrawing the amount. Test: withdraw(100) should return 'insufficient funds, current balance: 30'",
+          "expectedValue": "insufficient funds, current balance: 30",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "global_variables"
+        },
+        {
+          "id": "Q34",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountOne('withdraw', 10) should return 'insufficient funds, current balance: 0'",
+          "expectedValue": "insufficient funds, current balance: 0",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q35",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountOne('deposit', 50) should return 50",
+          "expectedValue": "50",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q36",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountOne('deposit', 70) should return 120",
+          "expectedValue": "120",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q37",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountOne('withdraw', 10) should return 110",
+          "expectedValue": "110",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q38",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountTwo('withdraw', 100) should return 400",
+          "expectedValue": "400",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q39",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountTwo('withdraw', 100) should return 300",
+          "expectedValue": "300",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q40",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountTwo('deposit', 50) should return 350",
+          "expectedValue": "350",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "closures"
+        },
+        {
+          "id": "Q41",
+          "type": "function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue. Test: accountTwo('withdraw', 500) should return 'insufficient funds, current balance: 350'",
+          "expectedValue": "insufficient funds, current balance: 350",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "closures"
+        }
+      ],
+      "totalQuestions": 10,
+      "totalPoints": 41,
+      "categories": {
+        "variable_scope": 2,
+        "function_scope": 2,
+        "global_variables": 20,
+        "closures": 17
+      }
+    },
+    {
+      "id": "W02D03_Arrays",
+      "name": "Arrays in JavaScript",
+      "description": "Learn array manipulation, methods like push, unshift, slice, and array operations in JavaScript",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function",
+          "description": "Write a function addToArray that accepts two arguments, array and string, and returns the same array after adding the string element to the end of it. Test: addToArray(['Hello', 'i', 'am'], 'John') should return ['Hello', 'i', 'am', 'John']",
+          "expectedValue": "Hello,i,am,John",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q2",
+          "type": "function",
+          "description": "Write a function addToArray that accepts two arguments, array and string, and returns the same array after adding the string element to the end of it. Test: addToArray(['Hello', 'John', 'i', 'am'], 'Jane') should return ['Hello', 'John', 'i', 'am', 'Jane']",
+          "expectedValue": "Hello,John,i,am,Jane",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q3",
+          "type": "function",
+          "description": "Write a function convertToString that accepts an array of strings and returns a string made out of the array values. Test: convertToString(['Hello', 'i', 'am', 'John']) should return 'Hello i am John'",
+          "expectedValue": "Hello i am John",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_methods"
+        },
+        {
+          "id": "Q4",
+          "type": "function",
+          "description": "Write a function convertToString that accepts an array of strings and returns a string made out of the array values. Test: convertToString(['Hello', 'John', 'i', 'am', 'Jane']) should return 'Hello John i am Jane'",
+          "expectedValue": "Hello John i am Jane",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_methods"
+        },
+        {
+          "id": "Q5",
+          "type": "function",
+          "description": "Write a function accessElement that accepts two arguments, array and index, and returns the corresponding array element depending on the passed index. Test: accessElement([1, 2, 3, 4, 5], 0) should return 1",
+          "expectedValue": "1",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_access"
+        },
+        {
+          "id": "Q6",
+          "type": "function",
+          "description": "Write a function accessElement that accepts two arguments, array and index, and returns the corresponding array element depending on the passed index. Test: accessElement([1, 2, 3, 4, 5], 3) should return 4",
+          "expectedValue": "4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_access"
+        },
+        {
+          "id": "Q7",
+          "type": "function",
+          "description": "Write a function accessElement that accepts two arguments, array and index, and returns the corresponding array element depending on the passed index. Test: accessElement([1, 2, 3, 4, 5], 10) should return 'No element at index 10'",
+          "expectedValue": "No element at index 10",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_access"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "description": "Write a function isInArray that accepts two arguments, array and string, and returns true or false depending on whether the string is an element in the array or not. Test: isInArray(['John', 'Jane', 'Mark'], 'Jane') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "description": "Write a function isInArray that accepts two arguments, array and string, and returns true or false depending on whether the string is an element in the array or not. Test: isInArray(['John', 'Jane', 'Mark'], 'Mark') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "description": "Write a function isInArray that accepts two arguments, array and string, and returns true or false depending on whether the string is an element in the array or not. Test: isInArray(['John', 'Jane', 'Mark'], 'Smith') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q11",
+          "type": "function",
+          "description": "Write a function isInArray that accepts two arguments, array and string, and returns true or false depending on whether the string is an element in the array or not. Test: isInArray(['John', 'Jane', 'Mark'], 'Doe') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q12",
+          "type": "function",
+          "description": "Write a function reverseWords that accepts a string argument and returns the same string if only one word was passed in. Test: reverseWords('Hello') should return 'Hello'",
+          "expectedValue": "Hello",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_manipulation"
+        },
+        {
+          "id": "Q13",
+          "type": "function",
+          "description": "Write a function reverseWords that accepts a string argument and returns the same string if only one word was passed in. Test: reverseWords('Hello World') should return 'World Hello'",
+          "expectedValue": "World Hello",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_manipulation"
+        },
+        {
+          "id": "Q14",
+          "type": "function",
+          "description": "Write a function addToLast that accepts two arguments, array and value, and returns an array with the value added to the end of the array. Test: addToLast([1, 2, 3], 4) should return [1, 2, 3, 4]",
+          "expectedValue": "1,2,3,4",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q15",
+          "type": "function",
+          "description": "Write a function addToLast that accepts two arguments, array and value, and returns an array with the value added to the end of the array. Test: addToLast([10, 6], 1) should return [10, 6, 1]",
+          "expectedValue": "10,6,1",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q16",
+          "type": "function",
+          "description": "Write a function getLength that accepts an array and returns the length of the array without using the array's attribute length. Test: getLength([1, 2, 3, 4]) should return 4",
+          "expectedValue": "4",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_operations"
+        },
+        {
+          "id": "Q17",
+          "type": "function",
+          "description": "Write a function getLength that accepts an array and returns the length of the array without using the array's attribute length. Test: getLength([10, 22, 30]) should return 3",
+          "expectedValue": "3",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_operations"
+        },
+        {
+          "id": "Q18",
+          "type": "function",
+          "description": "Write a function getFirstVal that accepts an array and returns the first value of the array without using the index to access the value. Test: getFirstVal([1, 2, 3, 4]) should return 1",
+          "expectedValue": "1",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_operations"
+        },
+        {
+          "id": "Q19",
+          "type": "function",
+          "description": "Write a function getFirstVal that accepts an array and returns the first value of the array without using the index to access the value. Test: getFirstVal([51, 3, 3, 4]) should return 51",
+          "expectedValue": "51",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_operations"
+        },
+        {
+          "id": "Q20",
+          "type": "function",
+          "description": "Write a function updateOrCreate that accepts three arguments, array, value, and index, and returns an updated array. Test: updateOrCreate([10, 20, 30], 50, 1) should return [10, 50, 30]",
+          "expectedValue": "10,50,30",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q21",
+          "type": "function",
+          "description": "Write a function updateOrCreate that accepts three arguments, array, value, and index, and returns an updated array. Test: updateOrCreate([10, 20, 30], 40, 3) should return [10, 20, 30, 40]",
+          "expectedValue": "10,20,30,40",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q22",
+          "type": "function",
+          "description": "Write a function updateOrCreate that accepts three arguments, array, value, and index, and returns an updated array. Test: updateOrCreate([10, 20, 30], 100, 10) should return [10, 20, 30, empty * 7, 100]",
+          "expectedValue": "10,20,30,,,,,,,100",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q23",
+          "type": "function",
+          "description": "Write a function sliceArray that accepts three arguments, an ordered numeric array, startVal, and endVal, and returns an array starting at the startVal and ending at the endVal. Test: sliceArray([10, 20, 30, 40, 50, 60], 10, 60) should return [10, 20, 30, 40, 50, 60]",
+          "expectedValue": "10,20,30,40,50,60",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_slicing"
+        },
+        {
+          "id": "Q24",
+          "type": "function",
+          "description": "Write a function sliceArray that accepts three arguments, an ordered numeric array, startVal, and endVal, and returns an array starting at the startVal and ending at the endVal. Test: sliceArray([10, 20, 30, 40, 50, 60], 20, 40) should return [20, 30, 40]",
+          "expectedValue": "20,30,40",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_slicing"
+        },
+        {
+          "id": "Q25",
+          "type": "function",
+          "description": "Write a function sliceArray that accepts three arguments, an ordered numeric array, startVal, and endVal, and returns an array starting at the startVal and ending at the endVal. Test: sliceArray([10, 20, 30, 40, 50, 60], 20, 20) should return []",
+          "expectedValue": "",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_slicing"
+        },
+        {
+          "id": "Q26",
+          "type": "function",
+          "description": "Write a function sliceArray that accepts three arguments, an ordered numeric array, startVal, and endVal, and returns an array starting at the startVal and ending at the endVal. Test: sliceArray([10, 20, 30, 40, 50, 60], 50, 20) should return []",
+          "expectedValue": "",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_slicing"
+        },
+        {
+          "id": "Q27",
+          "type": "function",
+          "description": "Write a function randomFruit that accepts an array of fruits and returns a random element from that array. Test: randomFruit(['Apple', 'Banana', 'Strawberry', 'Mango']) should return one of the fruits",
+          "expectedValue": "Apple",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "random_selection"
+        },
+        {
+          "id": "Q28",
+          "type": "function",
+          "description": "Write a function randomFruit that accepts an array of fruits and returns a random element from that array. Test: randomFruit(['Apple', 'Banana', 'Strawberry', 'Mango']) should return one of the fruits",
+          "expectedValue": "Apple",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "random_selection"
+        },
+        {
+          "id": "Q29",
+          "type": "function",
+          "description": "Write a function randomFruit that accepts an array of fruits and returns a random element from that array. Test: randomFruit(['Apple', 'Banana', 'Strawberry', 'Mango']) should return one of the fruits",
+          "expectedValue": "Strawberry",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "random_selection"
+        },
+        {
+          "id": "Q30",
+          "type": "function",
+          "description": "Write a function randomFruit that accepts an array of fruits and returns a random element from that array. Test: randomFruit(['Apple', 'Banana', 'Strawberry', 'Mango']) should return one of the fruits",
+          "expectedValue": "Banana",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "random_selection"
+        }
+      ],
+      "totalQuestions": 10,
+      "totalPoints": 30,
+      "categories": {
+        "array_manipulation": 6,
+        "array_methods": 2,
+        "array_access": 3,
+        "array_search": 4,
+        "string_manipulation": 2,
+        "array_operations": 4,
+        "array_slicing": 4,
+        "random_selection": 4
+      }
+    },
+    {
+      "id": "W02D05_Objects",
+      "name": "Objects in JavaScript",
+      "description": "Learn object syntax, property access, factory functions, and object manipulation in JavaScript",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "syntax_fix",
+          "description": "Fix the syntax error in: const person_2 = (name: john, age:20)",
+          "expectedValue": "const person_2 = {name: 'john', age: 20}",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_syntax"
+        },
+        {
+          "id": "Q2",
+          "type": "syntax_fix",
+          "description": "Fix the syntax error in: const car = {brand \"Toyota\", model: 2020}",
+          "expectedValue": "const car = {brand: 'Toyota', model: 2020}",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_syntax"
+        },
+        {
+          "id": "Q3",
+          "type": "syntax_fix",
+          "description": "Fix the syntax error in: const employee ={name: \"Jane\", position: developer}",
+          "expectedValue": "const employee = {name: 'Jane', position: 'developer'}",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_syntax"
+        },
+        {
+          "id": "Q4",
+          "type": "property_access",
+          "description": "Access the age property of person_3 object",
+          "expectedValue": "24",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "property_access"
+        },
+        {
+          "id": "Q5",
+          "type": "property_modification",
+          "description": "Modify person_3's age to be 23 years old",
+          "expectedValue": "23",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "property_modification"
+        },
+        {
+          "id": "Q6",
+          "type": "property_addition",
+          "description": "Add a property called work with the value of an object with two keys, position and salary",
+          "expectedValue": "{position: 'developer', salary: 50000}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "property_addition"
+        },
+        {
+          "id": "Q7",
+          "type": "nested_access",
+          "description": "Access the first name property of the first employee",
+          "expectedValue": "John",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "nested_properties"
+        },
+        {
+          "id": "Q8",
+          "type": "nested_access",
+          "description": "Access the first name property of the second employee",
+          "expectedValue": "Jane",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "nested_properties"
+        },
+        {
+          "id": "Q9",
+          "type": "array_manipulation",
+          "description": "Add an employee object with your name and the position of a full-stack developer",
+          "expectedValue": "{id: 3, name: {first: 'YourName', last: 'YourLastName'}, position: 'full-stack developer'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q10",
+          "type": "nested_access",
+          "description": "Access the model value of the toyota car",
+          "expectedValue": "2019",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "nested_properties"
+        },
+        {
+          "id": "Q11",
+          "type": "nested_access",
+          "description": "Access the model value of the nissan car",
+          "expectedValue": "2020",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "nested_properties"
+        },
+        {
+          "id": "Q12",
+          "type": "property_modification",
+          "description": "Change the prius model from 2019 to 2020",
+          "expectedValue": "2020",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "property_modification"
+        },
+        {
+          "id": "Q13",
+          "type": "property_addition",
+          "description": "Add a new car of your choice",
+          "expectedValue": "{name: 'civic', model: 2021}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "property_addition"
+        },
+        {
+          "id": "Q14",
+          "type": "property_addition",
+          "description": "Add a property isAutomatic for all three cars",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "property_addition"
+        },
+        {
+          "id": "Q15",
+          "type": "function",
+          "description": "Write a factory function createUser that accepts two string arguments, firstName and lastName, returning an object representing the user. Test: createUser('John', 'Doe') should return {firstName: 'John', lastName: 'Doe'}",
+          "expectedValue": "{firstName: 'John', lastName: 'Doe'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "factory_functions"
+        },
+        {
+          "id": "Q16",
+          "type": "function",
+          "description": "Write a factory function createUser that accepts two string arguments, firstName and lastName, returning an object representing the user. Test: createUser('Peter', 'Brown') should return {firstName: 'Peter', lastName: 'Brown'}",
+          "expectedValue": "{firstName: 'Peter', lastName: 'Brown'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "factory_functions"
+        },
+        {
+          "id": "Q17",
+          "type": "function",
+          "description": "Write a factory function createCar that accepts three string arguments, brand, name, and color, returning an object representing the car. Test: createCar('Toyota', 'Prius', 'Black') should return {brand: 'Toyota', name: 'Prius', color: 'Black'}",
+          "expectedValue": "{brand: 'Toyota', name: 'Prius', color: 'Black'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "factory_functions"
+        },
+        {
+          "id": "Q18",
+          "type": "function",
+          "description": "Write a factory function createCar that accepts three string arguments, brand, name, and color, returning an object representing the car. Test: createCar('Audi', 'A1', 'Blue') should return {brand: 'Audi', name: 'A1', color: 'Blue'}",
+          "expectedValue": "{brand: 'Audi', name: 'A1', color: 'Blue'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "factory_functions"
+        },
+        {
+          "id": "Q19",
+          "type": "function",
+          "description": "Write a function getFullName that accepts an object representing a person and returns that person's full name in a string. Test: getFullName({first: 'Elon', middle: 'Reeve', last: 'Musk'}) should return 'Elon Reeve Musk'",
+          "expectedValue": "Elon Reeve Musk",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_manipulation"
+        },
+        {
+          "id": "Q20",
+          "type": "function",
+          "description": "Write a function getFullName that accepts an object representing a person and returns that person's full name in a string. Test: getFullName({first: 'John', middle: 'Mark', last: 'Doe'}) should return 'John Mark Doe'",
+          "expectedValue": "John Mark Doe",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_manipulation"
+        },
+        {
+          "id": "Q21",
+          "type": "function",
+          "description": "Write a function olderThan that accepts two objects, personOne and personTwo, and returns a string that represents who is older than the other. Test: olderThan({name: 'John', age: 23}, {name: 'Jane', age: 26}) should return 'Jane is older than John'",
+          "expectedValue": "Jane is older than John",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_comparison"
+        },
+        {
+          "id": "Q22",
+          "type": "function",
+          "description": "Write a function olderThan that accepts two objects, personOne and personTwo, and returns a string that represents who is older than the other. Test: olderThan({name: 'Mark', age: 30}, {name: 'Smith', age: 25}) should return 'Mark is older than Smith'",
+          "expectedValue": "Mark is older than Smith",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_comparison"
+        },
+        {
+          "id": "Q23",
+          "type": "function",
+          "description": "Write a function olderThan that accepts two objects, personOne and personTwo, and returns a string that represents who is older than the other. Test: olderThan({name: 'Marry', age: 20}, {name: 'Sarah', age: 20}) should return 'Marry is as old as Sarah'",
+          "expectedValue": "Marry is as old as Sarah",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_comparison"
+        },
+        {
+          "id": "Q24",
+          "type": "function",
+          "description": "Write a function isPropertyOf that accepts a string and an object and returns true if the string is a property of the object. Test: isPropertyOf('hello', {hello: 'world'}) should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "property_checking"
+        },
+        {
+          "id": "Q25",
+          "type": "function",
+          "description": "Write a function isPropertyOf that accepts a string and an object and returns true if the string is a property of the object. Test: isPropertyOf('world', {hello: 'world'}) should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "property_checking"
+        },
+        {
+          "id": "Q26",
+          "type": "function",
+          "description": "Write a function numberOfKeys that accepts an object and returns the number of keys present in the object. Test: numberOfKeys({name: 'James', age: 27}) should return 2",
+          "expectedValue": "2",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "object_methods"
+        },
+        {
+          "id": "Q27",
+          "type": "function",
+          "description": "Write a function numberOfKeys that accepts an object and returns the number of keys present in the object. Test: numberOfKeys({fruit: 'orange', vegetable: 'broccoli', animal: 'cat'}) should return 3",
+          "expectedValue": "3",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "object_methods"
+        },
+        {
+          "id": "Q28",
+          "type": "function",
+          "description": "Write a function valuesToString that accepts an object and returns a string of all the values from the object separated by an empty space. Test: valuesToString({name: 'James', age: 27}) should return 'James 27'",
+          "expectedValue": "James 27",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_methods"
+        },
+        {
+          "id": "Q29",
+          "type": "function",
+          "description": "Write a function valuesToString that accepts an object and returns a string of all the values from the object separated by an empty space. Test: valuesToString({fruit: 'apple', vegetable: 'asparagus', animal: 'dog'}) should return 'apple asparagus dog'",
+          "expectedValue": "apple asparagus dog",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_methods"
+        },
+        {
+          "id": "Q30",
+          "type": "function",
+          "description": "Write a function keyInObject that accepts two arguments, object and key, and checks if the key is present within the object. Test: keyInObject({order: 'chicken sandwich', orderId: 0, quantity: 1}, 'orderId') should return true",
+          "expectedValue": "true",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "property_checking"
+        },
+        {
+          "id": "Q31",
+          "type": "function",
+          "description": "Write a function keyInObject that accepts two arguments, object and key, and checks if the key is present within the object. Test: keyInObject({order: 'hamburger with fries', orderId: 1, quantity: 2}, 'name') should return false",
+          "expectedValue": "false",
+          "expectedType": "boolean",
+          "weight": 1,
+          "category": "property_checking"
+        }
+      ],
+      "totalQuestions": 10,
+      "totalPoints": 31,
+      "categories": {
+        "object_syntax": 3,
+        "property_access": 1,
+        "property_modification": 2,
+        "property_addition": 3,
+        "nested_properties": 3,
+        "array_manipulation": 1,
+        "factory_functions": 4,
+        "object_manipulation": 2,
+        "object_comparison": 3,
+        "property_checking": 4,
+        "object_methods": 3
+      }
+    },
+    {
+      "id": "W03D01_Iteration_P1",
+      "name": "Iteration Part 1",
+      "description": "Learn array iteration, loops, filtering, and basic iteration patterns in JavaScript",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function",
+          "description": "Write a function sum that accepts an array of numbers and returns the sum of the numbers. Test: sum([1, 2, 3, 4, 5, 6]) should return 21",
+          "expectedValue": "21",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_iteration"
+        },
+        {
+          "id": "Q2",
+          "type": "function",
+          "description": "Write a function sum that accepts an array of numbers and returns the sum of the numbers. Test: sum([1, 2, 3]) should return 6",
+          "expectedValue": "6",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_iteration"
+        },
+        {
+          "id": "Q3",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message saying 'Login Successful' or 'Login Failed'. Test: login('Jane', '123456') should return 'Login Successful'",
+          "expectedValue": "Login Successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q4",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message saying 'Login Successful' or 'Login Failed'. Test: login('Jane', '5321') should return 'Login Failed'",
+          "expectedValue": "Login Failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q5",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message saying 'Login Successful' or 'Login Failed'. Test: login('Mark', '123456') should return 'Login Failed'",
+          "expectedValue": "Login Failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q6",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message saying 'Login Successful' or 'Login Failed'. Test: login('admin', 'abc123') should return 'Login Successful'",
+          "expectedValue": "Login Successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q7",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message saying 'Login Successful' or 'Login Failed'. Test: login('admin', 'aaabc123') should return 'Login Failed'",
+          "expectedValue": "Login Failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_search"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "description": "Write a function onlyStrings that accepts an array of strings, numbers, and booleans, and returns a new array with only the strings. Test: onlyStrings([0, 1, 'Hello', true, 4, 'World', 6]) should return ['Hello', 'World']",
+          "expectedValue": "Hello,World",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_filtering"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "description": "Write a function onlyStrings that accepts an array of strings, numbers, and booleans, and returns a new array with only the strings. Test: onlyStrings(['John', 87, true, 26, 'Doe', false]) should return ['John', 'Doe']",
+          "expectedValue": "John,Doe",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_filtering"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "description": "Write a function range that accepts two number arguments and returns a string of all the numbers in between the two values. Test: range(5, 8) should return '5, 6, 7, 8'",
+          "expectedValue": "5, 6, 7, 8",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "range_generation"
+        },
+        {
+          "id": "Q11",
+          "type": "function",
+          "description": "Write a function range that accepts two number arguments and returns a string of all the numbers in between the two values. Test: range(8, 5) should return '5, 6, 7, 8'",
+          "expectedValue": "5, 6, 7, 8",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "range_generation"
+        },
+        {
+          "id": "Q12",
+          "type": "function",
+          "description": "Write a function range that accepts two number arguments and returns a string of all the numbers in between the two values. Test: range(5) should return '0, 1, 2, 3, 4, 5'",
+          "expectedValue": "0, 1, 2, 3, 4, 5",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "range_generation"
+        },
+        {
+          "id": "Q13",
+          "type": "function",
+          "description": "Write a function range that accepts two number arguments and returns a string of all the numbers in between the two values. Test: range(-5) should return '-5, -4, -3, -2, -1, 0'",
+          "expectedValue": "-5, -4, -3, -2, -1, 0",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "range_generation"
+        },
+        {
+          "id": "Q14",
+          "type": "function",
+          "description": "Write a function onlyOddNumbers that accepts an array of numbers and returns a new array with only the odd numbers. Test: onlyOddNumbers([0, 1, 2, 3, 4, 5, 6]) should return [1, 3, 5]",
+          "expectedValue": "1,3,5",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_filtering"
+        },
+        {
+          "id": "Q15",
+          "type": "function",
+          "description": "Write a function onlyOddNumbers that accepts an array of numbers and returns a new array with only the odd numbers. Test: onlyOddNumbers([0, 12, 6]) should return []",
+          "expectedValue": "",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_filtering"
+        },
+        {
+          "id": "Q16",
+          "type": "function",
+          "description": "Write a function maximumNumber that accepts an array of numbers and returns the highest number in the array. Test: maximumNumber([0, 5, 2, 10, 8, 6]) should return 10",
+          "expectedValue": "10",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_operations"
+        },
+        {
+          "id": "Q17",
+          "type": "function",
+          "description": "Write a function maximumNumber that accepts an array of numbers and returns the highest number in the array. Test: maximumNumber([0, 5, 6]) should return 6",
+          "expectedValue": "6",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "array_operations"
+        },
+        {
+          "id": "Q18",
+          "type": "function",
+          "description": "Write a function reversString that accepts a string and returns the string reversed. Test: reversString('Hello') should return 'olleH'",
+          "expectedValue": "olleH",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_manipulation"
+        },
+        {
+          "id": "Q19",
+          "type": "function",
+          "description": "Write a function reversString that accepts a string and returns the string reversed. Test: reversString('John') should return 'nhoJ'",
+          "expectedValue": "nhoJ",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "string_manipulation"
+        },
+        {
+          "id": "Q20",
+          "type": "function",
+          "description": "Write a function onlyEven that accepts an array of numbers and returns the same array with only the even numbers. Test: onlyEven([0, 1, 2, 3, 4, 5, 6]) should return [0, 2, 4, 6]",
+          "expectedValue": "0,2,4,6",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_mutation"
+        },
+        {
+          "id": "Q21",
+          "type": "function",
+          "description": "Write a function onlyEven that accepts an array of numbers and returns the same array with only the even numbers. Test: onlyEven([1, 9, 2, 3, 4]) should return [2, 4]",
+          "expectedValue": "2,4",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_mutation"
+        },
+        {
+          "id": "Q22",
+          "type": "function",
+          "description": "Write a function createUser that accepts two string arguments, username and password, and adds the new user to the allUsers array. Test: createUser('James', '123456') should return 'Registration successful'",
+          "expectedValue": "Registration successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q23",
+          "type": "function",
+          "description": "Write a function createUser that accepts two string arguments, username and password, and adds the new user to the allUsers array. Test: createUser('Jane', '5321') should return 'That username is not available'",
+          "expectedValue": "That username is not available",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q24",
+          "type": "function",
+          "description": "Write a function createUser that accepts two string arguments, username and password, and adds the new user to the allUsers array. Test: createUser('Mark', '22222') should return 'Registration successful'",
+          "expectedValue": "Registration successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q25",
+          "type": "function",
+          "description": "Write a function createUser that accepts two string arguments, username and password, and adds the new user to the allUsers array. Test: createUser('admin', 'abc123') should return 'That username is not available'",
+          "expectedValue": "That username is not available",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "array_manipulation"
+        },
+        {
+          "id": "Q26",
+          "type": "function",
+          "description": "Write a function convertToObject that accepts an array and returns an object containing the values with the corresponding index as keys. Test: convertToObject(['one', 'two', 'three']) should return {0: 'one', 1: 'two', 2: 'three'}",
+          "expectedValue": "{0: 'one', 1: 'two', 2: 'three'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "array_conversion"
+        },
+        {
+          "id": "Q27",
+          "type": "function",
+          "description": "Write a function convertToObject that accepts an array and returns an object containing the values with the corresponding index as keys. Test: convertToObject(['Hello', 'World', '!!!']) should return {0: 'Hello', 1: 'World', 2: '!!!'}",
+          "expectedValue": "{0: 'Hello', 1: 'World', 2: '!!!'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "array_conversion"
+        }
+      ],
+      "totalQuestions": 10,
+      "totalPoints": 27,
+      "categories": {
+        "array_iteration": 2,
+        "array_search": 5,
+        "array_filtering": 3,
+        "range_generation": 4,
+        "array_operations": 2,
+        "string_manipulation": 2,
+        "array_mutation": 2,
+        "array_manipulation": 4,
+        "array_conversion": 2
+      }
+    },
+    {
+      "id": "W03D03_Iteration_P2",
+      "name": "Iteration Part 2",
+      "description": "Learn advanced iteration patterns, object iteration, and complex data manipulation in JavaScript",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function",
+          "description": "Write a function keyValuePairs that accepts an object and returns an array of arrays that contains both the key and value. Test: keyValuePairs({name: 'John', age: 24}) should return [['name', 'John'], ['age', 24]]",
+          "expectedValue": "[['name', 'John'], ['age', 24]]",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_iteration"
+        },
+        {
+          "id": "Q2",
+          "type": "function",
+          "description": "Write a function keyValuePairs that accepts an object and returns an array of arrays that contains both the key and value. Test: keyValuePairs({firstName: 'John', lastName: 'Doe'}) should return [['firstName', 'John'], ['lastName', 'Doe']]",
+          "expectedValue": "[['firstName', 'John'], ['lastName', 'Doe']]",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_iteration"
+        },
+        {
+          "id": "Q3",
+          "type": "function",
+          "description": "Write a function keyValuePairs that accepts an object and returns an array of arrays that contains both the key and value. Test: keyValuePairs({name: 'Mark', position: 'Full-Stack Developer', salary: 600}) should return [['name', 'Mark'], ['position', 'Full-Stack Developer'], ['salary', 600]]",
+          "expectedValue": "[['name', 'Mark'], ['position', 'Full-Stack Developer'], ['salary', 600]]",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_iteration"
+        },
+        {
+          "id": "Q4",
+          "type": "function",
+          "description": "Write a function absoluteNumbers that accepts an object of grades and changes all negative numbers to become positive. Test: absoluteNumbers({science: 50, art: 60}) should return {science: 50, art: 60}",
+          "expectedValue": "{science: 50, art: 60}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "object_modification"
+        },
+        {
+          "id": "Q5",
+          "type": "function",
+          "description": "Write a function absoluteNumbers that accepts an object of grades and changes all negative numbers to become positive. Test: absoluteNumbers({science: -80, art: 75, english: 77}) should return {science: 80, art: 75, english: 77}",
+          "expectedValue": "{science: 80, art: 75, english: 77}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "object_modification"
+        },
+        {
+          "id": "Q6",
+          "type": "function",
+          "description": "Write a function passedOrFailed that accepts an object of student grades and returns a string. Test: passedOrFailed(studentOne) should return 'The student have passed'",
+          "expectedValue": "The student have passed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_analysis"
+        },
+        {
+          "id": "Q7",
+          "type": "function",
+          "description": "Write a function passedOrFailed that accepts an object of student grades and returns a string. Test: passedOrFailed(studentTwo) should return 'The student have failed'",
+          "expectedValue": "The student have failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_analysis"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "description": "Write a function convertToArray that accepts an object with numerical keys and returns an array containing the values. Test: convertToArray({0: 'one', 1: 'two', 2: 'three'}) should return ['one', 'two', 'three']",
+          "expectedValue": "one,two,three",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_conversion"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "description": "Write a function convertToArray that accepts an object with numerical keys and returns an array containing the values. Test: convertToArray({0: 'two', 1: 'three', 2: 'one'}) should return ['two', 'three', 'one']",
+          "expectedValue": "two,three,one",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_conversion"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "description": "Write a function convertToArray that accepts an object with numerical keys and returns an array containing the values. Test: convertToArray({0: 'three', 1: 'two', 2: 'one'}) should return ['three', 'two', 'one']",
+          "expectedValue": "three,two,one",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_conversion"
+        },
+        {
+          "id": "Q11",
+          "type": "function",
+          "description": "Write a function safeToConsume that accepts an object of chemical compounds and returns a string. Test: safeToConsume({h2o: '10.0g'}) should return 'Safe to consume'",
+          "expectedValue": "Safe to consume",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_validation"
+        },
+        {
+          "id": "Q12",
+          "type": "function",
+          "description": "Write a function safeToConsume that accepts an object of chemical compounds and returns a string. Test: safeToConsume({pyridoxine: '0.4mg', choline: '9.8mg', vitaminC: '8.7mg'}) should return 'Safe to consume'",
+          "expectedValue": "Safe to consume",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_validation"
+        },
+        {
+          "id": "Q13",
+          "type": "function",
+          "description": "Write a function safeToConsume that accepts an object of chemical compounds and returns a string. Test: safeToConsume({genkwanin: '3.1mg', mezerein: '2.7mg', daphnetoxin: '7.3mg'}) should return 'Poisonous do not consume'",
+          "expectedValue": "Poisonous do not consume",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_validation"
+        },
+        {
+          "id": "Q14",
+          "type": "function",
+          "description": "Write a function safeToConsume that accepts an object of chemical compounds and returns a string. Test: safeToConsume({h2o: '5.2mg', glucose: '1.3mg', cyanide: '4.0mg'}) should return 'Poisonous do not consume'",
+          "expectedValue": "Poisonous do not consume",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_validation"
+        },
+        {
+          "id": "Q15",
+          "type": "function",
+          "description": "Write a function toString that accepts an object and return all of its values in a string. Test: toString({name: 'John', age: 24}) should return 'John, 24'",
+          "expectedValue": "John, 24",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_iteration"
+        },
+        {
+          "id": "Q16",
+          "type": "function",
+          "description": "Write a function toString that accepts an object and return all of its values in a string. Test: toString({firstName: 'John', lastName: 'Doe'}) should return 'John, Doe'",
+          "expectedValue": "John, Doe",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_iteration"
+        },
+        {
+          "id": "Q17",
+          "type": "function",
+          "description": "Write a function toString that accepts an object and return all of its values in a string. Test: toString({name: 'Mark', position: 'Full-Stack Developer', salary: 600}) should return 'Mark, Full-Stack Developer, 600'",
+          "expectedValue": "Mark, Full-Stack Developer, 600",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_iteration"
+        },
+        {
+          "id": "Q18",
+          "type": "function",
+          "description": "Write a function totalBill that accepts an object representing separate bills and returns the sum of all bills. Test: totalBill(billsForJanuary) should return 1075",
+          "expectedValue": "1075",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "object_calculation"
+        },
+        {
+          "id": "Q19",
+          "type": "function",
+          "description": "Write a function totalBill that accepts an object representing separate bills and returns the sum of all bills. Test: totalBill(billsForFebruary) should return 375",
+          "expectedValue": "375",
+          "expectedType": "number",
+          "weight": 1,
+          "category": "object_calculation"
+        },
+        {
+          "id": "Q20",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message. Test: login('Jane', '123456') should return 'Login Successful'",
+          "expectedValue": "Login Successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_search"
+        },
+        {
+          "id": "Q21",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message. Test: login('Jane', '5321') should return 'Login Failed'",
+          "expectedValue": "Login Failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_search"
+        },
+        {
+          "id": "Q22",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message. Test: login('Mark', '123456') should return 'Login Failed'",
+          "expectedValue": "Login Failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_search"
+        },
+        {
+          "id": "Q23",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message. Test: login('admin', 'abc123') should return 'Login Successful'",
+          "expectedValue": "Login Successful",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_search"
+        },
+        {
+          "id": "Q24",
+          "type": "function",
+          "description": "Write a function login that accepts two string arguments, username and password, and returns a message. Test: login('admin', 'aaabc123') should return 'Login Failed'",
+          "expectedValue": "Login Failed",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_search"
+        },
+        {
+          "id": "Q25",
+          "type": "function",
+          "description": "Write a function createDog that accepts three string arguments, name, dogBreed, and furColor, and adds a new dog to the uniqueDogs object. Test: createDog('luna', 'Husky', 'black and white') should return 'Added the dog successfully'",
+          "expectedValue": "Added the dog successfully",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_manipulation"
+        },
+        {
+          "id": "Q26",
+          "type": "function",
+          "description": "Write a function createDog that accepts three string arguments, name, dogBreed, and furColor, and adds a new dog to the uniqueDogs object. Test: createDog('rex', 'Golden Retriever', 'blond') should return 'The dog isn't unique enough :('",
+          "expectedValue": "The dog isn't unique enough :(",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_manipulation"
+        },
+        {
+          "id": "Q27",
+          "type": "function",
+          "description": "Write a function validateMessage that accepts an object representing a message and returns the object if it is valid. Test: validateMessage(messageOne) should return {username: 'John', message: 'Hello', date: '01/01/2020'}",
+          "expectedValue": "{username: 'John', message: 'Hello', date: '01/01/2020'}",
+          "expectedType": "object",
+          "weight": 1,
+          "category": "object_validation"
+        },
+        {
+          "id": "Q28",
+          "type": "function",
+          "description": "Write a function validateMessage that accepts an object representing a message and returns the object if it is valid. Test: validateMessage(messageTwo) should return 'invalid message'",
+          "expectedValue": "invalid message",
+          "expectedType": "string",
+          "weight": 1,
+          "category": "object_validation"
+        }
+      ],
+      "totalQuestions": 10,
+      "totalPoints": 28,
+      "categories": {
+        "object_iteration": 4,
+        "object_modification": 2,
+        "object_analysis": 2,
+        "object_conversion": 3,
+        "object_validation": 4,
+        "object_calculation": 2,
+        "object_search": 5,
+        "object_manipulation": 2
+      }
+    },
+    {
+      "id": "W04D03_OOP",
+      "name": "W04D03_OOP",
+      "description": "Object-Oriented Programming concepts including classes, inheritance, constructors, methods, static methods, and private properties",
+      "questions": [
+        {
+          "id": "Q1",
+          "text": "Define a class Activate and create a constructor with one property passCode containing a String representing the passCode.",
+          "expectedValue": "class Activate { constructor() { this.passCode = null; } }",
+          "type": "class_definition",
+          "weight": 1,
+          "category": "class_definition"
+        },
+        {
+          "id": "Q2",
+          "text": "Write a method setPassCode, that accepts a passCode as String and saves it in the Activate then returns 'Passcode has been set', and if there is already a passCode return 'Reset passcode first'",
+          "expectedValue": "setPassCode(passCode) { if (this.passCode) return 'Reset passcode first'; this.passCode = passCode; return 'Passcode has been set'; }",
+          "type": "method_definition",
+          "weight": 2,
+          "category": "method_implementation"
+        },
+        {
+          "id": "Q3",
+          "text": "Write a method resetPassCode that accepts argument passCode as String and meets the requirements: reset if matches, return 'Set a passcode first' if no saved passCode, return 'Wrong passcode' if doesn't match",
+          "expectedValue": "resetPassCode(passCode) { if (!this.passCode) return 'Set a passcode first'; if (this.passCode !== passCode) return 'Wrong passcode'; this.passCode = null; return 'Passcode has been reset'; }",
+          "type": "method_definition",
+          "weight": 3,
+          "category": "method_implementation"
+        },
+        {
+          "id": "Q4",
+          "text": "Define a new class Lock that will inherit all features from Activate class",
+          "expectedValue": "class Lock extends Activate { constructor() { super(); } }",
+          "type": "inheritance",
+          "weight": 2,
+          "category": "inheritance"
+        },
+        {
+          "id": "Q5",
+          "text": "Within class Lock add new property isOpen and openSafe method that accepts a passcode, sets isOpen to true if passcode matches, otherwise returns 'Wrong passcode'",
+          "expectedValue": "isOpen = false; openSafe(passcode) { if (this.passCode === passcode) { this.isOpen = true; return 'The safe is open and ready to use'; } return 'Wrong passcode'; }",
+          "type": "method_definition",
+          "weight": 3,
+          "category": "method_implementation"
+        },
+        {
+          "id": "Q6",
+          "text": "Write a method closeSafe that sets isOpen to false and returns 'The safe is closed'",
+          "expectedValue": "closeSafe() { this.isOpen = false; return 'The safe is closed'; }",
+          "type": "method_definition",
+          "weight": 1,
+          "category": "method_implementation"
+        },
+        {
+          "id": "Q7",
+          "text": "Modify Lock constructor to accept maxAttempts argument and create lockSafe method that locks the safe after specified failed attempts",
+          "expectedValue": "constructor(maxAttempts) { super(); this.maxAttempts = maxAttempts; this.attempts = 0; this.isLocked = false; } lockSafe() { this.attempts++; if (this.attempts >= this.maxAttempts) { this.isLocked = true; return 'The Safe is locked'; } }",
+          "type": "constructor_modification",
+          "weight": 4,
+          "category": "constructor_modification"
+        },
+        {
+          "id": "Q8",
+          "text": "Modify Lock constructor to accept lockDownDuration argument and implement lockSafe to lock the safe for that duration",
+          "expectedValue": "constructor(maxAttempts, lockDownDuration) { super(); this.maxAttempts = maxAttempts; this.lockDownDuration = lockDownDuration; this.attempts = 0; this.isLocked = false; this.lockTime = null; } lockSafe() { this.attempts++; if (this.attempts >= this.maxAttempts) { this.isLocked = true; this.lockTime = Date.now(); setTimeout(() => { this.isLocked = false; this.attempts = 0; }, this.lockDownDuration); return 'The safe is locked'; } }",
+          "type": "constructor_modification",
+          "weight": 5,
+          "category": "constructor_modification"
+        },
+        {
+          "id": "Q9",
+          "text": "Inside the class Safe create a constructor that accepts safeSize argument and creates safeSize property and storage array",
+          "expectedValue": "class Safe extends Lock { constructor(safeSize, maxAttempts, lockDownDuration) { super(maxAttempts, lockDownDuration); this.safeSize = safeSize; this.storage = []; } }",
+          "type": "constructor_definition",
+          "weight": 2,
+          "category": "constructor_definition"
+        },
+        {
+          "id": "Q10",
+          "text": "Create a method insert that accepts name and size arguments, creates an item object and adds it to storage if size <= safeSize",
+          "expectedValue": "insert(name, size) { if (size <= this.safeSize) { const item = { name, size }; this.storage.push(item); return true; } return false; }",
+          "type": "method_definition",
+          "weight": 3,
+          "category": "method_implementation"
+        },
+        {
+          "id": "Q11",
+          "text": "Write a method remove that removes the specified item from storage and returns the removed item or 'Not Found'",
+          "expectedValue": "remove(name) { const index = this.storage.findIndex(item => item.name === name); if (index === -1) return 'Not Found'; return this.storage.splice(index, 1)[0]; }",
+          "type": "method_definition",
+          "weight": 3,
+          "category": "method_implementation"
+        },
+        {
+          "id": "Q12",
+          "text": "Modify insert and remove to only work if the safe is opened, return 'Please open the safe first' if closed",
+          "expectedValue": "insert(name, size) { if (!this.isOpen) return 'Please open the safe first'; if (size <= this.safeSize) { const item = { name, size }; this.storage.push(item); return true; } return false; } remove(name) { if (!this.isOpen) return 'Please open the safe first'; const index = this.storage.findIndex(item => item.name === name); if (index === -1) return 'Not Found'; return this.storage.splice(index, 1)[0]; }",
+          "type": "method_modification",
+          "weight": 4,
+          "category": "method_modification"
+        },
+        {
+          "id": "Q13",
+          "text": "Create a static method guideline that describes how to use Safe class features",
+          "expectedValue": "static guideline() { return '1. Create Safe instance with size, maxAttempts, lockDownDuration\\n2. Set passcode with setPassCode\\n3. Open safe with openSafe using correct passcode\\n4. Insert/remove items while safe is open\\n5. Close safe with closeSafe'; }",
+          "type": "static_method",
+          "weight": 2,
+          "category": "static_method"
+        },
+        {
+          "id": "Q14",
+          "text": "Make passCode and storage properties private using private class features",
+          "expectedValue": "class Activate { #passCode = null; } class Safe extends Lock { #storage = []; }",
+          "type": "private_properties",
+          "weight": 3,
+          "category": "private_properties"
+        }
+      ],
+      "totalQuestions": 14,
+      "categories": {
+        "class_definition": 1,
+        "method_implementation": 6,
+        "inheritance": 1,
+        "constructor_modification": 2,
+        "constructor_definition": 1,
+        "method_modification": 1,
+        "static_method": 1,
+        "private_properties": 1
+      }
+    },
+    {
+      "id": "W03D05_Recursion",
+      "name": "Recursion",
+      "description": "Recursive functions and algorithms - Factorial, sumCubes, getLength, reverseString, countCharacter, oddOrEven, multiply, isPalindrome, remainder, and fibonacci",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function",
+          "question": "Write a function factorial that accepts a number argument, and returns the factorial of that number.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q2",
+          "type": "function",
+          "question": "Write a function sumCubes that accepts an array and returns the sum of the cubed numbers.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q3",
+          "type": "function",
+          "question": "Write a function getLength that accepts a string argument, and returns the length of the string. Do not use the length property.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q4",
+          "type": "function",
+          "question": "Write a function reverseString that accepts a string argument, and returns a string in a reversed order.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q5",
+          "type": "function",
+          "question": "Write a function countCharacter that accepts a string, and a character and returns the number of times the character was repeated.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q6",
+          "type": "function",
+          "question": "Write a function oddOrEven that accepts a number and returns a string \"The number is even\" or \"The number is odd\" depending on whether the number is odd or even. Do not use the modulo operator %.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q7",
+          "type": "function",
+          "question": "Write a function multiply that accepts two number arguments and returns the multiple of both numbers without using the * operator.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "question": "Write a function isPalindrome that accepts a string argument and returns true if the string is a palindrome and false if it is not.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "question": "Write a function remainder that accepts two number arguments and returns the remainder of the division of both numbers, do not use % to solve this question.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "question": "Write a function fibonacci that accepts a number argument, and returns the value of the Fibonacci sequence at that value.",
+          "expected": "function",
+          "weight": 1,
+          "category": "recursion_basics"
+        }
+      ],
+      "totalQuestions": 10,
+      "weights": {
+        "recursion_basics": 1
+      }
+    },
+    {
+      "id": "W04D05_CSS_Intro",
+      "name": "CSS Introduction",
+      "description": "Introduction to CSS styling, selectors, and layout techniques",
+      "questions": [],
+      "totalQuestions": 8,
+      "weights": {
+        "html_css": 1
+      }
+    },
+    {
+      "id": "W04D01_CB_HOF",
+      "name": "Callbacks and Higher-Order Functions",
+      "description": "Advanced JavaScript concepts - convertToString, averageGrade, evenLengthOddIndex, incrementByIndex, countWords, orderByType, gradeExam, allNumbers, convertToObject, and fibonacci",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "function",
+          "question": "Write a function convertToString that accepts an array of letters and returns all the letters combined.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q2",
+          "type": "function",
+          "question": "Write a function averageGrade that accepts an array of student grades as values and returns the average grade.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q3",
+          "type": "function",
+          "question": "Write a function evenLengthOddIndex that accepts an array of strings and returns a new array of only the even-length words that are in an odd index.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q4",
+          "type": "function",
+          "question": "Write a function incrementByIndex that accepts an array of nested arrays that hold numbers as values, and returns an array where each element of the nested arrays is incremented by the index of that nested array.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q5",
+          "type": "function",
+          "question": "Write a function countWords that accepts a string and returns an object that has all of the unique words from the string as keys, and the number of times a word was found in the string is shown as the value of that key.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q6",
+          "type": "function",
+          "question": "Write a function orderByType that accepts an array of mixed type values and returns a new array with the same values but ordered by type, meaning all the strings first, then all the numbers, and all the booleans last.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q7",
+          "type": "function",
+          "question": "Write a function gradeExam that accepts an array of objects and return an array of only the passed subjects with modified value, instead of the grade saying passed, the passing grade is 50 or above.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q8",
+          "type": "function",
+          "question": "Write a function allNumbers that accepts an array and returns true if all the values are numbers and returns false if it is not.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q9",
+          "type": "function",
+          "question": "Write a function convertToObject that accepts an array of key-value pairs arrays, and return an array of objects with the corresponding keys and values.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        },
+        {
+          "id": "Q10",
+          "type": "function",
+          "question": "Write a function fibonacci that accepts a number argument, and returns an array that it's indices are Fibonacci numbers (from zero to the number) and its values are the values of the sequence at that index.",
+          "expected": "function",
+          "weight": 1,
+          "category": "callback_functions"
+        }
+      ],
+      "totalQuestions": 10,
+      "weights": {
+        "callback_functions": 1
+      }
+    }
+  ]
+}

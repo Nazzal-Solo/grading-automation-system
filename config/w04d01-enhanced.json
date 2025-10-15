@@ -1,0 +1,307 @@
+{
+  "lectures": [
+    {
+      "id": "W04D01_CB_HOF",
+      "name": "Callbacks & Higher-Order Functions in JavaScript",
+      "description": "Higher-order functions, callbacks, and functional programming - Learn to use map, filter, reduce, and other higher-order functions for data transformation and manipulation",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "hof_function",
+          "description": "Write a function convertToString that accepts an array of letters and returns all the letters combined",
+          "functionName": "convertToString",
+          "parameters": ["array"],
+          "expectedReturn": "string",
+          "testCases": [
+            {
+              "input": [["c", "a", "t"]],
+              "expected": "cat",
+              "description": "Convert array of letters to string"
+            },
+            {
+              "input": [["h", "e", "l", "l", "o"]],
+              "expected": "hello",
+              "description": "Convert array of letters to 'hello'"
+            }
+          ],
+          "weight": 1,
+          "category": "array_transformation"
+        },
+        {
+          "id": "Q2",
+          "type": "hof_function",
+          "description": "Write a function averageGrade that accepts an array of student grades as values and returns the average grade. If an empty array was passed in return 'Please enter at least one grade'",
+          "functionName": "averageGrade",
+          "parameters": ["grades"],
+          "expectedReturn": "number or string",
+          "testCases": [
+            {
+              "input": [[100, 80, 95, 67, 74]],
+              "expected": 83.2,
+              "description": "Calculate average of grades"
+            },
+            {
+              "input": [[100, 90, 80, 70]],
+              "expected": 85,
+              "description": "Calculate average of different grades"
+            },
+            {
+              "input": [[]],
+              "expected": "Please enter at least one grade",
+              "description": "Handle empty array case"
+            }
+          ],
+          "weight": 1,
+          "category": "array_analysis"
+        },
+        {
+          "id": "Q3",
+          "type": "hof_function",
+          "description": "Write a function evenLengthOddIndex that accepts an array of strings and returns a new array of only the even-length words that are in an odd index",
+          "functionName": "evenLengthOddIndex",
+          "parameters": ["strings"],
+          "expectedReturn": "array of strings",
+          "testCases": [
+            {
+              "input": [["word", "care", "car", "food", "cast", "cat"]],
+              "expected": ["care", "food"],
+              "description": "Filter even-length words at odd indices"
+            },
+            {
+              "input": [["word", "care", "food", "car", "cast", "cat"]],
+              "expected": ["care"],
+              "description": "Filter even-length words at odd indices with different order"
+            },
+            {
+              "input": [["word", "cat", "food"]],
+              "expected": [],
+              "description": "No even-length words at odd indices"
+            }
+          ],
+          "weight": 1,
+          "category": "array_filtering"
+        },
+        {
+          "id": "Q4",
+          "type": "hof_function",
+          "description": "Write a function incrementByIndex that accepts an array of nested arrays that hold numbers as values, and returns an array where each element of the nested arrays is incremented by the index of that nested array",
+          "functionName": "incrementByIndex",
+          "parameters": ["array"],
+          "expectedReturn": "array of arrays",
+          "testCases": [
+            {
+              "input": [
+                [
+                  [6, 1, 5],
+                  [1, 5, 49]
+                ]
+              ],
+              "expected": [
+                [6, 1, 5],
+                [2, 6, 50]
+              ],
+              "description": "Increment nested arrays by their index"
+            },
+            {
+              "input": [
+                [
+                  [1, 2, 3],
+                  [2, 7, 9],
+                  [10, 3, 44]
+                ]
+              ],
+              "expected": [
+                [1, 2, 3],
+                [3, 8, 10],
+                [12, 5, 46]
+              ],
+              "description": "Increment multiple nested arrays by their indices"
+            }
+          ],
+          "weight": 1,
+          "category": "array_transformation"
+        },
+        {
+          "id": "Q5",
+          "type": "hof_function",
+          "description": "Write a function countWords that accepts a string and returns an object that has all of the unique words from the string as keys, and the number of times a word was found in the string is shown as the value of that key",
+          "functionName": "countWords",
+          "parameters": ["string"],
+          "expectedReturn": "object",
+          "testCases": [
+            {
+              "input": ["hello hello world"],
+              "expected": { "hello": 2, "world": 1 },
+              "description": "Count word occurrences in string"
+            },
+            {
+              "input": ["hello"],
+              "expected": { "hello": 1 },
+              "description": "Count single word"
+            },
+            {
+              "input": [""],
+              "expected": {},
+              "description": "Handle empty string"
+            }
+          ],
+          "weight": 1,
+          "category": "string_analysis"
+        },
+        {
+          "id": "Q6",
+          "type": "hof_function",
+          "description": "Write a function orderByType that accepts an array of mixed type values and returns a new array with the same values but ordered by type, meaning all the strings first, then all the numbers, and all the booleans last",
+          "functionName": "orderByType",
+          "parameters": ["array"],
+          "expectedReturn": "array",
+          "testCases": [
+            {
+              "input": [[1, true, 10, "hello", "world", false, 90, "cat"]],
+              "expected": ["hello", "world", "cat", 1, 10, 90, true, false],
+              "description": "Order mixed types: strings, numbers, booleans"
+            },
+            {
+              "input": [["hello", "world", 90, "cat"]],
+              "expected": ["hello", "world", "cat", 90],
+              "description": "Order strings and numbers"
+            }
+          ],
+          "weight": 1,
+          "category": "array_sorting"
+        },
+        {
+          "id": "Q7",
+          "type": "hof_function",
+          "description": "Write a function gradeExam that accepts an array of objects and return an array of only the passed subjects with modified value, instead of the grade saying passed, the passing grade is 50 or above",
+          "functionName": "gradeExam",
+          "parameters": ["array"],
+          "expectedReturn": "array of objects",
+          "testCases": [
+            {
+              "input": [
+                [
+                  { "subject": "art", "grade": 90 },
+                  { "subject": "math", "grade": 48 }
+                ]
+              ],
+              "expected": [{ "subject": "art", "grade": "passed" }],
+              "description": "Filter and modify passed subjects"
+            },
+            {
+              "input": [
+                [
+                  { "subject": "english", "grade": 74 },
+                  { "subject": "math", "grade": 64 }
+                ]
+              ],
+              "expected": [
+                { "subject": "english", "grade": "passed" },
+                { "subject": "math", "grade": "passed" }
+              ],
+              "description": "Filter and modify multiple passed subjects"
+            },
+            {
+              "input": [
+                [
+                  { "subject": "english", "grade": 41 },
+                  { "subject": "art", "grade": 30 }
+                ]
+              ],
+              "expected": [],
+              "description": "No passed subjects"
+            }
+          ],
+          "weight": 1,
+          "category": "object_filtering"
+        },
+        {
+          "id": "Q8",
+          "type": "hof_function",
+          "description": "Write a function allNumbers that accepts an array and returns true if all the values are numbers and returns false if it is not",
+          "functionName": "allNumbers",
+          "parameters": ["array"],
+          "expectedReturn": "boolean",
+          "testCases": [
+            {
+              "input": [[1, 2, 3, 4]],
+              "expected": true,
+              "description": "All numbers array returns true"
+            },
+            {
+              "input": [[10, 4, -1, 0]],
+              "expected": true,
+              "description": "All numbers including negative and zero"
+            },
+            {
+              "input": [[1, 2, "three", 1]],
+              "expected": false,
+              "description": "Mixed types returns false"
+            },
+            {
+              "input": [[41, 27, true]],
+              "expected": false,
+              "description": "Numbers and boolean returns false"
+            }
+          ],
+          "weight": 1,
+          "category": "array_validation"
+        },
+        {
+          "id": "Q9",
+          "type": "hof_function",
+          "description": "Write a function convertToObject that accepts an array of key-value pairs arrays, and return an array of objects with the corresponding keys and values",
+          "functionName": "convertToObject",
+          "parameters": ["array"],
+          "expectedReturn": "array of objects",
+          "testCases": [
+            {
+              "input": [[["name", "Jane"]]],
+              "expected": [{ "name": "Jane" }],
+              "description": "Convert single key-value pair to object"
+            },
+            {
+              "input": [
+                [
+                  ["name", "John"],
+                  ["age", 24]
+                ]
+              ],
+              "expected": [{ "name": "John" }, { "age": 24 }],
+              "description": "Convert multiple key-value pairs to objects"
+            }
+          ],
+          "weight": 1,
+          "category": "array_conversion"
+        },
+        {
+          "id": "Q10",
+          "type": "hof_function",
+          "description": "Write a function fibonacci that accepts a number argument, and returns an array that it's indices are Fibonacci numbers (from zero to the number) and its values are the values of the sequence at that index",
+          "functionName": "fibonacci",
+          "parameters": ["fibNumber"],
+          "expectedReturn": "array",
+          "testCases": [
+            {
+              "input": [4],
+              "expected": [0, 1, 1, 2, 3],
+              "description": "Generate Fibonacci sequence up to index 4"
+            },
+            {
+              "input": [7],
+              "expected": [0, 1, 1, 2, 3, 5, 8, 13],
+              "description": "Generate Fibonacci sequence up to index 7"
+            },
+            {
+              "input": [10],
+              "expected": [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55],
+              "description": "Generate Fibonacci sequence up to index 10"
+            }
+          ],
+          "weight": 1,
+          "category": "mathematical_sequence"
+        }
+      ]
+    }
+  ]
+}

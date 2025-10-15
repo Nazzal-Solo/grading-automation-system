@@ -1,0 +1,232 @@
+{
+  "lectureId": "W05D03_DOM",
+  "title": "DOM Manipulation - Todo List",
+  "description": "HTML connected to JS; create header+list, render toDos, add/delete/update items via DOM.",
+  "week": 5,
+  "day": 3,
+  "questions": [
+    {
+      "id": "q1_html_and_script",
+      "title": "HTML and Script Setup",
+      "description": "Create an empty HTML page and connect it to a JavaScript file using a script tag.",
+      "type": "html_js_dom",
+      "points": 10,
+      "checks": [
+        { "htmlContains": "<html", "description": "Contains <html> tag" },
+        { "htmlContains": "<body", "description": "Contains <body> tag" },
+        {
+          "fileExistsFromHtmlScript": true,
+          "description": "External JS file exists",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q2_header_and_ul",
+      "title": "Header and Empty List on Load",
+      "description": "On load, create an h1 'Todo List' and an empty <ul> via DOM or static HTML.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            { "htmlRegex": "<h1[^>]*>.*Todo.*List.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*TODO.*LIST.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*TodoList.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*TODOLIST.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*Todo.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*List.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*todo.*list.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*todo.*</h1>" },
+            { "htmlRegex": "<h1[^>]*>.*list.*</h1>" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]h1['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]H1['\"`]" },
+            { "jsRegex": "innerHTML.*h1" },
+            { "jsRegex": "innerText.*h1" },
+            { "jsRegex": "textContent.*h1" }
+          ],
+          "description": "Header exists (static or created)"
+        },
+        {
+          "anyPass": [
+            { "htmlContains": "<ul" },
+            { "jsRegex": "createElement\\s*['\"`]ul['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]ul['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]UL['\"`]" },
+            { "jsRegex": "innerHTML.*ul" },
+            { "jsRegex": "innerText.*ul" },
+            { "jsRegex": "textContent.*ul" }
+          ],
+          "description": "Unordered list exists (static or created)"
+        }
+      ]
+    },
+    {
+      "id": "q3_todos_global",
+      "title": "Global toDos Array",
+      "description": "Create a global toDos variable with three items: wake up, eat breakfast, code.",
+      "type": "html_js_dom",
+      "points": 10,
+      "checks": [
+        {
+          "jsRegex": "(?:const|let|var)\\s+toDos\\s*=\\s*\\[",
+          "description": "toDos array declared"
+        },
+        {
+          "anyPass": [
+            { "jsRegex": "wake\\s*up" },
+            { "jsRegex": "wakeup" },
+            { "jsRegex": "Wake\\s*Up" }
+          ],
+          "description": "Contains 'wake up'"
+        },
+        {
+          "anyPass": [{ "jsRegex": "breakfast" }, { "jsRegex": "Breakfast" }],
+          "description": "Contains 'breakfast'"
+        },
+        {
+          "anyPass": [{ "jsRegex": "\\bcode\\b" }, { "jsRegex": "Code" }],
+          "description": "Contains 'code'"
+        }
+      ]
+    },
+    {
+      "id": "q4_renderList_function",
+      "title": "renderList Function",
+      "description": "Implement render/renderList to render all items; invoked on load.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "functionExists": [
+            "renderList",
+            "/render\\s*List/i",
+            "render",
+            "/render/i"
+          ],
+          "description": "render function exists"
+        },
+        {
+          "jsRegex": "forEach|for\\s*\\(|for\\s*of",
+          "description": "Iterates over toDos"
+        },
+        { "jsRegex": "render|renderList", "description": "render invoked" }
+      ]
+    },
+    {
+      "id": "q5_addToList",
+      "title": "Add Item via Button",
+      "description": "Create input and button that add to toDos and UI when clicked.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            {
+              "functionExists": [
+                "addToList",
+                "/add\\s*To\\s*List/i",
+                "addItem",
+                "addTodo",
+                "/add/i"
+              ]
+            },
+            { "jsRegex": "addEventListener\\s*\\(\\s*['\"`]click['\"`]" },
+            { "jsRegex": "onclick\\s*=" },
+            { "jsRegex": "onClick\\s*=" },
+            { "jsRegex": "click\\s*\\(" }
+          ],
+          "description": "Add handler exists"
+        },
+        {
+          "anyPass": [
+            { "jsRegex": "querySelector|getElementById" },
+            { "jsRegex": "getElementByClassName" },
+            { "jsRegex": "getElementsByTagName" },
+            { "jsRegex": "input\\s*\\." },
+            { "jsRegex": "document\\." }
+          ],
+          "description": "Select input element"
+        },
+        {
+          "anyPass": [
+            { "jsRegex": "toDos\\s*\\.push" },
+            { "jsRegex": "appendChild\\s*document\\.createElement" },
+            { "jsRegex": "innerHTML|innerText|textContent" },
+            { "jsRegex": "push\\s*\\(" },
+            { "jsRegex": "add\\s*\\(" },
+            { "jsRegex": "insertAdjacentHTML" },
+            { "jsRegex": "insertAdjacentElement" }
+          ],
+          "description": "Adds item to data or DOM"
+        }
+      ]
+    },
+    {
+      "id": "q6_delete_buttons",
+      "title": "Delete Buttons",
+      "description": "Add delete button per item that removes the correct item.",
+      "type": "html_js_dom",
+      "points": 15,
+      "checks": [
+        {
+          "anyPass": [
+            { "jsRegex": "createElement\\s*['\"`]button['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]button['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]Button['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]BUTTON['\"`]" }
+          ],
+          "description": "Creates delete button"
+        },
+        {
+          "anyPass": [
+            { "jsRegex": "splice\\s*" },
+            { "jsRegex": "remove\\s*\\(\\s*\\)" },
+            { "jsRegex": "removeChild" },
+            { "jsRegex": "remove\\s*\\(" },
+            { "jsRegex": "delete\\s*" },
+            { "jsRegex": "pop\\s*\\(\\s*\\)" },
+            { "jsRegex": "shift\\s*\\(\\s*\\)" }
+          ],
+          "description": "Removes the item"
+        }
+      ]
+    },
+    {
+      "id": "q7_update_buttons",
+      "title": "Update Buttons",
+      "description": "Add update button per item that updates text using prompt or direct assignment.",
+      "type": "html_js_dom",
+      "points": 20,
+      "checks": [
+        {
+          "anyPass": [
+            { "jsRegex": "createElement\\s*['\"`]button['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]button['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]Button['\"`]" },
+            { "jsRegex": "createElement\\s*\\(\\s*['\"`]BUTTON['\"`]" }
+          ],
+          "description": "Creates update button"
+        },
+        {
+          "anyPass": [
+            { "jsRegex": "prompt\\s*\\(" },
+            { "jsRegex": "textContent|innerText|innerHTML" },
+            { "jsRegex": "value\\s*=" },
+            { "jsRegex": "innerHTML\\s*=" },
+            { "jsRegex": "textContent\\s*=" },
+            { "jsRegex": "innerText\\s*=" }
+          ],
+          "description": "Updates the item text"
+        }
+      ]
+    }
+  ],
+  "gradingCriteria": {
+    "html_js_dom": {
+      "description": "HTML + JS (DOM) validation checks",
+      "partialCredit": true,
+      "tolerance": "flexible"
+    }
+  }
+}

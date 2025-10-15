@@ -1,0 +1,192 @@
+{
+  "lectureId": "W09D05_Asynchronous_Programming",
+  "title": "Asynchronous Programming",
+  "description": "File System Operations, HTTP Requests, and Async/Await Patterns",
+  "questions": [
+    {
+      "id": "q1_append_to_file",
+      "title": "appendToFile Function",
+      "description": "Write a function appendToFile that accepts one argument data and will append the passed argument as a new line to the data.txt file without writing over the content in that file.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "appendToFile.*=.*\\(.*data.*\\)",
+          "description": "Defines appendToFile function with data parameter"
+        },
+        {
+          "fileContains": "fs\\.appendFile",
+          "description": "Uses fs.appendFile method",
+          "optional": true
+        },
+        {
+          "fileContains": "appendFile.*data\\.txt",
+          "description": "Appends to data.txt file",
+          "optional": true
+        },
+        {
+          "fileContains": "require.*fs",
+          "description": "Requires fs module"
+        }
+      ]
+    },
+    {
+      "id": "q2_copy_file",
+      "title": "copyFile Function",
+      "description": "Write a function copyFile that accepts one argument fileName and it would copy the file that matches the argument to the same directory but with a modified name.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "copyFile.*=.*\\(.*fileName.*\\)",
+          "description": "Defines copyFile function with fileName parameter"
+        },
+        {
+          "fileContains": "fs\\.copyFile",
+          "description": "Uses fs.copyFile method",
+          "optional": true
+        },
+        {
+          "fileContains": "copy_of_",
+          "description": "Creates copy with 'copy_of_' prefix",
+          "optional": true
+        },
+        {
+          "fileContains": "console\\.log.*done",
+          "description": "Logs 'done' when copying is complete",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q3_create_post",
+      "title": "createPost Function",
+      "description": "Write a function createPost that accepts one argument post and sends a post request to https://jsonplaceholder.typicode.com/posts then returns the newly added post.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "createPost.*=.*\\(.*post.*\\)",
+          "description": "Defines createPost function with post parameter"
+        },
+        {
+          "fileContains": "axios\\.post",
+          "description": "Uses axios.post method",
+          "optional": true
+        },
+        {
+          "fileContains": "jsonplaceholder\\.typicode\\.com/posts",
+          "description": "Makes request to JSONPlaceholder posts endpoint",
+          "optional": true
+        },
+        {
+          "fileContains": "require.*axios",
+          "description": "Requires axios module"
+        },
+        {
+          "fileContains": "return.*response",
+          "description": "Returns the response",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q4_update_post",
+      "title": "updatePost Function",
+      "description": "Write a function updatePost that accepts two arguments postId and data. The function should update the post from JSONPlaceholder with the passed postId using the new data provided.",
+      "type": "file_system",
+      "points": 15,
+      "checks": [
+        {
+          "fileContains": "updatePost.*=.*\\(.*postId.*data.*\\)",
+          "description": "Defines updatePost function with postId and data parameters"
+        },
+        {
+          "fileContains": "axios\\.put",
+          "description": "Uses axios.put method",
+          "optional": true
+        },
+        {
+          "fileContains": "jsonplaceholder\\.typicode\\.com/posts",
+          "description": "Makes request to JSONPlaceholder posts endpoint",
+          "optional": true
+        },
+        {
+          "fileContains": "\\$\\{postId\\}",
+          "description": "Uses postId in URL template",
+          "optional": true
+        },
+        {
+          "fileContains": "return.*response",
+          "description": "Returns the response",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q5_get_users",
+      "title": "getUsers Function",
+      "description": "Write an async function getUsers that returns all users from JSONPlaceholder API by using async and await.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "getUsers.*=.*async",
+          "description": "Defines getUsers as async function"
+        },
+        {
+          "fileContains": "axios\\.get",
+          "description": "Uses axios.get method",
+          "optional": true
+        },
+        {
+          "fileContains": "jsonplaceholder\\.typicode\\.com/users",
+          "description": "Makes request to JSONPlaceholder users endpoint",
+          "optional": true
+        },
+        {
+          "fileContains": "await",
+          "description": "Uses await keyword"
+        },
+        {
+          "fileContains": "return.*response",
+          "description": "Returns the response",
+          "optional": true
+        }
+      ]
+    },
+    {
+      "id": "q6_save_users",
+      "title": "saveUsers Function",
+      "description": "Write a function saveUsers that would save all the users from JSONPlaceholder API to a new file called users.txt.",
+      "type": "file_system",
+      "points": 20,
+      "checks": [
+        {
+          "fileContains": "saveUsers.*=.*\\(.*\\)",
+          "description": "Defines saveUsers function"
+        },
+        {
+          "fileContains": "getUsers",
+          "description": "Calls getUsers function",
+          "optional": true
+        },
+        {
+          "fileContains": "fs\\.writeFile",
+          "description": "Uses fs.writeFile method",
+          "optional": true
+        },
+        {
+          "fileContains": "users\\.txt",
+          "description": "Writes to users.txt file",
+          "optional": true
+        },
+        {
+          "fileContains": "JSON\\.stringify",
+          "description": "Converts data to JSON string",
+          "optional": true
+        }
+      ]
+    }
+  ]
+}

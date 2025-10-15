@@ -1,0 +1,216 @@
+{
+  "lectureId": "W04D05_CSS_Intro",
+  "title": "CSS Introduction",
+  "description": "Introduction to CSS styling, selectors, and layout techniques",
+  "week": 4,
+  "day": 5,
+  "topics": ["CSS Basics", "Selectors", "Layout", "Styling"],
+  "difficulty": "beginner",
+  "estimatedTime": "45 minutes",
+  "questions": [
+    {
+      "id": "q1_basic_styling",
+      "title": "Basic CSS Styling",
+      "description": "Add basic CSS styling to make text blue and bold",
+      "points": 10,
+      "type": "html_css",
+      "checks": [
+        {
+          "htmlContains": "style",
+          "description": "HTML should contain a style element or link to CSS"
+        },
+        {
+          "cssContains": "color:",
+          "description": "CSS should set a color property"
+        },
+        {
+          "cssContains": "font-weight:",
+          "description": "CSS should set font-weight property"
+        }
+      ]
+    },
+    {
+      "id": "q2_class_selector",
+      "title": "Class Selector",
+      "description": "Create a CSS class selector and apply it to an HTML element",
+      "points": 15,
+      "type": "html_css",
+      "checks": [
+        {
+          "htmlContains": "class=",
+          "description": "HTML should contain a class attribute"
+        },
+        {
+          "cssContains": ".",
+          "description": "CSS should contain a class selector (.)"
+        },
+        {
+          "cssRegex": "\\.[a-zA-Z][a-zA-Z0-9_-]*\\s*\\{",
+          "description": "CSS should have a valid class selector with opening brace"
+        }
+      ]
+    },
+    {
+      "id": "q3_id_selector",
+      "title": "ID Selector",
+      "description": "Create a CSS ID selector and apply it to an HTML element",
+      "points": 15,
+      "type": "html_css",
+      "checks": [
+        {
+          "htmlContains": "id=",
+          "description": "HTML should contain an id attribute"
+        },
+        {
+          "cssContains": "#",
+          "description": "CSS should contain an ID selector (#)"
+        },
+        {
+          "cssRegex": "#[a-zA-Z][a-zA-Z0-9_-]*\\s*\\{",
+          "description": "CSS should have a valid ID selector with opening brace"
+        }
+      ]
+    },
+    {
+      "id": "q4_horizontal_layout",
+      "title": "Horizontal Layout",
+      "description": "Create a horizontal layout using flexbox or inline-block",
+      "points": 20,
+      "type": "html_css",
+      "checks": [
+        {
+          "anyPass": [
+            {
+              "cssContains": "display: flex",
+              "description": "Use flexbox for horizontal layout"
+            },
+            {
+              "cssContains": "display:inline-block",
+              "description": "Use inline-block for horizontal layout"
+            },
+            {
+              "cssContains": "display: inline-block",
+              "description": "Use inline-block with space for horizontal layout"
+            }
+          ],
+          "description": "CSS should create horizontal layout using flexbox or inline-block"
+        },
+        {
+          "htmlContains": "<div",
+          "description": "HTML should contain div elements for layout"
+        }
+      ]
+    },
+    {
+      "id": "q5_floating_element",
+      "title": "Floating Element",
+      "description": "Create a floating element positioned to the right",
+      "points": 15,
+      "type": "html_css",
+      "checks": [
+        {
+          "cssContains": "float: right",
+          "description": "CSS should float an element to the right"
+        },
+        {
+          "cssContains": "float:right",
+          "description": "CSS should float an element to the right (no space)"
+        },
+        {
+          "htmlContains": "<div",
+          "description": "HTML should contain div elements"
+        }
+      ]
+    },
+    {
+      "id": "q6_background_color",
+      "title": "Background Color",
+      "description": "Set a background color for an element",
+      "points": 10,
+      "type": "html_css",
+      "checks": [
+        {
+          "cssContains": "background-color:",
+          "description": "CSS should set background-color property"
+        },
+        {
+          "cssContains": "background:",
+          "description": "CSS should set background property"
+        },
+        {
+          "cssRegex": "background(-color)?\\s*:\\s*[a-zA-Z#0-9]",
+          "description": "CSS should have a valid background color value"
+        }
+      ]
+    },
+    {
+      "id": "q7_margin_padding",
+      "title": "Margin and Padding",
+      "description": "Apply margin and padding to elements",
+      "points": 15,
+      "type": "html_css",
+      "checks": [
+        {
+          "cssContains": "margin:",
+          "description": "CSS should set margin property"
+        },
+        {
+          "cssContains": "padding:",
+          "description": "CSS should set padding property"
+        },
+        {
+          "cssRegex": "(margin|padding)\\s*:\\s*[0-9]+px",
+          "description": "CSS should have margin or padding with pixel values"
+        }
+      ]
+    },
+    {
+      "id": "q8_external_css",
+      "title": "External CSS File",
+      "description": "Link to an external CSS file",
+      "points": 20,
+      "type": "html_css",
+      "checks": [
+        {
+          "htmlContains": "<link",
+          "description": "HTML should contain a link element"
+        },
+        {
+          "mustHaveHref": "stylesheet",
+          "description": "Link should have href attribute pointing to stylesheet"
+        },
+        {
+          "htmlRegex": "<link[^>]*rel\\s*=\\s*[\"']stylesheet[\"'][^>]*>",
+          "description": "Link should have rel=\"stylesheet\" attribute"
+        },
+        {
+          "fileExistsFromHtmlHref": true,
+          "description": "Referenced CSS file should exist",
+          "optional": true
+        }
+      ]
+    }
+  ],
+  "gradingCriteria": {
+    "html_css": {
+      "description": "HTML/CSS validation checks",
+      "partialCredit": false,
+      "tolerance": "strict"
+    }
+  },
+  "instructions": {
+    "setup": "Create an HTML file with CSS styling. You can use inline styles or external CSS files.",
+    "requirements": [
+      "Use proper HTML structure",
+      "Apply CSS styling techniques",
+      "Create layouts using CSS",
+      "Link external CSS files when required"
+    ],
+    "tips": [
+      "Use browser developer tools to test your CSS",
+      "Validate your HTML structure",
+      "Test different CSS properties",
+      "Ensure proper file linking"
+    ]
+  }
+}

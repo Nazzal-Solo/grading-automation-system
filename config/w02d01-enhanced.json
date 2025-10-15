@@ -1,0 +1,171 @@
+{
+  "lectures": [
+    {
+      "id": "W02D01_Scopes",
+      "name": "Scopes in JavaScript",
+      "description": "Variable scoping, closures, and scope chain - Understand let/const scope, function scope, closure patterns, and scope inheritance",
+      "questions": [
+        {
+          "id": "Q1",
+          "type": "scope_prediction",
+          "description": "Predict the value of the following variables and explain why",
+          "functionName": "scopePrediction",
+          "parameters": [],
+          "expectedReturn": "scope analysis",
+          "testCases": [
+            { "input": [], "expression": "age", "expected": 30, "description": "let age scope test" },
+            { "input": [], "expression": "myName", "expected": "John", "description": "const myName scope test" }
+          ],
+          "weight": 1,
+          "category": "scope_basics"
+        },
+        {
+          "id": "Q2",
+          "type": "scope_prediction",
+          "description": "Predict the value of the following function invocations",
+          "functionName": "scopeFunctionPrediction",
+          "parameters": [],
+          "expectedReturn": "function scope analysis",
+          "testCases": [
+            { "input": [], "expression": "func1()", "expected": 15, "description": "func1 scope test" },
+            { "input": [], "expression": "func2(26)", "expected": 10, "description": "func2 scope test" }
+          ],
+          "weight": 1,
+          "category": "function_scope"
+        },
+        {
+          "id": "Q3",
+          "type": "closure_function",
+          "description": "Write a function countDown that returns a number representing a count down value. With each invocation the number should be lower by one and at zero it will no longer decrement and instead it will return 'count down is over'",
+          "functionName": "countDown",
+          "parameters": [],
+          "expectedReturn": "number or string",
+          "testCases": [
+            { "input": [], "expected": 4, "description": "First countDown call" },
+            { "input": [], "expected": 3, "description": "Second countDown call" },
+            { "input": [], "expected": 2, "description": "Third countDown call" },
+            { "input": [], "expected": 1, "description": "Fourth countDown call" },
+            { "input": [], "expected": 0, "description": "Fifth countDown call" },
+            { "input": [], "expected": "count down is over", "description": "Sixth countDown call" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        },
+        {
+          "id": "Q4",
+          "type": "closure_function",
+          "description": "Write a function countUp that should do the opposite of countDown. With every invocation, the count value should be incremented by one",
+          "functionName": "countUp",
+          "parameters": [],
+          "expectedReturn": "number",
+          "testCases": [
+            { "input": [], "expected": 4, "description": "First countUp call" },
+            { "input": [], "expected": 5, "description": "Second countUp call" },
+            { "input": [], "expected": 6, "description": "Third countUp call" },
+            { "input": [], "expected": 7, "description": "Fourth countUp call" },
+            { "input": [], "expected": 8, "description": "Fifth countUp call" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        },
+        {
+          "id": "Q5",
+          "type": "closure_function",
+          "description": "Write a function resetCount that accepts a number argument start and updates the count variable to equal the starting value and return a string implying that",
+          "functionName": "resetCount",
+          "parameters": ["start"],
+          "expectedReturn": "string",
+          "testCases": [
+            { "input": [0], "expected": "the count has been reset", "description": "Reset count to 0" },
+            { "input": [10], "expected": "the count has been reset", "description": "Reset count to 10" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        },
+        {
+          "id": "Q6",
+          "type": "closure_function",
+          "description": "Write a function addToList that accepts a string argument toDo and returns the current list as a string. Every time we invoke the function it should return the old toDo item plus the new one",
+          "functionName": "addToList",
+          "parameters": ["toDo"],
+          "expectedReturn": "string",
+          "testCases": [
+            { "input": ["Eat"], "expected": "Eat", "description": "First addToList call" },
+            { "input": ["Play"], "expected": "Eat Play", "description": "Second addToList call" },
+            { "input": ["Sleep"], "expected": "Eat Play Sleep", "description": "Third addToList call" },
+            { "input": ["repeat"], "expected": "Eat Play Sleep repeat", "description": "Fourth addToList call" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        },
+        {
+          "id": "Q7",
+          "type": "closure_function",
+          "description": "Write a function createToDoList that works similarly to addToList function but instead of a Global variable use a closure variable",
+          "functionName": "createToDoList",
+          "parameters": [],
+          "expectedReturn": "function",
+          "testCases": [
+            { "input": [], "expression": "toDoListOne('Eat')", "expected": "Eat", "description": "First toDoListOne call" },
+            { "input": [], "expression": "toDoListOne('Play')", "expected": "Eat Play", "description": "Second toDoListOne call" },
+            { "input": [], "expression": "toDoListOne('Sleep')", "expected": "Eat Play Sleep", "description": "Third toDoListOne call" },
+            { "input": [], "expression": "toDoListOne('repeat')", "expected": "Eat Play Sleep repeat", "description": "Fourth toDoListOne call" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        },
+        {
+          "id": "Q8",
+          "type": "closure_function",
+          "description": "Write a function deposit that accepts a number argument amount and returns the current account balance after depositing the amount",
+          "functionName": "deposit",
+          "parameters": ["amount"],
+          "expectedReturn": "number",
+          "testCases": [
+            { "input": [100], "expected": 100, "description": "First deposit" },
+            { "input": [50], "expected": 150, "description": "Second deposit" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        },
+        {
+          "id": "Q9",
+          "type": "closure_function",
+          "description": "Write a function withdraw that accepts a number argument amount and returns the current account balance after withdrawing the amount",
+          "functionName": "withdraw",
+          "parameters": ["amount"],
+          "expectedReturn": "number or string",
+          "testCases": [
+            { "input": [70], "expected": 80, "description": "First withdraw" },
+            { "input": [50], "expected": 130, "description": "After deposit" },
+            { "input": [100], "expected": 30, "description": "Second withdraw" },
+            { "input": [100], "expected": "insufficient funds, current balance: 30", "description": "Insufficient funds withdraw" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        },
+        {
+          "id": "Q10",
+          "type": "closure_function",
+          "description": "Write a closure function createAccount that accepts a number argument initialValue that represents the starting value of the account balance and return a closure function with two parameters, transactionType and amount",
+          "functionName": "createAccount",
+          "parameters": ["initialValue"],
+          "expectedReturn": "function",
+          "testCases": [
+            { "input": [0], "expression": "accountOne('withdraw', 10)", "expected": "insufficient funds, current balance: 0", "description": "Account one insufficient withdraw" },
+            { "input": [0], "expression": "accountOne('deposit', 50)", "expected": 50, "description": "Account one deposit" },
+            { "input": [0], "expression": "accountOne('deposit', 70)", "expected": 120, "description": "Account one second deposit" },
+            { "input": [0], "expression": "accountOne('withdraw', 10)", "expected": 110, "description": "Account one withdraw" },
+            { "input": [500], "expression": "accountTwo('withdraw', 100)", "expected": 400, "description": "Account two withdraw" },
+            { "input": [500], "expression": "accountTwo('withdraw', 100)", "expected": 300, "description": "Account two second withdraw" },
+            { "input": [500], "expression": "accountTwo('deposit', 50)", "expected": 350, "description": "Account two deposit" },
+            { "input": [500], "expression": "accountTwo('withdraw', 500)", "expected": "insufficient funds, current balance: 350", "description": "Account two insufficient withdraw" }
+          ],
+          "weight": 1,
+          "category": "closure_functions"
+        }
+      ]
+    }
+  ]
+}
+
