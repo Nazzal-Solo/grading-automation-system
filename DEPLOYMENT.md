@@ -40,15 +40,40 @@ git push -u origin main
    - **Node Version**: `18` (or latest)
 6. Click "Create Web Service"
 
-## Step 4: Environment Variables (Optional)
+## Step 4: Environment Variables (Required)
 
-If you need to set environment variables in Render:
+⚠️ **IMPORTANT**: You must set environment variables for the application to work properly.
+
+### Required Environment Variables:
 
 1. Go to your service dashboard
 2. Click on "Environment" tab
-3. Add any required environment variables:
-   - `NODE_ENV`: `production`
-   - `PORT`: `10000` (Render will set this automatically)
+3. Add these required environment variables:
+
+```
+NODE_ENV=production
+GITHUB_TOKEN=ghp_your_github_token_here
+```
+
+### Getting Your GitHub Token:
+
+1. Go to [GitHub Settings](https://github.com/settings/tokens)
+2. Click "Generate new token" → "Generate new token (classic)"
+3. Give it a name like "Grading System Token"
+4. Select these permissions:
+   - ✅ `repo` (Full control of private repositories)
+   - ✅ `read:user` (Read user profile data)
+5. Click "Generate token"
+6. **Copy the token immediately** (you won't see it again!)
+7. Paste it as the `GITHUB_TOKEN` value in Render
+
+### Optional Environment Variables:
+
+```
+LOG_LEVEL=info
+```
+
+**Note**: `PORT` is automatically set by Render, so you don't need to configure it.
 
 ## Step 5: Custom Domain (Optional)
 
@@ -69,6 +94,9 @@ If you need to set environment variables in Render:
 1. **Build Fails**: Check that all dependencies are in `package.json`
 2. **App Crashes**: Check the logs for error messages
 3. **Port Issues**: Ensure your app uses `process.env.PORT || 3000`
+4. **GitHub API Errors**: Verify `GITHUB_TOKEN` environment variable is set correctly
+5. **Repository Not Found**: Check if the GitHub token has proper permissions
+6. **Configuration Loading Errors**: Ensure all config files exist in the repository
 
 ### Configuration Files:
 
