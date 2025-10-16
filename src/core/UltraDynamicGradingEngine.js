@@ -62,7 +62,6 @@ export class UltraDynamicGradingEngine {
    */
   gradeSubmission(studentId, lectureId, filePath) {
     try {
-
       if (!fs.existsSync(filePath)) {
         throw new Error(`File not found: ${filePath}`);
       }
@@ -120,14 +119,12 @@ export class UltraDynamicGradingEngine {
   }
 
   /**
-   * Ultra dynamic question grading with maximum flexibility
+   * Question grading with maximum flexibility
    */
   gradeQuestionsUltraDynamic(questions, fullCode, lectureId, filePath) {
     const results = [];
     let score = 0;
     let totalWeight = 0;
-
-   
 
     for (let i = 0; i < questions.length; i++) {
       const question = questions[i];
@@ -138,13 +135,9 @@ export class UltraDynamicGradingEngine {
         : 1;
       totalWeight += weight;
 
-      
-
       const handler =
         this.questionTypeHandlers[question.type] ||
         this.questionTypeHandlers.default;
-
-  
 
       if (
         (question.type === "html_css" || question.type === "html_js_dom") &&
@@ -152,8 +145,7 @@ export class UltraDynamicGradingEngine {
       ) {
         try {
           handler.prepareFileContext(filePath, fullCode);
-        } catch (e) {
-        }
+        } catch (e) {}
       }
 
       if (
@@ -223,11 +215,11 @@ export class UltraDynamicGradingEngine {
         score += weight * (answerResult.partialCredit || 1);
       }
 
-        console.log(
-          `   ${answerResult.passed ? "✅" : "❌"} ${answerResult.method} (${
-            answerResult.confidence
-          }% confidence)`
-        );
+      console.log(
+        `   ${answerResult.passed ? "✅" : "❌"} ${answerResult.method} (${
+          answerResult.confidence
+        }% confidence)`
+      );
     }
 
     return {
@@ -253,7 +245,6 @@ export class UltraDynamicGradingEngine {
       );
 
       if (fs.existsSync(specificEnhancedConfigPath)) {
-       
         const config = JSON.parse(
           fs.readFileSync(specificEnhancedConfigPath, "utf8")
         );
@@ -263,7 +254,7 @@ export class UltraDynamicGradingEngine {
             return lecture;
           }
         }
-      
+
         return config;
       }
 
@@ -298,7 +289,6 @@ export class UltraDynamicGradingEngine {
 
       return null;
     } catch (error) {
-      
       return null;
     }
   }
@@ -429,12 +419,9 @@ class VariableHandler extends BaseHandler {
     const variables = this.extractAllVariables(code);
     const expectedType = question.expectedType;
 
-
     for (const [varName, varValue] of Object.entries(variables)) {
       const cleanedValue = this.extractValue(varValue);
       const valueType = typeof cleanedValue;
-
-     
 
       if (this.isCorrectType(cleanedValue, expectedType)) {
         return {
@@ -655,8 +642,7 @@ class ArithmeticHandler extends BaseHandler {
             confidence: 75,
           };
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     return { passed: false };
@@ -712,8 +698,6 @@ class FunctionDefinitionHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
     const expectedFunctionName = question.functionName;
     const expectedParameters = question.parameters || [];
-
-      
 
     const functions = this.extractAllFunctions(code);
 
@@ -894,8 +878,6 @@ class StringOperationHandler extends BaseHandler {
     const expectedValue = question.expectedValue;
     const expectedType = question.expectedType;
 
-   
-
     const methods = [
       () => this.findStringExpression(code, expectedValue),
       () => this.findStringVariable(code, expectedValue),
@@ -947,8 +929,7 @@ class StringOperationHandler extends BaseHandler {
               feedback: `Found matching string expression: ${expr}`,
             };
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
 
@@ -970,8 +951,7 @@ class StringOperationHandler extends BaseHandler {
             feedback: `Found variable with correct string result: ${varName}`,
           };
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     return { passed: false };
@@ -1016,7 +996,6 @@ class StringOperationHandler extends BaseHandler {
  */
 class SyntaxFixHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const correctedPatterns = this.findCorrectedSyntax(code);
 
     if (correctedPatterns.length > 0) {
@@ -1075,7 +1054,6 @@ class SyntaxFixHandler extends BaseHandler {
  */
 class StringConcatenationHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const concatenations = this.findStringConcatenations(code);
 
     if (concatenations.length > 0) {
@@ -1160,8 +1138,7 @@ class AlgebraHandler extends BaseHandler {
         if (this.valuesEqual(result, expectedValue)) {
           solutions.push(`${match[1]} = ${result}`);
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     const algebraicPatterns = [
@@ -1182,8 +1159,7 @@ class AlgebraHandler extends BaseHandler {
           if (this.valuesEqual(result, expectedValue)) {
             solutions.push(`${expr} = ${result}`);
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
 
@@ -1196,7 +1172,6 @@ class AlgebraHandler extends BaseHandler {
  */
 class RealWorldHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const calculations = this.findRealWorldCalculations(code);
 
     if (calculations.length > 0) {
@@ -1231,8 +1206,7 @@ class RealWorldHandler extends BaseHandler {
         try {
           const result = eval(expr);
           calculations.push(`${expr} = ${result}`);
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
 
@@ -1245,7 +1219,6 @@ class RealWorldHandler extends BaseHandler {
  */
 class GeometryHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const geometricCalculations = this.findGeometricCalculations(code);
 
     if (geometricCalculations.length > 0) {
@@ -1293,8 +1266,7 @@ class GeometryHandler extends BaseHandler {
         try {
           const result = eval(varValue);
           calculations.push(`${match[1]} = ${result}`);
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
 
@@ -1368,8 +1340,7 @@ class ConversionHandler extends BaseHandler {
           if (this.valuesEqual(result, expectedValue)) {
             conversions.push(`${expr} = ${result}`);
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
 
@@ -1382,7 +1353,6 @@ class ConversionHandler extends BaseHandler {
  */
 class FunctionCompositionHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const compositions = this.findFunctionCompositions(code);
 
     if (compositions.length > 0) {
@@ -1467,8 +1437,7 @@ class CalculationHandler extends BaseHandler {
             feedback: `Found matching calculation: ${expr}`,
           };
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     const complexPatterns = [
@@ -1499,8 +1468,7 @@ class CalculationHandler extends BaseHandler {
               feedback: `Found matching complex calculation: ${expr}`,
             };
           }
-        } catch (error) {
-        }
+        } catch (error) {}
       }
     }
 
@@ -1525,8 +1493,7 @@ class CalculationHandler extends BaseHandler {
             feedback: `Found variable with calculation result: ${varName}`,
           };
         }
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     return { passed: false };
@@ -1594,8 +1561,6 @@ class CalculationHandler extends BaseHandler {
  */
 class ObjectManipulationHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-   
-
     const objectPatterns = [
       /const\s+\w+\s*=\s*\{[^}]*\}/g, // Object literals
       /\.\w+\s*=/g, // Object property assignments
@@ -1640,7 +1605,6 @@ class ObjectManipulationHandler extends BaseHandler {
  */
 class ClassDefinitionHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const classPatterns = [
       /class\s+\w+\s*\{[^}]*\}/gs, // Class declarations
       /class\s+\w+\s+extends\s+\w+\s*\{[^}]*\}/gs, // Class inheritance
@@ -1684,7 +1648,6 @@ class ClassDefinitionHandler extends BaseHandler {
  */
 class ClassMethodHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const methodPatterns = [
       /\w+\s*\([^)]*\)\s*\{[^}]*\}/gs, // Method definitions
       /static\s+\w+\s*\([^)]*\)\s*\{[^}]*\}/gs, // Static methods
@@ -1726,8 +1689,6 @@ class ClassMethodHandler extends BaseHandler {
  */
 class ClassInheritanceHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-    
-
     const inheritancePatterns = [
       /class\s+\w+\s+extends\s+\w+/g, // Class inheritance
       /super\s*\([^)]*\)/g, // Super calls
@@ -1768,8 +1729,6 @@ class ClassInheritanceHandler extends BaseHandler {
  */
 class ClassConstructorHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-    
-
     const constructorPatterns = [
       /constructor\s*\([^)]*\)\s*\{[^}]*\}/gs, // Constructor definitions
       /this\.\w+\s*=\s*[^;]+/g, // Property assignments in constructor
@@ -1812,7 +1771,6 @@ class ClassConstructorHandler extends BaseHandler {
  */
 class StaticMethodHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const staticPatterns = [
       /static\s+\w+\s*\([^)]*\)\s*\{[^}]*\}/gs, // Static method definitions
       /ClassName\.\w+\s*\(/g, // Static method calls
@@ -1852,7 +1810,6 @@ class StaticMethodHandler extends BaseHandler {
  */
 class EncapsulationHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const encapsulationPatterns = [
       /#\w+/g, // Private fields
       /private\s+\w+/g, // Private declarations
@@ -1894,7 +1851,6 @@ class EncapsulationHandler extends BaseHandler {
  */
 class ScopePredictionHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const variables = this.extractAllVariables(code);
     const expressions = this.extractExpressions(code);
 
@@ -1925,8 +1881,7 @@ class ScopePredictionHandler extends BaseHandler {
           confidence: 70,
           feedback: `Found variable: ${varName} = ${result}`,
         };
-      } catch (error) {
-      }
+      } catch (error) {}
     }
 
     return {
@@ -1978,11 +1933,11 @@ class ScopePredictionHandler extends BaseHandler {
   extractExpressions(code) {
     const expressions = [];
     const patterns = [
-      /([0-9+\-*\/%\s().]+)/g, 
-      /(?:const|let|var)\s+\w+\s*=\s*([^;]+)/g, 
-      /\/\/\s*([^=\n]+)\s*[=:]\s*([^\n]+)/g, 
-      /console\.log\s*\(\s*([^)]+)\s*\)/g, 
-      /return\s+([^;]+)/g, 
+      /([0-9+\-*\/%\s().]+)/g,
+      /(?:const|let|var)\s+\w+\s*=\s*([^;]+)/g,
+      /\/\/\s*([^=\n]+)\s*[=:]\s*([^\n]+)/g,
+      /console\.log\s*\(\s*([^)]+)\s*\)/g,
+      /return\s+([^;]+)/g,
     ];
 
     patterns.forEach((pattern) => {
@@ -2026,7 +1981,6 @@ class HTMLCSSHandler extends BaseHandler {
   }
 
   findAnswer(question, code, questionIndex, lectureId) {
-
     if (!this.filePath) {
       if (typeof code === "string" && fs.existsSync(code)) {
         this.filePath = code;
@@ -2146,9 +2100,7 @@ class HTMLCSSHandler extends BaseHandler {
           if (fs.existsSync(cssPath)) {
             try {
               cssContent += "\n" + fs.readFileSync(cssPath, "utf8");
-            } catch (error) {
-                
-            }
+            } catch (error) {}
           }
         }
       }
@@ -2370,7 +2322,6 @@ class HTMLJSHandler extends BaseHandler {
   }
 
   findAnswer(question, code, questionIndex, lectureId) {
-
     if (!this.filePath) {
       if (typeof code === "string" && fs.existsSync(code)) {
         this.filePath = code;
@@ -2451,8 +2402,7 @@ class HTMLJSHandler extends BaseHandler {
   loadHtmlContent(filePath) {
     try {
       if (fs.existsSync(filePath)) return fs.readFileSync(filePath, "utf8");
-    } catch (e) {
-    }
+    } catch (e) {}
     return "";
   }
 
@@ -2468,8 +2418,7 @@ class HTMLJSHandler extends BaseHandler {
       if (fs.existsSync(scriptPath)) {
         try {
           js += "\n" + fs.readFileSync(scriptPath, "utf8");
-        } catch (e) {
-        }
+        } catch (e) {}
       }
     }
     return js;
@@ -2597,7 +2546,6 @@ class HTMLJSHandler extends BaseHandler {
  */
 class FileSystemHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     if (!this.projectDir) {
       this.prepareFileContext(code);
     }
@@ -2699,7 +2647,6 @@ class FileSystemHandler extends BaseHandler {
         this.filePath = code;
         this.projectDir = path.dirname(code);
       }
-      
     } else {
       this.filePath = null;
       this.projectDir = null;
@@ -2731,11 +2678,8 @@ class FileSystemHandler extends BaseHandler {
 
   fileContains(pattern) {
     if (!this.projectDir) {
-      
       return false;
     }
-
-   
 
     try {
       const searchFiles = (dir) => {
@@ -2773,11 +2717,9 @@ class FileSystemHandler extends BaseHandler {
               return true;
             }
           }
-        } catch (e) {
-        }
+        } catch (e) {}
       }
-    } catch (e) {
-    }
+    } catch (e) {}
 
     return false;
   }
@@ -2795,7 +2737,6 @@ class FileSystemHandler extends BaseHandler {
  */
 class DefaultHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-
     const relevantCode = this.findRelevantCode(code, question);
 
     if (relevantCode.length > 0) {

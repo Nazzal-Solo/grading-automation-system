@@ -16,7 +16,7 @@ A comprehensive automated grading platform for multiple students and lectures wi
 
 - **Backend**: Node.js, Express.js
 - **Frontend**: HTML, CSS, JavaScript
-- **Grading Engine**: Custom Ultra Dynamic Grading Engine
+- **Grading Engine**: Custom Grading Engine
 - **Data Storage**: JSON-based file storage
 - **GitHub API**: Repository access and management
 
@@ -81,7 +81,7 @@ Set the following environment variables for production:
 - `GET /api/lectures` - Get all lectures
 - `GET /api/results` - Get grading results
 - `POST /api/grade` - Grade a student's submission
-- `POST /api/grade-ultra-dynamic` - Ultra dynamic grading
+- `POST /api/grade-ultra-dynamic` - Grading
 - `POST /api/download` - Download student repository
 - `GET /api/cohorts` - Get cohort information
 

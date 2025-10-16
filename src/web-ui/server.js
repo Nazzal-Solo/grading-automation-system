@@ -5,6 +5,25 @@ import cors from "cors";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+
+// Load environment variables from .env file for local development
+try {
+  if (fs.existsSync('.env')) {
+    const envContent = fs.readFileSync('.env', 'utf8');
+    envContent.split('\n').forEach(line => {
+      const [key, ...valueParts] = line.split('=');
+      if (key && valueParts.length > 0) {
+        const value = valueParts.join('=').trim();
+        if (!process.env[key]) {
+          process.env[key] = value;
+        }
+      }
+    });
+    console.log("📄 Loaded environment variables from .env file");
+  }
+} catch (error) {
+  console.log("ℹ️ No .env file found or error loading it (this is normal for production)");
+}
 import { GitHubDownloader } from "../core/GitHubDownloader.js";
 import { CohortManager } from "../core/CohortManager.js";
 import { FileFilter } from "../utils/FileFilter.js";
@@ -20,16 +39,18 @@ class WebUIServer {
       console.log("🔧 Initializing WebUIServer...");
       this.app = express();
       this.port = process.env.PORT || 3000;
-      
+
       console.log("📋 Loading configuration...");
       this.config = this.loadConfig();
-      
+
       console.log("🔗 Initializing components...");
       this.downloader = new GitHubDownloader(this.config);
       this.cohortManager = new CohortManager();
       this.fileFilter = new FileFilter();
       this.resultsFile = "results/grades.json";
-      this.ultraDynamicGradingEngine = new UltraDynamicGradingEngine(this.config);
+      this.ultraDynamicGradingEngine = new UltraDynamicGradingEngine(
+        this.config
+      );
       this.gradesOptimizer = new GradesOptimizer();
       this.autoCleanupEnabled = true;
 
@@ -37,7 +58,7 @@ class WebUIServer {
       this.setupMiddleware();
       this.setupRoutes();
       this.initializeResultsStorage();
-      
+
       console.log("✅ WebUIServer initialized successfully");
     } catch (error) {
       console.error("❌ Failed to initialize WebUIServer:", error);
@@ -356,7 +377,7 @@ class WebUIServer {
         environment: process.env.NODE_ENV || "development",
         configLoaded: !!this.config,
         studentsCount: this.config?.students?.length || 0,
-        lecturesCount: this.config?.lectures?.length || 0
+        lecturesCount: this.config?.lectures?.length || 0,
       });
     });
 
@@ -2727,10 +2748,12 @@ class WebUIServer {
       console.log("🚀 Starting server...");
       console.log("Port:", this.port);
       console.log("Environment:", process.env.NODE_ENV || "development");
-      
+
       this.app.listen(this.port, () => {
         console.log(`✅ Server running on port ${this.port}`);
-        console.log(`🌐 Application available at: http://localhost:${this.port}`);
+        console.log(
+          `🌐 Application available at: http://localhost:${this.port}`
+        );
       });
     } catch (error) {
       console.error("❌ Failed to start server:", error);
