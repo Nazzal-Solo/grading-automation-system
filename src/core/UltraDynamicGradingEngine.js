@@ -127,8 +127,7 @@ export class UltraDynamicGradingEngine {
     let score = 0;
     let totalWeight = 0;
 
-      `📝 Grading ${questions.length} questions with ultra dynamic detection...`
-    );
+   
 
     for (let i = 0; i < questions.length; i++) {
       const question = questions[i];
@@ -139,15 +138,13 @@ export class UltraDynamicGradingEngine {
         : 1;
       totalWeight += weight;
 
-        `\n🔍 Question ${i + 1}: ${question.type} - ${question.description}`
-      );
+      
 
       const handler =
         this.questionTypeHandlers[question.type] ||
         this.questionTypeHandlers.default;
 
-        `   🔍 Handler for ${question.type}: ${handler.constructor.name}`
-      );
+  
 
       if (
         (question.type === "html_css" || question.type === "html_js_dom") &&
@@ -226,10 +223,11 @@ export class UltraDynamicGradingEngine {
         score += weight * (answerResult.partialCredit || 1);
       }
 
-        `   ${answerResult.passed ? "✅" : "❌"} ${answerResult.method} (${
-          answerResult.confidence
-        }% confidence)`
-      );
+        console.log(
+          `   ${answerResult.passed ? "✅" : "❌"} ${answerResult.method} (${
+            answerResult.confidence
+          }% confidence)`
+        );
     }
 
     return {
@@ -255,8 +253,7 @@ export class UltraDynamicGradingEngine {
       );
 
       if (fs.existsSync(specificEnhancedConfigPath)) {
-          `📋 Loading enhanced config from: ${specificEnhancedConfigPath}`
-        );
+       
         const config = JSON.parse(
           fs.readFileSync(specificEnhancedConfigPath, "utf8")
         );
@@ -266,8 +263,7 @@ export class UltraDynamicGradingEngine {
             return lecture;
           }
         }
-          `📋 Using config directly: ${config.lectureId || "no lectureId"}`
-        );
+      
         return config;
       }
 
@@ -302,9 +298,7 @@ export class UltraDynamicGradingEngine {
 
       return null;
     } catch (error) {
-        `Error loading lecture config for ${lectureId}:`,
-        error.message
-      );
+      
       return null;
     }
   }
@@ -440,8 +434,7 @@ class VariableHandler extends BaseHandler {
       const cleanedValue = this.extractValue(varValue);
       const valueType = typeof cleanedValue;
 
-        `   🔍 Checking ${varName} = ${varValue} (type: ${valueType})`
-      );
+     
 
       if (this.isCorrectType(cleanedValue, expectedType)) {
         return {
@@ -720,10 +713,7 @@ class FunctionDefinitionHandler extends BaseHandler {
     const expectedFunctionName = question.functionName;
     const expectedParameters = question.parameters || [];
 
-      `   🔍 Looking for function: ${expectedFunctionName}(${expectedParameters.join(
-        ", "
-      )})`
-    );
+      
 
     const functions = this.extractAllFunctions(code);
 
@@ -904,8 +894,7 @@ class StringOperationHandler extends BaseHandler {
     const expectedValue = question.expectedValue;
     const expectedType = question.expectedType;
 
-      `   🔍 Looking for string operation result: ${expectedValue} (${expectedType})`
-    );
+   
 
     const methods = [
       () => this.findStringExpression(code, expectedValue),
@@ -1605,8 +1594,7 @@ class CalculationHandler extends BaseHandler {
  */
 class ObjectManipulationHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-      `   🔍 Using object manipulation detection for: ${question.type}`
-    );
+   
 
     const objectPatterns = [
       /const\s+\w+\s*=\s*\{[^}]*\}/g, // Object literals
@@ -1738,8 +1726,7 @@ class ClassMethodHandler extends BaseHandler {
  */
 class ClassInheritanceHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-      `   🔍 Using class inheritance detection for: ${question.type}`
-    );
+    
 
     const inheritancePatterns = [
       /class\s+\w+\s+extends\s+\w+/g, // Class inheritance
@@ -1781,8 +1768,7 @@ class ClassInheritanceHandler extends BaseHandler {
  */
 class ClassConstructorHandler extends BaseHandler {
   findAnswer(question, code, questionIndex, lectureId) {
-      `   🔍 Using class constructor detection for: ${question.type}`
-    );
+    
 
     const constructorPatterns = [
       /constructor\s*\([^)]*\)\s*\{[^}]*\}/gs, // Constructor definitions
@@ -1992,11 +1978,11 @@ class ScopePredictionHandler extends BaseHandler {
   extractExpressions(code) {
     const expressions = [];
     const patterns = [
-      /([0-9+\-*\/%\s().]+)/g, // Direct arithmetic expressions
-      /(?:const|let|var)\s+\w+\s*=\s*([^;]+)/g, // Expressions in variables
-      /\/\/\s*([^=\n]+)\s*[=:]\s*([^\n]+)/g, // Expressions in comments
-      /console\.log\s*\(\s*([^)]+)\s*\)/g, // Console.log expressions
-      /return\s+([^;]+)/g, // Return statements
+      /([0-9+\-*\/%\s().]+)/g, 
+      /(?:const|let|var)\s+\w+\s*=\s*([^;]+)/g, 
+      /\/\/\s*([^=\n]+)\s*[=:]\s*([^\n]+)/g, 
+      /console\.log\s*\(\s*([^)]+)\s*\)/g, 
+      /return\s+([^;]+)/g, 
     ];
 
     patterns.forEach((pattern) => {
@@ -2118,6 +2104,7 @@ class HTMLCSSHandler extends BaseHandler {
         return fs.readFileSync(filePath, "utf8");
       }
     } catch (error) {
+      console.log(
         `Could not load HTML content from ${filePath}:`,
         error.message
       );
@@ -2160,9 +2147,7 @@ class HTMLCSSHandler extends BaseHandler {
             try {
               cssContent += "\n" + fs.readFileSync(cssPath, "utf8");
             } catch (error) {
-                `Could not read CSS file ${cssPath}:`,
-                error.message
-              );
+                
             }
           }
         }
@@ -2714,8 +2699,7 @@ class FileSystemHandler extends BaseHandler {
         this.filePath = code;
         this.projectDir = path.dirname(code);
       }
-        `   📁 FileSystemHandler: filePath=${this.filePath}, projectDir=${this.projectDir}`
-      );
+      
     } else {
       this.filePath = null;
       this.projectDir = null;
@@ -2747,13 +2731,11 @@ class FileSystemHandler extends BaseHandler {
 
   fileContains(pattern) {
     if (!this.projectDir) {
-        `   🔍 FileSystemHandler.fileContains: No projectDir set for pattern "${pattern}"`
-      );
+      
       return false;
     }
 
-      `   🔍 FileSystemHandler.fileContains: Searching for "${pattern}" in projectDir: ${this.projectDir}`
-    );
+   
 
     try {
       const searchFiles = (dir) => {
