@@ -16,27 +16,57 @@ const __dirname = path.dirname(__filename);
 
 class WebUIServer {
   constructor() {
-    this.app = express();
-    this.port = process.env.PORT || 3000;
-    this.config = this.loadConfig();
-    this.downloader = new GitHubDownloader(this.config);
-    this.cohortManager = new CohortManager();
-    this.fileFilter = new FileFilter();
-    this.resultsFile = "results/grades.json";
-    this.ultraDynamicGradingEngine = new UltraDynamicGradingEngine(this.config);
-    this.gradesOptimizer = new GradesOptimizer();
-    this.autoCleanupEnabled = true;
+    try {
+      console.log("🔧 Initializing WebUIServer...");
+      this.app = express();
+      this.port = process.env.PORT || 3000;
+      
+      console.log("📋 Loading configuration...");
+      this.config = this.loadConfig();
+      
+      console.log("🔗 Initializing components...");
+      this.downloader = new GitHubDownloader(this.config);
+      this.cohortManager = new CohortManager();
+      this.fileFilter = new FileFilter();
+      this.resultsFile = "results/grades.json";
+      this.ultraDynamicGradingEngine = new UltraDynamicGradingEngine(this.config);
+      this.gradesOptimizer = new GradesOptimizer();
+      this.autoCleanupEnabled = true;
 
-    this.setupMiddleware();
-    this.setupRoutes();
-    this.initializeResultsStorage();
+      console.log("⚙️ Setting up middleware and routes...");
+      this.setupMiddleware();
+      this.setupRoutes();
+      this.initializeResultsStorage();
+      
+      console.log("✅ WebUIServer initialized successfully");
+    } catch (error) {
+      console.error("❌ Failed to initialize WebUIServer:", error);
+      console.error("Stack trace:", error.stack);
+      throw error;
+    }
   }
 
   loadConfig() {
     const studentsPath = path.join("config", "students.json");
     const lecturesPath = path.join("config", "lectures.json");
 
+    console.log("🔍 Checking configuration files...");
+    console.log("Students path:", studentsPath);
+    console.log("Lectures path:", lecturesPath);
+    console.log("Students exists:", fs.existsSync(studentsPath));
+    console.log("Lectures exists:", fs.existsSync(lecturesPath));
+
     if (!fs.existsSync(studentsPath) || !fs.existsSync(lecturesPath)) {
+      console.error("❌ Configuration files missing!");
+      console.error("Students file exists:", fs.existsSync(studentsPath));
+      console.error("Lectures file exists:", fs.existsSync(lecturesPath));
+      console.error("Current working directory:", process.cwd());
+      console.error("Files in current directory:", fs.readdirSync("."));
+      if (fs.existsSync("config")) {
+        console.error("Files in config directory:", fs.readdirSync("config"));
+      } else {
+        console.error("Config directory does not exist!");
+      }
       process.exit(1);
     }
 
@@ -315,6 +345,19 @@ class WebUIServer {
   setupRoutes() {
     this.app.use((req, res, next) => {
       next();
+    });
+
+    // Health check endpoint
+    this.app.get("/health", (req, res) => {
+      res.json({
+        status: "healthy",
+        timestamp: new Date().toISOString(),
+        port: this.port,
+        environment: process.env.NODE_ENV || "development",
+        configLoaded: !!this.config,
+        studentsCount: this.config?.students?.length || 0,
+        lecturesCount: this.config?.lectures?.length || 0
+      });
     });
 
     this.app.get("/api/students", (req, res) => {
@@ -2680,9 +2723,28 @@ class WebUIServer {
   }
 
   start() {
-    this.app.listen(this.port, () => {});
+    try {
+      console.log("🚀 Starting server...");
+      console.log("Port:", this.port);
+      console.log("Environment:", process.env.NODE_ENV || "development");
+      
+      this.app.listen(this.port, () => {
+        console.log(`✅ Server running on port ${this.port}`);
+        console.log(`🌐 Application available at: http://localhost:${this.port}`);
+      });
+    } catch (error) {
+      console.error("❌ Failed to start server:", error);
+      process.exit(1);
+    }
   }
 }
 
-const server = new WebUIServer();
-server.start();
+try {
+  console.log("🔧 Initializing Grading Automation System...");
+  const server = new WebUIServer();
+  server.start();
+} catch (error) {
+  console.error("❌ Failed to initialize server:", error);
+  console.error("Stack trace:", error.stack);
+  process.exit(1);
+}
