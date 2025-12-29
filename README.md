@@ -1,146 +1,81 @@
 # Grading Automation System
 
-A comprehensive automated grading platform for multiple students and lectures with web-based interface.
+An internal **automated grading and code evaluation platform** built to assess student programming submissions at scale using GitHub repositories.
 
-## Features
+The system replaces manual grading workflows with a consistent, scalable, and configuration-driven evaluation process, while providing real-time visibility into student performance across cohorts and lectures.
 
-- 🎯 **Automated Grading**: Grade student submissions automatically
-- 👥 **Cohort Management**: Manage multiple student cohorts
-- 📊 **Real-time Results**: View grading results in real-time
-- 🔍 **Student Status Tracking**: Monitor student progress and performance
-- 📈 **Detailed Analytics**: Comprehensive grading analytics and reports
-- 🌐 **Web Interface**: User-friendly web-based interface
-- 🔄 **GitHub Integration**: Automatic repository downloading and grading
+---
 
-## Tech Stack
+## Purpose
 
-- **Backend**: Node.js, Express.js
-- **Frontend**: HTML, CSS, JavaScript
-- **Grading Engine**: Custom Grading Engine
-- **Data Storage**: JSON-based file storage
-- **GitHub API**: Repository access and management
+This platform was designed to solve common challenges in technical education and training environments:
 
-## Quick Start
+- Manual grading that does not scale  
+- Inconsistent evaluation criteria  
+- Difficulty tracking progress across multiple cohorts  
+- Lack of centralized grading results and analytics  
 
-### Prerequisites
+The Grading Automation System serves as a **single source of truth** for grading outcomes and student status.
 
-- Node.js (v18 or higher)
-- npm (v8 or higher)
-- GitHub Personal Access Token
+---
 
-### Installation
+## What the System Does
 
-1. Clone the repository:
+- Automatically evaluates student GitHub repositories  
+- Applies lecture-specific grading rules  
+- Tracks student progress across cohorts  
+- Generates real-time grading results  
+- Provides performance analytics and reporting  
+- Centralizes grading operations in a web-based interface  
 
-```bash
-git clone https://github.com/yourusername/grading-automation-system.git
-cd grading-automation-system
-```
+All grading behavior is **configuration-driven**, allowing the system to adapt to new lectures and cohorts without changing core logic.
 
-2. Install dependencies:
+---
 
-```bash
-npm install
-```
+## Key Capabilities
 
-3. Configure your environment:
+- Automated repository evaluation via GitHub integration  
+- Multi-cohort and multi-lecture support  
+- Real-time grading results and status tracking  
+- Centralized analytics and performance insights  
+- Internal web dashboard for monitoring grading operations  
+- Scalable architecture designed for growing student counts  
 
-Create configuration files in the `config/` directory:
+---
 
-- `students.json` - Student information and GitHub repositories
-- `lectures.json` - Lecture definitions and grading criteria
-- `cohorts.json` - Cohort management data
+## High-Level Architecture
 
-4. Start the application:
+- Student repositories are sourced from GitHub  
+- Grading rules are defined per lecture  
+- A custom grading engine evaluates submissions  
+- Results are stored and aggregated centrally  
+- A web interface displays grading status and analytics  
 
-```bash
-npm start
-```
+This separation allows the system to remain flexible, maintainable, and scalable.
 
-5. Open your browser and navigate to `http://localhost:3000`
+---
 
-## Configuration
+## Use Case
 
-The platform uses configuration files in the `config/` directory:
+The system is intended for **internal use** in educational or training organizations where:
 
-- `students.json` - Student information and GitHub repositories
-- `lectures.json` - Lecture definitions and grading criteria
-- `cohorts.json` - Cohort management data
-- `*-enhanced.json` - Enhanced grading configurations for specific lectures
+- Large numbers of student submissions must be evaluated  
+- Consistent grading criteria are required  
+- Real-time visibility into student progress is important  
 
-### Environment Variables
+---
 
-Set the following environment variables for production:
+## Confidentiality Notice
 
-- `PORT` - Server port (default: 3000)
-- `NODE_ENV` - Environment (production/development)
+This project was developed as an **internal system**.  
+While the repository is publicly visible, production data, credentials, and organization-specific configurations are not included.
 
-## API Endpoints
+---
 
-- `GET /api/students` - Get all students
-- `GET /api/lectures` - Get all lectures
-- `GET /api/results` - Get grading results
-- `POST /api/grade` - Grade a student's submission
-- `POST /api/grade-ultra-dynamic` - Grading
-- `POST /api/download` - Download student repository
-- `GET /api/cohorts` - Get cohort information
+## Maintainer
 
-## Deployment
+**Ahmad Nazzal**  
+Full Stack Developer  
+Amman, Jordan  
 
-This application is ready for deployment on platforms like:
-
-- **Render** (Recommended)
-- **Railway**
-- **Heroku**
-- **Vercel**
-
-### Deploy to Render
-
-1. Push your code to GitHub
-2. Connect your repository to Render
-3. Set build command: `npm install`
-4. Set start command: `npm start`
-5. Add environment variables if needed
-6. Deploy!
-
-### Render Configuration
-
-- **Build Command**: `npm install`
-- **Start Command**: `npm start`
-- **Node Version**: 18.x or higher
-
-## Project Structure
-
-```
-grading-automation-system/
-├── config/                 # Configuration files
-│   ├── students.json      # Student data
-│   ├── lectures.json      # Lecture definitions
-│   ├── cohorts.json       # Cohort management
-│   └── *-enhanced.json    # Enhanced grading configs
-├── src/                   # Source code
-│   ├── core/             # Core grading engine
-│   ├── utils/            # Utility functions
-│   └── web-ui/           # Web interface
-├── downloads/            # Downloaded repositories
-├── results/              # Grading results
-├── package.json          # Dependencies
-├── Procfile             # Deployment configuration
-└── README.md            # Documentation
-```
-
-## License
-
-MIT License
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## Support
-
-For issues and questions, please create an issue in the GitHub repository.
+LinkedIn: https://linkedin.com/in/ahmednazzall
